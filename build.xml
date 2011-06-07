@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+<project name="Tipfy's Ant Farm" default="deploy-publish">
+    <description>
+        Scripts for managing App Engine deployment and backup
+    </description>
+    <!--
+      this build script depends on ant-contrib #GoogleIt
+      portions use nose, nosegae, and growlnotify (yes, I assume you have a Mac)
+      only tested with ant 1.8.2 on MacOSX 10.6.6
+    -->
+    <property name="h5bp.build.dir" value="${basedir}/build"/>
+    
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+        <classpath>
+			<pathelement location="${h5bp.build.dir}/tools/ant-contrib-1.0b3.jar"/>
+        </classpath>
+    </taskdef>
+    <!-- load shell environment -->
+    <property environment="ENV" />
+
+    <!-- load property files -->
+    <property file="${h5bp.build.dir}/config/project.properties"/>
+    <!--
+      AppEngine config details
+    -->
+    <property name="remote.api" value="/_ah/remote_api"/>
+    <!--
+      output dirs
+    -->
+    <property name="deploy.dir" value="publish"/>
+    <property name="logs.dir" value="logs"/>
+    <property name="backups.dir" value="backups"/>
+
+    <property name="lib.dir" value="${dir.source}/lib"/>
+    <property name="dist.dir" value="${lib.dir}/dist"/>
+
+    <!--
+        Setup tipfy project.
+    -->
+    <target name="tipfy-copy">
+        <if>
+            <resourceexists>
+                <file file="${basedir}/../tipfy/__init__.py"/>
+            </resourceexists>
+            <then>
+                <echo>updating tipfy to repository version</echo>
+                <delete dir="${dist.dir}/tipfy"/>
+                <copy todir="${dist.dir}/tipfy">
+                    <fileset dir="${basedir}/../tipfy"/>
+                </copy>
+            </then>
+        </if>
+        <if>
+            <resourceexists>
+                <file file="${basedir}/../tipfyext/__init__.py"/>
+            </resourceexists>
+            <then>
+                <echo>updating tipfyext to repository version</echo>
+                <delete dir="${dist.dir}/tipfyext"/>
+                <copy todir="${dist.dir}/tipfyext">
+                    <fileset dir="${basedir}/../tipfyext"/>
+                </copy>
+            </then>
+        </if>
+    </target>
+
+    <target name="setup">
+        <echo>This will take a few minutes...</echo>
+        <echo>starting bootstrap...</echo>
+        <exec executable="python" failonerror="true">
+            <arg value="${basedir}/bootstrap.py"/>
+            <arg value="--distribute"/>
+        </exec>
+        <echo>starting buildout...</echo>
+        <exec executable="${basedir}/bin/buildout" failonerror="true"/>
+        <antcall target="tipfy-copy" />
+        <antcall target="notify">
+            <param name="message" value="tip phi setup complete."/>
+            <param name="say" value="true"/>
+        </antcall>
+    </target>
+    <!--
+      prompt for admin user's password
+    -->
+    <target name="-password-prompt">
+        <if>
+            <not>
+                <isset property="admin.email"/>
+            </not>
+            <then>
+                <input message="GAE Developer email address: " addproperty="admin.email">
+                </input>
+            </then>
+        </if>
+        <input message="Password for ${admin.email}: " addproperty="admin.password">
+            <handler type="secure"/>
+        </input>
+    </target>
+    <!--
+      notify user that long process is done.
+    -->
+    <target name="notify">
+        <condition property="message" value="Build is complete." else="${message}">
+            <not>
+                <isset property="message"/>
+            </not>
+        </condition>
+        <echo>${message}</echo>
+        <parallel>
+            <exec executable="growlnotify" os="Mac OS X"
+                  failifexecutionfails="false">
+                <arg value="${message}"/>
+            </exec>
+            <if>
+                <isset property="say"/>
+                <then>
+                    <exec executable="say" os="Mac OS X"
+                          spawn="true">
+                        <arg value="${message}"/>
+                    </exec>
+                </then>
+            </if>
+        </parallel>
+    </target>
+    <!--
+      deploy minified and compiled build to app engine
+    -->
+    <target name="clean-publish">
+        <subant target="clean">
+            <fileset dir="${h5bp.build.dir}" includes="build.xml"/>
+        </subant>
+    </target>
+
+    <target name="build-publish">
+        <subant target="build">
+            <fileset dir="${h5bp.build.dir}" includes="build.xml"/>
+        </subant>
+    </target>
+
+    <target name="compile-publish" depends="build-publish">
+        <replaceregexp match="__compiled_templates = False" replace="__compiled_templates = True">
+            <fileset dir="${basedir}/${deploy.dir}" includes="config.py"/>
+        </replaceregexp>
+        <exec executable="python" failonerror="true">
+            <arg value="${h5bp.build.dir}/tools/jinja2_compile_v2"/>
+            <arg value="${deploy.dir}"/>
+        </exec>
+    </target>
+
+    <target name="-set-params">
+        <var name="params" value="--email=${admin.email}"/>
+
+        <if>
+            <isset property="app.name"/>
+            <then>
+                <var name="params" value="${params} --application=${app.name}"/>
+            </then>
+        </if>
+        <if>
+            <isset property="app.ver"/>
+            <then>
+                <var name="params" value="${params} --version=${app.ver}"/>
+            </then>
+        </if>
+    </target>
+
+    <target name="upload-publish" depends="-password-prompt,-set-params">
+        <exec executable="appcfg.py" failonerror="true" inputstring="${admin.password}">
+            <arg value="update"/>
+            <arg line="--no_cookies --passin"/>
+            <arg line="${params}"/>
+            <arg value="${deploy.dir}"/>
+        </exec>
+    </target>
+
+    <target name="deploy-publish" depends="-password-prompt,-set-params,clean-publish,build-publish,compile-publish,upload-publish">
+        <antcall target="notify">
+            <param name="message" value="Deploy to production complete."/>
+            <param name="say" value="true"/>
+        </antcall>
+    </target>
+    <!--
+      deploy build to app engine dev target
+    -->
+    <target name="deploy-dev" depends="-password-prompt,-set-params">
+        <if>
+            <or>
+                <isset property="dev-app.name"/>
+                <isset property="dev-app.ver"/>
+            </or>
+            <then>
+                <var name="params" value="--email=${admin.email}"/>
+            </then>
+        </if>
+
+        <if>
+            <isset property="dev-app.name"/>
+            <then>
+                <var name="params" value="${params} --application=${dev-app.name}"/>
+            </then>
+        </if>
+        <if>
+            <isset property="dev-app.ver"/>
+            <then>
+                <var name="params" value="${params} --version=${dev-app.ver}"/>
+            </then>
+        </if>
+        
+        <exec executable="appcfg.py" failonerror="true" inputstring="${admin.password}">
+            <arg value="update"/>
+            <arg value="--no_cookies"/>
+            <arg value="--passin"/>
+            <arg line="${params}"/>
+            <arg value="${dir.source}"/>
+        </exec>
+        <antcall target="notify">
+            <param name="message" value="Deploy to dev complete."/>
+            <param name="say" value="true"/>
+        </antcall>
+    </target>
+    <!--
+      pull down logs from app engine
+    -->
+    <target name="logs" depends="-password-prompt,-set-params">
+        <mkdir dir="${logs.dir}"/>
+        <tstamp>
+            <format property="TODAY" pattern="yyyy-MM-dd-HH-mm"/>
+        </tstamp>
+        <exec executable="appcfg.py" failonerror="true" inputstring="${admin.password}">
+            <arg value="request_logs"/>
+            <arg value="--no_cookies"/>
+            <arg value="--passin"/>
+            <arg line="${params}"/>
+            <arg value="--include_vhost"/>
+            <arg value="${dir.source}"/>
+            <arg value="${logs.dir}/${app.name}-${TODAY}.log"/>
+        </exec>
+        <antcall target="notify">
+            <param name="message" value="Remote logs dowloaded."/>
+        </antcall>
+    </target>
+    <!--
+      rollback to get app engine out of error state
+    -->
+    <target name="rollback" depends="-password-prompt,-set-params">
+        <exec executable="appcfg.py" failonerror="true" inputstring="${admin.password}">
+            <arg value="rollback"/>
+            <arg value="--no_cookies"/>
+            <arg value="--passin"/>
+            <arg line="${params}"/>
+            <arg value="${dir.source}"/>
+        </exec>
+    </target>
+    <!--
+      remove unused indexes from remote datastore
+    -->
+    <target name="vacuum" depends="-password-prompt,-set-params">
+        <exec executable="appcfg.py" failonerror="true" inputstring="${admin.password}">
+            <arg value="vacuum_indexes"/>
+            <arg value="--no_cookies"/>
+            <arg value="--passin"/>
+            <arg line="${params}"/>
+            <arg value="--force"/>
+            <arg value="${dir.source}"/>
+        </exec>
+    </target>
+</project>

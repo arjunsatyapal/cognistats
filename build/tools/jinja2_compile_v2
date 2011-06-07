@@ -1,0 +1,16 @@
+#!/usr/bin/python -S
+
+import os, sys
+
+if __name__ == '__main__':
+    app_path = sys.argv[1] if len(sys.argv) > 1 else 'app'
+    lib_path = os.path.join(os.getcwd(), app_path, 'lib')
+
+    sys.path[0:0] = [
+        os.path.join(lib_path, 'dist'),
+        os.path.join(lib_path, 'dist.zip'),
+        ]
+
+    import tipfyext.jinja2.scripts
+
+    tipfyext.jinja2.scripts.compile_templates(sys.argv)
