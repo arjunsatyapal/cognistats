@@ -1,0 +1,12 @@
+# General
+.DS_Store
+*.pyc
+*.pyo
+.coverage
+.egg-info
+
+# Tipfy
+app/lib/dist  # automatically generated on every buildout
+eggs          # automatically generated on every buildout???
+var/downloads # generated from buildout
+publish       # made from ant; if we build before uploading, don't need in git
