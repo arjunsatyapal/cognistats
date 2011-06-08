@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<p>Welcome, user!</p>
+
+<p><a href="/stats">View my statistics</a></p>
+
+{% if in_session %}
+<a href="/tests">Continue session</a>
+<a href="/tests?stop">Quit session</a>
+
+{% else %}
+<p><a href="/tests">Start test session</a><p>
+
+{% endif %}
+
+<p>Your recent testing sessions:</p>
+
+<p>Session1</p>
+
+<p>Session2</p>
+
+
+{% endblock %}
