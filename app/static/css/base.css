@@ -9,13 +9,30 @@ body {
 }
 
 header {
-  background-color: #afa;
+  background-color: #bfb;
+  padding-left: 20px;
+}
+
+header a {
+  text-decoration: none;
 }
 
 header h1 {
   color: #0099FF;
   font-family: 'trebuchet ms', trebuchet, arial, sans-serif;
   font-size: 56px;
-  text-align: center;
-  margin-top: 12px;
+}
+
+header h2 {
+  color: #607890;
+  font-size: 20px;
+}
+
+#main {
+  padding: 20px;
+}
+
+footer {
+  background-color: #eef;
+  padding: 20px;
 }
