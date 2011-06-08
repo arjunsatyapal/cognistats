@@ -1,0 +1,21 @@
+body {
+  background-color: #cceeff;
+}
+
+#container {
+  width: 1024px;
+  margin: auto;
+  background-color: #fff;
+}
+
+header {
+  background-color: #afa;
+}
+
+header h1 {
+  color: #0099FF;
+  font-family: 'trebuchet ms', trebuchet, arial, sans-serif;
+  font-size: 56px;
+  text-align: center;
+  margin-top: 12px;
+}

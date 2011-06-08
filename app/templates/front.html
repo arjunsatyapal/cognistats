@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title|escape|default("CogniStats") }}{% endblock %}
+
+{% block css %}
+{{ super() }}
+<link rel="stylesheet" href="/css/base.css" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<h3>Why you should sign up to test it now:</h3>
+<ol>
+  <li>It rocks, totally.</li>
+  <li>Help science.</li>
+  <li>Live forever.</li>
+</ol>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}
