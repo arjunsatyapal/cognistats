@@ -16,14 +16,14 @@
 package com.google.cognistats.server.servlets.login;
 
 
-import java.util.logging.Logger;
-
-import javax.servlet.http.HttpServletRequest;
-
 import com.google.appengine.api.utils.SystemProperty;
 import com.google.cognistats.server.enums.OAuthProviderEnum;
 import com.google.cognistats.shared.enums.ServletPaths;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+
+import java.util.logging.Logger;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Helper class for Login Servlets.
@@ -106,7 +106,7 @@ public class LoginHelper extends RemoteServiceServlet {
 //  public static boolean isDevelopment(HttpServletRequest request) {
 //    return SystemProperty.environment.value() != SystemProperty.Environment.Value.Production;
 //  }
-  
+
   public static boolean isDevelopment(HttpServletRequest request) {
 	    return SystemProperty.environment.value() != SystemProperty.Environment.Value.Production;
 	  }
