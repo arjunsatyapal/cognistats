@@ -1,25 +1,44 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
-<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
-	<ui:style>
-		.important {
-			font-weight: bold;
-		}
-	</ui:style>
-		<g:FocusPanel ui:field="focusPanel">
-		<g:LayoutPanel ui:field="layoutPanel" >
-			<g:layer left="68px" width="383px" top="27px" height="368px">
-				<g:Image  url="WEB-INF/images/image00.png" ui:field="imageCircle"/>
-			</g:layer>
-			<g:layer left="440px" width="60px" top="41px" height="18px">
-				<g:Label text="New Label"/>
-			</g:layer>
-			<g:layer left="440px" width="60px" top="87px" height="18px">
-				<g:Label text="New Label"/>
-			</g:layer>
-			<g:layer left="440px" width="60px" top="135px" height="18px">
-				<g:Label text="New Label"/>
-			</g:layer>
-		</g:LayoutPanel>
-		</g:FocusPanel>
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+  <ui:style>
+    .important {
+      font-weight: bold;
+    }
+  </ui:style>
+  <g:FocusPanel ui:field="focusPanel" width="100%" height="100%">
+    <g:LayoutPanel ui:field="layoutPanel" width="100%" height="100%">
+      <g:layer left="68px" width="383px" top="27px" height="368px">
+        <g:Image url="images/image00.png" visible="false" ui:field="imageCircle" />
+      </g:layer>
+      <g:layer left="648px" width="60px" top="51px" height="18px">
+        <g:Label text="Attempts" />
+      </g:layer>
+      <g:layer left="798px" width="155px" top="36px" height="33px">
+        <g:TextBox enabled="false" ui:field="textAttempts" />
+      </g:layer>
+
+      <g:layer left="648px" width="60px" top="106px" height="18px">
+        <g:Label text="Success Ratio" />
+      </g:layer>
+      <g:layer left="798px" width="155px" top="91px" height="33px">
+        <g:TextBox enabled="false" ui:field="textSuccessRatio" />
+      </g:layer>
+
+      <g:layer left="627px" width="121px" top="156px" height="18px">
+        <g:Label text="Average Time(s)" />
+      </g:layer>
+      <g:layer left="798px" width="155px" top="141px" height="33px">
+        <g:TextBox enabled="false" ui:field="textAvgTime" />
+      </g:layer>
+      <g:layer left="171px" width="90px" top="395px" height="29px">
+        <g:Button text="Start Test" ui:field="buttonStartTest" />
+      </g:layer>
+      <g:layer left="764px" width="189px" top="215px" height="232px">
+      	<g:TextArea ui:field="textArea"/>
+      </g:layer>
+      <g:layer left="648px" width="65px" top="258px" height="17px">
+      	<g:Label text="History"/>
+      </g:layer>
+    </g:LayoutPanel>
+  </g:FocusPanel>
 </ui:UiBinder> 
