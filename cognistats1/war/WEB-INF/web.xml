@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+  
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>greetServlet</servlet-name>
+    <servlet-class>com.google.cognistats.server.GreetingServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>greetServlet</servlet-name>
+    <url-pattern>/cognistats/greet</url-pattern>
+  </servlet-mapping>
+  
+    <!-- ===================== Login Servlets ===================== -->
+  <servlet>
+    <servlet-name>loginGoogle</servlet-name>
+    <servlet-class>com.google.cognistats.server.servlets.login.LoginGoogleServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>loginGoogle</servlet-name>
+    <url-pattern>/loginGoogle</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>loginGoogleCallback</servlet-name>
+    <servlet-class>com.google.cognistats.server.servlets.login.LoginGoogleCallbackServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>loginGoogleCallback</servlet-name>
+    <url-pattern>/loginGoogleCallback</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>Cognistats.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>
