@@ -32,6 +32,8 @@ import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
+import java.util.Random;
+
 public class SimpleReactionTimeView extends Composite {
 
   @UiField
@@ -45,26 +47,32 @@ public class SimpleReactionTimeView extends Composite {
   @UiField
   TextBox textSuccessRatio;
   @UiField
+  TextBox textFailureRatio;
+  @UiField
   TextBox textAvgTime;
   @UiField
   TextArea textArea;
 
   // Constants.
-  private int maxIterations = 100;
-  private int blockSize = 101;
-  private int delayInMillis = 3000;
+  private int maxIterations = 150;
+  private int blockSize = maxIterations + 1;
+  private int maxDelayInMillis = 3000;
   private String[] resultArray = new String[blockSize];
 
   // Things to be reseted with each test.
   private int iterationCounter = 0;
   private int successCounter = 0;
+  private int failureCounter = 0;
   private double aggregateResponseTimeInMillis = 0;
-
+  private Random generator;
+  
   private void reset() {
     iterationCounter = 0;
     successCounter = 0;
+    failureCounter = 0;
     aggregateResponseTimeInMillis = 0;
     resultArray = new String[blockSize];
+    generator = new Random();    
   }
 
   // Resetted with each iteration.
@@ -78,6 +86,14 @@ public class SimpleReactionTimeView extends Composite {
     isHit = false;
   }
 
+  private int getDelay() {
+	  int lambda = 500;
+	  int constantDelay = 250;
+	  double u = generator.nextDouble();
+	  int delay = (int)(constantDelay - Math.log(u) * lambda);
+	  return delay;
+  }
+  
   private boolean isValidToPressKey = false;
   private Timer t = new Timer() {
     @Override
@@ -97,7 +113,10 @@ public class SimpleReactionTimeView extends Composite {
 
 
       if (iterationCounter < maxIterations) {
-        t.schedule(delayInMillis);
+    	  if(!updateVisibility)
+    		  t.schedule(getDelay());
+    	  else
+    		  t.schedule(maxDelayInMillis);  // turn circle off eventually
       } else {
         reset();
       }
@@ -133,6 +152,11 @@ public class SimpleReactionTimeView extends Composite {
     textSuccessRatio.setText(Double.toString(per));
   }
 
+  private void updateFailureText() {
+	double per = failureCounter * 100 / iterationCounter;
+	textFailureRatio.setText(Double.toString(per));
+  }
+
   private static SimpleReactionTimeViewUiBinder uiBinder =
       GWT.create(SimpleReactionTimeViewUiBinder.class);
 
@@ -153,9 +177,13 @@ public class SimpleReactionTimeView extends Composite {
           updateSuccessText();
           updateAvgResponseTime();
           updateResultAndTextArea();
+          t.cancel();
+          t.run();
         } else {
-          Window.alert("You pressed too quickly. In future I will "
-              + "penalize you for pressing too quickly.");
+        	failureCounter++;
+        	updateFailureText();
+          //Window.alert("You pressed too quickly. In future I will "
+          //    + "penalize you for pressing too quickly.");
         }
         isValidToPressKey = false;
       }
@@ -172,7 +200,7 @@ public class SimpleReactionTimeView extends Composite {
       @Override
       public void onClick(ClickEvent event) {
         reset();
-        t.schedule(delayInMillis);
+        t.schedule(getDelay());
       }
     });
   }
