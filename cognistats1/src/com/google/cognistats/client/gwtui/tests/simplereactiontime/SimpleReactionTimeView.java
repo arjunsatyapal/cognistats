@@ -20,6 +20,8 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
+import com.google.gwt.event.dom.client.TouchStartEvent;
+import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Timer;
@@ -118,11 +120,11 @@ public class SimpleReactionTimeView extends Composite {
 
       if (iterationCounter < maxIterations) {
     	  if(!updateVisibility)
-    		  t.schedule(getDelay());
+			  t.schedule(getDelay());
     	  else
     		  t.schedule(maxDelayInMillis);  // turn circle off eventually
       } else {
-        reset();
+        //reset();
       }
 
       imageCircle.setVisible(updateVisibility);
@@ -176,6 +178,26 @@ public class SimpleReactionTimeView extends Composite {
 	double variance = sumOfVariance / (double)successCounter;
 	double stdDev = Math.sqrt(variance);
 	textStdDev.setText(Double.toString(stdDev) + "ms");
+  }	
+  
+  private void handleReaction() {
+    iterationEndTimeInMillis = System.currentTimeMillis();
+    if (isValidToPressKey) {
+      isHit = true;
+      successCounter++;
+      updateAvgResponseTime();
+      updateResultAndTextArea();
+      updateStdDev();
+      t.cancel();
+      t.run();
+    } else {
+      failureCounter++;
+      //Window.alert("You pressed too quickly. In future I will "
+      //    + "penalize you for pressing too quickly.");
+    }
+    updateSuccessText();
+  	updateFailureText();
+  	isValidToPressKey = false;
   }
   
   private static SimpleReactionTimeViewUiBinder uiBinder =
@@ -191,26 +213,18 @@ public class SimpleReactionTimeView extends Composite {
     KeyPressHandler myHandler = new KeyPressHandler() {
       @Override
       public void onKeyPress(KeyPressEvent event) {
-        iterationEndTimeInMillis = System.currentTimeMillis();
-        if (isValidToPressKey) {
-          isHit = true;
-          successCounter++;
-          updateAvgResponseTime();
-          updateResultAndTextArea();
-          updateStdDev();
-          t.cancel();
-          t.run();
-        } else {
-          failureCounter++;
-          //Window.alert("You pressed too quickly. In future I will "
-          //    + "penalize you for pressing too quickly.");
-        }
-        updateSuccessText();
-    	updateFailureText();
-        isValidToPressKey = false;
+    	handleReaction();
       }
     };
     focusPanel.addKeyPressHandler(myHandler);
+    
+    TouchStartHandler myTouchHandler = new TouchStartHandler() {
+      @Override
+      public void onTouchStart(TouchStartEvent event) {
+      	handleReaction();
+      }
+    };
+    focusPanel.addTouchStartHandler(myTouchHandler);
 
     buttonStartTest.addClickHandler(new ClickHandler() {
       @Override
