@@ -47,9 +47,11 @@ public class SimpleReactionTimeView extends Composite {
   @UiField
   TextBox textSuccessRatio;
   @UiField
-  TextBox textFailureRatio;
+  TextBox textFailureCount;
   @UiField
   TextBox textAvgTime;
+  @UiField
+  TextBox textStdDev;
   @UiField
   TextArea textArea;
 
@@ -58,6 +60,7 @@ public class SimpleReactionTimeView extends Composite {
   private int blockSize = maxIterations + 1;
   private int maxDelayInMillis = 3000;
   private String[] resultArray = new String[blockSize];
+  private double[] responseTimes = new double[blockSize];
 
   // Things to be reseted with each test.
   private int iterationCounter = 0;
@@ -72,7 +75,8 @@ public class SimpleReactionTimeView extends Composite {
     failureCounter = 0;
     aggregateResponseTimeInMillis = 0;
     resultArray = new String[blockSize];
-    generator = new Random();    
+    responseTimes = new double[blockSize];
+    generator = new Random();
   }
 
   // Resetted with each iteration.
@@ -133,9 +137,9 @@ public class SimpleReactionTimeView extends Composite {
     if (isHit) {
       // Storing with space so dont have to append it later.
       resultArray[iterationCounter] = new String("Hit("
-          + Double.toString((new Double(
-              iterationEndTimeInMillis - iterationStartTimeInMillis)) / 1000)
-          + "s) ");
+          + Double.toString(new Double(
+              iterationEndTimeInMillis - iterationStartTimeInMillis))
+          + "ms) ");
     } else {
       resultArray[iterationCounter] = "Miss ";
     }
@@ -148,15 +152,32 @@ public class SimpleReactionTimeView extends Composite {
   }
 
   private void updateSuccessText() {
-    double per = successCounter * 100 / iterationCounter;
+    double per = successCounter * 100 / (iterationCounter + failureCounter);
     textSuccessRatio.setText(Double.toString(per));
   }
 
   private void updateFailureText() {
-	double per = failureCounter * 100 / iterationCounter;
-	textFailureRatio.setText(Double.toString(per));
+	textFailureCount.setText(Integer.toString(failureCounter));
   }
 
+  private void updateAvgResponseTime() {
+	double thisResponseTime = iterationEndTimeInMillis - iterationStartTimeInMillis;
+    responseTimes[successCounter] = thisResponseTime;
+    aggregateResponseTimeInMillis += thisResponseTime;
+    textAvgTime.setText(Double.toString(aggregateResponseTimeInMillis / (double)successCounter) + "ms");
+  }
+
+  private void updateStdDev() {
+	double sumOfVariance = 0;
+	double meanResponseTime = aggregateResponseTimeInMillis / (double)successCounter;
+	for(int i = 0; i < successCounter; ++i) {
+		sumOfVariance += Math.pow(responseTimes[i] - meanResponseTime, 2);
+	}
+	double variance = sumOfVariance / (double)successCounter;
+	double stdDev = Math.sqrt(variance);
+	textStdDev.setText(Double.toString(stdDev) + "ms");
+  }
+  
   private static SimpleReactionTimeViewUiBinder uiBinder =
       GWT.create(SimpleReactionTimeViewUiBinder.class);
 
@@ -174,24 +195,19 @@ public class SimpleReactionTimeView extends Composite {
         if (isValidToPressKey) {
           isHit = true;
           successCounter++;
-          updateSuccessText();
           updateAvgResponseTime();
           updateResultAndTextArea();
+          updateStdDev();
           t.cancel();
           t.run();
         } else {
-        	failureCounter++;
-        	updateFailureText();
+          failureCounter++;
           //Window.alert("You pressed too quickly. In future I will "
           //    + "penalize you for pressing too quickly.");
         }
+        updateSuccessText();
+    	updateFailureText();
         isValidToPressKey = false;
-      }
-
-      private void updateAvgResponseTime() {
-        aggregateResponseTimeInMillis = iterationEndTimeInMillis -
-            iterationStartTimeInMillis;
-        textAvgTime.setText(Double.toString((aggregateResponseTimeInMillis) / 1000));
       }
     };
     focusPanel.addKeyPressHandler(myHandler);

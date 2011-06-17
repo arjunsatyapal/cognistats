@@ -23,23 +23,36 @@
       <g:layer left="798px" width="155px" top="91px" height="33px">
         <g:TextBox enabled="false" ui:field="textSuccessRatio" />
       </g:layer>
+
+      <g:layer left="648px" width="60px" top="156px" height="18px">
+        <g:Label text="Failure Count" />
+      </g:layer>
       <g:layer left="798px" width="155px" top="141px" height="33px">
-        <g:TextBox enabled="false" ui:field="textFailureRatio" />
+        <g:TextBox enabled="false" ui:field="textFailureCount" />
       </g:layer>
 
-      <g:layer left="627px" width="121px" top="156px" height="18px">
+      <g:layer left="627px" width="121px" top="206px" height="18px">
         <g:Label text="Average Time(s)" />
       </g:layer>
       <g:layer left="798px" width="155px" top="191px" height="33px">
         <g:TextBox enabled="false" ui:field="textAvgTime" />
       </g:layer>
+
+      <g:layer left="627px" width="121px" top="256px" height="18px">
+        <g:Label text="Std Dev" />
+      </g:layer>
+      <g:layer left="798px" width="155px" top="241px" height="33px">
+        <g:TextBox enabled="false" ui:field="textStdDev" />
+      </g:layer>
+
       <g:layer left="171px" width="90px" top="395px" height="29px">
         <g:Button text="Start Test" ui:field="buttonStartTest" />
       </g:layer>
-      <g:layer left="764px" width="189px" top="265px" height="232px">
+
+      <g:layer left="764px" width="189px" top="295px" height="232px">
       	<g:TextArea ui:field="textArea"/>
       </g:layer>
-      <g:layer left="648px" width="65px" top="308px" height="17px">
+      <g:layer left="648px" width="65px" top="338px" height="17px">
       	<g:Label text="History"/>
       </g:layer>
     </g:LayoutPanel>
