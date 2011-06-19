@@ -1,0 +1,23 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.important {
+			font-weight: bold;
+		}
+	</ui:style>
+		<g:LayoutPanel width="100%" height="100%">
+			<g:layer left="30px" width="197px" top="34px" height="212px">
+				<g:FlowPanel/>
+			</g:layer>
+			<g:layer left="255px" width="149px" top="34px" height="212px">
+				<g:TextArea/>
+			</g:layer>
+			<g:layer left="255px" width="83px" top="252px" height="30px">
+				<g:Button text="Pause" ui:field="buttonPause"/>
+			</g:layer>
+			<g:layer left="344px" width="83px" top="252px" height="30px">
+				<g:Button text="Cancel" ui:field="buttonCancel"/>
+			</g:layer>
+		</g:LayoutPanel>
+</ui:UiBinder> 
