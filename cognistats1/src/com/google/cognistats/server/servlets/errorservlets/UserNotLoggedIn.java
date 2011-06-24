@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//TODO(arjuns) : make this better. Temp hack.
+// TODO(arjuns) : make this better. Temp hack.
 /**
  * User is redirected here if he is not logged in.
  *
@@ -32,10 +32,10 @@ public class UserNotLoggedIn extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws IOException {
-//    String invalidUrl = req.getParameter(INVALID_URL.getParamKey());
+    // String invalidUrl = req.getParameter(INVALID_URL.getParamKey());
     resp.setContentType("text/plain");
-    resp.getWriter()
-        .write("User not logged in. Some day I will automatically redirect."
+    resp.getWriter().write(
+        "User not logged in. Some day I will automatically redirect."
             + "But not now.");
   }
 }
