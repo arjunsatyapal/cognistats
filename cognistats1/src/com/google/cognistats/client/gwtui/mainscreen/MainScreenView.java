@@ -38,6 +38,8 @@ public class MainScreenView extends View implements MainScreenDisplay {
   @UiField
   MenuItem menuItemLoginLogout;
   @UiField
+  MenuItem menuItemTestSelector;
+  @UiField
   LayoutPanel workspace;
   @UiField
   Button buttonTestSelector;
@@ -80,5 +82,10 @@ public class MainScreenView extends View implements MainScreenDisplay {
   @Override
   public FocusPanel getFocusPanel() {
     return focusPanel;
+  }
+
+  @Override
+  public MenuItem getMenuItemTestSelector() {
+    return menuItemTestSelector;
   }
 }

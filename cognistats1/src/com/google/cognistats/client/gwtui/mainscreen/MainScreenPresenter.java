@@ -84,13 +84,23 @@ public class MainScreenPresenter implements Presenter {
     refreshMainScreen();
 
     display.getButtonTestSelector().addClickHandler(new ClickHandler() {
-
       @Override
       public void onClick(ClickEvent event) {
-        TestSelectorPresenter presenter = new TestSelectorPresenter(new TestSelectorView());
-        presenter.go(display.getWorkspace());
+        showTestSelectorScreen();
       }
     });
+
+    display.getMenuItemTestSelector().setCommand(new Command() {
+      @Override
+      public void execute() {
+        showTestSelectorScreen();
+      }
+    });
+  }
+
+  private void showTestSelectorScreen() {
+    TestSelectorPresenter presenter = new TestSelectorPresenter(new TestSelectorView());
+    presenter.go(display.getWorkspace());
   }
 
   private void updateLoginLogoutMenuItem(boolean isUserLoggedIn) {

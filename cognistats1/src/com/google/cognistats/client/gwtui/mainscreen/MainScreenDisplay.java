@@ -35,5 +35,7 @@ public interface MainScreenDisplay extends Display {
 
   LayoutPanel getWorkspace();
 
+  MenuItem getMenuItemTestSelector();
+
   Button getButtonTestSelector();
 }

@@ -8,12 +8,13 @@
             height="72px" />
           <g:HorizontalPanel width="100%" height="29px">
             <g:LayoutPanel width="100%" height="100%">
-              <g:layer right="0px" width="81px" top="0px" height="30px">
+              <g:layer right="0px" width="194px" top="0px" height="30px">
                 <g:MenuBar>
                   <g:MenuItem text="Login" ui:field="menuItemLoginLogout" />
+                  <g:MenuItem text="Test Selector" ui:field="menuItemTestSelector"/>
                 </g:MenuBar>
               </g:layer>
-              <g:layer right="80px" width="173px" top="0px" height="30px">
+              <g:layer right="194px" width="173px" top="0px" height="30px">
                 <g:Label ui:field="labelUserId" horizontalAlignment="ALIGN_RIGHT" />
               </g:layer>
             </g:LayoutPanel>
