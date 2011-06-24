@@ -4,19 +4,19 @@
     "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
-  
+
   <!-- Servlets -->
   <servlet>
     <servlet-name>greetServlet</servlet-name>
     <servlet-class>com.google.cognistats.server.GreetingServiceImpl</servlet-class>
   </servlet>
-  
+
   <servlet-mapping>
     <servlet-name>greetServlet</servlet-name>
     <url-pattern>/cognistats/greet</url-pattern>
   </servlet-mapping>
-  
-    <!-- ===================== Login Servlets ===================== -->
+
+  <!-- ===================== Login Servlets ===================== -->
   <servlet>
     <servlet-name>loginGoogle</servlet-name>
     <servlet-class>com.google.cognistats.server.servlets.login.LoginGoogleServlet</servlet-class>
@@ -37,6 +37,30 @@
     <url-pattern>/loginGoogleCallback</url-pattern>
   </servlet-mapping>
   
+  
+  <servlet>
+    <servlet-name>logout</servlet-name>
+    <servlet-class>com.google.cognistats.server.servlets.login.LogoutServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>logout</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- ===================== GWT Services ===================== -->
+  <servlet>
+    <servlet-name>userService</servlet-name>
+    <servlet-class>com.google.cognistats.server.servlets.gwtservices.UserServiceImpl</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>userService</servlet-name>
+    <url-pattern>/cognistats/userService</url-pattern>
+  </servlet-mapping>
+
+
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>Cognistats.html</welcome-file>

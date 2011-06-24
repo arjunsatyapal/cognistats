@@ -43,7 +43,14 @@ public class UserAccountDao {
   private UserAccountDao() {
   }
 
-  public UserAccountDto getDto() {
+  // TODO(arjuns) : Adding temporary hack. In future may be removed.
+  public static UserAccountDao fromDto(UserAccountDto dto) {
+    UserAccountDao dao = new UserAccountDao();
+    dao.email = dto.getEmail();
+    return dao;
+  }
+
+  public UserAccountDto toDto() {
     return new UserAccountDto.Builder().setEmail(email).build();
   }
 }

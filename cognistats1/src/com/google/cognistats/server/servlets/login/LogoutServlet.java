@@ -19,7 +19,6 @@ package com.google.cognistats.server.servlets.login;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
-import com.google.cognistats.server.domain.UserAccountDao;
 import com.google.cognistats.server.enums.OAuthProviderEnum;
 
 import java.io.IOException;
@@ -29,26 +28,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Callback servlet for users who are using Google as OAuthProvider.
+ * This acts as a single-signout servlet.
  *
  * @author Arjun Satyapal
  */
-@SuppressWarnings("serial")
-public class LoginGoogleCallbackServlet extends HttpServlet {
+public class LogoutServlet  extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws IOException {
-
+  throws IOException {
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
     if (user != null) {
-      String email = user.getEmail();
-      UserAccountDao dao = LoginHelper.getUserAccountDaoFromEmail(email);
-      LoginHelper.loginStarts(request.getSession(), dao,
-          OAuthProviderEnum.GOOGLE);
-    }
-    String redirectURL = LoginHelper.getApplicationURL(request);
+      // Get user by email.
+//      UserAccountDao userAccountDao =
+//          getUserAccountPersistenceProvider().getUserAccountDaoByEmail(
+//              user.getEmail());
 
-    response.sendRedirect(redirectURL);
+//      if (userAccountDao == null) {
+//        throw new IllegalArgumentException(
+//            "Server did not find user : " + user.getEmail() + ".");
+//      }
+
+      OAuthProviderEnum oAuthProvider = LoginHelper.logout(request.getSession());
+      String redirectUrl = LoginHelper.getLogoutUrl(request, oAuthProvider);
+      response.sendRedirect(redirectUrl);
+    }
   }
 }

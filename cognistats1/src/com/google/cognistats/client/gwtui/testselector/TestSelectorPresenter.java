@@ -15,6 +15,8 @@
  */
 package com.google.cognistats.client.gwtui.testselector;
 
+import static com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter.getWorkspace;
+
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.simplereactiontime.SimpleReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.simplereactiontime.resultwidget.SimpleReactionTimeResultView;
@@ -24,9 +26,9 @@ import com.google.cognistats.client.gwtui.widgets.testwidget.TestWidgetViewUi;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HasWidgets;
-import com.google.gwt.user.client.ui.RootLayoutPanel;
 
 /**
+ * Presenter for the TestSelector.
  *
  * @author Arjun Satyapal
  */
@@ -57,8 +59,7 @@ public class TestSelectorPresenter implements Presenter {
 
         TestWidgetPresenter presenter =
             new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
-        // TODO(arjuns) : Fix this. Currently hacking to rootPanel.
-        presenter.go(RootLayoutPanel.get());
+        presenter.go(getWorkspace());
       }
     });
   }

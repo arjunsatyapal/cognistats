@@ -15,8 +15,8 @@
  */
 package com.google.cognistats.client;
 
-import com.google.cognistats.client.gwtui.testselector.TestSelectorPresenter;
-import com.google.cognistats.client.gwtui.testselector.TestSelectorView;
+import com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter;
+import com.google.cognistats.client.gwtui.mainscreen.MainScreenView;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 
@@ -28,7 +28,9 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 public class Cognistats implements EntryPoint {
   @Override
   public void onModuleLoad() {
-    TestSelectorPresenter presenter = new TestSelectorPresenter(new TestSelectorView());
+//    TestSelectorPresenter presenter = new TestSelectorPresenter(new TestSelectorView());
+//    presenter.go(RootLayoutPanel.get());
+    MainScreenPresenter presenter = new MainScreenPresenter(new MainScreenView());
     presenter.go(RootLayoutPanel.get());
   }
 }

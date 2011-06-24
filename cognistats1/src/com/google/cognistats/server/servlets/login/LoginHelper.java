@@ -16,14 +16,20 @@
 package com.google.cognistats.server.servlets.login;
 
 
+import static com.google.cognistats.server.servlets.SessionAttributes.EMAIL;
+import static com.google.cognistats.server.servlets.SessionAttributes.LOGGED_IN;
+import static com.google.cognistats.server.servlets.SessionAttributes.OAuthProvider;
+
 import com.google.appengine.api.utils.SystemProperty;
+import com.google.cognistats.server.domain.UserAccountDao;
 import com.google.cognistats.server.enums.OAuthProviderEnum;
-import com.google.cognistats.shared.enums.ServletPaths;
+import com.google.cognistats.shared.dtos.UserAccountDto;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * Helper class for Login Servlets.
@@ -34,8 +40,7 @@ public class LoginHelper extends RemoteServiceServlet {
   private static final long serialVersionUID = 6690557021950311538L;
   private static Logger logger = Logger.getLogger(LoginHelper.class.getName());
   private static String DEVELOPMENT_URL =
-      "http://127.0.0.1:8888/Cognistats.html?gwt.codesvr="
-          + "127.0.0.1:9997";
+      "http://127.0.0.1:8888/Cognistats.html?gwt.codesvr=" + "127.0.0.1:9997";
 
   static public String getApplicationURL(HttpServletRequest request) {
     if (isDevelopment(request)) {
@@ -48,66 +53,81 @@ public class LoginHelper extends RemoteServiceServlet {
 
   static public String getLogoutUrl(HttpServletRequest request,
       OAuthProviderEnum oAuthProvider) {
-    if(isDevelopment(request)) {
-      return ServletPaths.UserNotLoggedIn.getRelativePath();
+    if (isDevelopment(request)) {
+      return DEVELOPMENT_URL;
     } else {
       return oAuthProvider.getLogOutUrl();
     }
   }
 
+  public static UserAccountDao getUserAccountDaoFromEmail(String email) {
+    UserAccountDto dto = new UserAccountDto.Builder().setEmail(email).build();
+    UserAccountDao dao = UserAccountDao.fromDto(dto);
+    return dao;
+  }
+  static public UserAccountDao getLoggedInUser(HttpSession session) {
+    if (session == null) {
+      return null;
+    }
 
-//  static public boolean isLoggedIn(HttpServletRequest req) {
-//    if (req == null) {
-//      return false;
-//    } else {
-//      HttpSession session = req.getSession();
-//      if (session == null) {
-//        logger.info("User is not logged in.");
-//        return false;
-//      } else {
-//        Boolean isLoggedIn =
-//            (Boolean) session.getAttribute(LOGGED_IN.getAttributeString());
-//        if (isLoggedIn == null) {
-//          logger.info("Session found, but user is not logged in");
-//          return false;
-//        } else if (isLoggedIn) {
-//          logger.info("User is logged in.");
-//          return true;
-//        } else {
-//          logger.info("User is not logged in");
-//          return false;
-//        }
-//      }
-//    }
-//  }
+    String email = (String) session.getAttribute(EMAIL.getAttributeString());
+    if (email == null) {
+      // User not logged in
+      return null;
+    }
 
-//  public static void loginStarts(HttpSession session,
-//      UserAccountDao userAccountDao, OAuthProviderEnum oAuthProvider) {
-//    /*
-//     * NOTE : Email is not the best way because many different providers can
-//     * share the same emal. e.g. MyOpenId will return User's primary emailId
-//     * with MyOpenId. So in that case, you may face collisions. But this is for
-//     * demo purpose, so using email for convenience.
-//     */
-//    session.setAttribute(EMAIL.getAttributeString(), userAccountDao.getEmail());
-//    session.setAttribute(LOGGED_IN.getAttributeString(), true);
-//    session.setAttribute(OAuthProvider.getAttributeString(),
-//        oAuthProvider.name());
-//  }
+   return getUserAccountDaoFromEmail(email);
+  }
 
-//  public static OAuthProviderEnum logout(HttpSession session) {
-//    String oAuthProviderName =
-//        (String) session.getAttribute(OAuthProvider.getAttributeString());
-//    session.invalidate();
-//    logger.info("OAuthprovider enum name = " + oAuthProviderName);
-//    return OAuthProviderEnum.valueOf(oAuthProviderName);
-//  }
-//
-//  public static boolean isDevelopment(HttpServletRequest request) {
-//    return SystemProperty.environment.value() != SystemProperty.Environment.Value.Production;
-//  }
+  static public boolean isLoggedIn(HttpServletRequest req) {
+    if (req == null) {
+      return false;
+    } else {
+      HttpSession session = req.getSession();
+      if (session == null) {
+        logger.info("User is not logged in.");
+        return false;
+      } else {
+        Boolean isLoggedIn =
+            (Boolean) session.getAttribute(LOGGED_IN.getAttributeString());
+        if (isLoggedIn == null) {
+          logger.info("Session found, but user is not logged in");
+          return false;
+        } else if (isLoggedIn) {
+          logger.info("User is logged in.");
+          return true;
+        } else {
+          logger.info("User is not logged in");
+          return false;
+        }
+      }
+    }
+  }
+
+  public static void loginStarts(HttpSession session,
+      UserAccountDao userAccountDao, OAuthProviderEnum oAuthProvider) {
+    /*
+     * NOTE : Email is not the best way because many different providers can
+     * share the same email. e.g. MyOpenId will return User's primary emailId
+     * with MyOpenId. So in that case, you may face collisions. But this is for
+     * demo purpose, so using email for convenience.
+     */
+    session.setAttribute(EMAIL.getAttributeString(), userAccountDao.getEmail());
+    session.setAttribute(LOGGED_IN.getAttributeString(), true);
+    session.setAttribute(OAuthProvider.getAttributeString(),
+        oAuthProvider.name());
+  }
+
+  public static OAuthProviderEnum logout(HttpSession session) {
+    String oAuthProviderName =
+        (String) session.getAttribute(OAuthProvider.getAttributeString());
+    session.invalidate();
+    logger.info("OAuthprovider enum name = " + oAuthProviderName);
+    return OAuthProviderEnum.valueOf(oAuthProviderName);
+  }
 
   public static boolean isDevelopment(HttpServletRequest request) {
-	    return SystemProperty.environment.value() != SystemProperty.Environment.Value.Production;
-	  }
+    return SystemProperty.environment.value() !=
+      SystemProperty.Environment.Value.Production;
+  }
 }

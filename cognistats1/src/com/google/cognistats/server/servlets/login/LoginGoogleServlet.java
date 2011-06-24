@@ -30,24 +30,24 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet to allow usage of Google as OAuth Provider.
- * 
+ *
  * @author Arjun Satyapal
  */
 @SuppressWarnings("serial")
 public class LoginGoogleServlet extends HttpServlet {
-	private static Logger log = Logger.getLogger(LoginGoogleServlet.class
-			.getName());
+  private static Logger log =
+      Logger.getLogger(LoginGoogleServlet.class.getName());
 
-	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
-		Set<String> attributes = new HashSet<String>();
-		String callbackURL = request.getRequestURL().toString() + "Callback";
-		UserService userService = UserServiceFactory.getUserService();
-		String loginUrl = userService.createLoginURL(callbackURL, null,
-				OAuthProviderEnum.GOOGLE.getProviderUrl(), attributes);
-		log.info("Going to " + OAuthProviderEnum.GOOGLE.name() + " URL : "
-				+ loginUrl);
-		response.sendRedirect(loginUrl);
-	}
+  @Override
+  public void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws IOException {
+    Set<String> attributes = new HashSet<String>();
+    String callbackURL = request.getRequestURL().toString() + "Callback";
+    UserService userService = UserServiceFactory.getUserService();
+    String loginUrl = userService.createLoginURL(callbackURL, null,
+            OAuthProviderEnum.GOOGLE.getProviderUrl(), attributes);
+    log.info("Going to " + OAuthProviderEnum.GOOGLE.name() + " URL : "
+        + loginUrl);
+    response.sendRedirect(loginUrl);
+  }
 }

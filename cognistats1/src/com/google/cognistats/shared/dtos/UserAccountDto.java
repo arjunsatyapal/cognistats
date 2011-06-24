@@ -20,7 +20,7 @@ package com.google.cognistats.shared.dtos;
  *
  * @author Arjun Satyapal
  */
-public class UserAccountDto {
+public class UserAccountDto implements AbstractDto {
   private String email;
 
   public String getEmail() {
@@ -43,5 +43,21 @@ public class UserAccountDto {
       dto.email = email;
       return dto;
     }
+  }
+
+  @Override
+  public StringBuilder getStringBuilder() {
+    return new StringBuilder("email:").append(email);
+  }
+
+  @Override
+  public String toString() {
+    return getStringBuilder().toString();
+  }
+
+  @Override
+  public String validate() {
+    //TODO(arjuns) : implement this.
+    throw new UnsupportedOperationException();
   }
 }

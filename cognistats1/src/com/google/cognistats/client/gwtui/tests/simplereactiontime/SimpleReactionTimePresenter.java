@@ -193,9 +193,7 @@ public class SimpleReactionTimePresenter implements TestPresenter {
 
   @Override
   public void go(HasWidgets container) {
-    container.clear();
-    container.add(resultWidget.asWidget());
-    bind();
+    throw new UnsupportedOperationException();
   }
 
   @Override

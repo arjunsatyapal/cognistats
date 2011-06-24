@@ -39,6 +39,7 @@ public enum ServletPaths {
   LOGOUT("/logout"),
 
   // GWT Services.
+  LOGIN_SERVICE("/cognistats/loginService"),
 
   // Servlets for TaskQueues
   NO_OP("/noOp"),
