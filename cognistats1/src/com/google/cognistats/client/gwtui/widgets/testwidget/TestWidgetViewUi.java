@@ -1,20 +1,64 @@
 package com.google.cognistats.client.gwtui.widgets.testwidget;
 
+import com.google.cognistats.client.gwtui.mvpinterfaces.View;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.FocusPanel;
+import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class TestWidgetViewUi extends Composite {
+public class TestWidgetViewUi extends View implements TestWidgetDisplay{
+  @UiField
+  FocusPanel focusPanel;
+  @UiField
+  LayoutPanel layoutPanelTest;
+  @UiField
+  LayoutPanel layoutPanelResult;
+  @UiField
+  Button buttonStart;
+  @UiField
+  Button buttonStop;
 
-	private static TestWidgetViewUiUiBinder uiBinder = GWT
-			.create(TestWidgetViewUiUiBinder.class);
+  private static TestWidgetViewUiUiBinder uiBinder =
+      GWT.create(TestWidgetViewUiUiBinder.class);
 
-	interface TestWidgetViewUiUiBinder extends
-			UiBinder<Widget, TestWidgetViewUi> {
-	}
+  interface TestWidgetViewUiUiBinder extends UiBinder<Widget, TestWidgetViewUi> {
+  }
 
-	public TestWidgetViewUi() {
-		initWidget(uiBinder.createAndBindUi(this));
-	}
+  public TestWidgetViewUi() {
+    initWidget(uiBinder.createAndBindUi(this));
+  }
+
+  @Override
+  public LayoutPanel getLayoutPanelStimulus() {
+    return layoutPanelTest;
+  }
+
+  @Override
+  public Button getButtonStart() {
+    return buttonStart;
+  }
+
+  @Override
+  public Button getButtonStop() {
+    return buttonStop;
+  }
+
+  @Override
+  public void setEnabled(boolean enabled) {
+    buttonStart.setEnabled(enabled);
+    buttonStop.setEnabled(enabled);
+  }
+
+  @Override
+  public FocusPanel getFocusPanel() {
+    return focusPanel;
+  }
+
+  @Override
+  public LayoutPanel getLayoutPanelResult() {
+    return layoutPanelResult;
+  }
 }

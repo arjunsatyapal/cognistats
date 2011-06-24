@@ -15,18 +15,20 @@
  */
 package com.google.cognistats.client;
 
-import com.google.cognistats.client.gwtui.tests.simplereactiontime.SimpleReactionTimeView;
+import com.google.cognistats.client.gwtui.testselector.TestSelectorPresenter;
+import com.google.cognistats.client.gwtui.testselector.TestSelectorView;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 
 /**
- * Entry point classes define <code>onModuleLoad()</code>.
+ * Entrypoint class for Cognistats.
+ *
+ * @author Arjun Satyapal
  */
 public class Cognistats implements EntryPoint {
   @Override
   public void onModuleLoad() {
-    RootLayoutPanel root = RootLayoutPanel.get();
-    root.clear();
-    root.add(new SimpleReactionTimeView());
+    TestSelectorPresenter presenter = new TestSelectorPresenter(new TestSelectorView());
+    presenter.go(RootLayoutPanel.get());
   }
 }
