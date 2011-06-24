@@ -20,6 +20,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.MenuItem;
@@ -30,6 +31,8 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Arjun Satyapal
  */
 public class MainScreenView extends View implements MainScreenDisplay {
+  @UiField
+  FocusPanel focusPanel;
   @UiField
   Label labelUserId;
   @UiField
@@ -72,5 +75,10 @@ public class MainScreenView extends View implements MainScreenDisplay {
   @Override
   public Button getButtonTestSelector() {
     return buttonTestSelector;
+  }
+
+  @Override
+  public FocusPanel getFocusPanel() {
+    return focusPanel;
   }
 }

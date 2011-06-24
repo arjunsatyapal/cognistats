@@ -5,13 +5,10 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class TestWidgetViewUi extends View implements TestWidgetDisplay{
-  @UiField
-  FocusPanel focusPanel;
   @UiField
   LayoutPanel layoutPanelTest;
   @UiField
@@ -50,11 +47,6 @@ public class TestWidgetViewUi extends View implements TestWidgetDisplay{
   public void setEnabled(boolean enabled) {
     buttonStart.setEnabled(enabled);
     buttonStop.setEnabled(enabled);
-  }
-
-  @Override
-  public FocusPanel getFocusPanel() {
-    return focusPanel;
   }
 
   @Override

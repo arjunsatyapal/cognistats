@@ -19,14 +19,11 @@ import com.google.cognistats.client.gwtui.mvpinterfaces.View;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
 
 public class SimpleReactionTimeStimulusView extends View implements
     SimpleReactionTimeStimulusDisplay {
-  @UiField
-  FocusPanel focusPanel;
   @UiField
   Image image;
 
@@ -49,10 +46,5 @@ public class SimpleReactionTimeStimulusView extends View implements
   @Override
   public Image getImage() {
     return image;
-  }
-
-  @Override
-  public FocusPanel getFocusPanel() {
-    return focusPanel;
   }
 }

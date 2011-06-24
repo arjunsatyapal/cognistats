@@ -29,6 +29,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.MenuItem;
@@ -42,8 +43,13 @@ public class MainScreenPresenter implements Presenter {
   // This class is singleton.
   private static MainScreenDisplay display;
 
+  //TODO(arjuns) : Put following accessors in a good place.
   public static LayoutPanel getWorkspace() {
     return display.getWorkspace();
+  }
+
+  public static FocusPanel getFocusPanel() {
+    return display.getFocusPanel();
   }
 
   private Command loginCommand = new Command() {
@@ -60,9 +66,9 @@ public class MainScreenPresenter implements Presenter {
     }
   };
 
-  public MainScreenPresenter(MainScreenDisplay display) {
-    if (this.display == null) {
-      this.display = display;
+  public MainScreenPresenter(MainScreenDisplay newDisplay) {
+    if (display == null) {
+      display = newDisplay;
     }
   }
 

@@ -16,7 +16,6 @@
 package com.google.cognistats.client.gwtui.tests.simplereactiontime.stimuluswidget;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
-import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.Image;
 
 /**
@@ -25,7 +24,5 @@ import com.google.gwt.user.client.ui.Image;
  * @author Arjun Satyapal
  */
 public interface SimpleReactionTimeStimulusDisplay extends Display {
-  FocusPanel getFocusPanel();
-
   Image getImage();
 }

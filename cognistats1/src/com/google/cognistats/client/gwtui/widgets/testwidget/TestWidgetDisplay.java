@@ -17,7 +17,6 @@ package com.google.cognistats.client.gwtui.widgets.testwidget;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.LayoutPanel;
 
 /**
@@ -26,8 +25,6 @@ import com.google.gwt.user.client.ui.LayoutPanel;
  * @author Arjun Satyapal
  */
 public interface TestWidgetDisplay extends Display {
-  FocusPanel getFocusPanel();
-
   LayoutPanel getLayoutPanelStimulus();
 
   LayoutPanel getLayoutPanelResult();

@@ -15,6 +15,7 @@
  */
 package com.google.cognistats.client.gwtui.widgets.testwidget;
 
+import com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.mvpinterfaces.TestPresenter;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -51,9 +52,9 @@ public class TestWidgetPresenter implements Presenter {
         .add(testPresenter.getResultView().asWidget());
 
     // Registering KeyPress and Touch Handlers with FocusPanel.
-    display.getFocusPanel().addKeyPressHandler(
+    MainScreenPresenter.getFocusPanel().addKeyPressHandler(
         testPresenter.getFocusPanelKeyPressHandler());
-    display.getFocusPanel().addTouchStartHandler(
+    MainScreenPresenter.getFocusPanel().addTouchStartHandler(
         testPresenter.getFocusPanelTouchStartHandler());
 
     display.getButtonStart().addClickHandler(new ClickHandler() {
