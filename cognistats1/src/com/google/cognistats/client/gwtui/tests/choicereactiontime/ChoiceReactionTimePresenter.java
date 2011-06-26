@@ -55,5 +55,9 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public void initialize() {
+		
+	}
 
 }
