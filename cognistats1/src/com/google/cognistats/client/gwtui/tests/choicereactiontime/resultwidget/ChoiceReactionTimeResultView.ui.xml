@@ -20,7 +20,7 @@
 		<g:layer left="0px" width="60px" top="67px" height="18px">
 			<g:Label text="Correct:"/>
 		</g:layer>
-		<g:layer left="0px" width="60px" top="114px" height="18px">
+		<g:layer left="0px" width="114px" top="114px" height="18px">
 			<g:Label text="Duration:"/>
 		</g:layer>
 		<g:layer left="0px" width="126px" top="138px" height="18px">
@@ -47,7 +47,7 @@
 		<g:layer left="128px" width="60px" top="67px" height="18px">
 			<g:Label text="0%" ui:field="textCorrectPercentage"/>
 		</g:layer>
-		<g:layer left="128px" width="60px" top="114px" height="18px">
+		<g:layer left="128px" width="221px" top="114px" height="18px">
 			<g:Label text="0:00" ui:field="textSessionDuration"/>
 		</g:layer>
 		<g:layer left="128px" width="60px" top="138px" height="18px">

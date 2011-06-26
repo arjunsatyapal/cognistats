@@ -27,6 +27,10 @@ public class ChoiceReactionTimeStatistics {
 		return ((double) correctTrials) / totalTrials;
 	}
 	
+	public double getTooEarlyFraction() {
+		return ((double) tooEarlyTrials) / totalTrials;
+	}
+	
 	public int getTotalTrials() {
 		return totalTrials;
 	}

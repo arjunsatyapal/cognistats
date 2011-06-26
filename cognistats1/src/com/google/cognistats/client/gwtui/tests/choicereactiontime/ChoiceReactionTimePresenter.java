@@ -148,6 +148,7 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 	@Override
 	public void start() {
 		initialize();
+		testTimer.scheduleRepeating(1000);
 		startTrial();
 
 	}
@@ -180,12 +181,12 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 		stimulusWidget.hideStimulus();
 		updateText();
 		createTrial();
-		testTimer.scheduleRepeating(1000);
 		startTimer();
 	}
 	
 	protected void updateText() {
 		resultWidget.getTextCorrectPercentage().setText(numberFormat.format(statistics.getCorrectFraction() * 100) + "%");
+		resultWidget.getTextTooEarlyPercentage().setText(numberFormat.format(statistics.getTooEarlyFraction() * 100) + "%");
 		resultWidget.getTextLastReactionTime().setText(lastReactionTimeMessage);
 		resultWidget.getTextTrialNumber().setText(Integer.toString(statistics.getTotalTrials()));
 		resultWidget.getTextMeanReactionTime().setText(numberFormat.format(statistics.getMeanReactionTime()));
