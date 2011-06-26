@@ -8,3 +8,4 @@ classes/
 deploy/
 .settings/
 .gwt/
+war/cognistats/
