@@ -38,6 +38,7 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 	protected ChoiceReactionTimeTrialResult currentTrialResult;
 	protected ChoiceReactionTimeStatistics statistics;
 	NumberFormat numberFormat;
+	private long testStartTime;
 	
 	public ChoiceReactionTimePresenter(
 		ChoiceReactionTimeStimulusDisplay stimulusWidget,
@@ -91,7 +92,16 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 	protected void endTrial() {
 		trialResults.add(currentTrialResult);
 		statistics.updateStatistics(currentTrialResult);
-		startTrial();
+		if (checkStoppingCondition()) {
+			endTest();
+		}
+		else {
+			startTrial();
+		}
+	}
+	
+	protected boolean checkStoppingCondition() {
+		return (nTrials >= totalNumTrials);
 	}
 	
 	protected void correctClick() {
@@ -144,8 +154,12 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 
 	@Override
 	public void stop() {
-		// TODO Auto-generated method stub
+		endTest();
 
+	}
+	
+	protected void endTest() {
+		testTimer.cancel();
 	}
 	
 	protected void initialize() {
@@ -154,6 +168,7 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 		trialResults = new LinkedList<ChoiceReactionTimeTrialResult>();
 		statistics = new ChoiceReactionTimeStatistics();
 		generator.setSeed(randomSeed);
+		testStartTime = System.currentTimeMillis();
 	}
 	
 	
@@ -165,13 +180,16 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 		stimulusWidget.hideStimulus();
 		updateText();
 		createTrial();
+		testTimer.scheduleRepeating(1000);
 		startTimer();
 	}
 	
 	protected void updateText() {
-		resultWidget.getTextCorrectPercentage().setText(numberFormat.format(statistics.getCorrectFraction() * 100));
+		resultWidget.getTextCorrectPercentage().setText(numberFormat.format(statistics.getCorrectFraction() * 100) + "%");
 		resultWidget.getTextLastReactionTime().setText(lastReactionTimeMessage);
 		resultWidget.getTextTrialNumber().setText(Integer.toString(statistics.getTotalTrials()));
+		resultWidget.getTextMeanReactionTime().setText(numberFormat.format(statistics.getMeanReactionTime()));
+		resultWidget.getTextStandardDeviation().setText(numberFormat.format(statistics.getStdDevReactionTime()));
 	}
 	
 	protected void createTrial() {
@@ -191,6 +209,15 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 			t1 = System.currentTimeMillis();
 		}
 		
+	};
+	
+	protected Timer testTimer = new Timer() {
+		@Override
+		public void run() {
+			long currentTime = System.currentTimeMillis();
+			long testTime = currentTime - testStartTime;
+			resultWidget.getTextSessionDuration().setText(Long.toString(testTime / 1000) + " seconds");
+		}
 	};
 	
 	protected void startTimer() {
