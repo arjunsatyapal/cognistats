@@ -12,7 +12,7 @@
   <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 
   <!-- Other module inherits                                      -->
-  <inherits name='com.google.gwt.canvas.client.Canvas'/>
+  <!-- <inherits name='com.google.gwt.canvas.client.Canvas'/>     -->
 
   <!-- Specify the app entry point class.                         -->
   <entry-point class='com.google.cognistats.client.Cognistats'/>

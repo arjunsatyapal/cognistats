@@ -10,11 +10,13 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.Label;
 
-public class ChoiceReactionTimeStimulusView extends Composite {
+public class ChoiceReactionTimeStimulusView extends Composite implements ChoiceReactionTimeStimulusDisplay {
 
 	private static ChoiceReactionTimeStimulusViewUiBinder uiBinder = GWT
 			.create(ChoiceReactionTimeStimulusViewUiBinder.class);
+	@UiField Label textChoice;
 
 	interface ChoiceReactionTimeStimulusViewUiBinder extends
 			UiBinder<Widget, ChoiceReactionTimeStimulusView> {
@@ -27,6 +29,32 @@ public class ChoiceReactionTimeStimulusView extends Composite {
 
 	public ChoiceReactionTimeStimulusView(String firstName) {
 		initWidget(uiBinder.createAndBindUi(this));
+	}
+
+
+	@Override
+	public void setEnabled(boolean enabled) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void setChoice(int choice) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void showStimulus() {
+		textChoice.setVisible(true);		
+	}
+
+
+	@Override
+	public void hideStimulus() {
+		textChoice.setVisible(false);		
 	}
 
 

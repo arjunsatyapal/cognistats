@@ -3,5 +3,8 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
 	<g:LayoutPanel width="100%" height="100%">
+		<g:layer left="25.0pct" width="50.0pct" top="25.0pct" height="50.0pct">
+			<g:Label text="Choice" ui:field="textChoice" width="100%" height="100%"/>
+		</g:layer>
 	</g:LayoutPanel>
 </ui:UiBinder> 
