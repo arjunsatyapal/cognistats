@@ -31,10 +31,9 @@ import com.google.gwt.event.dom.client.ClickEvent;
  * @author Arjun Satyapal
  */
 public class TestSelectorView extends View implements TestSelectorDisplay {
-  @UiField
-  Button buttonSRTT;
-  @UiField
-  Button buttonCRTT;
+  @UiField Button buttonSRTT;
+  @UiField Button buttonCRTT;
+  @UiField Button buttonSimpleReactionTime;
 
   private static TestSelectorViewUiBinder uiBinder =
       GWT.create(TestSelectorViewUiBinder.class);
@@ -71,5 +70,10 @@ public class TestSelectorView extends View implements TestSelectorDisplay {
   @Override
   public Button getButtonCRTT() {
 	  return buttonCRTT;
+  }
+  
+  @Override
+  public Button getButtonSimpleReactionTime() {
+	  return buttonSimpleReactionTime;
   }
 }

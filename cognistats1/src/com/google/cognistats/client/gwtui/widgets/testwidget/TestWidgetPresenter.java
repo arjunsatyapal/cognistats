@@ -47,9 +47,9 @@ public class TestWidgetPresenter implements Presenter {
   @Override
   public void bind() {
     display.getLayoutPanelStimulus().add(
-        testPresenter.getStimulusView().asWidget());
+        testPresenter.getTestView().asWidget());
     display.getLayoutPanelResult()
-        .add(testPresenter.getResultView().asWidget());
+        .add(testPresenter.getStatisticsView().asWidget());
 
     // Registering KeyPress and Touch Handlers with FocusPanel.
     MainScreenPresenter.getFocusPanel().addKeyPressHandler(

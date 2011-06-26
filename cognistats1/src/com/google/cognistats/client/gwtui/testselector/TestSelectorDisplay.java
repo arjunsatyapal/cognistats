@@ -27,4 +27,5 @@ public interface TestSelectorDisplay extends Display {
   // Button to start Simple Reaction Time Test.
   Button getButtonSRTT();
   Button getButtonCRTT();
+  Button getButtonSimpleReactionTime();
 }
