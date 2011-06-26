@@ -14,13 +14,15 @@ public class ChoiceReactionTimeResultView extends Composite implements ChoiceRea
 	@UiField Label textLastReactionTime;
 	@UiField Label textTrialNumber;
 	@UiField Label textCorrectPercentage;
+	@UiField Label textTooEarlyPercentage;
 	@UiField Label textSessionDuration;
 	@UiField Label textMeanReactionTime;
 	@UiField Label textStandardDeviation;
-	@UiField Label textTotalCorrectPercentage;
-	@UiField Label textTotalMeanReactionTime;
-	@UiField Label textTotalStandardDeviation;
-	@UiField Label textTotalSessions;
+	@UiField Label textAllTimeCorrectPercentage;
+	@UiField Label textAllTimeMeanReactionTime;
+	@UiField Label textAllTimeStandardDeviation;
+	@UiField Label textAllTimeSessions;
+	@UiField Label textAllTimeTooEarlyPercentage;
 
 	interface ChoiceReactionResultViewUiBinder extends
 			UiBinder<Widget, ChoiceReactionTimeResultView> {
@@ -42,7 +44,6 @@ public class ChoiceReactionTimeResultView extends Composite implements ChoiceRea
 
 	@Override
 	public Label getTextTrialNumber() {
-		// TODO Auto-generated method stub
 		return textTrialNumber;
 	}
 
@@ -54,6 +55,11 @@ public class ChoiceReactionTimeResultView extends Composite implements ChoiceRea
 	@Override
 	public Label getTextCorrectPercentage() {
 		return textCorrectPercentage;
+	}
+
+	@Override
+	public Label getTextTooEarlyPercentage() {
+		return textTooEarlyPercentage;
 	}
 
 	@Override
@@ -72,23 +78,28 @@ public class ChoiceReactionTimeResultView extends Composite implements ChoiceRea
 	}
 
 	@Override
-	public Label getTextTotalCorrectPercentage() {
-		return textTotalCorrectPercentage;
+	public Label getTextAllTimeCorrectPercentage() {
+		return textAllTimeCorrectPercentage;
 	}
 
 	@Override
-	public Label getTextTotalMeanReactionTime() {
-		return textTotalMeanReactionTime;
+	public Label getTextAllTimeTooEarlyPercentage() {
+		return textAllTimeTooEarlyPercentage;
 	}
 
 	@Override
-	public Label getTextTotalStandardDeviation() {
-		return textTotalStandardDeviation;
+	public Label getTextAllTimeMeanReactionTime() {
+		return textAllTimeMeanReactionTime;
 	}
 
 	@Override
-	public Label getTextTotalSessions() {
-		return textTotalSessions;
+	public Label getTextAllTimeStandardDeviation() {
+		return textAllTimeStandardDeviation;
+	}
+
+	@Override
+	public Label getTextAllTimeSessions() {
+		return textAllTimeSessions;
 	}
 
 

@@ -7,12 +7,14 @@ public interface ChoiceReactionTimeResultDisplay extends Display {
 	Label getTextTrialNumber();
 	Label getTextLastReactionTime();
 	Label getTextCorrectPercentage();
+	Label getTextTooEarlyPercentage();
 	Label getTextSessionDuration();
 	Label getTextMeanReactionTime();
 	Label getTextStandardDeviation();
 	
-	Label getTextTotalCorrectPercentage();
-	Label getTextTotalMeanReactionTime();
-	Label getTextTotalStandardDeviation();
-	Label getTextTotalSessions();
+	Label getTextAllTimeCorrectPercentage();
+	Label getTextAllTimeTooEarlyPercentage();
+	Label getTextAllTimeMeanReactionTime();
+	Label getTextAllTimeStandardDeviation();
+	Label getTextAllTimeSessions();
 }
