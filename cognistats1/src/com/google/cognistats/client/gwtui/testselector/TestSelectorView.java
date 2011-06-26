@@ -22,8 +22,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.event.dom.client.ClickEvent;
 
 /**
  * View for Test Selector.
@@ -31,10 +29,9 @@ import com.google.gwt.event.dom.client.ClickEvent;
  * @author Arjun Satyapal
  */
 public class TestSelectorView extends View implements TestSelectorDisplay {
-  @UiField
-  Button buttonSRTT;
-  @UiField
-  Button buttonCRTT;
+  @UiField Button buttonSRTT;
+  @UiField Button buttonCRTT;
+  @UiField Button buttonBase;
 
   private static TestSelectorViewUiBinder uiBinder =
       GWT.create(TestSelectorViewUiBinder.class);
@@ -72,4 +69,12 @@ public class TestSelectorView extends View implements TestSelectorDisplay {
   public Button getButtonCRTT() {
 	  return buttonCRTT;
   }
+
+@Override
+public Button getButtonBase() {
+	// TODO Auto-generated method stub
+	return buttonBase;
+}
+  
+  
 }

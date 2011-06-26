@@ -61,12 +61,12 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 	}
 
 	@Override
-	public Display getStimulusView() {
+	public Display getTestView() {
 		return stimulusWidget;
 }
 
 	@Override
-	public Display getResultView() {
+	public Display getStatisticsView() {
 		// TODO Auto-generated method stub
 		return resultWidget;
 	}

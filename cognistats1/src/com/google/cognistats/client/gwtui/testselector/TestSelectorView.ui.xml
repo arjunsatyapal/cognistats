@@ -7,5 +7,8 @@
     <g:layer left="21px" width="137px" top="85px" height="43px">
     	<g:Button text="Choice Reaction Time Test" ui:field="buttonCRTT"/>
     </g:layer>
+    <g:layer left="31px" width="83px" top="134px" height="30px">
+    	<g:Button ui:field="buttonBase">Base Test</g:Button>
+    </g:layer>
   </g:LayoutPanel>
 </ui:UiBinder> 

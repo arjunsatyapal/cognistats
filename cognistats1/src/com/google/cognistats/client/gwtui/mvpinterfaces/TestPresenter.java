@@ -24,9 +24,9 @@ import com.google.gwt.event.dom.client.TouchStartHandler;
  * @author Arjun Satyapal
  */
 public interface TestPresenter extends Presenter {
-  Display getStimulusView();
+  Display getTestView();
 
-  Display getResultView();
+  Display getStatisticsView();
 
   KeyPressHandler getFocusPanelKeyPressHandler();
 

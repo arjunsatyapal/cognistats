@@ -201,12 +201,12 @@ public class SimpleReactionTimePresenter implements TestPresenter {
   }
 
   @Override
-  public Display getStimulusView() {
+  public Display getTestView() {
     return stimulusWidget;
   }
 
   @Override
-  public Display getResultView() {
+  public Display getStatisticsView() {
     return resultWidget;
   }
 
