@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.client.gwtui.tests.simplereactiontime.stimuluswidget;
+package com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.stimuluswidget;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.View;
 import com.google.gwt.core.client.GWT;
@@ -22,8 +22,8 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
 
-public class SimpleReactionTimeStimulusView extends View implements
-    SimpleReactionTimeStimulusDisplay {
+public class OldSimpleReactionTimeStimulusView extends View implements
+    OldSimpleReactionTimeStimulusDisplay {
   @UiField
   Image image;
 
@@ -31,10 +31,10 @@ public class SimpleReactionTimeStimulusView extends View implements
       GWT.create(SimpleReactionTimeStimulusViewUiBinder.class);
 
   interface SimpleReactionTimeStimulusViewUiBinder extends
-      UiBinder<Widget, SimpleReactionTimeStimulusView> {
+      UiBinder<Widget, OldSimpleReactionTimeStimulusView> {
   }
 
-  public SimpleReactionTimeStimulusView() {
+  public OldSimpleReactionTimeStimulusView() {
     initWidget(uiBinder.createAndBindUi(this));
   }
 

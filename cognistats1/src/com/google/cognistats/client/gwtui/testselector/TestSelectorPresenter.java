@@ -24,9 +24,12 @@ import com.google.cognistats.client.gwtui.tests.base.testwidget.BaseTestView;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.ChoiceReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.resultwidget.ChoiceReactionTimeResultView;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.stimuluswidget.ChoiceReactionTimeStimulusView;
-import com.google.cognistats.client.gwtui.tests.simplereactiontime.SimpleReactionTimePresenter;
-import com.google.cognistats.client.gwtui.tests.simplereactiontime.resultwidget.SimpleReactionTimeResultView;
-import com.google.cognistats.client.gwtui.tests.simplereactiontime.stimuluswidget.SimpleReactionTimeStimulusView;
+import com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.OldSimpleReactionTimePresenter;
+import com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.resultwidget.OldSimpleReactionTimeResultView;
+import com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.stimuluswidget.OldSimpleReactionTimeStimulusView;
+import com.google.cognistats.client.gwtui.tests.choicereactiontime.simplereactiontime.SimpleReactionTimePresenter;
+import com.google.cognistats.client.gwtui.tests.choicereactiontime.simplereactiontime.statisticswidget.SimpleReactionTimeStatisticsView;
+import com.google.cognistats.client.gwtui.tests.choicereactiontime.simplereactiontime.testwidget.SimpleReactionTimeTestView;
 import com.google.cognistats.client.gwtui.widgets.testwidget.TestWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.testwidget.TestWidgetViewUi;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -58,10 +61,10 @@ public class TestSelectorPresenter implements Presenter {
 
       @Override
       public void onClick(ClickEvent event) {
-        SimpleReactionTimePresenter testPresenter =
-            new SimpleReactionTimePresenter(
-                new SimpleReactionTimeStimulusView(),
-                new SimpleReactionTimeResultView());
+        OldSimpleReactionTimePresenter testPresenter =
+            new OldSimpleReactionTimePresenter(
+                new OldSimpleReactionTimeStimulusView(),
+                new OldSimpleReactionTimeResultView());
 
         TestWidgetPresenter presenter =
             new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
@@ -77,6 +80,21 @@ public class TestSelectorPresenter implements Presenter {
               new ChoiceReactionTimePresenter(
                   new ChoiceReactionTimeStimulusView(),
                   new ChoiceReactionTimeResultView());
+
+          TestWidgetPresenter presenter =
+              new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
+          presenter.go(getWorkspace());
+        }
+      });
+
+    display.getButtonSimpleReactionTime().addClickHandler(new ClickHandler() {
+
+        @Override
+        public void onClick(ClickEvent event) {
+        	com.google.cognistats.client.gwtui.tests.choicereactiontime.simplereactiontime.SimpleReactionTimePresenter testPresenter =
+              new com.google.cognistats.client.gwtui.tests.choicereactiontime.simplereactiontime.SimpleReactionTimePresenter(
+                  new SimpleReactionTimeTestView(),
+                  new SimpleReactionTimeStatisticsView());
 
           TestWidgetPresenter presenter =
               new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
@@ -101,4 +119,3 @@ public class TestSelectorPresenter implements Presenter {
   }
 
 }
-

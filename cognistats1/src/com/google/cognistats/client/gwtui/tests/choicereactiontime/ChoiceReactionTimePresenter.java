@@ -25,8 +25,8 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 	protected static int delayLambda = 500;
 	protected static int constantDelay = 250;
 	protected int currentDelay;
-	protected ChoiceReactionTimeStimulusDisplay stimulusWidget;
-	protected ChoiceReactionTimeResultDisplay resultWidget;
+	protected ChoiceReactionTimeStimulusDisplay testWidget;
+	protected ChoiceReactionTimeResultDisplay statisticsWidget;
 	protected Random generator = new Random();
 	protected int currentChoice;
 	protected long t0, t1, t2;
@@ -43,8 +43,8 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 	public ChoiceReactionTimePresenter(
 		ChoiceReactionTimeStimulusDisplay stimulusWidget,
 		ChoiceReactionTimeResultDisplay resultWidget) {
-	    this.stimulusWidget = stimulusWidget;
-	    this.resultWidget = resultWidget;
+	    this.testWidget = stimulusWidget;
+	    this.statisticsWidget = resultWidget;
 	    this.numberFormat = NumberFormat.getDecimalFormat();
 	}
 
@@ -62,13 +62,13 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 
 	@Override
 	public Display getTestView() {
-		return stimulusWidget;
+		return testWidget;
 }
 
 	@Override
 	public Display getStatisticsView() {
 		// TODO Auto-generated method stub
-		return resultWidget;
+		return statisticsWidget;
 	}
 	
 	protected void handleReaction(int userChoice) {
@@ -178,25 +178,25 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 		currentTrialResult = new ChoiceReactionTimeTrialResult();
 		currentTrialResult.trialNumber = nTrials;
 		stimulusDisplayed = false;
-		stimulusWidget.hideStimulus();
+		testWidget.hideStimulus();
 		updateText();
 		createTrial();
 		startTimer();
 	}
 	
 	protected void updateText() {
-		resultWidget.getTextCorrectPercentage().setText(numberFormat.format(statistics.getCorrectFraction() * 100) + "%");
-		resultWidget.getTextTooEarlyPercentage().setText(numberFormat.format(statistics.getTooEarlyFraction() * 100) + "%");
-		resultWidget.getTextLastReactionTime().setText(lastReactionTimeMessage);
-		resultWidget.getTextTrialNumber().setText(Integer.toString(statistics.getTotalTrials()));
-		resultWidget.getTextMeanReactionTime().setText(numberFormat.format(statistics.getMeanReactionTime()));
-		resultWidget.getTextStandardDeviation().setText(numberFormat.format(statistics.getStdDevReactionTime()));
+		statisticsWidget.getTextCorrectPercentage().setText(numberFormat.format(statistics.getCorrectFraction() * 100) + "%");
+		statisticsWidget.getTextTooEarlyPercentage().setText(numberFormat.format(statistics.getTooEarlyFraction() * 100) + "%");
+		statisticsWidget.getTextLastReactionTime().setText(lastReactionTimeMessage);
+		statisticsWidget.getTextTrialNumber().setText(Integer.toString(statistics.getTotalTrials()));
+		statisticsWidget.getTextMeanReactionTime().setText(numberFormat.format(statistics.getMeanReactionTime()));
+		statisticsWidget.getTextStandardDeviation().setText(numberFormat.format(statistics.getStdDevReactionTime()));
 	}
 	
 	protected void createTrial() {
 		currentChoice = generator.nextInt(numChoices);
 		currentDelay = constantDelay - (int) (delayLambda * Math.log(generator.nextDouble()));
-		stimulusWidget.setChoice(currentChoice);
+		testWidget.setChoice(currentChoice);
 		currentTrialResult.correctAnswer = currentChoice;
 		currentTrialResult.delay = currentDelay;
 	}
@@ -205,7 +205,7 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 
 		@Override
 		public void run() {
-			stimulusWidget.showStimulus();
+			testWidget.showStimulus();
 			stimulusDisplayed = true;
 			t1 = System.currentTimeMillis();
 		}
@@ -217,7 +217,7 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 		public void run() {
 			long currentTime = System.currentTimeMillis();
 			long testTime = currentTime - testStartTime;
-			resultWidget.getTextSessionDuration().setText(Long.toString(testTime / 1000) + " seconds");
+			statisticsWidget.getTextSessionDuration().setText(Long.toString(testTime / 1000) + " seconds");
 		}
 	};
 	

@@ -13,12 +13,12 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.client.gwtui.tests.simplereactiontime;
+package com.google.cognistats.client.gwtui.tests.oldsimplereactiontime;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.TestPresenter;
-import com.google.cognistats.client.gwtui.tests.simplereactiontime.resultwidget.SimpleReactionTimeResultDisplay;
-import com.google.cognistats.client.gwtui.tests.simplereactiontime.stimuluswidget.SimpleReactionTimeStimulusDisplay;
+import com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.resultwidget.OldSimpleReactionTimeResultDisplay;
+import com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.stimuluswidget.OldSimpleReactionTimeStimulusDisplay;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.TouchStartEvent;
@@ -34,14 +34,14 @@ import java.util.Random;
  *
  * @author Arjun Satyapal
  */
-public class SimpleReactionTimePresenter implements TestPresenter {
-  private SimpleReactionTimeStimulusDisplay stimulusWidget;
-  private SimpleReactionTimeResultDisplay resultWidget;
+public class OldSimpleReactionTimePresenter implements TestPresenter {
+  private OldSimpleReactionTimeStimulusDisplay stimulusWidget;
+  private OldSimpleReactionTimeResultDisplay resultWidget;
 
 
-  public SimpleReactionTimePresenter(
-      SimpleReactionTimeStimulusDisplay stimulusWidget,
-      SimpleReactionTimeResultDisplay resultWidget) {
+  public OldSimpleReactionTimePresenter(
+      OldSimpleReactionTimeStimulusDisplay stimulusWidget,
+      OldSimpleReactionTimeResultDisplay resultWidget) {
     this.stimulusWidget = stimulusWidget;
     this.resultWidget = resultWidget;
   }

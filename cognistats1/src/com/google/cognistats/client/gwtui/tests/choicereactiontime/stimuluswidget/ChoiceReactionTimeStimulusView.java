@@ -11,7 +11,8 @@ public class ChoiceReactionTimeStimulusView extends Composite implements ChoiceR
 
 	private static ChoiceReactionTimeStimulusViewUiBinder uiBinder = GWT
 			.create(ChoiceReactionTimeStimulusViewUiBinder.class);
-	@UiField Label textChoice;
+	@UiField
+	protected Label textChoice;
 	private int choice;
 
 	interface ChoiceReactionTimeStimulusViewUiBinder extends

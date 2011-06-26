@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.client.gwtui.tests.simplereactiontime.resultwidget;
+package com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.resultwidget;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.gwt.user.client.ui.TextArea;
@@ -24,7 +24,7 @@ import com.google.gwt.user.client.ui.TextBox;
  *
  * @author Arjun Satyapal
  */
-public interface SimpleReactionTimeResultDisplay extends Display {
+public interface OldSimpleReactionTimeResultDisplay extends Display {
   TextBox getTextAttempts();
 
   TextBox getTextSuccessRatio();

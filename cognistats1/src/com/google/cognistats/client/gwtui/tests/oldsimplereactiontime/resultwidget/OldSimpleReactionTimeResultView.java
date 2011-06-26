@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.client.gwtui.tests.simplereactiontime.resultwidget;
+package com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.resultwidget;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.View;
 import com.google.gwt.core.client.GWT;
@@ -23,8 +23,8 @@ import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-public class SimpleReactionTimeResultView extends View implements
-    SimpleReactionTimeResultDisplay {
+public class OldSimpleReactionTimeResultView extends View implements
+    OldSimpleReactionTimeResultDisplay {
   @UiField
   TextBox textAttempts;
   @UiField
@@ -42,10 +42,10 @@ public class SimpleReactionTimeResultView extends View implements
       GWT.create(SimpleReactionTimeViewUiBinder.class);
 
   interface SimpleReactionTimeViewUiBinder extends
-      UiBinder<Widget, SimpleReactionTimeResultView> {
+      UiBinder<Widget, OldSimpleReactionTimeResultView> {
   }
 
-  public SimpleReactionTimeResultView() {
+  public OldSimpleReactionTimeResultView() {
     initWidget(uiBinder.createAndBindUi(this));
   }
 

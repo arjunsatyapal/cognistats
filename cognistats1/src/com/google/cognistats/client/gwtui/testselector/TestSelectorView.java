@@ -31,6 +31,7 @@ import com.google.gwt.user.client.ui.Widget;
 public class TestSelectorView extends View implements TestSelectorDisplay {
   @UiField Button buttonSRTT;
   @UiField Button buttonCRTT;
+  @UiField Button buttonSimpleReactionTime;
   @UiField Button buttonBase;
 
   private static TestSelectorViewUiBinder uiBinder =
@@ -69,12 +70,15 @@ public class TestSelectorView extends View implements TestSelectorDisplay {
   public Button getButtonCRTT() {
 	  return buttonCRTT;
   }
+  
+  @Override
+  public Button getButtonSimpleReactionTime() {
+	  return buttonSimpleReactionTime;
+  }
 
-@Override
-public Button getButtonBase() {
-	// TODO Auto-generated method stub
-	return buttonBase;
-}
-  
-  
+  @Override
+  public Button getButtonBase() {
+	  return buttonBase;
+  }
+
 }
