@@ -1,5 +1,6 @@
 package com.google.cognistats.client.gwtui.tests.choicereactiontime;
 
+import java.util.LinkedList;
 import java.util.Random;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
@@ -10,7 +11,9 @@ import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.event.dom.client.TouchStartHandler;
+import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasWidgets;
 
 public class ChoiceReactionTimePresenter implements TestPresenter {
@@ -26,14 +29,22 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 	protected ChoiceReactionTimeResultDisplay resultWidget;
 	protected Random generator = new Random();
 	protected int currentChoice;
-	protected long t1;
+	protected long t0, t1, t2;
 	protected boolean stimulusDisplayed;
+	protected int numCorrect;
+	protected String lastReactionTimeMessage;
+	protected LinkedList<ChoiceReactionTimeTrialResult> trialResults;
+	//protected LinkedList<>
+	protected ChoiceReactionTimeTrialResult currentTrialResult;
+	protected ChoiceReactionTimeStatistics statistics;
+	NumberFormat numberFormat;
 	
 	public ChoiceReactionTimePresenter(
 		ChoiceReactionTimeStimulusDisplay stimulusWidget,
 		ChoiceReactionTimeResultDisplay resultWidget) {
 	    this.stimulusWidget = stimulusWidget;
 	    this.resultWidget = resultWidget;
+	    this.numberFormat = NumberFormat.getDecimalFormat();
 	}
 
 	@Override
@@ -50,17 +61,19 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 
 	@Override
 	public Display getStimulusView() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		return stimulusWidget;
+}
 
 	@Override
 	public Display getResultView() {
 		// TODO Auto-generated method stub
-		return null;
+		return resultWidget;
 	}
 	
 	protected void handleReaction(int userChoice) {
+		t2 = System.currentTimeMillis();
+		currentTrialResult.userAnswer = userChoice;
+		currentTrialResult.clickedTooEarly = !stimulusDisplayed;
 		if (stimulusDisplayed) {
 			if (userChoice == currentChoice) {
 				correctClick();
@@ -75,7 +88,25 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 		endTrial();
 	}
 	
+	protected void endTrial() {
+		trialResults.add(currentTrialResult);
+		statistics.updateStatistics(currentTrialResult);
+		startTrial();
+	}
+	
 	protected void correctClick() {
+		currentTrialResult.userReactionTime = t2 - t1;
+		lastReactionTimeMessage = numberFormat.format(t2 - t1).toString();
+	}
+	
+	protected void wrongClick() {
+		currentTrialResult.userReactionTime = t2 - t1;
+		lastReactionTimeMessage = "Wrong choice!";
+	}
+	
+	protected void clickedTooEarly() {
+		currentTrialResult.userReactionTime = t2 - t0;
+		lastReactionTimeMessage = "Too early!";
 		
 	}
 
@@ -98,7 +129,7 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 	    TouchStartHandler myTouchHandler = new TouchStartHandler() {
 	        @Override
 	        public void onTouchStart(TouchStartEvent event) {
-	          handleReaction(currentChoice);
+	          handleReaction(currentChoice);  // TODO: figure out if they tapped the right one
 	        }
 	      };
 	      return myTouchHandler;
@@ -119,12 +150,17 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 	
 	protected void initialize() {
 		nTrials = 0;
+		numCorrect = 0;
+		trialResults = new LinkedList<ChoiceReactionTimeTrialResult>();
+		statistics = new ChoiceReactionTimeStatistics();
 		generator.setSeed(randomSeed);
 	}
 	
 	
 	protected void startTrial() {
 		++nTrials;
+		currentTrialResult = new ChoiceReactionTimeTrialResult();
+		currentTrialResult.trialNumber = nTrials;
 		stimulusDisplayed = false;
 		stimulusWidget.hideStimulus();
 		updateText();
@@ -133,13 +169,17 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 	}
 	
 	protected void updateText() {
-		resultWidget.getTextTrialNumber().setText(Integer.toString(nTrials) + " / " + Integer.toString(totalNumTrials));
+		resultWidget.getTextCorrectPercentage().setText(numberFormat.format(statistics.getCorrectFraction() * 100));
+		resultWidget.getTextLastReactionTime().setText(lastReactionTimeMessage);
+		resultWidget.getTextTrialNumber().setText(Integer.toString(statistics.getTotalTrials()));
 	}
 	
 	protected void createTrial() {
 		currentChoice = generator.nextInt(numChoices);
 		currentDelay = constantDelay - (int) (delayLambda * Math.log(generator.nextDouble()));
 		stimulusWidget.setChoice(currentChoice);
+		currentTrialResult.correctAnswer = currentChoice;
+		currentTrialResult.delay = currentDelay;
 	}
 
 	protected Timer timer = new Timer() {
@@ -155,5 +195,6 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 	
 	protected void startTimer() {
 		timer.schedule(currentDelay);
+		t0 = System.currentTimeMillis();
 	}
 }

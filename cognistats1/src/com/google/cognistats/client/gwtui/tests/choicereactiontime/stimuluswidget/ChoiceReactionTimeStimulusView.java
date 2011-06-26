@@ -17,6 +17,7 @@ public class ChoiceReactionTimeStimulusView extends Composite implements ChoiceR
 	private static ChoiceReactionTimeStimulusViewUiBinder uiBinder = GWT
 			.create(ChoiceReactionTimeStimulusViewUiBinder.class);
 	@UiField Label textChoice;
+	private int choice;
 
 	interface ChoiceReactionTimeStimulusViewUiBinder extends
 			UiBinder<Widget, ChoiceReactionTimeStimulusView> {
@@ -41,13 +42,14 @@ public class ChoiceReactionTimeStimulusView extends Composite implements ChoiceR
 
 	@Override
 	public void setChoice(int choice) {
-		// TODO Auto-generated method stub
+		this.choice = choice;
 		
 	}
 
 
 	@Override
 	public void showStimulus() {
+		textChoice.setText(Integer.toString(choice+1));
 		textChoice.setVisible(true);		
 	}
 

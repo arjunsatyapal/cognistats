@@ -18,6 +18,9 @@ package com.google.cognistats.client.gwtui.testselector;
 import static com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter.getWorkspace;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
+import com.google.cognistats.client.gwtui.tests.choicereactiontime.ChoiceReactionTimePresenter;
+import com.google.cognistats.client.gwtui.tests.choicereactiontime.resultwidget.ChoiceReactionTimeResultView;
+import com.google.cognistats.client.gwtui.tests.choicereactiontime.stimuluswidget.ChoiceReactionTimeStimulusView;
 import com.google.cognistats.client.gwtui.tests.simplereactiontime.SimpleReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.simplereactiontime.resultwidget.SimpleReactionTimeResultView;
 import com.google.cognistats.client.gwtui.tests.simplereactiontime.stimuluswidget.SimpleReactionTimeStimulusView;
@@ -62,5 +65,20 @@ public class TestSelectorPresenter implements Presenter {
         presenter.go(getWorkspace());
       }
     });
+
+    display.getButtonCRTT().addClickHandler(new ClickHandler() {
+
+        @Override
+        public void onClick(ClickEvent event) {
+          ChoiceReactionTimePresenter testPresenter =
+              new ChoiceReactionTimePresenter(
+                  new ChoiceReactionTimeStimulusView(),
+                  new ChoiceReactionTimeResultView());
+
+          TestWidgetPresenter presenter =
+              new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
+          presenter.go(getWorkspace());
+        }
+      });
   }
 }

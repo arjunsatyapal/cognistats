@@ -22,6 +22,8 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
 
 /**
  * View for Test Selector.
@@ -31,6 +33,8 @@ import com.google.gwt.user.client.ui.Widget;
 public class TestSelectorView extends View implements TestSelectorDisplay {
   @UiField
   Button buttonSRTT;
+  @UiField
+  Button buttonCRTT;
 
   private static TestSelectorViewUiBinder uiBinder =
       GWT.create(TestSelectorViewUiBinder.class);
@@ -62,5 +66,10 @@ public class TestSelectorView extends View implements TestSelectorDisplay {
   public void setEnabled(boolean enabled) {
     Window.alert(getClass().getName() + ".setEnabled should not be called. See exception.");
     throw new UnsupportedOperationException("Not sure when this gets called.");
+  }
+  
+  @Override
+  public Button getButtonCRTT() {
+	  return buttonCRTT;
   }
 }
