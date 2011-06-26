@@ -6,8 +6,7 @@ import com.google.gwt.user.client.ui.Label;
 
 public class SimpleReactionTimeTestView extends ChoiceReactionTimeStimulusView implements SimpleReactionTimeTestDisplay {
 
-	@UiField
-	protected Label textChoice;
+	//@UiField protected Label textChoice;
 	
 	public SimpleReactionTimeTestView() {
 		super();
@@ -19,9 +18,9 @@ public class SimpleReactionTimeTestView extends ChoiceReactionTimeStimulusView i
 
 	@Override
 	public void showStimulus() {
-		super.showStimulus();  // while the below errors out
-		//textChoice.setText("(space)");
-		//textChoice.setVisible(true);		
+		//super.showStimulus();  // while the below errors out
+		textChoice.setText("(space)");
+		textChoice.setVisible(true);		
 	}
 	
 }

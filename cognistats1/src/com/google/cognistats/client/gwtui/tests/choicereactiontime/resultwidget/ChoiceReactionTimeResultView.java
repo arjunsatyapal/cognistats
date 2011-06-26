@@ -11,18 +11,18 @@ public class ChoiceReactionTimeResultView extends Composite implements ChoiceRea
 
 	private static ChoiceReactionResultViewUiBinder uiBinder = GWT
 			.create(ChoiceReactionResultViewUiBinder.class);
-	@UiField Label textLastReactionTime;
-	@UiField Label textTrialNumber;
-	@UiField Label textCorrectPercentage;
-	@UiField Label textTooEarlyPercentage;
-	@UiField Label textSessionDuration;
-	@UiField Label textMeanReactionTime;
-	@UiField Label textStandardDeviation;
-	@UiField Label textAllTimeCorrectPercentage;
-	@UiField Label textAllTimeTooEarlyPercentage;
-	@UiField Label textAllTimeMeanReactionTime;
-	@UiField Label textAllTimeStandardDeviation;
-	@UiField Label textAllTimeSessions;
+	@UiField public Label textLastReactionTime;
+	@UiField public Label textTrialNumber;
+	@UiField public Label textCorrectPercentage;
+	@UiField public Label textTooEarlyPercentage;
+	@UiField public Label textSessionDuration;
+	@UiField public Label textMeanReactionTime;
+	@UiField public Label textStandardDeviation;
+	@UiField public Label textAllTimeCorrectPercentage;
+	@UiField public Label textAllTimeTooEarlyPercentage;
+	@UiField public Label textAllTimeMeanReactionTime;
+	@UiField public Label textAllTimeStandardDeviation;
+	@UiField public Label textAllTimeSessions;
 
 	interface ChoiceReactionResultViewUiBinder extends
 			UiBinder<Widget, ChoiceReactionTimeResultView> {
