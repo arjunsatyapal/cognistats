@@ -23,6 +23,14 @@ public class ChoiceReactionTimeResultView extends Composite {
 			.create(ChoiceReactionResultViewUiBinder.class);
 	@UiField Label textLastReactionTime;
 	@UiField Label textTrialNumber;
+	@UiField Label textCorrectPercentage;
+	@UiField Label textSessionDuration;
+	@UiField Label textMeanReactionTime;
+	@UiField Label textStandardDeviation;
+	@UiField Label textTotalCorrectPercentage;
+	@UiField Label textTotalMeanReactionTime;
+	@UiField Label textTotalStandardDeviation;
+	@UiField Label textTotalSessions;
 
 	interface ChoiceReactionResultViewUiBinder extends
 			UiBinder<Widget, ChoiceReactionTimeResultView> {
