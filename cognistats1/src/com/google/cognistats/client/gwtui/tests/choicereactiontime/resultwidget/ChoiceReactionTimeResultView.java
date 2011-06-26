@@ -19,10 +19,10 @@ public class ChoiceReactionTimeResultView extends Composite implements ChoiceRea
 	@UiField Label textMeanReactionTime;
 	@UiField Label textStandardDeviation;
 	@UiField Label textAllTimeCorrectPercentage;
+	@UiField Label textAllTimeTooEarlyPercentage;
 	@UiField Label textAllTimeMeanReactionTime;
 	@UiField Label textAllTimeStandardDeviation;
 	@UiField Label textAllTimeSessions;
-	@UiField Label textAllTimeTooEarlyPercentage;
 
 	interface ChoiceReactionResultViewUiBinder extends
 			UiBinder<Widget, ChoiceReactionTimeResultView> {

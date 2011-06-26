@@ -20,53 +20,65 @@
 		<g:layer left="0px" width="60px" top="67px" height="18px">
 			<g:Label text="Correct:"/>
 		</g:layer>
-		<g:layer left="0px" width="60px" top="91px" height="18px">
+		<g:layer left="0px" width="60px" top="114px" height="18px">
 			<g:Label text="Duration:"/>
 		</g:layer>
-		<g:layer left="0px" width="126px" top="115px" height="18px">
+		<g:layer left="0px" width="126px" top="138px" height="18px">
 			<g:Label text="Mean reaction time:"/>
 		</g:layer>
-		<g:layer left="0px" width="114px" top="139px" height="18px">
-			<g:Label text="Standard deviation:"/>
+		<g:layer left="0px" width="114px" top="162px" height="18px">
+			<g:Label text="Standard deviation:" wordWrap="false"/>
 		</g:layer>
-		<g:layer left="0px" width="79px" top="186px" height="18px">
+		<g:layer left="0px" width="79px" top="209px" height="18px">
 			<g:Label text="- All time -"/>
 		</g:layer>
-		<g:layer left="0px" width="60px" top="210px" height="18px">
+		<g:layer left="0px" width="60px" top="233px" height="18px">
 			<g:Label text="Correct:"/>
 		</g:layer>
-		<g:layer left="0px" width="126px" top="234px" height="18px">
+		<g:layer left="0px" width="126px" top="280px" height="18px">
 			<g:Label text="Mean reaction time:"/>
 		</g:layer>
-		<g:layer left="0px" width="114px" top="258px" height="18px">
+		<g:layer left="0px" width="114px" top="304px" height="18px">
 			<g:Label text="Standard deviation:"/>
 		</g:layer>
-		<g:layer left="0px" width="60px" top="282px" height="18px">
+		<g:layer left="0px" width="60px" top="328px" height="18px">
 			<g:Label text="Sessions:"/>
 		</g:layer>
 		<g:layer left="128px" width="60px" top="67px" height="18px">
 			<g:Label text="0%" ui:field="textCorrectPercentage"/>
 		</g:layer>
-		<g:layer left="128px" width="60px" top="91px" height="18px">
+		<g:layer left="128px" width="60px" top="114px" height="18px">
 			<g:Label text="0:00" ui:field="textSessionDuration"/>
 		</g:layer>
-		<g:layer left="128px" width="60px" top="115px" height="18px">
+		<g:layer left="128px" width="60px" top="138px" height="18px">
 			<g:Label text="0 ms" ui:field="textMeanReactionTime"/>
 		</g:layer>
-		<g:layer left="128px" width="60px" top="139px" height="18px">
+		<g:layer left="128px" width="60px" top="162px" height="18px">
 			<g:Label text="0 ms" ui:field="textStandardDeviation"/>
 		</g:layer>
-		<g:layer left="128px" width="60px" top="210px" height="18px">
-			<g:Label text="0%" ui:field="textTotalCorrectPercentage"/>
+		<g:layer left="128px" width="60px" top="233px" height="18px">
+			<g:Label text="0%" ui:field="textAllTimeCorrectPercentage"/>
 		</g:layer>
-		<g:layer left="128px" width="60px" top="234px" height="18px">
-			<g:Label text="0 ms" ui:field="textTotalMeanReactionTime"/>
+		<g:layer left="128px" width="60px" top="280px" height="18px">
+			<g:Label text="0 ms" ui:field="textAllTimeMeanReactionTime"/>
 		</g:layer>
-		<g:layer left="128px" width="60px" top="258px" height="18px">
-			<g:Label text="0 ms" ui:field="textTotalStandardDeviation"/>
+		<g:layer left="128px" width="60px" top="304px" height="18px">
+			<g:Label text="0 ms" ui:field="textAllTimeStandardDeviation"/>
 		</g:layer>
-		<g:layer left="128px" width="60px" top="282px" height="18px">
-			<g:Label text="0" ui:field="textTotalSessions"/>
+		<g:layer left="128px" width="60px" top="328px" height="18px">
+			<g:Label text="0" ui:field="textAllTimeSessions"/>
+		</g:layer>
+		<g:layer left="0px" width="60px" top="91px" height="18px">
+			<g:Label text="Too early:"/>
+		</g:layer>
+		<g:layer left="128px" width="60px" top="91px" height="18px">
+			<g:Label text="0%" ui:field="textTooEarlyPercentage"/>
+		</g:layer>
+		<g:layer left="0px" width="60px" top="257px" height="18px">
+			<g:Label text="Too early:"/>
+		</g:layer>
+		<g:layer left="128px" width="60px" top="257px" height="18px">
+			<g:Label text="0%" ui:field="textAllTimeTooEarlyPercentage"/>
 		</g:layer>
 	</g:LayoutPanel>
 </ui:UiBinder> 
