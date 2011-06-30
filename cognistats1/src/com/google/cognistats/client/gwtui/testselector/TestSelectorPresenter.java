@@ -27,9 +27,9 @@ import com.google.cognistats.client.gwtui.tests.choicereactiontime.stimuluswidge
 import com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.OldSimpleReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.resultwidget.OldSimpleReactionTimeResultView;
 import com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.stimuluswidget.OldSimpleReactionTimeStimulusView;
-import com.google.cognistats.client.gwtui.tests.choicereactiontime.simplereactiontime.SimpleReactionTimePresenter;
-import com.google.cognistats.client.gwtui.tests.choicereactiontime.simplereactiontime.statisticswidget.SimpleReactionTimeStatisticsView;
-import com.google.cognistats.client.gwtui.tests.choicereactiontime.simplereactiontime.testwidget.SimpleReactionTimeTestView;
+import com.google.cognistats.client.gwtui.tests.simplereactiontime.SimpleReactionTimePresenter;
+import com.google.cognistats.client.gwtui.tests.simplereactiontime.statisticswidget.SimpleReactionTimeStatisticsView;
+import com.google.cognistats.client.gwtui.tests.simplereactiontime.testwidget.SimpleReactionTimeTestView;
 import com.google.cognistats.client.gwtui.widgets.testwidget.TestWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.testwidget.TestWidgetViewUi;
 import com.google.gwt.event.dom.client.ClickEvent;

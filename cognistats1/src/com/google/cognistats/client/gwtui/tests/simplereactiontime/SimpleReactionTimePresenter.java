@@ -1,4 +1,4 @@
-package com.google.cognistats.client.gwtui.tests.choicereactiontime.simplereactiontime;
+package com.google.cognistats.client.gwtui.tests.simplereactiontime;
 
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.ChoiceReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.resultwidget.ChoiceReactionTimeResultDisplay;
