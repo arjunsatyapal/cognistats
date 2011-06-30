@@ -13,21 +13,30 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.shared.dtos;
+package com.google.cognistats.shared.dtos.testdtos.base;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
+import com.google.cognistats.shared.enums.SeedTypeEnum;
 
 /**
- * Abstract Transfer Data Object for GWT RPCs.
- * All DTOs should extend this.
+ * This represents Seed used for each trial.
  *
  * @author Arjun Satyapal
  */
-public interface AbstractDto extends IsSerializable{
-  abstract StringBuilder getStringBuilder();
+public class Seed {
 
-  abstract String validate();
+  private SeedTypeEnum seedType;
+  private Object value;
 
-  @Override
-  abstract String toString();
+  public SeedTypeEnum getSeedType() {
+    return seedType;
+  }
+
+  public Object getValue() {
+    return value;
+  }
+
+  public Seed(SeedTypeEnum seedType, Object value) {
+    this.seedType = seedType;
+    this.value = value;
+  }
 }

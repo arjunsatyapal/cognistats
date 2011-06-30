@@ -13,42 +13,30 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.shared.dtos;
+package com.google.cognistats.shared.dtos.testdtos.trials;
 
+import com.google.cognistats.shared.dtos.AbstractDto;
+import com.google.cognistats.shared.dtos.testdtos.base.BaseTrialDto;
 
 /**
- * DTO for UserAccount.
+ * DTO for SimpleReactionTime Trial.
  *
  * @author Arjun Satyapal
  */
-public class UserAccountDto implements AbstractDto {
-  private String email;
+public class SimpleReactionTimeTrialDto implements AbstractDto {
+  private BaseTrialDto baseTrialDto;
 
-  public String getEmail() {
-    return email;
+  public BaseTrialDto getBaseTrialDto() {
+    return baseTrialDto;
   }
 
-  private UserAccountDto() {
-  }
-
-  public static class Builder {
-    private String email;
-
-    public Builder setEmail(String email) {
-      this.email = email;
-      return this;
-    }
-
-    public UserAccountDto build() {
-      UserAccountDto dto = new UserAccountDto();
-      dto.email = email;
-      return dto;
-    }
+  public SimpleReactionTimeTrialDto(int trialNumber) {
+    this.baseTrialDto = new BaseTrialDto(trialNumber);
   }
 
   @Override
   public StringBuilder getStringBuilder() {
-    return new StringBuilder("email:").append(email);
+    return baseTrialDto.getStringBuilder();
   }
 
   @Override
@@ -58,7 +46,7 @@ public class UserAccountDto implements AbstractDto {
 
   @Override
   public String validate() {
-    //TODO(arjuns) : implement this.
-    throw new UnsupportedOperationException();
+    // TODO(arjuns): Auto-generated method stub
+    return null;
   }
 }

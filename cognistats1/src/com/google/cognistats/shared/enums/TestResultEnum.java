@@ -13,21 +13,19 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.shared.dtos;
-
-import com.google.gwt.user.client.rpc.IsSerializable;
+package com.google.cognistats.shared.enums;
 
 /**
- * Abstract Transfer Data Object for GWT RPCs.
- * All DTOs should extend this.
  *
  * @author Arjun Satyapal
  */
-public interface AbstractDto extends IsSerializable{
-  abstract StringBuilder getStringBuilder();
+public enum TestResultEnum {
+  // Subject completed the test.
+  COMPLETED,
 
-  abstract String validate();
+  // Subject did not take any action and test timed out.
+  TIME_OUT,
 
-  @Override
-  abstract String toString();
+  // Subject canceled the test.
+  CANCELLED;
 }
