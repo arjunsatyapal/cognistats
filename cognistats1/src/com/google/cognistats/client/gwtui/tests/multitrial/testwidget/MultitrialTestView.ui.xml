@@ -1,0 +1,8 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:base="urn:import:com.google.cognistats.client.gwtui.tests.base.testwidget">
+	<g:HTMLPanel>
+	<base:BaseTestView height="100%" width="100%"></base:BaseTestView>
+	</g:HTMLPanel>
+</ui:UiBinder> 
