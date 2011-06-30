@@ -18,9 +18,9 @@ package com.google.cognistats.client.gwtui.testselector;
 import static com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter.getWorkspace;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
-import com.google.cognistats.client.gwtui.tests.base.BasePresenter;
-import com.google.cognistats.client.gwtui.tests.base.statisticswidget.BaseStatisticsView;
-import com.google.cognistats.client.gwtui.tests.base.testwidget.BaseTestView;
+//import com.google.cognistats.client.gwtui.tests.base.BasePresenter;
+//import com.google.cognistats.client.gwtui.tests.base.statisticswidget.BaseStatisticsView;
+//import com.google.cognistats.client.gwtui.tests.base.testwidget.BaseTestView;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.ChoiceReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.resultwidget.ChoiceReactionTimeResultView;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.stimuluswidget.ChoiceReactionTimeStimulusView;
@@ -57,7 +57,7 @@ public class TestSelectorPresenter implements Presenter {
 
   @Override
   public void bind() {
-    display.getButtonSRTT().addClickHandler(new ClickHandler() {
+    display.getButtonOldSRTT().addClickHandler(new ClickHandler() {
 
       @Override
       public void onClick(ClickEvent event) {
@@ -74,42 +74,43 @@ public class TestSelectorPresenter implements Presenter {
 
     display.getButtonCRTT().addClickHandler(new ClickHandler() {
 
-        @Override
-        public void onClick(ClickEvent event) {
-          ChoiceReactionTimePresenter testPresenter =
-              new ChoiceReactionTimePresenter(
-                  new ChoiceReactionTimeStimulusView(),
-                  new ChoiceReactionTimeResultView());
+      @Override
+      public void onClick(ClickEvent event) {
+        ChoiceReactionTimePresenter testPresenter =
+            new ChoiceReactionTimePresenter(
+                new ChoiceReactionTimeStimulusView(),
+                new ChoiceReactionTimeResultView());
 
-          TestWidgetPresenter presenter =
-              new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
-          presenter.go(getWorkspace());
-        }
-      });
+        TestWidgetPresenter presenter =
+            new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
+        presenter.go(getWorkspace());
+      }
+    });
 
     display.getButtonSimpleReactionTime().addClickHandler(new ClickHandler() {
 
-        @Override
-        public void onClick(ClickEvent event) {
-        	com.google.cognistats.client.gwtui.tests.choicereactiontime.simplereactiontime.SimpleReactionTimePresenter testPresenter =
-              new com.google.cognistats.client.gwtui.tests.choicereactiontime.simplereactiontime.SimpleReactionTimePresenter(
-                  new SimpleReactionTimeTestView(),
-                  new SimpleReactionTimeStatisticsView());
+      @Override
+      public void onClick(ClickEvent event) {
+        SimpleReactionTimePresenter testPresenter =
+            new SimpleReactionTimePresenter(
+                new SimpleReactionTimeTestView(),
+                new SimpleReactionTimeStatisticsView());
 
-          TestWidgetPresenter presenter =
-              new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
-          presenter.go(getWorkspace());
-        }
-      });
-    
-  display.getButtonBase().addClickHandler(new ClickHandler() {
+        TestWidgetPresenter presenter =
+            new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
+        presenter.go(getWorkspace());
+      }
+    });
+
+    display.getButtonBase().addClickHandler(new ClickHandler() {
 
       @Override
       public void onClick(ClickEvent event) {
-        BasePresenter testPresenter =
-            new BasePresenter(
-                new BaseTestView(),
-                new BaseStatisticsView());
+        // TODO(arjuns) : Fix this once we have Base test committed.
+        ChoiceReactionTimePresenter testPresenter =
+            new ChoiceReactionTimePresenter(
+                new ChoiceReactionTimeStimulusView(),
+                new ChoiceReactionTimeResultView());
 
         TestWidgetPresenter presenter =
             new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);

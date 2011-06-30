@@ -29,10 +29,14 @@ import com.google.gwt.user.client.ui.Widget;
  * @author Arjun Satyapal
  */
 public class TestSelectorView extends View implements TestSelectorDisplay {
-  @UiField Button buttonSRTT;
-  @UiField Button buttonCRTT;
-  @UiField Button buttonSimpleReactionTime;
-  @UiField Button buttonBase;
+  @UiField
+  Button buttonOldSRTT;
+  @UiField
+  Button buttonCRTT;
+  @UiField
+  Button buttonSimpleReactionTime;
+  @UiField
+  Button buttonBase;
 
   private static TestSelectorViewUiBinder uiBinder =
       GWT.create(TestSelectorViewUiBinder.class);
@@ -41,44 +45,42 @@ public class TestSelectorView extends View implements TestSelectorDisplay {
   }
 
   /**
-   * Because this class has a default constructor, it can
-   * be used as a binder template. In other words, it can be used in other
-   * *.ui.xml files as follows:
-   * <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-   *   xmlns:g="urn:import:**user's package**">
-   *  <g:**UserClassName**>Hello!</g:**UserClassName>
-   * </ui:UiBinder>
-   * Note that depending on the widget that is used, it may be necessary to
-   * implement HasHTML instead of HasText.
+   * Because this class has a default constructor, it can be used as a binder
+   * template. In other words, it can be used in other *.ui.xml files as
+   * follows: <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+   * xmlns:g="urn:import:**user's package**">
+   * <g:**UserClassName**>Hello!</g:**UserClassName> </ui:UiBinder> Note that
+   * depending on the widget that is used, it may be necessary to implement
+   * HasHTML instead of HasText.
    */
   public TestSelectorView() {
     initWidget(uiBinder.createAndBindUi(this));
   }
 
   @Override
-  public Button getButtonSRTT() {
-    return buttonSRTT;
+  public Button getButtonOldSRTT() {
+    return buttonOldSRTT;
   }
 
   @Override
   public void setEnabled(boolean enabled) {
-    Window.alert(getClass().getName() + ".setEnabled should not be called. See exception.");
+    Window.alert(getClass().getName()
+        + ".setEnabled should not be called. See exception.");
     throw new UnsupportedOperationException("Not sure when this gets called.");
   }
-  
+
   @Override
   public Button getButtonCRTT() {
-	  return buttonCRTT;
+    return buttonCRTT;
   }
-  
+
   @Override
   public Button getButtonSimpleReactionTime() {
-	  return buttonSimpleReactionTime;
+    return buttonSimpleReactionTime;
   }
 
   @Override
   public Button getButtonBase() {
-	  return buttonBase;
+    return buttonBase;
   }
-
 }

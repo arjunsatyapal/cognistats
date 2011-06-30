@@ -7,52 +7,46 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.Label;
 
-public class ChoiceReactionTimeStimulusView extends Composite implements ChoiceReactionTimeStimulusDisplay {
+public class ChoiceReactionTimeStimulusView extends Composite implements
+    ChoiceReactionTimeStimulusDisplay {
 
-	private static ChoiceReactionTimeStimulusViewUiBinder uiBinder = GWT
-			.create(ChoiceReactionTimeStimulusViewUiBinder.class);
-	@UiField public Label textChoice;
-	private int choice;
+  private static ChoiceReactionTimeStimulusViewUiBinder uiBinder =
+      GWT.create(ChoiceReactionTimeStimulusViewUiBinder.class);
 
-	interface ChoiceReactionTimeStimulusViewUiBinder extends
-			UiBinder<Widget, ChoiceReactionTimeStimulusView> {
-	}
+  @UiField
+  public Label textChoice;
+  private int choice;
 
-	public ChoiceReactionTimeStimulusView() {
-		initWidget(uiBinder.createAndBindUi(this));
-	}
+  interface ChoiceReactionTimeStimulusViewUiBinder extends
+      UiBinder<Widget, ChoiceReactionTimeStimulusView> {
+  }
 
+  public ChoiceReactionTimeStimulusView() {
+    initWidget(uiBinder.createAndBindUi(this));
+  }
 
-	public ChoiceReactionTimeStimulusView(String firstName) {
-		initWidget(uiBinder.createAndBindUi(this));
-	}
+  public ChoiceReactionTimeStimulusView(String firstName) {
+    initWidget(uiBinder.createAndBindUi(this));
+  }
 
+  @Override
+  public void setEnabled(boolean enabled) {
+    // TODO Auto-generated method stub
+  }
 
-	@Override
-	public void setEnabled(boolean enabled) {
-		// TODO Auto-generated method stub
-		
-	}
+  @Override
+  public void setChoice(int choice) {
+    this.choice = choice;
+  }
 
+  @Override
+  public void showStimulus() {
+    textChoice.setText(Integer.toString(choice + 1));
+    textChoice.setVisible(true);
+  }
 
-	@Override
-	public void setChoice(int choice) {
-		this.choice = choice;
-		
-	}
-
-
-	@Override
-	public void showStimulus() {
-		textChoice.setText(Integer.toString(choice+1));
-		textChoice.setVisible(true);		
-	}
-
-
-	@Override
-	public void hideStimulus() {
-		textChoice.setVisible(false);		
-	}
-
-
+  @Override
+  public void hideStimulus() {
+    textChoice.setVisible(false);
+  }
 }

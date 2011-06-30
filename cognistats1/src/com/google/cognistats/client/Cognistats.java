@@ -28,8 +28,6 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 public class Cognistats implements EntryPoint {
   @Override
   public void onModuleLoad() {
-//    TestSelectorPresenter presenter = new TestSelectorPresenter(new TestSelectorView());
-//    presenter.go(RootLayoutPanel.get());
     MainScreenPresenter presenter = new MainScreenPresenter(new MainScreenView());
     presenter.go(RootLayoutPanel.get());
   }
