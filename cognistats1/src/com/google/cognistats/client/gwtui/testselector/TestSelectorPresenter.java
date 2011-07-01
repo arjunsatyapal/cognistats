@@ -34,6 +34,8 @@ import com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.stimuluswi
 import com.google.cognistats.client.gwtui.tests.simplereactiontime.SimpleReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.simplereactiontime.statisticswidget.SimpleReactionTimeStatisticsView;
 import com.google.cognistats.client.gwtui.tests.simplereactiontime.testwidget.SimpleReactionTimeTestView;
+import com.google.cognistats.client.gwtui.tests.stroop.StroopPresenter;
+import com.google.cognistats.client.gwtui.tests.stroop.testwidget.StroopTestView;
 import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;
 import com.google.cognistats.client.gwtui.tests.tsr.testwidget.TSRTestView;
 import com.google.cognistats.client.gwtui.widgets.testwidget.TestWidgetPresenter;
@@ -110,17 +112,13 @@ public class TestSelectorPresenter implements Presenter {
       }
     });
     
-    display.getButtonBase().addClickHandler(new ClickHandler() {
+    display.getButtonStroop().addClickHandler(new ClickHandler() {
       
       @Override
       public void onClick(
         ClickEvent event) {
-        // TODO(arjuns) : Fix this once we have Base test committed.
-        /*
-         * BasePresenter testPresenter = new BasePresenter( new BaseTestView(),
-         * new BaseStatisticsView());
-         */BasePresenter testPresenter =
-          new TSRPresenter(new TSRTestView(), new BaseStatisticsView());
+    	  BasePresenter testPresenter =
+          new StroopPresenter(new StroopTestView(), new BaseStatisticsView());
         
         TestWidgetPresenter presenter =
           new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
@@ -128,6 +126,24 @@ public class TestSelectorPresenter implements Presenter {
       }
     });
     
+    display.getButtonBase().addClickHandler(new ClickHandler() {
+        
+        @Override
+        public void onClick(
+          ClickEvent event) {
+          // TODO(arjuns) : Fix this once we have Base test committed.
+          /*
+           * BasePresenter testPresenter = new BasePresenter( new BaseTestView(),
+           * new BaseStatisticsView());
+           */BasePresenter testPresenter =
+            new TSRPresenter(new TSRTestView(), new BaseStatisticsView());
+          
+          TestWidgetPresenter presenter =
+            new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
+          presenter.go(getWorkspace());
+        }
+      });
+      
     display.getButtonArjunGrid().addClickHandler(new ClickHandler() {
       
       @Override

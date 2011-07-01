@@ -18,5 +18,8 @@
     <g:layer left="21px" width="83px" top="222px" height="30px">
       <g:Button text="Arjun Grid" ui:field="buttonArjunGrid" />
     </g:layer>
+    <g:layer left="21px" width="83px" top="252px" height="30px">
+      <g:Button text="Stroop" ui:field="buttonStroop" />
+    </g:layer>
   </g:LayoutPanel>
 </ui:UiBinder> 
