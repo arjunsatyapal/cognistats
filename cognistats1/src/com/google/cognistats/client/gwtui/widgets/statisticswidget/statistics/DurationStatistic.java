@@ -5,8 +5,8 @@ import com.google.gwt.i18n.client.NumberFormat;
 public class DurationStatistic extends Statistic {
 
 	public DurationStatistic(long value) {
-		formatted = format(value);
 		numberFormat = NumberFormat.getFormat("00");
+		formatted = format(value);
 	}
 	
 	protected String format(long value) {

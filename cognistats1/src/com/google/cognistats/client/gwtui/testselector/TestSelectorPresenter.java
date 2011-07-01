@@ -25,9 +25,10 @@ import com.google.cognistats.client.gwtui.tests.base.statisticswidget.BaseStatis
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.ChoiceReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.resultwidget.ChoiceReactionTimeResultView;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.stimuluswidget.ChoiceReactionTimeStimulusView;
-import com.google.cognistats.client.gwtui.tests.mystatisticwidget.BaseStatisticGridRow;
-import com.google.cognistats.client.gwtui.tests.mystatisticwidget.BaseStatisticWidgetPresenter;
-import com.google.cognistats.client.gwtui.tests.mystatisticwidget.TimeGridRow;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.BaseStatisticGridRow;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.DurationGridRow;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.DurationStatistic;
 import com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.OldSimpleReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.resultwidget.OldSimpleReactionTimeResultView;
 import com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.stimuluswidget.OldSimpleReactionTimeStimulusView;
@@ -151,8 +152,8 @@ public class TestSelectorPresenter implements Presenter {
         ClickEvent event) {
         ArrayList<BaseStatisticGridRow> list =
           new ArrayList<BaseStatisticGridRow>();
-        list.add(getTimeGridRow());
-        list.add(getTimeGridRow());
+        list.add(getDurationGridRow());
+        list.add(getDurationGridRow());
         
         BaseStatisticWidgetPresenter presenter =
           new BaseStatisticWidgetPresenter(list);
@@ -161,11 +162,11 @@ public class TestSelectorPresenter implements Presenter {
     });
   }
   
-  public TimeGridRow getTimeGridRow() {
-    TimeGridRow row = new TimeGridRow();
-    row.setAllTime(System.currentTimeMillis());
-    row.setCurrentTest(1234L);
-    row.setCurrentTrial(1234L);
+  public DurationGridRow getDurationGridRow() {
+	    DurationGridRow row = new DurationGridRow();
+	    row.setAllTime(new DurationStatistic(System.currentTimeMillis()));
+	    row.setCurrentTest(new DurationStatistic(1234L));
+	    row.setCurrentTrial(new DurationStatistic(1234L));
     
     return row;
   }

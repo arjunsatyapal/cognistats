@@ -5,8 +5,8 @@ import com.google.gwt.i18n.client.NumberFormat;
 public class ReactionTimeStdDevStatistic extends Statistic {
 	
 	public ReactionTimeStdDevStatistic(double value) {
-		formatted = format(value);
 		numberFormat = NumberFormat.getDecimalFormat();
+		formatted = format(value);
 	}
 	
 	protected String format(double value) {
