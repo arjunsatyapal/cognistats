@@ -3,6 +3,6 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:base="urn:import:com.google.cognistats.client.gwtui.tests.base.testwidget">
 	<g:HTMLPanel>
-	<base:BaseTestView height="100%" width="100%"></base:BaseTestView>
+	<base:BaseTestView height="100%" width="100%" ui:field="baseTest" />
 	</g:HTMLPanel>
 </ui:UiBinder> 

@@ -13,6 +13,10 @@ public class BaseTestView extends Composite implements BaseTestDisplay {
 			.create(BaseTestViewUiBinder.class);
 	@UiField Label fixationPlus;
 
+	public Label getFixationPlus() {
+		return fixationPlus;
+	}
+	
 	interface BaseTestViewUiBinder extends UiBinder<Widget, BaseTestView> {
 	}
 
