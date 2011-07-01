@@ -20,9 +20,9 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.MenuItem;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -40,7 +40,7 @@ public class MainScreenView extends View implements MainScreenDisplay {
   @UiField
   MenuItem menuItemTestSelector;
   @UiField
-  LayoutPanel workspace;
+  FlowPanel workspace;
   @UiField
   Button buttonTestSelector;
 
@@ -70,7 +70,7 @@ public class MainScreenView extends View implements MainScreenDisplay {
   }
 
   @Override
-  public LayoutPanel getWorkspace() {
+  public FlowPanel getWorkspace() {
     return workspace;
   }
 

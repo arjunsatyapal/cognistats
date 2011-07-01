@@ -17,9 +17,9 @@ package com.google.cognistats.client.gwtui.mainscreen;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.MenuItem;
 
 /**
@@ -33,7 +33,7 @@ public interface MainScreenDisplay extends Display {
 
   MenuItem getMenuItemLoginLogout();
 
-  LayoutPanel getWorkspace();
+  FlowPanel getWorkspace();
 
   MenuItem getMenuItemTestSelector();
 

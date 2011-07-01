@@ -1,12 +1,22 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
-  <g:FocusPanel ui:field="focusPanel">
-    <g:DockLayoutPanel width="100%" height="100%">
-      <g:north size="113.0">
-        <g:VerticalPanel width="100%" height="100%">
-          <g:Image url="images/cognistats_logo.jpg" width="300px"
+  <ui:style>
+    .tagline { font-weight: bold; letter-spacing: 10px; font-size: 20px; color: #ababab; }
+    .background { background-color: #f0f0f0; }
+    .page { background-color: #ededed; border: 1px solid #666; margin: auto; box-shadow: 0px 10px 8px #888; }
+    .header { background-color: #fff; border-bottom: 1px solid #666; box-shadow: inset 0px -1px 0px #ccc;  }
+    .content { background-color: #e0e0e0; border: 1px dotted blue; }
+  </ui:style>
+  <g:FocusPanel ui:field="focusPanel" width="100%" height="100%" addStyleNames="{style.background}">
+    <g:FlowPanel width="960px" height="" addStyleNames="{style.page}">
+        <g:HorizontalPanel width="100%" height="100px" addStyleNames="{style.header}">
+        	<g:VerticalPanel width="300px" height="100px">
+        		<g:Image url="images/cognistats_logo.jpg" width="100%"
             height="72px" />
-          <g:HorizontalPanel width="100%" height="29px">
+        		<g:HTML wordWrap="true" horizontalAlignment="ALIGN_CENTER" width="100%" height="26px"><div class="{style.tagline}">quantified mind</div></g:HTML>
+        	</g:VerticalPanel>
+        	<g:Cell verticalAlignment="ALIGN_BOTTOM">
+        		<g:HorizontalPanel width="100%" height="29px" verticalAlignment="ALIGN_TOP">
             <g:LayoutPanel width="100%" height="100%">
               <g:layer right="0px" width="194px" top="0px" height="30px">
                 <g:MenuBar>
@@ -19,19 +29,15 @@
               </g:layer>
             </g:LayoutPanel>
           </g:HorizontalPanel>
-        </g:VerticalPanel>
-      </g:north>
-      <g:center size="100.0">
-        <g:LayoutPanel width="100%" height="100%" ui:field="workspace">
-          <g:layer left="0px" width="100%" top="0px" height="100%">
+        	</g:Cell>
+        </g:HorizontalPanel>
+        <g:FlowPanel width="100%" height="600px" ui:field="workspace">
             <g:LayoutPanel width="100%" height="100%">
               <g:layer left="50%" width="115px" top="50%" height="29px">
                 <g:Button text="Test Selector" ui:field="buttonTestSelector" />
               </g:layer>
             </g:LayoutPanel>
-          </g:layer>
-        </g:LayoutPanel>
-      </g:center>
-    </g:DockLayoutPanel>
+        </g:FlowPanel>
+    </g:FlowPanel>
   </g:FocusPanel>
 </ui:UiBinder> 

@@ -1,12 +1,17 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g="urn:import:com.google.gwt.user.client.ui">
+  <ui:style>
+    .widget { border: 1px dashed #333; background-color: #f3f3f3; }
+	.test_widget {  }
+	.statistics_widget {  }
+  </ui:style>
   <g:LayoutPanel width="100%" height="100%">
     <g:layer left="5%" width="60%" top="5%" height="80%">
-      <g:LayoutPanel width="100%" height="100%" ui:field="layoutPanelTest">
+      <g:LayoutPanel width="" height="" ui:field="layoutPanelTest" addStyleNames="{style.test_widget} {style.widget}">
       </g:LayoutPanel>
     </g:layer>
     <g:layer left="70%" width="25%" top="5%" height="80%">
-      <g:LayoutPanel width="100%" height="100%" ui:field="layoutPanelResult">
+      <g:LayoutPanel width="" height="" ui:field="layoutPanelResult" addStyleNames="{style.statistics_widget} {style.widget}">
       </g:LayoutPanel>
     </g:layer>
     <g:layer left="5%" width="90px" top="90%" height="29px">

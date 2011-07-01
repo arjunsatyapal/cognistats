@@ -29,9 +29,9 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
-import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.MenuItem;
 
 /**
@@ -44,7 +44,7 @@ public class MainScreenPresenter implements Presenter {
   private static MainScreenDisplay display;
 
   //TODO(arjuns) : Put following accessors in a good place.
-  public static LayoutPanel getWorkspace() {
+  public static FlowPanel getWorkspace() {
     return display.getWorkspace();
   }
 
