@@ -9,8 +9,15 @@ import com.google.gwt.user.client.Timer;
 public class TSRPresenter extends MultitrialPresenter implements Presenter {
 
 	protected int nTrials;
-	protected long stimulusDisplayTime;
-	protected boolean stimulusDisplayed;
+	protected long stimulusStartDisplayTime, stimulusEndDisplayTime;
+
+	public enum TrialState {
+		BEFORE_STIMULUS_DISPLAY,
+		DURING_STIMULUS_DISPLAY,
+		AFTER_STIMULUS_DISPLAY
+	}
+	
+	protected TrialState trialState;
 	
 	public TSRPresenter(TSRTestDisplay testWidget, BaseStatisticsDisplay statisticsWidget) {
 		super(testWidget.getMultitrialTestView(), statisticsWidget);
@@ -23,17 +30,35 @@ public class TSRPresenter extends MultitrialPresenter implements Presenter {
 	@Override
 	protected void startTrial() {
 		super.startTrial();
-		stimulusDisplayTimer.schedule(stimulusDisplayDelay());
+		trialState = TrialState.BEFORE_STIMULUS_DISPLAY;
+		int delay = stimulusDisplayDelay();
+		if (delay > 0) {
+			stimulusDisplayTimer.schedule(delay);
+		}
+		else {
+			startStimulusDisplay();
+		}
+	}
+	
+	protected void startStimulusDisplay() {
+		trialState = TrialState.DURING_STIMULUS_DISPLAY;
+		stimulusStartDisplayTime = System.currentTimeMillis();
+		displayStimulus();
 	}
 
-	protected void displayStimulus() {}
+	protected void afterStimulusDisplay() {
+		trialState = TrialState.AFTER_STIMULUS_DISPLAY;
+		stimulusEndDisplayTime = System.currentTimeMillis();
+	}
 
+	protected void displayStimulus() {
+		afterStimulusDisplay();
+	}
+	
 	protected Timer stimulusDisplayTimer = new Timer() {
 		@Override
 		public void run() {
-			displayStimulus();
-			stimulusDisplayed = true;
-			stimulusDisplayTime = System.currentTimeMillis();
+			startStimulusDisplay();
 		}
 	};
 	

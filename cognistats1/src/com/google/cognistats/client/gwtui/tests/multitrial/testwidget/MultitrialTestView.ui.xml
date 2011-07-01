@@ -2,7 +2,10 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:base="urn:import:com.google.cognistats.client.gwtui.tests.base.testwidget">
-	<g:HTMLPanel>
+	<ui:style>
+		.transparent { background-color: transparent; border: 2px dashed red; }
+	</ui:style>
+	<g:HTMLPanel height="100%" width="100%" addStyleNames="{style.transparent}">
 	<base:BaseTestView height="100%" width="100%" ui:field="baseTest" />
 	</g:HTMLPanel>
 </ui:UiBinder> 

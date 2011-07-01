@@ -2,11 +2,12 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
-		
+		.test { border: 2px dashed green; background-color: #0f0; opacity:0.5; }
+		.transparent { background-color: transparent; border: 2px dashed white; background-color: #f00;}
 	</ui:style>
-	<g:LayoutPanel>
+	<g:LayoutPanel addStyleNames="{style.transparent}">
 		<g:layer left="46.0pct" width="8.0pct" top="46.0pct" height="8.0pct">
-			<g:Label text="+" width="5" height="5" horizontalAlignment="ALIGN_CENTER" ui:field="fixationPlus"/>
+			<g:Label text="+" width="5" height="5" horizontalAlignment="ALIGN_CENTER" ui:field="fixationPlus" addStyleNames="{style.test}"/>
 		</g:layer>
 	</g:LayoutPanel>
 </ui:UiBinder> 

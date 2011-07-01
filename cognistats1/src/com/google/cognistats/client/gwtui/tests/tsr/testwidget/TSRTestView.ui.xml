@@ -2,7 +2,12 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:multitrial="urn:import:com.google.cognistats.client.gwtui.tests.multitrial.testwidget">
-	<g:HTMLPanel>
-	<multitrial:MultitrialTestView height="100%" width="100%" ui:field="multitrialTest" />
-	</g:HTMLPanel>
+	<ui:style>
+		.transparent { background-color: transparent; border: 2px dashed brown; }
+	</ui:style>
+	<g:LayoutPanel height="100%" width="100%" addStyleNames="{style.transparent}">
+		<g:layer left="0px" width="100.0pct" top="0px" height="100.0pct">
+			<multitrial:MultitrialTestView height="100%" width="100%" ui:field="multitrialTest" />
+		</g:layer>
+	</g:LayoutPanel>
 </ui:UiBinder> 
