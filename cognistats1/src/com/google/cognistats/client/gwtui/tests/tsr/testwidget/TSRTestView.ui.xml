@@ -1,0 +1,8 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:multitrial="urn:import:com.google.cognistats.client.gwtui.tests.multitrial.testwidget">
+	<g:HTMLPanel>
+	<multitrial:MultitrialTestView height="100%" width="100%" ui:field="multitrialTest" />
+	</g:HTMLPanel>
+</ui:UiBinder> 
