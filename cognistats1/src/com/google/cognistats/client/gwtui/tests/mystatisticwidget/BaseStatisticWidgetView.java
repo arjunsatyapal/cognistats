@@ -13,25 +13,13 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.client.gwtui.testselector;
-
-import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
-import com.google.gwt.user.client.ui.Button;
+package com.google.cognistats.client.gwtui.tests.mystatisticwidget;
 
 /**
- * Display interface for Test Selection Screen.
+ * StatisticWidget which generates statistic view dynamically.
  * 
  * @author Arjun Satyapal
  */
-public interface TestSelectorDisplay extends Display {
-  // Button to start Simple Reaction Time Test.
-  Button getButtonOldSRTT();
+public class BaseStatisticWidgetView {
   
-  Button getButtonCRTT();
-  
-  Button getButtonSimpleReactionTime();
-  
-  Button getButtonBase();
-  
-  Button getButtonArjunGrid();
 }

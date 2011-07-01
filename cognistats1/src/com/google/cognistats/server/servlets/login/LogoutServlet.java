@@ -32,6 +32,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Arjun Satyapal
  */
+@SuppressWarnings("serial")
 public class LogoutServlet  extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)

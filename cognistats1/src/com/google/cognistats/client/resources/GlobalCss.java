@@ -13,25 +13,23 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.client.gwtui.testselector;
+package com.google.cognistats.client.resources;
 
-import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.resources.client.CssResource;
 
 /**
- * Display interface for Test Selection Screen.
- * 
+ * Global CSS.
+ *
  * @author Arjun Satyapal
  */
-public interface TestSelectorDisplay extends Display {
-  // Button to start Simple Reaction Time Test.
-  Button getButtonOldSRTT();
-  
-  Button getButtonCRTT();
-  
-  Button getButtonSimpleReactionTime();
-  
-  Button getButtonBase();
-  
-  Button getButtonArjunGrid();
+public interface GlobalCss extends CssResource {
+  String statGridCell();
+
+  String statGridRowTitle();
+
+  String statGridTrial();
+
+  String statGridTest();
+
+  String statGridAllTime();
 }

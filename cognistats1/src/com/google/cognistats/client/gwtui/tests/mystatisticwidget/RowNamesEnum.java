@@ -13,25 +13,22 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.client.gwtui.testselector;
-
-import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
-import com.google.gwt.user.client.ui.Button;
+package com.google.cognistats.client.gwtui.tests.mystatisticwidget;
 
 /**
- * Display interface for Test Selection Screen.
- * 
+ *
  * @author Arjun Satyapal
  */
-public interface TestSelectorDisplay extends Display {
-  // Button to start Simple Reaction Time Test.
-  Button getButtonOldSRTT();
+public enum RowNamesEnum {
+  TIME_ROW("Time");
   
-  Button getButtonCRTT();
+  private String publicName;
   
-  Button getButtonSimpleReactionTime();
+  private RowNamesEnum(String publicName) {
+    this.publicName = publicName;
+  }
   
-  Button getButtonBase();
-  
-  Button getButtonArjunGrid();
+  public String getPublicName() {
+    return publicName;
+  }
 }

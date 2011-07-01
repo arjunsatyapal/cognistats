@@ -15,6 +15,8 @@
  */
 package com.google.cognistats.client;
 
+import static com.google.cognistats.client.resources.GlobalResources.RESOURCE;
+
 import com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter;
 import com.google.cognistats.client.gwtui.mainscreen.MainScreenView;
 import com.google.gwt.core.client.EntryPoint;
@@ -28,6 +30,8 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 public class Cognistats implements EntryPoint {
   @Override
   public void onModuleLoad() {
+    RESOURCE.globalStyle().ensureInjected();
+
     MainScreenPresenter presenter = new MainScreenPresenter(new MainScreenView());
     presenter.go(RootLayoutPanel.get());
   }

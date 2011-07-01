@@ -28,6 +28,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Arjun Satyapal
  */
+@SuppressWarnings("serial")
 public class UserServiceImpl extends RemoteServiceServlet implements
     UserService {
   @Override

@@ -4,7 +4,6 @@ import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.base.BasePresenter;
 import com.google.cognistats.client.gwtui.tests.base.statisticswidget.BaseStatisticsDisplay;
 import com.google.cognistats.client.gwtui.tests.multitrial.testwidget.MultitrialTestDisplay;
-import com.google.gwt.i18n.client.NumberFormat;
 
 public class MultitrialPresenter extends BasePresenter implements Presenter {
 
