@@ -17,28 +17,25 @@ package com.google.cognistats.client.gwtui.testselector;
 
 import static com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter.getWorkspace;
 
-import java.util.ArrayList;
-
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.base.BasePresenter;
 import com.google.cognistats.client.gwtui.tests.base.statisticswidget.BaseStatisticsView;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.ChoiceReactionTimePresenter;
-import com.google.cognistats.client.gwtui.tests.choicereactiontime.resultwidget.ChoiceReactionTimeResultView;
+import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswidget.ChoiceReactionTimeStatisticsView;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.stimuluswidget.ChoiceReactionTimeStimulusView;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.BaseStatisticGridRow;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.DurationGridRow;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.DurationStatistic;
 import com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.OldSimpleReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.resultwidget.OldSimpleReactionTimeResultView;
 import com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.stimuluswidget.OldSimpleReactionTimeStimulusView;
 import com.google.cognistats.client.gwtui.tests.simplereactiontime.SimpleReactionTimePresenter;
-import com.google.cognistats.client.gwtui.tests.simplereactiontime.statisticswidget.SimpleReactionTimeStatisticsView;
+import com.google.cognistats.client.gwtui.tests.simplereactiontime.oldstatisticswidget.SimpleReactionTimeStatisticsView;
 import com.google.cognistats.client.gwtui.tests.simplereactiontime.testwidget.SimpleReactionTimeTestView;
 import com.google.cognistats.client.gwtui.tests.stroop.StroopPresenter;
 import com.google.cognistats.client.gwtui.tests.stroop.testwidget.StroopTestView;
 import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;
 import com.google.cognistats.client.gwtui.tests.tsr.testwidget.TSRTestView;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.DurationGridRow;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.DurationStatistic;
 import com.google.cognistats.client.gwtui.widgets.testwidget.TestWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.testwidget.TestWidgetViewUi;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -90,7 +87,7 @@ public class TestSelectorPresenter implements Presenter {
         ClickEvent event) {
         ChoiceReactionTimePresenter testPresenter =
           new ChoiceReactionTimePresenter(new ChoiceReactionTimeStimulusView(),
-            new ChoiceReactionTimeResultView());
+            new ChoiceReactionTimeStatisticsView());
         
         TestWidgetPresenter presenter =
           new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
@@ -150,13 +147,9 @@ public class TestSelectorPresenter implements Presenter {
       @Override
       public void onClick(
         ClickEvent event) {
-        ArrayList<BaseStatisticGridRow> list =
-          new ArrayList<BaseStatisticGridRow>();
-        list.add(getDurationGridRow());
-        list.add(getDurationGridRow());
-        
-        BaseStatisticWidgetPresenter presenter =
-          new BaseStatisticWidgetPresenter(list);
+        BaseStatisticWidgetPresenter presenter = new BaseStatisticWidgetPresenter();
+        presenter.addRow(getDurationGridRow());
+        presenter.addRow(getDurationGridRow());
         presenter.go(getWorkspace());
       }
     });

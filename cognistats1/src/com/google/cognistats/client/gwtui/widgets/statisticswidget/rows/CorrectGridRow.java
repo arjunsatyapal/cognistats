@@ -15,25 +15,15 @@
  */
 package com.google.cognistats.client.gwtui.widgets.statisticswidget.rows;
 
+import static com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.RowNamesEnum.CORRECT_ROW;
+
+
 /**
  *
  * @author Arjun Satyapal
  */
-public enum RowNamesEnum {
-  DURATION_ROW("Duration"),
-  REACTION_TIME_ROW("Reaction Time"),
-  REACTION_TIME_STD_DEV_ROW("Standard Deviation"),
-  TRIAL_ROW("Trials"),
-  CORRECT_ROW("Correct"),
-  READY_ROW("Ready");
-  
-  private String publicName;
-  
-  private RowNamesEnum(String publicName) {
-    this.publicName = publicName;
-  }
-  
-  public String getPublicName() {
-    return publicName;
+public class CorrectGridRow extends BaseStatisticGridRow {
+  public CorrectGridRow() {
+    super(CORRECT_ROW.getPublicName());
   }
 }

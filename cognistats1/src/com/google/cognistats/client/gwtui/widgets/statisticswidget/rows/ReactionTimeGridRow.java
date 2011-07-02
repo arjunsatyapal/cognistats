@@ -13,13 +13,17 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.client.gwtui.tests.mystatisticwidget;
+package com.google.cognistats.client.gwtui.widgets.statisticswidget.rows;
+
+import static com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.RowNamesEnum.REACTION_TIME_ROW;
+
 
 /**
- * StatisticWidget which generates statistic view dynamically.
- * 
+ *
  * @author Arjun Satyapal
  */
-public class BaseStatisticWidgetView {
-  
+public class ReactionTimeGridRow extends BaseStatisticGridRow {
+  public ReactionTimeGridRow() {
+    super(REACTION_TIME_ROW.getPublicName());
+  }
 }

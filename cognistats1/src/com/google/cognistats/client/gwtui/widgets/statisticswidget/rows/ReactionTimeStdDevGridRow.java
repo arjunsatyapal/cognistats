@@ -13,22 +13,17 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.client.gwtui.tests.mystatisticwidget;
+package com.google.cognistats.client.gwtui.widgets.statisticswidget.rows;
+
+import static com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.RowNamesEnum.REACTION_TIME_STD_DEV_ROW;
+
 
 /**
  *
  * @author Arjun Satyapal
  */
-public enum RowNamesEnum {
-  TIME_ROW("Time");
-  
-  private String publicName;
-  
-  private RowNamesEnum(String publicName) {
-    this.publicName = publicName;
-  }
-  
-  public String getPublicName() {
-    return publicName;
+public class ReactionTimeStdDevGridRow extends BaseStatisticGridRow {
+  public ReactionTimeStdDevGridRow() {
+    super(REACTION_TIME_STD_DEV_ROW.getPublicName());
   }
 }

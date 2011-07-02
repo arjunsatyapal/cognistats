@@ -13,27 +13,26 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.client.gwtui.widgets.statisticswidget.rows;
+package com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswidget;
+
+import com.google.gwt.user.client.ui.Widget;
 
 /**
- *
+ * StatisticWidget which generates statistic view dynamically.
+ * 
  * @author Arjun Satyapal
  */
-public enum RowNamesEnum {
-  DURATION_ROW("Duration"),
-  REACTION_TIME_ROW("Reaction Time"),
-  REACTION_TIME_STD_DEV_ROW("Standard Deviation"),
-  TRIAL_ROW("Trials"),
-  CORRECT_ROW("Correct"),
-  READY_ROW("Ready");
+public class ChoiceReactionTimeStatisticsView implements ChoiceReactionTimeStatisticsDisplay {
+
+	@Override
+	public Widget asWidget() {
+		return this;
+	}
+
+	@Override
+	public void setEnabled(boolean enabled) {
+		// TODO Auto-generated method stub
+		
+	}
   
-  private String publicName;
-  
-  private RowNamesEnum(String publicName) {
-    this.publicName = publicName;
-  }
-  
-  public String getPublicName() {
-    return publicName;
-  }
 }

@@ -1,8 +1,12 @@
 package com.google.cognistats.client.gwtui.tests.choicereactiontime;
 
+import java.util.LinkedList;
+import java.util.Random;
+
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.TestPresenter;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.resultwidget.ChoiceReactionTimeResultDisplay;
+import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswidget.ChoiceReactionTimeStatisticsDisplay;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.stimuluswidget.ChoiceReactionTimeStimulusDisplay;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
@@ -11,9 +15,6 @@ import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.HasWidgets;
-
-import java.util.LinkedList;
-import java.util.Random;
 
 public class ChoiceReactionTimePresenter implements TestPresenter {
 
@@ -25,7 +26,7 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
   protected static int constantDelay = 250;
   protected int currentDelay;
   protected ChoiceReactionTimeStimulusDisplay testWidget;
-  protected ChoiceReactionTimeResultDisplay statisticsWidget;
+  protected ChoiceReactionTimeStatisticsDisplay statisticsWidget;
   protected Random generator = new Random();
   protected int currentChoice;
   protected long t0, t1, t2;
@@ -41,7 +42,7 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 
   public ChoiceReactionTimePresenter(
       ChoiceReactionTimeStimulusDisplay stimulusWidget,
-      ChoiceReactionTimeResultDisplay resultWidget) {
+      ChoiceReactionTimeStatisticsDisplay resultWidget) {
     this.testWidget = stimulusWidget;
     this.statisticsWidget = resultWidget;
     this.numberFormat = NumberFormat.getDecimalFormat();

@@ -13,28 +13,17 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.client.gwtui.tests.mystatisticwidget;
+package com.google.cognistats.client.gwtui.widgets.statisticswidget.rows;
 
-import static com.google.cognistats.client.gwtui.tests.mystatisticwidget.RowNamesEnum.TIME_ROW;
+import static com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.RowNamesEnum.TRIAL_ROW;
+
 
 /**
  *
  * @author Arjun Satyapal
  */
-public class TimeGridRow extends BaseStatisticGridRow {
-  public TimeGridRow() {
-    super(TIME_ROW.getPublicName());
-  }
-  
-  public void setCurrentTrial(long trialTimeInMillis) {
-    super.setCurrentTrial(Long.toString(trialTimeInMillis));
-  }
-  
-  public void setCurrentTest(long testTimeInMillis) {
-    super.setCurrentTest(Long.toString(testTimeInMillis));
-  }
-  
-  public void setAllTime(long allTimeInMillis) { 
-    super.setAllTime(Long.toString(allTimeInMillis));
+public class TrialGridRow extends BaseStatisticGridRow {
+  public TrialGridRow() {
+    super(TRIAL_ROW.getPublicName());
   }
 }

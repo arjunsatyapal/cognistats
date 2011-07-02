@@ -16,7 +16,7 @@
 package com.google.cognistats.client.gwtui.widgets.statisticswidget;
 
 /**
- * StatisticWidget which generates statistic view dynamically.
+ * StatisticWidget which generates statistic view dynamically.  -- we don't even need this?
  * 
  * @author Arjun Satyapal
  */

@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.BaseStatisticGridRow;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.DurationGridRow;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HTMLTable.CellFormatter;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -33,10 +34,29 @@ import com.google.gwt.user.client.ui.HasWidgets;
 public class BaseStatisticWidgetPresenter implements Presenter {
   private final ArrayList<BaseStatisticGridRow> listOfRows;
 
-  public BaseStatisticWidgetPresenter(ArrayList<BaseStatisticGridRow> listOfRows) {
-    this.listOfRows = listOfRows;
+  public BaseStatisticWidgetPresenter() {
+    this.listOfRows = new ArrayList<BaseStatisticGridRow>();
+    addRow(new DurationGridRow());
   }
-
+  
+  public void addRow(BaseStatisticGridRow row) {
+	  listOfRows.add(row);
+  }
+  
+  public void addRowAt(int index, BaseStatisticGridRow row) {
+	  listOfRows.add(index % listOfRows.size(), row);
+  }
+  
+  // TODO: Would be cleaner to remove rows by name, rather than by index.
+  public void removeRowAt(int index) {
+	  listOfRows.remove(index % listOfRows.size());
+  }
+  
+  public void clearRows() {
+	  listOfRows.clear();
+  }
+  
+  
   @Override
   public void go(
     HasWidgets container) {
