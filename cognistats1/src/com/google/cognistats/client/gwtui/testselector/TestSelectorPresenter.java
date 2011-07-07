@@ -19,11 +19,11 @@ import static com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter.
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.basetest.BaseTestPresenter;
-import com.google.cognistats.client.gwtui.tests.choicereactiontime.ChoiceReactionTimePresenter;
+import com.google.cognistats.client.gwtui.tests.reactiontime.ChoiceReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswidget.ChoiceReactionTimeStatisticsPresenter;
-import com.google.cognistats.client.gwtui.tests.choicereactiontime.testwidget.ChoiceReactionTimeTestView;
-import com.google.cognistats.client.gwtui.tests.simplereactiontime.SimpleReactionTimePresenter;
-import com.google.cognistats.client.gwtui.tests.simplereactiontime.testwidget.SimpleReactionTimeTestView;
+import com.google.cognistats.client.gwtui.tests.reactiontime.testwidget.ChoiceReactionTimeTestView;
+import com.google.cognistats.client.gwtui.tests.reactiontime.SimpleReactionTimePresenter;
+import com.google.cognistats.client.gwtui.tests.reactiontime.testwidget.SimpleReactionTimeTestView;
 import com.google.cognistats.client.gwtui.tests.stroop.StroopPresenter;
 import com.google.cognistats.client.gwtui.tests.stroop.testwidget.StroopTestView;
 import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;

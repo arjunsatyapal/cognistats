@@ -1,0 +1,16 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:tsr="urn:import:com.google.cognistats.client.gwtui.tests.tsr.testwidget">
+	<ui:style>
+
+	</ui:style>
+	<g:LayoutPanel width="100%" height="100%">
+		<g:layer left="0px" width="100.0pct" top="0px" height="100.0pct">
+		<tsr:TSRTestView height="100%" width="100%" ui:field="tsrTest" />
+		</g:layer>
+		<g:layer left="35.0pct" width="30.0pct" top="35.0pct" height="30.0pct">
+			<g:Image url="images/image00.png" ui:field="stimulusImage" width="100%" height="100%"/>
+		</g:layer>
+	</g:LayoutPanel>
+</ui:UiBinder> 

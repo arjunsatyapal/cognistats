@@ -1,5 +1,6 @@
 package com.google.cognistats.client.gwtui.tests.basetest;
 
+import java.util.HashMap;
 import java.util.Random;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
@@ -22,6 +23,7 @@ public abstract class BaseTestPresenter implements TestPresenter {
   protected long testStartTime;
   protected long testTime;
   private Random generator;
+  protected HashMap<Character, Integer> keyMap;
   private static long RANDOM_SEED = 0;
 
   public BaseTestPresenter(BaseTestDisplay testWidget,
@@ -29,6 +31,13 @@ public abstract class BaseTestPresenter implements TestPresenter {
     this.testWidget = testWidget;
     this.statPresenter = statPresenter;
     generator = new Random();
+    setupKeys();
+  }
+  
+  protected void setupKeys() {
+	  keyMap = new HashMap<Character, Integer>();
+	  keyMap.put('q', 0);
+	  keyMap.put('Q', 0);
   }
 
   @Override
@@ -47,7 +56,10 @@ public abstract class BaseTestPresenter implements TestPresenter {
   }
 
   protected void keyPressed(
-    KeyPressEvent event) {
+    int keyCode) {
+	  if (keyCode == 0) {
+		  cancelTest();
+	  }
   }
 
   protected void cancelTest() {
@@ -62,10 +74,9 @@ public abstract class BaseTestPresenter implements TestPresenter {
         KeyPressEvent event) {
         char code = event.getCharCode();
         GWT.log("Keypress event: " + Character.toString(code));
-        if ((code == 'q') || (code == 'Q')) {
-          cancelTest();
+        if (keyMap.containsKey(code)) {
+        	keyPressed(keyMap.get(code).intValue());
         }
-        keyPressed(event);
       }
     };
     return myHandler;

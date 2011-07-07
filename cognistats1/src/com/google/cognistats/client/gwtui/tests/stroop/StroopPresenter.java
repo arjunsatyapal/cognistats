@@ -1,14 +1,11 @@
 package com.google.cognistats.client.gwtui.tests.stroop;
 
-import java.util.HashMap;
-
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.stroop.testwidget.StroopTestDisplay;
 import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.KeyPressEvent;
 
 public class StroopPresenter extends TSRPresenter implements Presenter {
 
@@ -25,7 +22,6 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 	protected int userResponse;
 	protected boolean testFinished;
 	protected boolean newTestPart;
-	protected HashMap<Character, Integer> colorKeyMap;
 	protected static final String TEST_PART_NAMES[] = {
 		"Inhibition",
 		"Context switching",
@@ -40,17 +36,16 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 	public StroopPresenter(StroopTestDisplay testWidget, BaseStatisticWidgetPresenter statPresenter) {
 		super(testWidget.getTSRTestView(), statPresenter);
 		stroopTestWidget = testWidget;
-		setupKeys();
 	}
 
 	protected void setupKeys() {
-		colorKeyMap = new HashMap<Character, Integer>();
+		super.setupKeys();
 		int i,j;
 		for (i = 0; i < StroopColor.values().length; ++i) {
 			StroopColor color = StroopColor.values()[i];
 			GWT.log("setting up keys for color: " + color.getName());
 			for (j = 0; j < color.getKeys().length; ++j) {
-				colorKeyMap.put(new Character(color.getKeys()[j]), new Integer(i));
+				keyMap.put(new Character(color.getKeys()[j]), new Integer(i+1));
 			}
 		}
 	}
@@ -62,10 +57,9 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 
 	@Override
 	protected void startTrial() {
-		super.startTrial();
-		testWidget.setFixationPlusEnabled(true);
 		stroopTestWidget.setWordVisible(false);
 		createTrial();
+		super.startTrial();
 	}
 
 	protected void chooseSubTestOrder() {
@@ -238,19 +232,20 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 	}
 
 	@Override
-	protected void keyPressed(KeyPressEvent event) {
-		super.keyPressed(event);
-		if (trialState == TrialState.BEFORE_STIMULUS_DISPLAY) {
-			stroopTestWidget.setCommentText("Patience!");
-			return;
-		}
-		if (testFinished) {
-			return;
-		}
-		if (colorKeyMap.containsKey(new Character(event.getCharCode()))) {
-			userResponse = colorKeyMap.get(new Character(event.getCharCode()));
+	protected void keyPressed(int keyCode) {
+		if (keyCode > 0) {
+			if (trialState == TrialState.BEFORE_STIMULUS_DISPLAY) {
+				stroopTestWidget.setCommentText("Patience!");
+				return;
+			}
+			if (testFinished) {
+				return;
+			}
+			userResponse = keyCode - 1;
 			processResponse();
+			return;
 		}
+		super.keyPressed(keyCode);
 	}
 
 	@Override
