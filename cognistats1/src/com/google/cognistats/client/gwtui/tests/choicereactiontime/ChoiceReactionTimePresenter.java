@@ -7,6 +7,9 @@ import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.TestPresenter;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswidget.ChoiceReactionTimeStatisticsPresenter;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.testwidget.ChoiceReactionTimeTestDisplay;
+import com.google.cognistats.client.gwtui.tests.stroop.testwidget.StroopTestDisplay;
+import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;
+import com.google.cognistats.client.gwtui.tests.tsr.testwidget.TSRTestDisplay;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.RowNamesEnum;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.CorrectStatistic;
@@ -18,7 +21,7 @@ import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public class ChoiceReactionTimePresenter implements TestPresenter {
+public class ChoiceReactionTimePresenter extends TSRPresenter implements TestPresenter {
 
   protected int nTrials;
   protected static int totalNumTrials = 50;
@@ -42,10 +45,8 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
   NumberFormat numberFormat;
   private long testStartTime;
 
-  public ChoiceReactionTimePresenter(
-    ChoiceReactionTimeTestDisplay testWidget) {
-    this.testWidget = testWidget;
-    this.statPresenter = new ChoiceReactionTimeStatisticsPresenter();
+  public ChoiceReactionTimePresenter(ChoiceReactionTimeTestDisplay testWidget, BaseStatisticWidgetPresenter statPresenter) {
+	super(testWidget.getTSRTestView(), statPresenter);
     this.numberFormat = NumberFormat.getDecimalFormat();
   }
 

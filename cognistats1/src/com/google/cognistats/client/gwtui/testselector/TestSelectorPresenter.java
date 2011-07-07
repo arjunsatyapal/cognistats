@@ -20,6 +20,7 @@ import static com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter.
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.basetest.BaseTestPresenter;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.ChoiceReactionTimePresenter;
+import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswidget.ChoiceReactionTimeStatisticsPresenter;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.testwidget.ChoiceReactionTimeTestView;
 import com.google.cognistats.client.gwtui.tests.simplereactiontime.SimpleReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.simplereactiontime.testwidget.SimpleReactionTimeTestView;
@@ -64,7 +65,7 @@ public class TestSelectorPresenter implements Presenter {
       public void onClick(
         ClickEvent event) {
         ChoiceReactionTimePresenter testPresenter =
-          new ChoiceReactionTimePresenter(new ChoiceReactionTimeTestView());
+          new ChoiceReactionTimePresenter(new ChoiceReactionTimeTestView(), new ChoiceReactionTimeStatisticsPresenter());
 
         ClassroomWidgetPresenter presenter =
           new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(), testPresenter);
@@ -78,7 +79,7 @@ public class TestSelectorPresenter implements Presenter {
       public void onClick(
         ClickEvent event) {
         SimpleReactionTimePresenter testPresenter =
-          new SimpleReactionTimePresenter(new SimpleReactionTimeTestView());
+          new SimpleReactionTimePresenter(new SimpleReactionTimeTestView(), new ChoiceReactionTimeStatisticsPresenter());
 
         ClassroomWidgetPresenter presenter =
           new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(), testPresenter);

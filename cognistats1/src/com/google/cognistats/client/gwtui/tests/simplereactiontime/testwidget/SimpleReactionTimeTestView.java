@@ -11,10 +11,6 @@ public class SimpleReactionTimeTestView extends ChoiceReactionTimeTestView
     super();
   }
 
-  public SimpleReactionTimeTestView(String firstName) {
-    super(firstName);
-  }
-
   @Override
   public void showStimulus() {
     // super.showStimulus(); // while the below errors out

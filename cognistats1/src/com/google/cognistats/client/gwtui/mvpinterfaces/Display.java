@@ -31,4 +31,5 @@ public interface Display {
    * fields.
    */
   void setEnabled(boolean enabled);
+
 }
