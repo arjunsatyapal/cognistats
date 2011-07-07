@@ -1,4 +1,4 @@
-package com.google.cognistats.client.gwtui.widgets.testwidget;
+package com.google.cognistats.client.gwtui.widgets.classroomwidget;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.View;
 import com.google.gwt.core.client.GWT;
@@ -8,7 +8,8 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class TestWidgetViewUi extends View implements TestWidgetDisplay{
+public class ClassroomWidgetViewUi extends View implements
+    ClassroomWidgetDisplay {
   @UiField
   LayoutPanel layoutPanelTest;
   @UiField
@@ -18,13 +19,14 @@ public class TestWidgetViewUi extends View implements TestWidgetDisplay{
   @UiField
   Button buttonStop;
 
-  private static TestWidgetViewUiUiBinder uiBinder =
-      GWT.create(TestWidgetViewUiUiBinder.class);
+  private static ClassroomWidgetViewUiUiBinder uiBinder = GWT
+    .create(ClassroomWidgetViewUiUiBinder.class);
 
-  interface TestWidgetViewUiUiBinder extends UiBinder<Widget, TestWidgetViewUi> {
+  interface ClassroomWidgetViewUiUiBinder extends
+      UiBinder<Widget, ClassroomWidgetViewUi> {
   }
 
-  public TestWidgetViewUi() {
+  public ClassroomWidgetViewUi() {
     initWidget(uiBinder.createAndBindUi(this));
   }
 
@@ -44,7 +46,8 @@ public class TestWidgetViewUi extends View implements TestWidgetDisplay{
   }
 
   @Override
-  public void setEnabled(boolean enabled) {
+  public void setEnabled(
+    boolean enabled) {
     buttonStart.setEnabled(enabled);
     buttonStop.setEnabled(enabled);
   }

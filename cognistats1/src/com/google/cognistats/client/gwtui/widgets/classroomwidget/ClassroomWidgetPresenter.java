@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.client.gwtui.widgets.testwidget;
+package com.google.cognistats.client.gwtui.widgets.classroomwidget;
 
 import com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
@@ -27,11 +27,11 @@ import com.google.gwt.user.client.ui.HasWidgets;
  *
  * @author Arjun Satyapal
  */
-public class TestWidgetPresenter implements Presenter {
-  private TestWidgetDisplay display;
+public class ClassroomWidgetPresenter implements Presenter {
+  private ClassroomWidgetDisplay display;
   private TestPresenter testPresenter;
 
-  public TestWidgetPresenter(TestWidgetDisplay display,
+  public ClassroomWidgetPresenter(ClassroomWidgetDisplay display,
       TestPresenter testPresenter) {
     this.display = display;
     this.testPresenter = testPresenter;

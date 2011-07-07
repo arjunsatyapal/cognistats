@@ -28,11 +28,11 @@ import com.google.cognistats.client.gwtui.tests.stroop.StroopPresenter;
 import com.google.cognistats.client.gwtui.tests.stroop.testwidget.StroopTestView;
 import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;
 import com.google.cognistats.client.gwtui.tests.tsr.testwidget.TSRTestView;
+import com.google.cognistats.client.gwtui.widgets.classroomwidget.ClassroomWidgetPresenter;
+import com.google.cognistats.client.gwtui.widgets.classroomwidget.ClassroomWidgetViewUi;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.DurationGridRow;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.DurationStatistic;
-import com.google.cognistats.client.gwtui.widgets.testwidget.TestWidgetPresenter;
-import com.google.cognistats.client.gwtui.widgets.testwidget.TestWidgetViewUi;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -67,8 +67,8 @@ public class TestSelectorPresenter implements Presenter {
         ChoiceReactionTimePresenter testPresenter =
           new ChoiceReactionTimePresenter(new ChoiceReactionTimeTestView());
 
-        TestWidgetPresenter presenter =
-          new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
+        ClassroomWidgetPresenter presenter =
+          new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(), testPresenter);
         presenter.go(getWorkspace());
       }
     });
@@ -81,8 +81,8 @@ public class TestSelectorPresenter implements Presenter {
         SimpleReactionTimePresenter testPresenter =
           new SimpleReactionTimePresenter(new SimpleReactionTimeTestView());
 
-        TestWidgetPresenter presenter =
-          new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
+        ClassroomWidgetPresenter presenter =
+          new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(), testPresenter);
         presenter.go(getWorkspace());
       }
     });
@@ -95,8 +95,8 @@ public class TestSelectorPresenter implements Presenter {
         BasePresenter testPresenter =
           new StroopPresenter(new StroopTestView(), new BaseStatisticsView());
 
-        TestWidgetPresenter presenter =
-          new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
+        ClassroomWidgetPresenter presenter =
+          new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(), testPresenter);
         presenter.go(getWorkspace());
       }
     });
@@ -113,8 +113,8 @@ public class TestSelectorPresenter implements Presenter {
          */BasePresenter testPresenter =
           new TSRPresenter(new TSRTestView(), new BaseStatisticsView());
 
-        TestWidgetPresenter presenter =
-          new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
+        ClassroomWidgetPresenter presenter =
+          new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(), testPresenter);
         presenter.go(getWorkspace());
       }
     });

@@ -7,38 +7,37 @@ import com.google.cognistats.client.gwtui.tests.multitrial.testwidget.Multitrial
 
 public class MultitrialPresenter extends BasePresenter implements Presenter {
 
-	protected int nTrials;
-	
-	public MultitrialPresenter(MultitrialTestDisplay testWidget, BaseStatisticsDisplay statisticsWidget) {
-		super(testWidget.getBaseTestView(), statisticsWidget);
-	}
-	
-	protected void initializeTest() {
-		nTrials = 0;
-	}
-	
-	protected void startTrial() {
-	}
-	
-	protected void endTrial() {
-		++nTrials;
-		if (!isFinished()) {
-			startTrial();
-		}
-		
-	}
-	
-	protected boolean isFinished() {
-		return false;
-	}
+  protected int nTrials;
 
-	@Override
-	public void start() {
-		super.start();
-		initializeTest();
-		startTrial();
-	};
-	
-	
-	
+  public MultitrialPresenter(MultitrialTestDisplay testWidget,
+      BaseStatisticsDisplay statisticsWidget) {
+    super(testWidget.getBaseTestView(), statisticsWidget);
+  }
+
+  protected void initializeTest() {
+    nTrials = 0;
+  }
+
+  protected void startTrial() {
+  }
+
+  protected void endTrial() {
+    ++nTrials;
+    if (!isFinished()) {
+      startTrial();
+    }
+
+  }
+
+  protected boolean isFinished() {
+    return false;
+  }
+
+  @Override
+  public void start() {
+    super.start();
+    initializeTest();
+    startTrial();
+  };
+
 }

@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.client.gwtui.widgets.testwidget;
+package com.google.cognistats.client.gwtui.widgets.classroomwidget;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.gwt.user.client.ui.Button;
@@ -24,7 +24,7 @@ import com.google.gwt.user.client.ui.LayoutPanel;
  *
  * @author Arjun Satyapal
  */
-public interface TestWidgetDisplay extends Display {
+public interface ClassroomWidgetDisplay extends Display {
   LayoutPanel getLayoutPanelTest();
 
   LayoutPanel getLayoutPanelResult();

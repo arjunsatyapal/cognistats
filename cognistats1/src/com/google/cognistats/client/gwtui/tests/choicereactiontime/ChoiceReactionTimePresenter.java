@@ -55,7 +55,7 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 
   @Override
   public void bind() {
-    // TODO Auto-generated method stub
+
   }
 
   @Override

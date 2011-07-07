@@ -15,7 +15,7 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public class BasePresenter implements TestPresenter {
+public abstract class BasePresenter implements TestPresenter {
 
   protected BaseTestDisplay testWidget;
   protected BaseStatisticsDisplay statisticsWidget;
