@@ -7,6 +7,7 @@ import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.stroop.testwidget.StroopTestDisplay;
 import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 
 public class StroopPresenter extends TSRPresenter implements Presenter {
@@ -47,6 +48,7 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 		int i,j;
 		for (i = 0; i < StroopColor.values().length; ++i) {
 			StroopColor color = StroopColor.values()[i];
+			GWT.log("setting up keys for color: " + color.getName());
 			for (j = 0; j < color.getKeys().length; ++j) {
 				colorKeyMap.put(new Character(color.getKeys()[j]), new Integer(i));
 			}
@@ -259,12 +261,18 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 		else {
 			responseCorrect = (userResponse == wordNameIndex);
 		}
+		super.processResponse();
 		if (responseCorrect) {
-			stroopTestWidget.setCommentText("Correct!");
+			stroopTestWidget.setCommentText("Correct! RT = " + reactionTime);
 		}
 		else {
-			stroopTestWidget.setCommentText("Incorrect!");
+			stroopTestWidget.setCommentText("Incorrect! RT = " + reactionTime);
 		}
+	}
+
+	@Override
+	public BaseStatisticWidgetPresenter getStatPresenter() {
+		return super.getStatPresenter();
 	}
 
 }

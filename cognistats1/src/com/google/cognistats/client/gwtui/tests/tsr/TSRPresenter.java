@@ -80,6 +80,17 @@ public class TSRPresenter extends MultitrialPresenter implements Presenter {
 		else {
 			++numIncorrectTrials;
 		}
+		endTrial();
+	}
+
+	@Override
+	public BaseStatisticWidgetPresenter getStatPresenter() {
+		return super.getStatPresenter();
+	}
+
+	@Override
+	protected void endTrial() {
+		super.endTrial();
 	}
 
 

@@ -49,7 +49,7 @@ public class StroopTestView extends View implements StroopTestDisplay {
 	@Override
 	public void setWordVisible(boolean visible) {
 		//stroopLabel.setVisible(visible);
-		stroopWord.setHTML("");
+		stroopWord.setVisible(visible);
 	}
 
 	@Override

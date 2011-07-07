@@ -9,13 +9,13 @@
 		<g:layer left="0px" width="100.0pct" top="0px" height="100.0pct">
 		<tsr:TSRTestView height="100%" width="100%" ui:field="tsrTest" />
 		</g:layer>
-		<g:layer left="35.0pct" width="30.0pct" top="36.0pct" height="8.0pct">
+		<g:layer left="10.0pct" width="80.0pct" top="20.0pct" height="16.0pct">
 			<g:Label text="Stroop" horizontalAlignment="ALIGN_CENTER" ui:field="stroopLabel"/>
 		</g:layer>
-		<g:layer left="35.0pct" width="30.0pct" top="46.0pct" height="8.0pct">
+		<g:layer left="35.0pct" width="30.0pct" top="40.0pct" height="20.0pct">
 			<g:HTML wordWrap="true" horizontalAlignment="ALIGN_CENTER" ui:field="stroopWord">StroopWord</g:HTML>
 		</g:layer>
-		<g:layer left="35.0pct" width="30.0pct" top="56.0pct" height="8.0pct">
+		<g:layer left="35.0pct" width="30.0pct" top="64.0pct" height="8.0pct">
 			<g:Label horizontalAlignment="ALIGN_CENTER" text="Welcome to Stroop" ui:field="commentLabel"/>
 		</g:layer>
 		
