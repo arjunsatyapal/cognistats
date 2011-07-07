@@ -8,6 +8,8 @@ import com.google.cognistats.client.gwtui.mvpinterfaces.TestPresenter;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswidget.ChoiceReactionTimeStatisticsPresenter;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.testwidget.ChoiceReactionTimeTestDisplay;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.RowNamesEnum;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.CorrectStatistic;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.TouchStartEvent;
@@ -176,6 +178,10 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
 
   protected void updateText() {
     //TODO(arjuns) : update the stat widget.
+	//statPresenter.getRow(RowNamesEnum.CORRECT_ROW).setCurrentTrial(new BooleanStatistic(lastReactionTimeResult));
+	statPresenter.getRow(RowNamesEnum.CORRECT_ROW).setCurrentTest(new CorrectStatistic(statistics.getCorrectFraction()));
+	statPresenter.getRow(RowNamesEnum.CORRECT_ROW).setAllTime(new CorrectStatistic(0.9));
+	
 //    statisticsWidget.getTextCorrectPercentage().setText(
 //        numberFormat.format(statistics.getCorrectFraction() * 100) + "%");
 //    statisticsWidget.getTextTooEarlyPercentage().setText(
