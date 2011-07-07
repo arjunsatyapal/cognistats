@@ -24,6 +24,6 @@ import static com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.R
  */
 public class ReadyGridRow extends BaseStatisticGridRow {
   public ReadyGridRow() {
-    super(READY_ROW);
+    super(READY_ROW.getPublicName());
   }
 }

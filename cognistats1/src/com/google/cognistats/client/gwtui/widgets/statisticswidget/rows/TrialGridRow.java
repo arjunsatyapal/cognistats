@@ -24,6 +24,6 @@ import static com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.R
  */
 public class TrialGridRow extends BaseStatisticGridRow {
   public TrialGridRow() {
-    super(TRIAL_ROW);
+    super(TRIAL_ROW.getPublicName());
   }
 }

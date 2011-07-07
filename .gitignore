@@ -9,4 +9,3 @@ deploy/
 .settings/
 .gwt/
 cognistats1/war/cognistats/
-cognistats1/war/WEB-INF/lib/

@@ -24,6 +24,6 @@ import static com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.R
  */
 public class ReactionTimeStdDevGridRow extends BaseStatisticGridRow {
   public ReactionTimeStdDevGridRow() {
-    super(REACTION_TIME_STD_DEV_ROW);
+    super(REACTION_TIME_STD_DEV_ROW.getPublicName());
   }
 }
