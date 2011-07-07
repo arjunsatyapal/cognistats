@@ -4,7 +4,6 @@ import java.util.Random;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.TestPresenter;
-import com.google.cognistats.client.gwtui.tests.basetest.statisticswidget.BaseTestStatisticsDisplay;
 import com.google.cognistats.client.gwtui.tests.basetest.testwidget.BaseTestDisplay;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.gwt.core.client.GWT;
@@ -20,7 +19,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
 public abstract class BaseTestPresenter implements TestPresenter {
 
   protected BaseTestDisplay testWidget;
-  protected BaseTestStatisticsDisplay statisticsWidget;
+  protected BaseStatisticWidgetPresenter statPresenter;
   protected NumberFormat numberFormat;
   protected long testStartTime;
   protected long testTime;
@@ -28,9 +27,9 @@ public abstract class BaseTestPresenter implements TestPresenter {
   private static long RANDOM_SEED = 0;
 
   public BaseTestPresenter(BaseTestDisplay testWidget,
-      BaseTestStatisticsDisplay statisticsWidget) {
+    BaseStatisticWidgetPresenter statPresenter) {
     this.testWidget = testWidget;
-    this.statisticsWidget = statisticsWidget;
+    this.statPresenter = statPresenter;
     this.numberFormat = NumberFormat.getDecimalFormat();
     generator = new Random();
   }
@@ -102,8 +101,9 @@ public abstract class BaseTestPresenter implements TestPresenter {
   };
 
   protected void testTimeUpdated() {
-    statisticsWidget.setTestTimeCurrent(testTime);
-    statisticsWidget.setTestTimeAllTime(testTime + 36000000);
+    // TODO(arjuns) : use presenter to update the tim.
+//    statisticsWidget.setTestTimeCurrent(testTime);
+//    statisticsWidget.setTestTimeAllTime(testTime + 36000000);
   }
 
   @Override
@@ -123,7 +123,7 @@ public abstract class BaseTestPresenter implements TestPresenter {
     Window.alert("Illegal state. This should not be called.");
     throw new UnsupportedOperationException();
   }
-  
+
   protected Random getGenerator() {
 	  return generator;
   }
