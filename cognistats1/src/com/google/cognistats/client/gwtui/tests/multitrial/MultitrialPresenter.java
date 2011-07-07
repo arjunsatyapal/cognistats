@@ -43,6 +43,6 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
     super.start();
     initializeTest();
     startTrial();
-  };
+  }
 
 }

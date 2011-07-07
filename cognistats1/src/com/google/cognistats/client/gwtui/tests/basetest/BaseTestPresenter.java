@@ -18,11 +18,13 @@ import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.LayoutPanel;
 
 public abstract class BaseTestPresenter implements TestPresenter {
 
   protected BaseTestDisplay testWidget;
   protected BaseStatisticWidgetPresenter statPresenter;
+  protected HasWidgets statContainer;
   protected long testStartTime;
   protected long testTime;
   private Random generator;
@@ -41,6 +43,12 @@ public abstract class BaseTestPresenter implements TestPresenter {
 	  keyMap = new HashMap<Character, Integer>();
 	  keyMap.put('q', 0);
 	  keyMap.put('Q', 0);
+  }
+  
+  @Override
+  public void setStatContainer(LayoutPanel layoutPanelResult) {
+	  this.statContainer = layoutPanelResult;
+	  statPresenter.go(statContainer);
   }
 
   @Override
