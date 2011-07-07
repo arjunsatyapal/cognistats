@@ -1,16 +1,16 @@
 package com.google.cognistats.client.gwtui.tests.tsr;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
-import com.google.cognistats.client.gwtui.tests.basetest.statisticswidget.BaseTestStatisticsDisplay;
 import com.google.cognistats.client.gwtui.tests.multitrial.MultitrialPresenter;
 import com.google.cognistats.client.gwtui.tests.tsr.testwidget.TSRTestDisplay;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.gwt.user.client.Timer;
 
 public class TSRPresenter extends MultitrialPresenter implements Presenter {
 
 	protected int numCorrectTrials, numIncorrectTrials;
 	protected long reactionTime;
-	
+
 	@Override
 	protected void initializeTest() {
 		super.initializeTest();
@@ -26,17 +26,17 @@ public class TSRPresenter extends MultitrialPresenter implements Presenter {
 		DURING_STIMULUS_DISPLAY,
 		AFTER_STIMULUS_DISPLAY
 	}
-	
+
 	protected TrialState trialState;
-	
-	public TSRPresenter(TSRTestDisplay testWidget, BaseTestStatisticsDisplay statisticsWidget) {
-		super(testWidget.getMultitrialTestView(), statisticsWidget);
+
+	public TSRPresenter(TSRTestDisplay testWidget, BaseStatisticWidgetPresenter statPresenter) {
+		super(testWidget.getMultitrialTestView(), statPresenter);
 	}
-	
+
 	protected int stimulusDisplayDelay() {
 		return 0;
 	}
-	
+
 	@Override
 	protected void startTrial() {
 		super.startTrial();
@@ -49,7 +49,7 @@ public class TSRPresenter extends MultitrialPresenter implements Presenter {
 			startStimulusDisplay();
 		}
 	}
-	
+
 	protected void startStimulusDisplay() {
 		trialState = TrialState.DURING_STIMULUS_DISPLAY;
 		stimulusStartDisplayTime = System.currentTimeMillis();
@@ -64,14 +64,14 @@ public class TSRPresenter extends MultitrialPresenter implements Presenter {
 	protected void displayStimulus() {
 		afterStimulusDisplay();
 	}
-	
+
 	protected Timer stimulusDisplayTimer = new Timer() {
 		@Override
 		public void run() {
 			startStimulusDisplay();
 		}
 	};
-	
+
 	protected void processResponse() {
 		reactionTime = System.currentTimeMillis() - stimulusEndDisplayTime;
 		if (responseCorrect) {
@@ -82,5 +82,5 @@ public class TSRPresenter extends MultitrialPresenter implements Presenter {
 		}
 	}
 
-	
+
 }

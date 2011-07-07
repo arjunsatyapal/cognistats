@@ -4,12 +4,10 @@ import java.util.HashMap;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
-import com.google.cognistats.client.gwtui.tests.basetest.statisticswidget.BaseTestStatisticsDisplay;
 import com.google.cognistats.client.gwtui.tests.stroop.testwidget.StroopTestDisplay;
 import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.gwt.event.dom.client.KeyPressEvent;
-
-import static com.google.cognistats.client.resources.GlobalResources.RESOURCE;
 
 public class StroopPresenter extends TSRPresenter implements Presenter {
 
@@ -32,18 +30,18 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 		"Context switching",
 		"Mixed"
 	};
-	
+
 	protected static final String TEST_TASK_NAMES[] = {
 		"Word",
 		"Color"
 	};
-	
-	public StroopPresenter(StroopTestDisplay testWidget, BaseTestStatisticsDisplay statisticsWidget) {
-		super(testWidget.getTSRTestView(), statisticsWidget);
+
+	public StroopPresenter(StroopTestDisplay testWidget, BaseStatisticWidgetPresenter statPresenter) {
+		super(testWidget.getTSRTestView(), statPresenter);
 		stroopTestWidget = testWidget;
 		setupKeys();
 	}
-	
+
 	protected void setupKeys() {
 		colorKeyMap = new HashMap<Character, Integer>();
 		int i,j;
@@ -54,7 +52,7 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 			}
 		}
 	}
-	
+
 	@Override
 	protected int stimulusDisplayDelay() {
 		return TRIAL_START_DELAY;
@@ -67,7 +65,7 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 		stroopTestWidget.setWordVisible(false);
 		createTrial();
 	}
-	
+
 	protected void chooseSubTestOrder() {
 		subTestOrder = new int[3];
 		int i = getGenerator().nextInt(6);
@@ -79,7 +77,7 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 		}
 		for (subTestOrder[2] = 0; (subTestOrder[2] == subTestOrder[0]) || (subTestOrder[2] == subTestOrder[1]); ++subTestOrder[2]);
 	}
-	
+
 	protected void createTrial() {
 		switch (testPart) {
 			case 0:
@@ -99,7 +97,7 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 				trialReady = true;
 		}
 		if (!trialReady) {
-			wordColorIndex = getGenerator().nextInt(NUM_COLORS);			
+			wordColorIndex = getGenerator().nextInt(NUM_COLORS);
 			if (isConcordant) {
 				wordNameIndex = wordColorIndex;
 			}
@@ -113,15 +111,15 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 		wordName = StroopColor.byNumber(wordNameIndex);
 		wordColor = StroopColor.byNumber(wordColorIndex);
 	}
-	
+
 	protected String testPartName() {
 		return TEST_PART_NAMES[testPart];
 	}
-	
+
 	protected String taskName() {
 		return TEST_TASK_NAMES[isTaskColor ? 1 : 0];
 	}
-	
+
 	@Override
 	protected void displayStimulus() {
 		testWidget.setFixationPlusEnabled(false);
@@ -146,7 +144,7 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 		stroopTestWidget.setWordVisible(true);
 		afterStimulusDisplay();
 	}
-	
+
 	@Override
 	protected void initializeTest() {
 		chooseSubTestOrder();
@@ -155,7 +153,7 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 		initializeTestPart();
 		super.initializeTest();
 	}
-	
+
 	protected void initializeTestPart() {
 		testPart = subTestOrder[testPartIndex];
 		switch (testPart) {
@@ -171,7 +169,7 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 			break;
 		}
 	}
-	
+
 	protected void setSubPartParameters() {
 		switch (testSubPartIndex) {
 		case 0:
@@ -252,7 +250,7 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 			processResponse();
 		}
 	}
-	
+
 	@Override
 	protected void processResponse() {
 		if (isTaskColor) {
