@@ -16,6 +16,7 @@
 package com.google.cognistats.client.gwtui.widgets.statisticswidget.rows;
 
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.Statistic;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.RowNamesEnum;
 import com.google.gwt.user.client.ui.HTML;
 
 /**
@@ -26,6 +27,7 @@ import com.google.gwt.user.client.ui.HTML;
 public abstract class BaseStatisticGridRow {
   public static final int numColumn = 4;
 
+  protected RowNamesEnum name;
   protected HTML rowTitle;
   protected HTML trialColumn;
   protected HTML testColumn;
@@ -33,6 +35,10 @@ public abstract class BaseStatisticGridRow {
   
   public static int getNumcolumn() {
     return numColumn;
+  }
+  
+  public RowNamesEnum getName() {
+	return name;
   }
 
   public HTML getRowTitle() {
@@ -55,8 +61,9 @@ public abstract class BaseStatisticGridRow {
     return "<div>" + text + "</div>";
   }
   
-  protected BaseStatisticGridRow(String rowTitle) {
-    this.rowTitle = new HTML(getHtmlDivForElement(rowTitle));
+  protected BaseStatisticGridRow(RowNamesEnum name) {
+	this.name = name;
+    this.rowTitle = new HTML(getHtmlDivForElement(name.getPublicName()));
   }
   
   public void setCurrentTrial(Statistic trialColumn) {

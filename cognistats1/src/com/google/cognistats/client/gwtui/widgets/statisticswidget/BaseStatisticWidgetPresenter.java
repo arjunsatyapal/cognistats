@@ -18,10 +18,12 @@ package com.google.cognistats.client.gwtui.widgets.statisticswidget;
 import static com.google.cognistats.client.resources.GlobalResources.RESOURCE;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.BaseStatisticGridRow;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.DurationGridRow;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.RowNamesEnum;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HTMLTable.CellFormatter;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -41,24 +43,41 @@ public class BaseStatisticWidgetPresenter implements Presenter {
     addRow(new DurationGridRow());
   }
 
-  public void addRow(
-    BaseStatisticGridRow row) {
+  public void addRow(BaseStatisticGridRow row) {
     listOfRows.add(row);
   }
 
-  public void addRowAt(
-    int index, BaseStatisticGridRow row) {
+  public void addRowAt(int index, BaseStatisticGridRow row) {
     listOfRows.add(index % listOfRows.size(), row);
   }
 
-  // TODO: Would be cleaner to remove rows by name, rather than by index.
-  public void removeRowAt(
-    int index) {
+  public void removeRowAt(int index) {
     listOfRows.remove(index % listOfRows.size());
+  }
+  
+  public void removeRow(RowNamesEnum name) {
+	  Iterator<BaseStatisticGridRow> it = listOfRows.iterator();
+	  while(it.hasNext()) {
+		  BaseStatisticGridRow row = it.next();
+		  if(row.getName() == name) {
+			  listOfRows.remove(row);
+			  return;
+		  }
+	  }
   }
 
   public void clearRows() {
     listOfRows.clear();
+  }
+  
+  public BaseStatisticGridRow getRow(RowNamesEnum name) {
+	  Iterator<BaseStatisticGridRow> it = listOfRows.iterator();
+	  while(it.hasNext()) {
+		  BaseStatisticGridRow row = it.next();
+		  if(row.getName() == name)
+			  return row;		  
+	  }
+	  return null;
   }
 
   @Override

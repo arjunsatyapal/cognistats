@@ -24,6 +24,6 @@ import static com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.R
  */
 public class DurationGridRow extends BaseStatisticGridRow {
   public DurationGridRow() {
-    super(DURATION_ROW.getPublicName());
+    super(DURATION_ROW);
   }
 }

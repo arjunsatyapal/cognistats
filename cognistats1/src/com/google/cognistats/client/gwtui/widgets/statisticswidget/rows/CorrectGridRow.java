@@ -24,6 +24,6 @@ import static com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.R
  */
 public class CorrectGridRow extends BaseStatisticGridRow {
   public CorrectGridRow() {
-    super(CORRECT_ROW.getPublicName());
+    super(CORRECT_ROW);
   }
 }
