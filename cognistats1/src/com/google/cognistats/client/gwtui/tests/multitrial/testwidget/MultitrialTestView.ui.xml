@@ -1,7 +1,7 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
-	xmlns:base="urn:import:com.google.cognistats.client.gwtui.tests.base.testwidget">
+	xmlns:base="urn:import:com.google.cognistats.client.gwtui.tests.basetest.testwidget">
 	<ui:style>
 		.transparent { background-color: transparent; border: 2px dashed red; }
 	</ui:style>

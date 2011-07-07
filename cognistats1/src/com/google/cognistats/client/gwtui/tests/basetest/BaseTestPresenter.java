@@ -1,9 +1,9 @@
-package com.google.cognistats.client.gwtui.tests.base;
+package com.google.cognistats.client.gwtui.tests.basetest;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.TestPresenter;
-import com.google.cognistats.client.gwtui.tests.base.statisticswidget.BaseStatisticsDisplay;
-import com.google.cognistats.client.gwtui.tests.base.testwidget.BaseTestDisplay;
+import com.google.cognistats.client.gwtui.tests.basetest.statisticswidget.BaseTestStatisticsDisplay;
+import com.google.cognistats.client.gwtui.tests.basetest.testwidget.BaseTestDisplay;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.KeyPressEvent;
@@ -15,16 +15,16 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasWidgets;
 
-public abstract class BasePresenter implements TestPresenter {
+public abstract class BaseTestPresenter implements TestPresenter {
 
   protected BaseTestDisplay testWidget;
-  protected BaseStatisticsDisplay statisticsWidget;
+  protected BaseTestStatisticsDisplay statisticsWidget;
   protected NumberFormat numberFormat;
   protected long testStartTime;
   protected long testTime;
 
-  public BasePresenter(BaseTestDisplay testWidget,
-      BaseStatisticsDisplay statisticsWidget) {
+  public BaseTestPresenter(BaseTestDisplay testWidget,
+      BaseTestStatisticsDisplay statisticsWidget) {
     this.testWidget = testWidget;
     this.statisticsWidget = statisticsWidget;
     this.numberFormat = NumberFormat.getDecimalFormat();

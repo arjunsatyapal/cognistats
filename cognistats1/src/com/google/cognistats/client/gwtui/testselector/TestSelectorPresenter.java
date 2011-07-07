@@ -18,8 +18,8 @@ package com.google.cognistats.client.gwtui.testselector;
 import static com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter.getWorkspace;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
-import com.google.cognistats.client.gwtui.tests.base.BasePresenter;
-import com.google.cognistats.client.gwtui.tests.base.statisticswidget.BaseStatisticsView;
+import com.google.cognistats.client.gwtui.tests.basetest.BaseTestPresenter;
+import com.google.cognistats.client.gwtui.tests.basetest.statisticswidget.BaseTestStatisticsView;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.ChoiceReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.testwidget.ChoiceReactionTimeTestView;
 import com.google.cognistats.client.gwtui.tests.simplereactiontime.SimpleReactionTimePresenter;
@@ -92,8 +92,8 @@ public class TestSelectorPresenter implements Presenter {
       @Override
       public void onClick(
         ClickEvent event) {
-        BasePresenter testPresenter =
-          new StroopPresenter(new StroopTestView(), new BaseStatisticsView());
+        BaseTestPresenter testPresenter =
+          new StroopPresenter(new StroopTestView(), new BaseTestStatisticsView());
 
         ClassroomWidgetPresenter presenter =
           new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(), testPresenter);
@@ -110,8 +110,8 @@ public class TestSelectorPresenter implements Presenter {
         /*
          * BasePresenter testPresenter = new BasePresenter( new BaseTestView(),
          * new BaseStatisticsView());
-         */BasePresenter testPresenter =
-          new TSRPresenter(new TSRTestView(), new BaseStatisticsView());
+         */BaseTestPresenter testPresenter =
+          new TSRPresenter(new TSRTestView(), new BaseTestStatisticsView());
 
         ClassroomWidgetPresenter presenter =
           new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(), testPresenter);

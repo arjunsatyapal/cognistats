@@ -1,7 +1,7 @@
 package com.google.cognistats.client.gwtui.tests.multitrial.testwidget;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.View;
-import com.google.cognistats.client.gwtui.tests.base.testwidget.BaseTestView;
+import com.google.cognistats.client.gwtui.tests.basetest.testwidget.BaseTestView;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;

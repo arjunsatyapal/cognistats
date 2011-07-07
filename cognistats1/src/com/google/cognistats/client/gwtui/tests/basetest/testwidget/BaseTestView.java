@@ -1,4 +1,4 @@
-package com.google.cognistats.client.gwtui.tests.base.testwidget;
+package com.google.cognistats.client.gwtui.tests.basetest.testwidget;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;

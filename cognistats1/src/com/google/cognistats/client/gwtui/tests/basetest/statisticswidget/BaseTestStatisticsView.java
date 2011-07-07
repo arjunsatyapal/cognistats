@@ -1,4 +1,4 @@
-package com.google.cognistats.client.gwtui.tests.base.statisticswidget;
+package com.google.cognistats.client.gwtui.tests.basetest.statisticswidget;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -7,8 +7,8 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
-public class BaseStatisticsView extends Composite implements
-    BaseStatisticsDisplay {
+public class BaseTestStatisticsView extends Composite implements
+    BaseTestStatisticsDisplay {
 
   private static BaseTestResultViewUiBinder uiBinder = GWT
     .create(BaseTestResultViewUiBinder.class);
@@ -18,10 +18,10 @@ public class BaseStatisticsView extends Composite implements
   Label labelTimeAllTime;
 
   interface BaseTestResultViewUiBinder extends
-      UiBinder<Widget, BaseStatisticsView> {
+      UiBinder<Widget, BaseTestStatisticsView> {
   }
 
-  public BaseStatisticsView() {
+  public BaseTestStatisticsView() {
     initWidget(uiBinder.createAndBindUi(this));
   }
 
