@@ -8,7 +8,17 @@ import com.google.gwt.user.client.Timer;
 
 public class TSRPresenter extends MultitrialPresenter implements Presenter {
 
-	protected int nTrials;
+	protected int numCorrectTrials, numIncorrectTrials;
+	protected long reactionTime;
+	
+	@Override
+	protected void initializeTest() {
+		super.initializeTest();
+		numCorrectTrials = 0;
+		numIncorrectTrials = 0;
+	}
+
+	protected boolean responseCorrect;
 	protected long stimulusStartDisplayTime, stimulusEndDisplayTime;
 
 	public enum TrialState {
@@ -62,6 +72,15 @@ public class TSRPresenter extends MultitrialPresenter implements Presenter {
 		}
 	};
 	
+	protected void processResponse() {
+		reactionTime = System.currentTimeMillis() - stimulusEndDisplayTime;
+		if (responseCorrect) {
+			++numCorrectTrials;
+		}
+		else {
+			++numIncorrectTrials;
+		}
+	}
 
 	
 }

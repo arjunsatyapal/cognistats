@@ -3,9 +3,9 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:multitrial="urn:import:com.google.cognistats.client.gwtui.tests.multitrial.testwidget">
 	<ui:style>
-		.transparent { background-color: transparent; border: 2px dashed brown; }
+<!-- 		.transparent { background-color: transparent; border: 2px dashed brown; } -->
 	</ui:style>
-	<g:LayoutPanel height="100%" width="100%" addStyleNames="{style.transparent}">
+	<g:LayoutPanel height="100%" width="100%">
 		<g:layer left="0px" width="100.0pct" top="0px" height="100.0pct">
 			<multitrial:MultitrialTestView height="100%" width="100%" ui:field="multitrialTest" />
 		</g:layer>

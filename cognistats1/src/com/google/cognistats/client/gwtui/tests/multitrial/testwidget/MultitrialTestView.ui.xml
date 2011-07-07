@@ -3,9 +3,9 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:base="urn:import:com.google.cognistats.client.gwtui.tests.basetest.testwidget">
 	<ui:style>
-		.transparent { background-color: transparent; border: 2px dashed red; }
+<!-- 		.transparent { background-color: transparent; border: 2px dashed red; } -->
 	</ui:style>
-	<g:HTMLPanel height="100%" width="100%" addStyleNames="{style.transparent}">
+	<g:HTMLPanel height="100%" width="100%">
 	<base:BaseTestView height="100%" width="100%" ui:field="baseTest" />
 	</g:HTMLPanel>
 </ui:UiBinder> 

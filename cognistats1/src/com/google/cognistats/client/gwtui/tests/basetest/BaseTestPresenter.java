@@ -1,5 +1,7 @@
 package com.google.cognistats.client.gwtui.tests.basetest;
 
+import java.util.Random;
+
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.TestPresenter;
 import com.google.cognistats.client.gwtui.tests.basetest.statisticswidget.BaseTestStatisticsDisplay;
@@ -22,12 +24,15 @@ public abstract class BaseTestPresenter implements TestPresenter {
   protected NumberFormat numberFormat;
   protected long testStartTime;
   protected long testTime;
+  private Random generator;
+  private static long RANDOM_SEED = 0;
 
   public BaseTestPresenter(BaseTestDisplay testWidget,
       BaseTestStatisticsDisplay statisticsWidget) {
     this.testWidget = testWidget;
     this.statisticsWidget = statisticsWidget;
     this.numberFormat = NumberFormat.getDecimalFormat();
+    generator = new Random();
   }
 
   @Override
@@ -105,6 +110,7 @@ public abstract class BaseTestPresenter implements TestPresenter {
   public void start() {
     testStartTime = System.currentTimeMillis();
     testTimer.scheduleRepeating(100);
+    generator.setSeed(RANDOM_SEED);
   }
 
   @Override
@@ -116,5 +122,9 @@ public abstract class BaseTestPresenter implements TestPresenter {
   public BaseStatisticWidgetPresenter getStatPresenter() {
     Window.alert("Illegal state. This should not be called.");
     throw new UnsupportedOperationException();
+  }
+  
+  protected Random getGenerator() {
+	  return generator;
   }
 }

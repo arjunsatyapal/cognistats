@@ -32,4 +32,5 @@ public interface GlobalCss extends CssResource {
   String statGridTest();
 
   String statGridAllTime();
+  
 }

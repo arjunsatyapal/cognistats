@@ -8,4 +8,6 @@ public interface StroopTestDisplay extends Display {
 	TSRTestView getTSRTestView();
 	void setWordAndColor(String word, StroopColor color);
 	void setWordVisible(boolean visible);
+	void setTrialInstructions(String instructions);
+	void setCommentText(String commentText);
 }
