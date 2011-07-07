@@ -93,8 +93,7 @@ public class TestSelectorPresenter implements Presenter {
         ClickEvent event) {
         // TODO(arjuns) : fix this.
         BaseTestPresenter testPresenter =
-          new StroopPresenter(new StroopTestView(), null);
-        //new BaseTestStatisticsView());
+          new StroopPresenter(new StroopTestView(), new BaseStatisticWidgetPresenter());
 
         ClassroomWidgetPresenter presenter =
           new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(), testPresenter);
@@ -112,9 +111,7 @@ public class TestSelectorPresenter implements Presenter {
          * BasePresenter testPresenter = new BasePresenter( new BaseTestView(),
          * new BaseStatisticsView());
          */BaseTestPresenter testPresenter =
-          new TSRPresenter(new TSRTestView(), null);
-         //TODO(arjuns) : fix this.
-         //new BaseTestStatisticsView());
+          new TSRPresenter(new TSRTestView(), new BaseStatisticWidgetPresenter());
 
         ClassroomWidgetPresenter presenter =
           new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(), testPresenter);
