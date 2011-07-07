@@ -21,13 +21,8 @@ import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.base.BasePresenter;
 import com.google.cognistats.client.gwtui.tests.base.statisticswidget.BaseStatisticsView;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.ChoiceReactionTimePresenter;
-import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswidget.ChoiceReactionTimeStatisticsView;
-import com.google.cognistats.client.gwtui.tests.choicereactiontime.stimuluswidget.ChoiceReactionTimeStimulusView;
-import com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.OldSimpleReactionTimePresenter;
-import com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.resultwidget.OldSimpleReactionTimeResultView;
-import com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.stimuluswidget.OldSimpleReactionTimeStimulusView;
+import com.google.cognistats.client.gwtui.tests.choicereactiontime.testwidget.ChoiceReactionTimeTestView;
 import com.google.cognistats.client.gwtui.tests.simplereactiontime.SimpleReactionTimePresenter;
-import com.google.cognistats.client.gwtui.tests.simplereactiontime.oldstatisticswidget.SimpleReactionTimeStatisticsView;
 import com.google.cognistats.client.gwtui.tests.simplereactiontime.testwidget.SimpleReactionTimeTestView;
 import com.google.cognistats.client.gwtui.tests.stroop.StroopPresenter;
 import com.google.cognistats.client.gwtui.tests.stroop.testwidget.StroopTestView;
@@ -44,16 +39,16 @@ import com.google.gwt.user.client.ui.HasWidgets;
 
 /**
  * Presenter for the TestSelector.
- * 
+ *
  * @author Arjun Satyapal
  */
 public class TestSelectorPresenter implements Presenter {
   private TestSelectorDisplay display;
-  
+
   public TestSelectorPresenter(TestSelectorDisplay display) {
     this.display = display;
   }
-  
+
   @Override
   public void go(
     HasWidgets container) {
@@ -61,106 +56,89 @@ public class TestSelectorPresenter implements Presenter {
     container.add(display.asWidget());
     bind();
   }
-  
+
   @Override
   public void bind() {
-    display.getButtonOldSRTT().addClickHandler(new ClickHandler() {
-      
-      @Override
-      public void onClick(
-        ClickEvent event) {
-        OldSimpleReactionTimePresenter testPresenter =
-          new OldSimpleReactionTimePresenter(
-            new OldSimpleReactionTimeStimulusView(),
-            new OldSimpleReactionTimeResultView());
-        
-        TestWidgetPresenter presenter =
-          new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
-        presenter.go(getWorkspace());
-      }
-    });
-    
     display.getButtonCRTT().addClickHandler(new ClickHandler() {
-      
+
       @Override
       public void onClick(
         ClickEvent event) {
         ChoiceReactionTimePresenter testPresenter =
-          new ChoiceReactionTimePresenter(new ChoiceReactionTimeStimulusView(),
-            new ChoiceReactionTimeStatisticsView());
-        
+          new ChoiceReactionTimePresenter(new ChoiceReactionTimeTestView());
+
         TestWidgetPresenter presenter =
           new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
         presenter.go(getWorkspace());
       }
     });
-    
+
     display.getButtonSimpleReactionTime().addClickHandler(new ClickHandler() {
-      
+
       @Override
       public void onClick(
         ClickEvent event) {
         SimpleReactionTimePresenter testPresenter =
-          new SimpleReactionTimePresenter(new SimpleReactionTimeTestView(),
-            new SimpleReactionTimeStatisticsView());
-        
+          new SimpleReactionTimePresenter(new SimpleReactionTimeTestView());
+
         TestWidgetPresenter presenter =
           new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
         presenter.go(getWorkspace());
       }
     });
-    
+
     display.getButtonStroop().addClickHandler(new ClickHandler() {
-      
+
       @Override
       public void onClick(
         ClickEvent event) {
-    	  BasePresenter testPresenter =
+        BasePresenter testPresenter =
           new StroopPresenter(new StroopTestView(), new BaseStatisticsView());
-        
+
         TestWidgetPresenter presenter =
           new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
         presenter.go(getWorkspace());
       }
     });
-    
+
     display.getButtonBase().addClickHandler(new ClickHandler() {
-        
-        @Override
-        public void onClick(
-          ClickEvent event) {
-          // TODO(arjuns) : Fix this once we have Base test committed.
-          /*
-           * BasePresenter testPresenter = new BasePresenter( new BaseTestView(),
-           * new BaseStatisticsView());
-           */BasePresenter testPresenter =
-            new TSRPresenter(new TSRTestView(), new BaseStatisticsView());
-          
-          TestWidgetPresenter presenter =
-            new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
-          presenter.go(getWorkspace());
-        }
-      });
-      
-    display.getButtonArjunGrid().addClickHandler(new ClickHandler() {
-      
+
       @Override
       public void onClick(
         ClickEvent event) {
-        BaseStatisticWidgetPresenter presenter = new BaseStatisticWidgetPresenter();
+        // TODO(arjuns) : Fix this once we have Base test committed.
+        /*
+         * BasePresenter testPresenter = new BasePresenter( new BaseTestView(),
+         * new BaseStatisticsView());
+         */BasePresenter testPresenter =
+          new TSRPresenter(new TSRTestView(), new BaseStatisticsView());
+
+        TestWidgetPresenter presenter =
+          new TestWidgetPresenter(new TestWidgetViewUi(), testPresenter);
+        presenter.go(getWorkspace());
+      }
+    });
+
+    display.getButtonArjunGrid().addClickHandler(new ClickHandler() {
+
+      @Override
+      public void onClick(
+        ClickEvent event) {
+        BaseStatisticWidgetPresenter presenter =
+          new BaseStatisticWidgetPresenter();
         presenter.addRow(getDurationGridRow());
         presenter.addRow(getDurationGridRow());
         presenter.go(getWorkspace());
       }
     });
   }
-  
+
   public DurationGridRow getDurationGridRow() {
-	    DurationGridRow row = new DurationGridRow();
-	    row.setAllTime(new DurationStatistic(System.currentTimeMillis()));
-	    row.setCurrentTest(new DurationStatistic(1234L));
-	    row.setCurrentTrial(new DurationStatistic(1234L));
-    
+    DurationGridRow row = new DurationGridRow();
+    row.setAllTime(new DurationStatistic(System.currentTimeMillis()));
+    row.setCurrentTest(new DurationStatistic(1234L));
+    row.setCurrentTrial(new DurationStatistic(1234L));
+
     return row;
   }
 }

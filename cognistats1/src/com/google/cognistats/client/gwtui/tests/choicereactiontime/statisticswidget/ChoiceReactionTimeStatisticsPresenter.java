@@ -7,13 +7,12 @@ import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.Reaction
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.ReadyGridRow;
 
 public class ChoiceReactionTimeStatisticsPresenter extends
-		BaseStatisticWidgetPresenter {
+    BaseStatisticWidgetPresenter {
 
-	public ChoiceReactionTimeStatisticsPresenter() {		
-        addRow(new ReactionTimeGridRow());
-        addRow(new ReactionTimeStdDevGridRow());
-        addRow(new ReadyGridRow());
-        addRow(new CorrectGridRow());
-	}
-
+  public ChoiceReactionTimeStatisticsPresenter() {
+    addRow(new ReactionTimeGridRow());
+    addRow(new ReactionTimeStdDevGridRow());
+    addRow(new ReadyGridRow());
+    addRow(new CorrectGridRow());
+  }
 }

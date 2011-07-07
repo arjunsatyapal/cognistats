@@ -4,6 +4,7 @@ import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.TestPresenter;
 import com.google.cognistats.client.gwtui.tests.base.statisticswidget.BaseStatisticsDisplay;
 import com.google.cognistats.client.gwtui.tests.base.testwidget.BaseTestDisplay;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
@@ -15,48 +16,43 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasWidgets;
 
 public class BasePresenter implements TestPresenter {
-  
+
   protected BaseTestDisplay testWidget;
   protected BaseStatisticsDisplay statisticsWidget;
   protected NumberFormat numberFormat;
   protected long testStartTime;
   protected long testTime;
-  
+
   public BasePresenter(BaseTestDisplay testWidget,
       BaseStatisticsDisplay statisticsWidget) {
     this.testWidget = testWidget;
     this.statisticsWidget = statisticsWidget;
     this.numberFormat = NumberFormat.getDecimalFormat();
   }
-  
+
   @Override
   public void go(
     HasWidgets container) {
     throw new UnsupportedOperationException();
   }
-  
+
   @Override
   public void bind() {
   }
-  
+
   @Override
   public Display getTestView() {
     return testWidget;
   }
-  
-  @Override
-  public Display getStatisticsView() {
-    return statisticsWidget;
-  }
-  
+
   protected void keyPressed(
     KeyPressEvent event) {
   }
-  
+
   protected void cancelTest() {
     Window.alert("Test cancelled!");
   }
-  
+
   @Override
   public KeyPressHandler getFocusPanelKeyPressHandler() {
     KeyPressHandler myHandler = new KeyPressHandler() {
@@ -73,7 +69,7 @@ public class BasePresenter implements TestPresenter {
     };
     return myHandler;
   }
-  
+
   @Override
   public TouchStartHandler getFocusPanelTouchStartHandler() {
     TouchStartHandler myTouchHandler = new TouchStartHandler() {
@@ -85,12 +81,12 @@ public class BasePresenter implements TestPresenter {
     };
     return myTouchHandler;
   }
-  
+
   protected void touchStart(
     TouchStartEvent event) {
     // do nothing
   }
-  
+
   protected Timer testTimer = new Timer() {
     @Override
     public void run() {
@@ -99,20 +95,26 @@ public class BasePresenter implements TestPresenter {
       testTimeUpdated();
     }
   };
-  
+
   protected void testTimeUpdated() {
     statisticsWidget.setTestTimeCurrent(testTime);
     statisticsWidget.setTestTimeAllTime(testTime + 36000000);
   }
-  
+
   @Override
   public void start() {
     testStartTime = System.currentTimeMillis();
     testTimer.scheduleRepeating(100);
   }
-  
+
   @Override
   public void stop() {
     cancelTest();
+  }
+
+  @Override
+  public BaseStatisticWidgetPresenter getStatPresenter() {
+    Window.alert("Illegal state. This should not be called.");
+    throw new UnsupportedOperationException();
   }
 }

@@ -1,14 +1,14 @@
-package com.google.cognistats.client.gwtui.tests.choicereactiontime.stimuluswidget;
+package com.google.cognistats.client.gwtui.tests.choicereactiontime.testwidget;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Widget;
 
-public class ChoiceReactionTimeStimulusView extends Composite implements
-    ChoiceReactionTimeStimulusDisplay {
+public class ChoiceReactionTimeTestView extends Composite implements
+    ChoiceReactionTimeTestDisplay {
 
   private static ChoiceReactionTimeStimulusViewUiBinder uiBinder =
       GWT.create(ChoiceReactionTimeStimulusViewUiBinder.class);
@@ -18,14 +18,14 @@ public class ChoiceReactionTimeStimulusView extends Composite implements
   private int choice;
 
   interface ChoiceReactionTimeStimulusViewUiBinder extends
-      UiBinder<Widget, ChoiceReactionTimeStimulusView> {
+      UiBinder<Widget, ChoiceReactionTimeTestView> {
   }
 
-  public ChoiceReactionTimeStimulusView() {
+  public ChoiceReactionTimeTestView() {
     initWidget(uiBinder.createAndBindUi(this));
   }
 
-  public ChoiceReactionTimeStimulusView(String firstName) {
+  public ChoiceReactionTimeTestView(String firstName) {
     initWidget(uiBinder.createAndBindUi(this));
   }
 

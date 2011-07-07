@@ -15,11 +15,42 @@
  */
 package com.google.cognistats.client.gwtui.widgets.statisticswidget;
 
+import com.google.cognistats.client.gwtui.mvpinterfaces.View;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.AbsolutePanel;
+import com.google.gwt.user.client.ui.Widget;
+
 /**
- * StatisticWidget which generates statistic view dynamically.  -- we don't even need this?
- * 
+ * StatisticWidget which generates statistic view dynamically. -- we don't even
+ * need this?
+ *
  * @author Arjun Satyapal
  */
-public class BaseStatisticWidgetView {
-  
+public class BaseStatisticWidgetView extends View implements BaseStatisticWidgetDisplay {
+  @UiField
+  AbsolutePanel statContainer;
+
+  private static BaseStatisticWidgetViewUiBinder uiBinder = GWT
+    .create(BaseStatisticWidgetViewUiBinder.class);
+
+  interface BaseStatisticWidgetViewUiBinder extends
+      UiBinder<Widget, BaseStatisticWidgetView> {
+  }
+
+  public BaseStatisticWidgetView() {
+    initWidget(uiBinder.createAndBindUi(this));
+  }
+
+  @Override
+  public void setEnabled(
+    boolean enabled) {
+    // Nothing to do here.
+  }
+
+  @Override
+  public AbsolutePanel getStatContainer() {
+    return statContainer;
+  }
 }

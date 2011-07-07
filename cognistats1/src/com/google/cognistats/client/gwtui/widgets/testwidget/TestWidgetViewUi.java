@@ -29,7 +29,7 @@ public class TestWidgetViewUi extends View implements TestWidgetDisplay{
   }
 
   @Override
-  public LayoutPanel getLayoutPanelStimulus() {
+  public LayoutPanel getLayoutPanelTest() {
     return layoutPanelTest;
   }
 

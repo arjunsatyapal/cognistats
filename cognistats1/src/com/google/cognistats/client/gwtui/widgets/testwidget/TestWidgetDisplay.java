@@ -25,7 +25,7 @@ import com.google.gwt.user.client.ui.LayoutPanel;
  * @author Arjun Satyapal
  */
 public interface TestWidgetDisplay extends Display {
-  LayoutPanel getLayoutPanelStimulus();
+  LayoutPanel getLayoutPanelTest();
 
   LayoutPanel getLayoutPanelResult();
 

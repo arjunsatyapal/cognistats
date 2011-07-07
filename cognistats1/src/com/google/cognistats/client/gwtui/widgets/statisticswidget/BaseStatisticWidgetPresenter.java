@@ -34,32 +34,35 @@ import com.google.gwt.user.client.ui.HasWidgets;
 public class BaseStatisticWidgetPresenter implements Presenter {
   private final ArrayList<BaseStatisticGridRow> listOfRows;
 
+  BaseStatisticWidgetDisplay display;
   public BaseStatisticWidgetPresenter() {
+    this.display = new BaseStatisticWidgetView();
     this.listOfRows = new ArrayList<BaseStatisticGridRow>();
     addRow(new DurationGridRow());
   }
-  
-  public void addRow(BaseStatisticGridRow row) {
-	  listOfRows.add(row);
+
+  public void addRow(
+    BaseStatisticGridRow row) {
+    listOfRows.add(row);
   }
-  
-  public void addRowAt(int index, BaseStatisticGridRow row) {
-	  listOfRows.add(index % listOfRows.size(), row);
+
+  public void addRowAt(
+    int index, BaseStatisticGridRow row) {
+    listOfRows.add(index % listOfRows.size(), row);
   }
-  
+
   // TODO: Would be cleaner to remove rows by name, rather than by index.
-  public void removeRowAt(int index) {
-	  listOfRows.remove(index % listOfRows.size());
+  public void removeRowAt(
+    int index) {
+    listOfRows.remove(index % listOfRows.size());
   }
-  
+
   public void clearRows() {
-	  listOfRows.clear();
+    listOfRows.clear();
   }
-  
-  
+
   @Override
-  public void go(
-    HasWidgets container) {
+  public void go(HasWidgets container) {
 
     container.clear();
     Grid grid = new Grid(listOfRows.size(), BaseStatisticGridRow.numColumn);
@@ -69,30 +72,34 @@ public class BaseStatisticWidgetPresenter implements Presenter {
       BaseStatisticGridRow currRow = listOfRows.get(rowCount);
 
       CellFormatter cellFormatter = grid.getCellFormatter();
-      
+
       grid.setWidget(rowCount, 0, currRow.getRowTitle());
-      cellFormatter.addStyleName(rowCount, 0,
-        RESOURCE.globalStyle().statGridRowTitle());
+      cellFormatter.addStyleName(rowCount, 0, RESOURCE.globalStyle()
+        .statGridRowTitle());
 
       grid.setWidget(rowCount, 1, currRow.getTrialColumn());
-      cellFormatter.setStyleName(rowCount, 1,
-        RESOURCE.globalStyle().statGridTrial());
+      cellFormatter.setStyleName(rowCount, 1, RESOURCE.globalStyle()
+        .statGridTrial());
 
       grid.setWidget(rowCount, 2, currRow.getTestColumn());
-      cellFormatter.setStyleName(rowCount, 2,
-        RESOURCE.globalStyle().statGridTest());
+      cellFormatter.setStyleName(rowCount, 2, RESOURCE.globalStyle()
+        .statGridTest());
 
       grid.setWidget(rowCount, 3, currRow.getAllTimeColumn());
-      cellFormatter.setStyleName(rowCount, 3,
-        RESOURCE.globalStyle().statGridAllTime());
+      cellFormatter.setStyleName(rowCount, 3, RESOURCE.globalStyle()
+        .statGridAllTime());
     }
 
-    container.add(grid);
+    display.getStatContainer().add(grid);
+    container.add(display.asWidget());
   }
 
   @Override
   public void bind() {
     // TODO Auto-generated method stub
+  }
 
+  public BaseStatisticWidgetDisplay getStatisticWidget() {
+    return display;
   }
 }

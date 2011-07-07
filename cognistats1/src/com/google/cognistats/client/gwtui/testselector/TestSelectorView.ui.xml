@@ -3,9 +3,6 @@
   xmlns:g="urn:import:com.google.gwt.user.client.ui"
 >
   <g:LayoutPanel width="100%" height="100%">
-    <g:layer left="21px" width="137px" top="36px" height="43px">
-      <g:Button text="Old Simple Reaction Time Test" ui:field="buttonOldSRTT" />
-    </g:layer>
     <g:layer left="21px" width="137px" top="85px" height="43px">
       <g:Button text="Choice Reaction Time Test" ui:field="buttonCRTT" />
     </g:layer>

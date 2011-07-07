@@ -1,8 +1,8 @@
 package com.google.cognistats.client.gwtui.tests.simplereactiontime.testwidget;
 
-import com.google.cognistats.client.gwtui.tests.choicereactiontime.stimuluswidget.ChoiceReactionTimeStimulusView;
+import com.google.cognistats.client.gwtui.tests.choicereactiontime.testwidget.ChoiceReactionTimeTestView;
 
-public class SimpleReactionTimeTestView extends ChoiceReactionTimeStimulusView
+public class SimpleReactionTimeTestView extends ChoiceReactionTimeTestView
     implements SimpleReactionTimeTestDisplay {
 
   // @UiField protected Label textChoice;

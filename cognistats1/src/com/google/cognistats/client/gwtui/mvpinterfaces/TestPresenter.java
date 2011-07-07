@@ -15,6 +15,7 @@
  */
 package com.google.cognistats.client.gwtui.mvpinterfaces;
 
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.TouchStartHandler;
 
@@ -26,7 +27,7 @@ import com.google.gwt.event.dom.client.TouchStartHandler;
 public interface TestPresenter extends Presenter {
   Display getTestView();
 
-  Display getStatisticsView();
+  BaseStatisticWidgetPresenter getStatPresenter();
 
   KeyPressHandler getFocusPanelKeyPressHandler();
 

@@ -5,9 +5,9 @@ import java.util.Random;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.TestPresenter;
-import com.google.cognistats.client.gwtui.tests.choicereactiontime.resultwidget.ChoiceReactionTimeResultDisplay;
-import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswidget.ChoiceReactionTimeStatisticsDisplay;
-import com.google.cognistats.client.gwtui.tests.choicereactiontime.stimuluswidget.ChoiceReactionTimeStimulusDisplay;
+import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswidget.ChoiceReactionTimeStatisticsPresenter;
+import com.google.cognistats.client.gwtui.tests.choicereactiontime.testwidget.ChoiceReactionTimeTestDisplay;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.TouchStartEvent;
@@ -25,8 +25,8 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
   protected static int delayLambda = 500;
   protected static int constantDelay = 250;
   protected int currentDelay;
-  protected ChoiceReactionTimeStimulusDisplay testWidget;
-  protected ChoiceReactionTimeStatisticsDisplay statisticsWidget;
+  protected ChoiceReactionTimeTestDisplay testWidget;
+  protected ChoiceReactionTimeStatisticsPresenter statPresenter;
   protected Random generator = new Random();
   protected int currentChoice;
   protected long t0, t1, t2;
@@ -41,10 +41,9 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
   private long testStartTime;
 
   public ChoiceReactionTimePresenter(
-      ChoiceReactionTimeStimulusDisplay stimulusWidget,
-      ChoiceReactionTimeStatisticsDisplay resultWidget) {
-    this.testWidget = stimulusWidget;
-    this.statisticsWidget = resultWidget;
+    ChoiceReactionTimeTestDisplay testWidget) {
+    this.testWidget = testWidget;
+    this.statPresenter = new ChoiceReactionTimeStatisticsPresenter();
     this.numberFormat = NumberFormat.getDecimalFormat();
   }
 
@@ -62,12 +61,6 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
   @Override
   public Display getTestView() {
     return testWidget;
-  }
-
-  @Override
-  public Display getStatisticsView() {
-    // TODO Auto-generated method stub
-    return statisticsWidget;
   }
 
   protected void handleReaction(int userChoice) {
@@ -182,17 +175,18 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
   }
 
   protected void updateText() {
-    statisticsWidget.getTextCorrectPercentage().setText(
-        numberFormat.format(statistics.getCorrectFraction() * 100) + "%");
-    statisticsWidget.getTextTooEarlyPercentage().setText(
-        numberFormat.format(statistics.getTooEarlyFraction() * 100) + "%");
-    statisticsWidget.getTextLastReactionTime().setText(lastReactionTimeMessage);
-    statisticsWidget.getTextTrialNumber().setText(
-        Integer.toString(statistics.getTotalTrials()));
-    statisticsWidget.getTextMeanReactionTime().setText(
-        numberFormat.format(statistics.getMeanReactionTime()));
-    statisticsWidget.getTextStandardDeviation().setText(
-        numberFormat.format(statistics.getStdDevReactionTime()));
+    //TODO(arjuns) : update the stat widget.
+//    statisticsWidget.getTextCorrectPercentage().setText(
+//        numberFormat.format(statistics.getCorrectFraction() * 100) + "%");
+//    statisticsWidget.getTextTooEarlyPercentage().setText(
+//        numberFormat.format(statistics.getTooEarlyFraction() * 100) + "%");
+//    statisticsWidget.getTextLastReactionTime().setText(lastReactionTimeMessage);
+//    statisticsWidget.getTextTrialNumber().setText(
+//        Integer.toString(statistics.getTotalTrials()));
+//    statisticsWidget.getTextMeanReactionTime().setText(
+//        numberFormat.format(statistics.getMeanReactionTime()));
+//    statisticsWidget.getTextStandardDeviation().setText(
+//        numberFormat.format(statistics.getStdDevReactionTime()));
   }
 
   protected void createTrial() {
@@ -219,13 +213,18 @@ public class ChoiceReactionTimePresenter implements TestPresenter {
     public void run() {
       long currentTime = System.currentTimeMillis();
       long testTime = currentTime - testStartTime;
-      statisticsWidget.getTextSessionDuration().setText(
-          Long.toString(testTime / 1000) + " seconds");
+//      statisticsWidget.getTextSessionDuration().setText(
+//          Long.toString(testTime / 1000) + " seconds");
     }
   };
 
   protected void startTimer() {
     timer.schedule(currentDelay);
     t0 = System.currentTimeMillis();
+  }
+
+  @Override
+  public BaseStatisticWidgetPresenter getStatPresenter() {
+    return statPresenter;
   }
 }

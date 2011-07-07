@@ -20,20 +20,17 @@ import com.google.gwt.user.client.ui.Button;
 
 /**
  * Display interface for Test Selection Screen.
- * 
+ *
  * @author Arjun Satyapal
  */
 public interface TestSelectorDisplay extends Display {
-  // Button to start Simple Reaction Time Test.
-  Button getButtonOldSRTT();
-  
   Button getButtonCRTT();
-  
+
   Button getButtonSimpleReactionTime();
-  
+
   Button getButtonBase();
-  
+
   Button getButtonArjunGrid();
-  
+
   Button getButtonStroop();
 }

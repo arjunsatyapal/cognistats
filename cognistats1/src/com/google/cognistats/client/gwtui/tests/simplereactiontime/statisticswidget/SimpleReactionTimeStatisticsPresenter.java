@@ -3,10 +3,11 @@ package com.google.cognistats.client.gwtui.tests.simplereactiontime.statisticswi
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 
 public class SimpleReactionTimeStatisticsPresenter extends
-		BaseStatisticWidgetPresenter {
+    BaseStatisticWidgetPresenter {
 
-	public SimpleReactionTimeStatisticsPresenter() {
-		removeRowAt(-1);
-	}
+  public SimpleReactionTimeStatisticsPresenter() {
+    // TODO(arjuns) : Fix this.
+    removeRowAt(-1);
+  }
 
 }

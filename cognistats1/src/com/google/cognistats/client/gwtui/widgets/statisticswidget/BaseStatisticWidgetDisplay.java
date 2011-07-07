@@ -13,16 +13,16 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.client.gwtui.tests.oldsimplereactiontime.stimuluswidget;
+package com.google.cognistats.client.gwtui.widgets.statisticswidget;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
-import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.AbsolutePanel;
 
 /**
- * Display interface for Simple Reaction Time Stimulus.
+ * Display interface for BaseStatisticWidget.
  *
  * @author Arjun Satyapal
  */
-public interface OldSimpleReactionTimeStimulusDisplay extends Display {
-  Image getImage();
+public interface BaseStatisticWidgetDisplay extends Display {
+  AbsolutePanel getStatContainer();
 }

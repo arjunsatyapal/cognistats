@@ -30,8 +30,6 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class TestSelectorView extends View implements TestSelectorDisplay {
   @UiField
-  Button buttonOldSRTT;
-  @UiField
   Button buttonCRTT;
   @UiField
   Button buttonSimpleReactionTime;
@@ -59,11 +57,6 @@ public class TestSelectorView extends View implements TestSelectorDisplay {
    */
   public TestSelectorView() {
     initWidget(uiBinder.createAndBindUi(this));
-  }
-
-  @Override
-  public Button getButtonOldSRTT() {
-    return buttonOldSRTT;
   }
 
   @Override
