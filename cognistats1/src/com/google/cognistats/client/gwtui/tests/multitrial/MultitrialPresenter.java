@@ -4,6 +4,9 @@ import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.basetest.BaseTestPresenter;
 import com.google.cognistats.client.gwtui.tests.multitrial.testwidget.MultitrialTestDisplay;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.RowNamesEnum;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.DurationStatistic;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TrialStatistic;
 
 public class MultitrialPresenter extends BaseTestPresenter implements Presenter {
 
@@ -23,6 +26,8 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
 
   protected void endTrial() {
     ++nTrials;
+    statPresenter.getRow(RowNamesEnum.TRIAL_ROW).setCurrentTest(new TrialStatistic(nTrials, 0));
+
     if (!isFinished()) {
       startTrial();
     }
