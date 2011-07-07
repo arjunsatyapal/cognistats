@@ -37,51 +37,58 @@ public class BaseStatisticWidgetPresenter implements Presenter {
   private final ArrayList<BaseStatisticGridRow> listOfRows;
 
   BaseStatisticWidgetDisplay display;
+
   public BaseStatisticWidgetPresenter() {
     this.display = new BaseStatisticWidgetView();
     this.listOfRows = new ArrayList<BaseStatisticGridRow>();
     addRow(new DurationGridRow());
   }
 
-  public void addRow(BaseStatisticGridRow row) {
+  public void addRow(
+    BaseStatisticGridRow row) {
     listOfRows.add(row);
   }
 
-  public void addRowAt(int index, BaseStatisticGridRow row) {
+  public void addRowAt(
+    int index, BaseStatisticGridRow row) {
     listOfRows.add(index % listOfRows.size(), row);
   }
 
-  public void removeRowAt(int index) {
+  public void removeRowAt(
+    int index) {
     listOfRows.remove(index % listOfRows.size());
   }
-  
-  public void removeRow(RowNamesEnum name) {
-	  Iterator<BaseStatisticGridRow> it = listOfRows.iterator();
-	  while(it.hasNext()) {
-		  BaseStatisticGridRow row = it.next();
-		  if(row.getName() == name) {
-			  listOfRows.remove(row);
-			  return;
-		  }
-	  }
+
+  public void removeRow(
+    RowNamesEnum name) {
+    Iterator<BaseStatisticGridRow> it = listOfRows.iterator();
+    while (it.hasNext()) {
+      BaseStatisticGridRow row = it.next();
+      if (row.getName() == name) {
+        listOfRows.remove(row);
+        return;
+      }
+    }
   }
 
   public void clearRows() {
     listOfRows.clear();
   }
-  
-  public BaseStatisticGridRow getRow(RowNamesEnum name) {
-	  Iterator<BaseStatisticGridRow> it = listOfRows.iterator();
-	  while(it.hasNext()) {
-		  BaseStatisticGridRow row = it.next();
-		  if(row.getName() == name)
-			  return row;		  
-	  }
-	  return null;
+
+  public BaseStatisticGridRow getRow(
+    RowNamesEnum name) {
+    Iterator<BaseStatisticGridRow> it = listOfRows.iterator();
+    while (it.hasNext()) {
+      BaseStatisticGridRow row = it.next();
+      if (row.getName() == name)
+        return row;
+    }
+    return null;
   }
 
   @Override
-  public void go(HasWidgets container) {
+  public void go(
+    HasWidgets container) {
 
     container.clear();
     Grid grid = new Grid(listOfRows.size(), BaseStatisticGridRow.numColumn);

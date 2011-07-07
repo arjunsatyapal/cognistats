@@ -1,20 +1,19 @@
 package com.google.cognistats.client.gwtui.tests.simplereactiontime;
 
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.ChoiceReactionTimePresenter;
+import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswidget.ChoiceReactionTimeStatisticsPresenter;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.testwidget.ChoiceReactionTimeTestDisplay;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 
 public class SimpleReactionTimePresenter extends ChoiceReactionTimePresenter {
 
-  public SimpleReactionTimePresenter(
-			ChoiceReactionTimeTestDisplay testWidget,
-			BaseStatisticWidgetPresenter statPresenter) {
-		super(testWidget, statPresenter);
-	}
+  public SimpleReactionTimePresenter(ChoiceReactionTimeTestDisplay testWidget,
+      ChoiceReactionTimeStatisticsPresenter statPresenter) {
+    super(testWidget, statPresenter);
+  }
 
-@Override
+  @Override
   public KeyPressHandler getFocusPanelKeyPressHandler() {
     KeyPressHandler myHandler = new KeyPressHandler() {
       @Override

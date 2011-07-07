@@ -7,9 +7,7 @@ import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.TestPresenter;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswidget.ChoiceReactionTimeStatisticsPresenter;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.testwidget.ChoiceReactionTimeTestDisplay;
-import com.google.cognistats.client.gwtui.tests.stroop.testwidget.StroopTestDisplay;
 import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;
-import com.google.cognistats.client.gwtui.tests.tsr.testwidget.TSRTestDisplay;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.RowNamesEnum;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.CorrectStatistic;
@@ -45,9 +43,12 @@ public class ChoiceReactionTimePresenter extends TSRPresenter implements TestPre
   NumberFormat numberFormat;
   private long testStartTime;
 
-  public ChoiceReactionTimePresenter(ChoiceReactionTimeTestDisplay testWidget, BaseStatisticWidgetPresenter statPresenter) {
+  public ChoiceReactionTimePresenter(ChoiceReactionTimeTestDisplay testWidget, ChoiceReactionTimeStatisticsPresenter statPresenter) {
 	super(testWidget.getTSRTestView(), statPresenter);
     this.numberFormat = NumberFormat.getDecimalFormat();
+    this.testWidget = testWidget;
+    this.statPresenter = statPresenter;
+    this.statistics = new ChoiceReactionTimeStatistics();
   }
 
   @Override
@@ -182,7 +183,7 @@ public class ChoiceReactionTimePresenter extends TSRPresenter implements TestPre
 	//statPresenter.getRow(RowNamesEnum.CORRECT_ROW).setCurrentTrial(new BooleanStatistic(lastReactionTimeResult));
 	statPresenter.getRow(RowNamesEnum.CORRECT_ROW).setCurrentTest(new CorrectStatistic(statistics.getCorrectFraction()));
 	statPresenter.getRow(RowNamesEnum.CORRECT_ROW).setAllTime(new CorrectStatistic(0.9));
-	
+
 //    statisticsWidget.getTextCorrectPercentage().setText(
 //        numberFormat.format(statistics.getCorrectFraction() * 100) + "%");
 //    statisticsWidget.getTextTooEarlyPercentage().setText(

@@ -16,12 +16,14 @@
 package com.google.cognistats.client.gwtui.widgets.statisticswidget.rows;
 
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.Statistic;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.RowNamesEnum;
 import com.google.gwt.user.client.ui.HTML;
 
 /**
  * All Grid Rows should inherit this.
- * 
+ * Structure of Grid is :
+ *
+ * Title         Trial           Test          AllTime
+ *
  * @author Arjun Satyapal
  */
 public abstract class BaseStatisticGridRow {
@@ -32,11 +34,11 @@ public abstract class BaseStatisticGridRow {
   protected HTML trialColumn;
   protected HTML testColumn;
   protected HTML allTimeColumn;
-  
+
   public static int getNumcolumn() {
     return numColumn;
   }
-  
+
   public RowNamesEnum getName() {
 	return name;
   }
@@ -60,21 +62,21 @@ public abstract class BaseStatisticGridRow {
   private String getHtmlDivForElement(String text) {
     return "<div>" + text + "</div>";
   }
-  
+
   protected BaseStatisticGridRow(RowNamesEnum name) {
 	this.name = name;
     this.rowTitle = new HTML(getHtmlDivForElement(name.getPublicName()));
   }
-  
+
   public void setCurrentTrial(Statistic trialColumn) {
     this.trialColumn = new HTML(getHtmlDivForElement(trialColumn.getFormatted()));
   }
-  
+
   public void setCurrentTest(Statistic testColumn) {
     this.testColumn = new HTML(getHtmlDivForElement(testColumn.getFormatted()));
   }
-  
-  public void setAllTime(Statistic allTimeColumn) { 
+
+  public void setAllTime(Statistic allTimeColumn) {
     this.allTimeColumn = new HTML(getHtmlDivForElement(allTimeColumn.getFormatted()));
   }
 }
