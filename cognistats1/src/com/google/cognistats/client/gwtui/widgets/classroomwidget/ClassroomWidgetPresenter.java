@@ -35,6 +35,7 @@ public class ClassroomWidgetPresenter implements Presenter {
       TestPresenter testPresenter) {
     this.display = display;
     this.testPresenter = testPresenter;
+    testPresenter.setStatContainer(this.display.getLayoutPanelResult());
   }
 
   @Override

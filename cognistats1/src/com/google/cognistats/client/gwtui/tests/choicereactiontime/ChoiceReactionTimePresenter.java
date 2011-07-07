@@ -53,8 +53,7 @@ public class ChoiceReactionTimePresenter extends TSRPresenter implements TestPre
 
   @Override
   public void go(HasWidgets container) {
-    // TODO Auto-generated method stub
-
+	//statPresenter.go(statContainer);  // trying doing this in base instead
   }
 
   @Override

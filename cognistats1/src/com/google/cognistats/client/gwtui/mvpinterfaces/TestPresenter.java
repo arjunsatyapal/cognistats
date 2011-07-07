@@ -18,6 +18,7 @@ package com.google.cognistats.client.gwtui.mvpinterfaces;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.TouchStartHandler;
+import com.google.gwt.user.client.ui.LayoutPanel;
 
 /**
  * Presenter interface for each test.
@@ -36,4 +37,6 @@ public interface TestPresenter extends Presenter {
   void start();
 
   void stop();
+
+  void setStatContainer(LayoutPanel layoutPanelResult);
 }
