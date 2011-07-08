@@ -49,6 +49,7 @@ public class ClassroomWidgetPresenter implements Presenter {
   public void bind() {
     display.getLayoutPanelTest().add(
         testPresenter.getTestView().asWidget());
+    display.getLayoutPanelResult().clear();
     display.getLayoutPanelResult()
         .add(testPresenter.getStatPresenter().getStatisticWidget().asWidget());
 

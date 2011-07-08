@@ -13,16 +13,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.client.gwtui.widgets.statisticswidget.rows;
+package com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics;
 
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.Statistic;
 import com.google.gwt.user.client.ui.HTML;
 
 /**
- * All Grid Rows should inherit this.
- * Structure of Grid is :
+ * All Grid Rows should inherit this. Structure of Grid is :
  *
- * Title         Trial           Test          AllTime
+ * Title Trial Test AllTime
  *
  * @author Arjun Satyapal
  */
@@ -40,7 +38,7 @@ public abstract class BaseStatisticGridRow {
   }
 
   public RowNamesEnum getName() {
-	return name;
+    return name;
   }
 
   public HTML getRowTitle() {
@@ -64,12 +62,13 @@ public abstract class BaseStatisticGridRow {
   }
 
   protected BaseStatisticGridRow(RowNamesEnum name) {
-	this.name = name;
+    this.name = name;
     this.rowTitle = new HTML(getHtmlDivForElement(name.getPublicName()));
   }
 
   public void setCurrentTrial(Statistic trialColumn) {
-    this.trialColumn = new HTML(getHtmlDivForElement(trialColumn.getFormatted()));
+    this.trialColumn =
+      new HTML(getHtmlDivForElement(trialColumn.getFormatted()));
   }
 
   public void setCurrentTest(Statistic testColumn) {
@@ -77,6 +76,7 @@ public abstract class BaseStatisticGridRow {
   }
 
   public void setAllTime(Statistic allTimeColumn) {
-    this.allTimeColumn = new HTML(getHtmlDivForElement(allTimeColumn.getFormatted()));
+    this.allTimeColumn =
+      new HTML(getHtmlDivForElement(allTimeColumn.getFormatted()));
   }
 }

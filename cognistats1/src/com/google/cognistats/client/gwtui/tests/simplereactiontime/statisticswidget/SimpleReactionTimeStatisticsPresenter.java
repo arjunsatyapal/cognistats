@@ -1,7 +1,7 @@
 package com.google.cognistats.client.gwtui.tests.simplereactiontime.statisticswidget;
 
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.RowNamesEnum;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.RowNamesEnum;
 
 public class SimpleReactionTimeStatisticsPresenter extends
     BaseStatisticWidgetPresenter {

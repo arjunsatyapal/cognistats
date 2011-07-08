@@ -35,13 +35,13 @@ public abstract class BaseTestPresenter implements TestPresenter {
     generator = new Random();
     setupKeys();
   }
-  
+
   protected void setupKeys() {
 	  keyMap = new HashMap<Character, Integer>();
 	  keyMap.put('q', 0);
 	  keyMap.put('Q', 0);
   }
-  
+
   @Override
   public void setStatContainer(LayoutPanel layoutPanelResult) {
 	  this.statContainer = layoutPanelResult;
