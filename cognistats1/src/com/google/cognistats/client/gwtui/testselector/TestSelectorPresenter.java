@@ -33,7 +33,6 @@ import com.google.cognistats.client.gwtui.tests.tsr.testwidget.TSRTestView;
 import com.google.cognistats.client.gwtui.widgets.classroomwidget.ClassroomWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.classroomwidget.ClassroomWidgetViewUi;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.DurationGridRow;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.DurationStatistic;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -130,15 +129,15 @@ public class TestSelectorPresenter implements Presenter {
         ClickEvent event) {
         BaseStatisticWidgetPresenter presenter =
           new BaseStatisticWidgetPresenter();
-        presenter.addRow(getDurationGridRow());
-        presenter.addRow(getDurationGridRow());
+        presenter.addRow(getDurationStatistic());
+        presenter.addRow(getDurationStatistic());
         presenter.go(getWorkspace());
       }
     });
   }
 
-  public DurationGridRow getDurationGridRow() {
-    DurationGridRow row = new DurationGridRow();
+  public DurationStatistic getDurationStatistic() {
+    DurationStatistic row = new DurationStatistic(1234L);
     row.setAllTime(new DurationStatistic(System.currentTimeMillis()));
     row.setCurrentTest(new DurationStatistic(1234L));
     row.setCurrentTrial(new DurationStatistic(1234L));

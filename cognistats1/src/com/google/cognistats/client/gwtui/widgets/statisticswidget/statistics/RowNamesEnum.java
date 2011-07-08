@@ -13,17 +13,27 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.cognistats.client.gwtui.widgets.statisticswidget.rows;
-
-import static com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.RowNamesEnum.DURATION_ROW;
-
+package com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics;
 
 /**
  *
  * @author Arjun Satyapal
  */
-public class DurationGridRow extends BaseStatisticGridRow {
-  public DurationGridRow() {
-    super(DURATION_ROW);
+public enum RowNamesEnum {
+  DURATION_ROW("Duration"),
+  REACTION_TIME_ROW("Reaction Time"),
+  REACTION_TIME_STD_DEV_ROW("Standard Deviation"),
+  TRIAL_ROW("Trials"),
+  CORRECT_ROW("Correct"),
+  READY_ROW("Ready");
+  
+  private String publicName;
+  
+  private RowNamesEnum(String publicName) {
+    this.publicName = publicName;
+  }
+  
+  public String getPublicName() {
+    return publicName;
   }
 }

@@ -9,8 +9,8 @@ import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswid
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.testwidget.ChoiceReactionTimeTestDisplay;
 import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.RowNamesEnum;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.CorrectStatistic;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.RowNamesEnum;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.TouchStartEvent;
