@@ -37,6 +37,10 @@ public class ClassroomWidgetPresenter implements Presenter {
     this.testPresenter = testPresenter;
     testPresenter.setStatContainer(this.display.getLayoutPanelResult());
   }
+  
+  public ClassroomWidgetDisplay getDisplay() {
+	  return display;
+  }
 
   @Override
   public void go(HasWidgets container) {

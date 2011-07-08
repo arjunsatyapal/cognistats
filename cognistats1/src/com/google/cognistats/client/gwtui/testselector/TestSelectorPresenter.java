@@ -18,7 +18,9 @@ package com.google.cognistats.client.gwtui.testselector;
 import static com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter.getWorkspace;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
+import com.google.cognistats.client.gwtui.tests.basetest.BaseStatisticsPresenter;
 import com.google.cognistats.client.gwtui.tests.basetest.BaseTestPresenter;
+import com.google.cognistats.client.gwtui.tests.basetest.testwidget.BaseTestView;
 import com.google.cognistats.client.gwtui.tests.reactiontime.ChoiceReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswidget.ChoiceReactionTimeStatisticsPresenter;
 import com.google.cognistats.client.gwtui.tests.reactiontime.testwidget.ChoiceReactionTimeTestView;
@@ -112,11 +114,12 @@ public class TestSelectorPresenter implements Presenter {
          * BasePresenter testPresenter = new BasePresenter( new BaseTestView(),
          * new BaseStatisticsView());
          */BaseTestPresenter testPresenter =
-          new TSRPresenter(new TSRTestView(), new BaseStatisticWidgetPresenter());
+          new BaseTestPresenter(new BaseTestView(), new BaseStatisticsPresenter());
 
         ClassroomWidgetPresenter presenter =
           new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(), testPresenter);
         presenter.go(getWorkspace());
+        testPresenter.go(presenter.getDisplay().getLayoutPanelTest());
       }
     });
 
