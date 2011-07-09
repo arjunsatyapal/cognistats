@@ -20,11 +20,7 @@ import static com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter.
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.basetest.BaseStatisticsPresenter;
 import com.google.cognistats.client.gwtui.tests.basetest.BaseTestPresenter;
-<<<<<<< HEAD
 import com.google.cognistats.client.gwtui.tests.basetest.testwidget.BaseTestView;
-import com.google.cognistats.client.gwtui.tests.reactiontime.ChoiceReactionTimePresenter;
-=======
->>>>>>> 92d4e060bbd8e69c537a249620bfd5ffd561979c
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswidget.ChoiceReactionTimeStatisticsPresenter;
 import com.google.cognistats.client.gwtui.tests.reactiontime.ChoiceReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.reactiontime.SimpleReactionTimePresenter;
@@ -83,13 +79,17 @@ public class TestSelectorPresenter implements Presenter {
 
       @Override
       public void onClick(ClickEvent event) {
-        SimpleReactionTimePresenter testPresenter =
+          BaseStatisticWidgetPresenter statPresenter =
+              new BaseStatisticWidgetPresenter();
+
+    	  SimpleReactionTimePresenter testPresenter =
           new SimpleReactionTimePresenter(new SimpleReactionTimeTestView(),
-            new ChoiceReactionTimeStatisticsPresenter());
+        		  statPresenter);
 
         ClassroomWidgetPresenter presenter =
           new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(),
             testPresenter);
+        statPresenter.go(presenter.getDisplay().getLayoutPanelResult());
         presenter.go(getWorkspace());
       }
     });
@@ -114,17 +114,13 @@ public class TestSelectorPresenter implements Presenter {
 
       @Override
       public void onClick(ClickEvent event) {
-        // TODO(arjuns) : Fix this once we have Base test committed.
-        /*
-         * BasePresenter testPresenter = new BasePresenter( new BaseTestView(),
-         * new BaseStatisticsView());
-         */BaseTestPresenter testPresenter =
-<<<<<<< HEAD
-          new BaseTestPresenter(new BaseTestView(), new BaseStatisticsPresenter());
-=======
-          new TSRPresenter(new TSRTestView(),
-            new BaseStatisticWidgetPresenter());
->>>>>>> 92d4e060bbd8e69c537a249620bfd5ffd561979c
+       BaseStatisticWidgetPresenter statPresenter =
+          new BaseStatisticWidgetPresenter();
+        final TrialStatistic trial1 = getTrialStatistic();
+        statPresenter.addRow(trial1);
+
+         BaseTestPresenter testPresenter =
+          new BaseTestPresenter(new BaseTestView(), statPresenter);
 
         ClassroomWidgetPresenter presenter =
           new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(),
@@ -146,7 +142,7 @@ public class TestSelectorPresenter implements Presenter {
         Timer testTimer = new Timer() {
           @Override
           public void run() {
-            trial1.increaseTrialCount();
+            //trial1.increaseTrialCount();
           }
         };
         testTimer.scheduleRepeating(1000);
@@ -157,7 +153,7 @@ public class TestSelectorPresenter implements Presenter {
   }
 
   public TrialStatistic getTrialStatistic() {
-    TrialStatistic trial = new TrialStatistic(100, 7);
+    TrialStatistic trial = new TrialStatistic();
     return trial;
   }
 }

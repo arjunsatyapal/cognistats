@@ -7,8 +7,6 @@ import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.TestPresenter;
 import com.google.cognistats.client.gwtui.tests.basetest.testwidget.BaseTestDisplay;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.rows.RowNamesEnum;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.DurationStatistic;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
@@ -31,11 +29,16 @@ public class BaseTestPresenter implements TestPresenter {
   private static long RANDOM_SEED = 0;
 
   public BaseTestPresenter(BaseTestDisplay testWidget,
-    BaseStatisticsPresenter statPresenter) {
+		  BaseStatisticWidgetPresenter statPresenter) {
     this.testWidget = testWidget;
     this.statPresenter = statPresenter;
     generator = new Random();
     setupKeys();
+    initializeStatistics();
+  }
+
+  protected void initializeStatistics() {
+	  
   }
 
   protected void setupKeys() {
@@ -119,8 +122,8 @@ public class BaseTestPresenter implements TestPresenter {
   };
 
   protected void testTimeUpdated() {
-	  statPresenter.getRow(RowNamesEnum.DURATION_ROW).setCurrentTest(new DurationStatistic(testTime));
-	  statPresenter.getRow(RowNamesEnum.DURATION_ROW).setAllTime(new DurationStatistic(testTime + 36000000));
+//	  statPresenter.getRow(RowNamesEnum.DURATION_ROW).setCurrentTest(new DurationStatistic(testTime));
+//	  statPresenter.getRow(RowNamesEnum.DURATION_ROW).setAllTime(new DurationStatistic(testTime + 36000000));
   }
 
   @Override

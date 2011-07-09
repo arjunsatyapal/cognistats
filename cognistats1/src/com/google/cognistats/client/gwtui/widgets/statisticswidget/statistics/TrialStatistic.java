@@ -3,24 +3,19 @@ package com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics;
 import static com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.RowNamesEnum.TRIAL_ROW;
 
 public class TrialStatistic extends BaseStatisticGridRow {
-  private int currTrialCount;
-  private int numTrialInTest;
-  private int numSessions;
 
-  public TrialStatistic(int numTrialInTest, int numSessions) {
+  public TrialStatistic() {
     super(TRIAL_ROW);
     setCurrentTrial("");
-
-    currTrialCount = 0;
-    this.numTrialInTest = numTrialInTest;
-    setCurrentTest(currTrialCount + "/" + this.numTrialInTest);
-
-    this.numSessions = numSessions;
-    setAllTime(this.numSessions + " sessions");
+    setCurrentTest("");
   }
-
-  public void increaseTrialCount() {
-    currTrialCount++;
-    setCurrentTest(currTrialCount + "/" + this.numTrialInTest);
+  
+  public void setTestTrialCount(int testTrialCount) {
+	  setCurrentTest(new Integer(testTrialCount).toString());
+  }
+  
+  public void setTestTrialAndTotalCount(int testTrialCount, int totalTrialCount) {
+	  setCurrentTest(new Integer(testTrialCount).toString() +
+			  "/" + new Integer(totalTrialCount).toString());
   }
 }

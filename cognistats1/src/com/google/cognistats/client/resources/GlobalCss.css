@@ -4,14 +4,9 @@
 }
 
 .statGridRowTitle {
-<<<<<<< HEAD
-	background: green;
-	width: 25%;
-=======
   border-color: black;
   border: 1px solid;
   width: 25%;
->>>>>>> 92d4e060bbd8e69c537a249620bfd5ffd561979c
 }
 
 .statGridTrial {
