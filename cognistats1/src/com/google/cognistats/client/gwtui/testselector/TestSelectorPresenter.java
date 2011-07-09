@@ -92,7 +92,6 @@ public class TestSelectorPresenter implements Presenter {
         ClassroomWidgetPresenter presenter =
           new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(),
             testPresenter);
-        statPresenter.go(presenter.getDisplay().getLayoutPanelResult());
         presenter.go(getWorkspace());
       }
     });
@@ -135,8 +134,6 @@ public class TestSelectorPresenter implements Presenter {
       public void onClick(ClickEvent event) {
        BaseStatisticWidgetPresenter statPresenter =
           new BaseStatisticWidgetPresenter();
-        final TrialStatistic trial1 = getTrialStatistic();
-        statPresenter.addRow(trial1);
 
          BaseTestPresenter testPresenter =
           new BaseTestPresenter(new BaseTestView(), statPresenter);
