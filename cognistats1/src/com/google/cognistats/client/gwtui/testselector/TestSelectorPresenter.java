@@ -28,6 +28,8 @@ import com.google.cognistats.client.gwtui.tests.reactiontime.testwidget.ChoiceRe
 import com.google.cognistats.client.gwtui.tests.reactiontime.testwidget.SimpleReactionTimeTestView;
 import com.google.cognistats.client.gwtui.tests.stroop.StroopPresenter;
 import com.google.cognistats.client.gwtui.tests.stroop.testwidget.StroopTestView;
+import com.google.cognistats.client.gwtui.tests.fingertapping.FingerTappingPresenter;
+import com.google.cognistats.client.gwtui.tests.fingertapping.testwidget.FingerTappingTestView;
 import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;
 import com.google.cognistats.client.gwtui.tests.tsr.testwidget.TSRTestView;
 import com.google.cognistats.client.gwtui.widgets.classroomwidget.ClassroomWidgetPresenter;
@@ -110,6 +112,22 @@ public class TestSelectorPresenter implements Presenter {
         presenter.go(getWorkspace());
       }
     });
+
+    display.getButtonFingerTapping().addClickHandler(new ClickHandler() {
+
+        @Override
+        public void onClick(ClickEvent event) {
+          // TODO(arjuns) : fix this.
+          BaseTestPresenter testPresenter =
+            new FingerTappingPresenter(new FingerTappingTestView(),
+              new BaseStatisticWidgetPresenter());
+
+          ClassroomWidgetPresenter presenter =
+            new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(),
+              testPresenter);
+          presenter.go(getWorkspace());
+        }
+      });
 
     display.getButtonBase().addClickHandler(new ClickHandler() {
 
