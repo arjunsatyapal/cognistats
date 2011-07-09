@@ -1,24 +1,33 @@
 .statGridCell {
-	border-color: black;
-	border: 1px solid;
+  border-color: black;
+  border: 1px solid;
 }
 
 .statGridRowTitle {
+<<<<<<< HEAD
 	background: green;
 	width: 25%;
+=======
+  border-color: black;
+  border: 1px solid;
+  width: 25%;
+>>>>>>> 92d4e060bbd8e69c537a249620bfd5ffd561979c
 }
 
 .statGridTrial {
-	background: red;
-	width: 25%
+  border-color: black;
+  border: 1px solid;
+  width: 25%
 }
 
 .statGridTest {
-    background: aqua;
-    width: 25%
+  border-color: black;
+  border: 1px solid;
+  width: 25%
 }
 
 .statGridAllTime {
-	background: blue;
-	width: 25%
+  border-color: black;
+  border: 1px solid;
+  width: 25%
 }

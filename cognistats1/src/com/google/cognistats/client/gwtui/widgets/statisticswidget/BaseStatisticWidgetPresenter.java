@@ -22,7 +22,6 @@ import java.util.Iterator;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.BaseStatisticGridRow;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.DurationStatistic;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.RowNamesEnum;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HTMLTable.CellFormatter;
@@ -41,7 +40,7 @@ public class BaseStatisticWidgetPresenter implements Presenter {
   public BaseStatisticWidgetPresenter() {
     this.display = new BaseStatisticWidgetView();
     this.listOfRows = new ArrayList<BaseStatisticGridRow>();
-    addRow(new DurationStatistic(1234L));
+//    addRow(new DurationStatistic(1234L));
   }
 
   public void addRow(

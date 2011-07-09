@@ -64,19 +64,20 @@ public abstract class BaseStatisticGridRow {
   protected BaseStatisticGridRow(RowNamesEnum name) {
     this.name = name;
     this.rowTitle = new HTML(getHtmlDivForElement(name.getPublicName()));
+    this.trialColumn = new HTML("");
+    this.testColumn = new HTML("");
+    this.allTimeColumn = new HTML("");
   }
 
-  public void setCurrentTrial(Statistic trialColumn) {
-    this.trialColumn =
-      new HTML(getHtmlDivForElement(trialColumn.getFormatted()));
+  public void setCurrentTrial(String trialColumn) {
+    this.trialColumn.setHTML(getHtmlDivForElement(trialColumn));
   }
 
-  public void setCurrentTest(Statistic testColumn) {
-    this.testColumn = new HTML(getHtmlDivForElement(testColumn.getFormatted()));
+  public void setCurrentTest(String testColumn) {
+    this.testColumn.setHTML(getHtmlDivForElement(testColumn));
   }
 
-  public void setAllTime(Statistic allTimeColumn) {
-    this.allTimeColumn =
-      new HTML(getHtmlDivForElement(allTimeColumn.getFormatted()));
+  public void setAllTime(String allTimeColumn) {
+    this.allTimeColumn.setHTML(getHtmlDivForElement(allTimeColumn));
   }
 }

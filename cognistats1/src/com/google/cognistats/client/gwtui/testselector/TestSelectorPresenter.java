@@ -20,11 +20,15 @@ import static com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter.
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.basetest.BaseStatisticsPresenter;
 import com.google.cognistats.client.gwtui.tests.basetest.BaseTestPresenter;
+<<<<<<< HEAD
 import com.google.cognistats.client.gwtui.tests.basetest.testwidget.BaseTestView;
 import com.google.cognistats.client.gwtui.tests.reactiontime.ChoiceReactionTimePresenter;
+=======
+>>>>>>> 92d4e060bbd8e69c537a249620bfd5ffd561979c
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswidget.ChoiceReactionTimeStatisticsPresenter;
-import com.google.cognistats.client.gwtui.tests.reactiontime.testwidget.ChoiceReactionTimeTestView;
+import com.google.cognistats.client.gwtui.tests.reactiontime.ChoiceReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.reactiontime.SimpleReactionTimePresenter;
+import com.google.cognistats.client.gwtui.tests.reactiontime.testwidget.ChoiceReactionTimeTestView;
 import com.google.cognistats.client.gwtui.tests.reactiontime.testwidget.SimpleReactionTimeTestView;
 import com.google.cognistats.client.gwtui.tests.stroop.StroopPresenter;
 import com.google.cognistats.client.gwtui.tests.stroop.testwidget.StroopTestView;
@@ -33,9 +37,10 @@ import com.google.cognistats.client.gwtui.tests.tsr.testwidget.TSRTestView;
 import com.google.cognistats.client.gwtui.widgets.classroomwidget.ClassroomWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.classroomwidget.ClassroomWidgetViewUi;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.DurationStatistic;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TrialStatistic;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.HasWidgets;
 
 /**
@@ -51,8 +56,7 @@ public class TestSelectorPresenter implements Presenter {
   }
 
   @Override
-  public void go(
-    HasWidgets container) {
+  public void go(HasWidgets container) {
     container.clear();
     container.add(display.asWidget());
     bind();
@@ -63,13 +67,14 @@ public class TestSelectorPresenter implements Presenter {
     display.getButtonCRTT().addClickHandler(new ClickHandler() {
 
       @Override
-      public void onClick(
-        ClickEvent event) {
+      public void onClick(ClickEvent event) {
         ChoiceReactionTimePresenter testPresenter =
-          new ChoiceReactionTimePresenter(new ChoiceReactionTimeTestView(), new ChoiceReactionTimeStatisticsPresenter());
+          new ChoiceReactionTimePresenter(new ChoiceReactionTimeTestView(),
+            new ChoiceReactionTimeStatisticsPresenter());
 
         ClassroomWidgetPresenter presenter =
-          new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(), testPresenter);
+          new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(),
+            testPresenter);
         presenter.go(getWorkspace());
       }
     });
@@ -77,13 +82,14 @@ public class TestSelectorPresenter implements Presenter {
     display.getButtonSimpleReactionTime().addClickHandler(new ClickHandler() {
 
       @Override
-      public void onClick(
-        ClickEvent event) {
+      public void onClick(ClickEvent event) {
         SimpleReactionTimePresenter testPresenter =
-          new SimpleReactionTimePresenter(new SimpleReactionTimeTestView(), new ChoiceReactionTimeStatisticsPresenter());
+          new SimpleReactionTimePresenter(new SimpleReactionTimeTestView(),
+            new ChoiceReactionTimeStatisticsPresenter());
 
         ClassroomWidgetPresenter presenter =
-          new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(), testPresenter);
+          new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(),
+            testPresenter);
         presenter.go(getWorkspace());
       }
     });
@@ -91,14 +97,15 @@ public class TestSelectorPresenter implements Presenter {
     display.getButtonStroop().addClickHandler(new ClickHandler() {
 
       @Override
-      public void onClick(
-        ClickEvent event) {
+      public void onClick(ClickEvent event) {
         // TODO(arjuns) : fix this.
         BaseTestPresenter testPresenter =
-          new StroopPresenter(new StroopTestView(), new BaseStatisticWidgetPresenter());
+          new StroopPresenter(new StroopTestView(),
+            new BaseStatisticWidgetPresenter());
 
         ClassroomWidgetPresenter presenter =
-          new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(), testPresenter);
+          new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(),
+            testPresenter);
         presenter.go(getWorkspace());
       }
     });
@@ -106,17 +113,22 @@ public class TestSelectorPresenter implements Presenter {
     display.getButtonBase().addClickHandler(new ClickHandler() {
 
       @Override
-      public void onClick(
-        ClickEvent event) {
+      public void onClick(ClickEvent event) {
         // TODO(arjuns) : Fix this once we have Base test committed.
         /*
          * BasePresenter testPresenter = new BasePresenter( new BaseTestView(),
          * new BaseStatisticsView());
          */BaseTestPresenter testPresenter =
+<<<<<<< HEAD
           new BaseTestPresenter(new BaseTestView(), new BaseStatisticsPresenter());
+=======
+          new TSRPresenter(new TSRTestView(),
+            new BaseStatisticWidgetPresenter());
+>>>>>>> 92d4e060bbd8e69c537a249620bfd5ffd561979c
 
         ClassroomWidgetPresenter presenter =
-          new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(), testPresenter);
+          new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(),
+            testPresenter);
         presenter.go(getWorkspace());
         testPresenter.go(presenter.getDisplay().getLayoutPanelTest());
       }
@@ -125,23 +137,27 @@ public class TestSelectorPresenter implements Presenter {
     display.getButtonArjunGrid().addClickHandler(new ClickHandler() {
 
       @Override
-      public void onClick(
-        ClickEvent event) {
+      public void onClick(ClickEvent event) {
         BaseStatisticWidgetPresenter presenter =
           new BaseStatisticWidgetPresenter();
-        presenter.addRow(getDurationStatistic());
-        presenter.addRow(getDurationStatistic());
+        final TrialStatistic trial1 = getTrialStatistic();
+        presenter.addRow(trial1);
+
+        Timer testTimer = new Timer() {
+          @Override
+          public void run() {
+            trial1.increaseTrialCount();
+          }
+        };
+        testTimer.scheduleRepeating(1000);
+
         presenter.go(getWorkspace());
       }
     });
   }
 
-  public DurationStatistic getDurationStatistic() {
-    DurationStatistic row = new DurationStatistic(1234L);
-    row.setAllTime(new DurationStatistic(System.currentTimeMillis()));
-    row.setCurrentTest(new DurationStatistic(1234L));
-    row.setCurrentTrial(new DurationStatistic(1234L));
-
-    return row;
+  public TrialStatistic getTrialStatistic() {
+    TrialStatistic trial = new TrialStatistic(100, 7);
+    return trial;
   }
 }
