@@ -29,7 +29,7 @@ public class BaseTestPresenter implements TestPresenter {
   private static long RANDOM_SEED = 0;
 
   public BaseTestPresenter(BaseTestDisplay testWidget,
-		  BaseStatisticWidgetPresenter statPresenter) {
+      BaseStatisticWidgetPresenter statPresenter) {
     this.testWidget = testWidget;
     this.statPresenter = statPresenter;
     generator = new Random();
@@ -42,21 +42,20 @@ public class BaseTestPresenter implements TestPresenter {
   }
 
   protected void setupKeys() {
-	  keyMap = new HashMap<Character, Integer>();
-	  keyMap.put('q', 0);
-	  keyMap.put('Q', 0);
+    keyMap = new HashMap<Character, Integer>();
+    keyMap.put('q', 0);
+    keyMap.put('Q', 0);
   }
 
   @Override
   public void setStatContainer(LayoutPanel layoutPanelResult) {
-	  this.statContainer = layoutPanelResult;
+    this.statContainer = layoutPanelResult;
+    statPresenter.go(statContainer);
   }
 
   @Override
-  public void go(
-    HasWidgets container) {
-	  statPresenter.go(statContainer);
-//    throw new UnsupportedOperationException();
+  public void go(HasWidgets container) {
+    throw new UnsupportedOperationException();
   }
 
   @Override
@@ -68,11 +67,10 @@ public class BaseTestPresenter implements TestPresenter {
     return testWidget;
   }
 
-  protected void keyPressed(
-    int keyCode) {
-	  if (keyCode == 0) {
-		  cancelTest();
-	  }
+  protected void keyPressed(int keyCode) {
+    if (keyCode == 0) {
+      cancelTest();
+    }
   }
 
   protected void cancelTest() {
@@ -83,12 +81,11 @@ public class BaseTestPresenter implements TestPresenter {
   public KeyPressHandler getFocusPanelKeyPressHandler() {
     KeyPressHandler myHandler = new KeyPressHandler() {
       @Override
-      public void onKeyPress(
-        KeyPressEvent event) {
+      public void onKeyPress(KeyPressEvent event) {
         char code = event.getCharCode();
         GWT.log("Keypress event: " + Character.toString(code));
         if (keyMap.containsKey(code)) {
-        	keyPressed(keyMap.get(code).intValue());
+          keyPressed(keyMap.get(code).intValue());
         }
       }
     };
@@ -99,16 +96,14 @@ public class BaseTestPresenter implements TestPresenter {
   public TouchStartHandler getFocusPanelTouchStartHandler() {
     TouchStartHandler myTouchHandler = new TouchStartHandler() {
       @Override
-      public void onTouchStart(
-        TouchStartEvent event) {
+      public void onTouchStart(TouchStartEvent event) {
         touchStart(event);
       }
     };
     return myTouchHandler;
   }
 
-  protected void touchStart(
-    TouchStartEvent event) {
+  protected void touchStart(TouchStartEvent event) {
     // do nothing
   }
 
@@ -122,8 +117,9 @@ public class BaseTestPresenter implements TestPresenter {
   };
 
   protected void testTimeUpdated() {
-//	  statPresenter.getRow(RowNamesEnum.DURATION_ROW).setCurrentTest(new DurationStatistic(testTime));
-//	  statPresenter.getRow(RowNamesEnum.DURATION_ROW).setAllTime(new DurationStatistic(testTime + 36000000));
+    // TODO(arjuns) : use presenter to update the time.
+    // statisticsWidget.setTestTimeCurrent(testTime);
+    // statisticsWidget.setTestTimeAllTime(testTime + 36000000);
   }
 
   @Override
@@ -140,10 +136,10 @@ public class BaseTestPresenter implements TestPresenter {
 
   @Override
   public BaseStatisticWidgetPresenter getStatPresenter() {
-	  return statPresenter;
+    return statPresenter;
   }
 
   protected Random getGenerator() {
-	  return generator;
+    return generator;
   }
 }

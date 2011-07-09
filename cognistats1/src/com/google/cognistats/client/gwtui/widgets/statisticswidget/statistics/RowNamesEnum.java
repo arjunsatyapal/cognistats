@@ -23,16 +23,17 @@ public enum RowNamesEnum {
   DURATION_ROW("Duration"),
   REACTION_TIME_ROW("Reaction Time"),
   REACTION_TIME_STD_DEV_ROW("Standard Deviation"),
+  TIME_ROW("Time"),
   TRIAL_ROW("Trials"),
   CORRECT_ROW("Correct"),
   READY_ROW("Ready");
-  
+
   private String publicName;
-  
+
   private RowNamesEnum(String publicName) {
     this.publicName = publicName;
   }
-  
+
   public String getPublicName() {
     return publicName;
   }

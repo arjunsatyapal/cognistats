@@ -69,15 +69,15 @@ public abstract class BaseStatisticGridRow {
     this.allTimeColumn = new HTML("");
   }
 
-  public void setCurrentTrial(String trialColumn) {
+  protected void setCurrentTrialColumn(String trialColumn) {
     this.trialColumn.setHTML(getHtmlDivForElement(trialColumn));
   }
 
-  public void setCurrentTest(String testColumn) {
+  protected void setCurrentTestColumn(String testColumn) {
     this.testColumn.setHTML(getHtmlDivForElement(testColumn));
   }
 
-  public void setAllTime(String allTimeColumn) {
+  protected void setAllTimeColumn(String allTimeColumn) {
     this.allTimeColumn.setHTML(getHtmlDivForElement(allTimeColumn));
   }
 }
