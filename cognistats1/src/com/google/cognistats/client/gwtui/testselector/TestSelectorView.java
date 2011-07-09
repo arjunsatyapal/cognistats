@@ -39,6 +39,8 @@ public class TestSelectorView extends View implements TestSelectorDisplay {
   Button buttonArjunGrid;
   @UiField
   Button buttonStroop;
+  @UiField
+  Button buttonFingerTapping;
 
   private static TestSelectorViewUiBinder uiBinder =
       GWT.create(TestSelectorViewUiBinder.class);
@@ -79,6 +81,11 @@ public class TestSelectorView extends View implements TestSelectorDisplay {
   @Override
   public Button getButtonStroop() {
     return buttonStroop;
+  }
+
+  @Override
+  public Button getButtonFingerTapping() {
+    return buttonFingerTapping;
   }
 
   @Override
