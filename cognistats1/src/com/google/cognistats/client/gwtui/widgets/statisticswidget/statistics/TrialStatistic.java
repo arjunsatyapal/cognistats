@@ -9,18 +9,19 @@ public class TrialStatistic extends BaseStatisticGridRow {
 
   public TrialStatistic(int numTrialInTest, int numSessions) {
     super(TRIAL_ROW);
-    setCurrentTrial("");
 
-    currTrialCount = 0;
+    this.currTrialCount = 0;
+    setCurrentTrialColumn("");
+
     this.numTrialInTest = numTrialInTest;
-    setCurrentTest(currTrialCount + "/" + this.numTrialInTest);
+    setCurrentTestColumn(this.currTrialCount + "/" + this.numTrialInTest);
 
     this.numSessions = numSessions;
-    setAllTime(this.numSessions + " sessions");
+    setAllTimeColumn(this.numSessions + " sessions");
   }
 
   public void increaseTrialCount() {
     currTrialCount++;
-    setCurrentTest(currTrialCount + "/" + this.numTrialInTest);
+    setCurrentTestColumn(currTrialCount + "/" + this.numTrialInTest);
   }
 }

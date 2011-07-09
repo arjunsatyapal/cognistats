@@ -31,6 +31,7 @@ import com.google.cognistats.client.gwtui.tests.tsr.testwidget.TSRTestView;
 import com.google.cognistats.client.gwtui.widgets.classroomwidget.ClassroomWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.classroomwidget.ClassroomWidgetViewUi;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TimeStatistic;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TrialStatistic;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -132,10 +133,18 @@ public class TestSelectorPresenter implements Presenter {
         final TrialStatistic trial1 = getTrialStatistic();
         presenter.addRow(trial1);
 
+        final TimeStatistic timeStat1 = new TimeStatistic(1000, 7);
+        presenter.addRow(timeStat1);
+        final long startTime = System.currentTimeMillis();
         Timer testTimer = new Timer() {
           @Override
           public void run() {
+
+            long someTime = System.currentTimeMillis();;
             trial1.increaseTrialCount();
+            long currTime = System.currentTimeMillis();
+            timeStat1.setCurrTrialTimeInMillis(currTime - someTime);
+            timeStat1.setTestTimeInMillis(currTime - startTime);
           }
         };
         testTimer.scheduleRepeating(1000);

@@ -29,7 +29,7 @@ public abstract class BaseTestPresenter implements TestPresenter {
   private static long RANDOM_SEED = 0;
 
   public BaseTestPresenter(BaseTestDisplay testWidget,
-    BaseStatisticWidgetPresenter statPresenter) {
+      BaseStatisticWidgetPresenter statPresenter) {
     this.testWidget = testWidget;
     this.statPresenter = statPresenter;
     generator = new Random();
@@ -37,20 +37,19 @@ public abstract class BaseTestPresenter implements TestPresenter {
   }
 
   protected void setupKeys() {
-	  keyMap = new HashMap<Character, Integer>();
-	  keyMap.put('q', 0);
-	  keyMap.put('Q', 0);
+    keyMap = new HashMap<Character, Integer>();
+    keyMap.put('q', 0);
+    keyMap.put('Q', 0);
   }
 
   @Override
   public void setStatContainer(LayoutPanel layoutPanelResult) {
-	  this.statContainer = layoutPanelResult;
-	  statPresenter.go(statContainer);
+    this.statContainer = layoutPanelResult;
+    statPresenter.go(statContainer);
   }
 
   @Override
-  public void go(
-    HasWidgets container) {
+  public void go(HasWidgets container) {
     throw new UnsupportedOperationException();
   }
 
@@ -63,11 +62,10 @@ public abstract class BaseTestPresenter implements TestPresenter {
     return testWidget;
   }
 
-  protected void keyPressed(
-    int keyCode) {
-	  if (keyCode == 0) {
-		  cancelTest();
-	  }
+  protected void keyPressed(int keyCode) {
+    if (keyCode == 0) {
+      cancelTest();
+    }
   }
 
   protected void cancelTest() {
@@ -78,12 +76,11 @@ public abstract class BaseTestPresenter implements TestPresenter {
   public KeyPressHandler getFocusPanelKeyPressHandler() {
     KeyPressHandler myHandler = new KeyPressHandler() {
       @Override
-      public void onKeyPress(
-        KeyPressEvent event) {
+      public void onKeyPress(KeyPressEvent event) {
         char code = event.getCharCode();
         GWT.log("Keypress event: " + Character.toString(code));
         if (keyMap.containsKey(code)) {
-        	keyPressed(keyMap.get(code).intValue());
+          keyPressed(keyMap.get(code).intValue());
         }
       }
     };
@@ -94,16 +91,14 @@ public abstract class BaseTestPresenter implements TestPresenter {
   public TouchStartHandler getFocusPanelTouchStartHandler() {
     TouchStartHandler myTouchHandler = new TouchStartHandler() {
       @Override
-      public void onTouchStart(
-        TouchStartEvent event) {
+      public void onTouchStart(TouchStartEvent event) {
         touchStart(event);
       }
     };
     return myTouchHandler;
   }
 
-  protected void touchStart(
-    TouchStartEvent event) {
+  protected void touchStart(TouchStartEvent event) {
     // do nothing
   }
 
@@ -118,8 +113,8 @@ public abstract class BaseTestPresenter implements TestPresenter {
 
   protected void testTimeUpdated() {
     // TODO(arjuns) : use presenter to update the time.
-//    statisticsWidget.setTestTimeCurrent(testTime);
-//    statisticsWidget.setTestTimeAllTime(testTime + 36000000);
+    // statisticsWidget.setTestTimeCurrent(testTime);
+    // statisticsWidget.setTestTimeAllTime(testTime + 36000000);
   }
 
   @Override
@@ -136,10 +131,10 @@ public abstract class BaseTestPresenter implements TestPresenter {
 
   @Override
   public BaseStatisticWidgetPresenter getStatPresenter() {
-	  return statPresenter;
+    return statPresenter;
   }
 
   protected Random getGenerator() {
-	  return generator;
+    return generator;
   }
 }
