@@ -2,14 +2,25 @@ package com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics;
 
 import static com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.RowNamesEnum.TRIAL_ROW;
 
-public class TrialStatistic extends Statistic {
+public class TrialStatistic extends BaseStatisticGridRow {
+  private int currTrialCount;
+  private int numTrialInTest;
+  private int numSessions;
 
-  public TrialStatistic(int value, int total) {
+  public TrialStatistic(int numTrialInTest, int numSessions) {
     super(TRIAL_ROW);
-    formatted = format(value, total);
+    setCurrentTrial("");
+
+    currTrialCount = 0;
+    this.numTrialInTest = numTrialInTest;
+    setCurrentTest(currTrialCount + "/" + this.numTrialInTest);
+
+    this.numSessions = numSessions;
+    setAllTime(this.numSessions + " sessions");
   }
 
-  protected String format(int value, int total) {
-    return Integer.toString(value) + " / " + Integer.toString(total);
+  public void increaseTrialCount() {
+    currTrialCount++;
+    setCurrentTest(currTrialCount + "/" + this.numTrialInTest);
   }
 }

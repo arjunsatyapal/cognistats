@@ -16,9 +16,6 @@
 package com.google.cognistats.client.gwtui.tests.multitrial.statisticswidget;
 
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.CorrectStatistic;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.ReactionTimeStatistic;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.ReactionTimeStdDevStatistic;
 
 /**
  *
@@ -27,9 +24,9 @@ import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.Re
 public class MultiTrialStatisticsPresenter extends BaseStatisticWidgetPresenter {
 
   public MultiTrialStatisticsPresenter() {
-    addRow(new ReactionTimeStatistic(1234.1234));
-    addRow(new ReactionTimeStdDevStatistic(1234.1234));
-//    addRow(new ReadyGridRow());
-    addRow(new CorrectStatistic(true));
+//    addRow(new ReactionTimeStatistic(1234.1234));
+//    addRow(new ReactionTimeStdDevStatistic(1234.1234));
+////    addRow(new ReadyGridRow());
+//    addRow(new CorrectStatistic(true));
   }
 }

@@ -9,8 +9,6 @@ import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswid
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.testwidget.ChoiceReactionTimeTestDisplay;
 import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.CorrectStatistic;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.RowNamesEnum;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.TouchStartEvent;
@@ -141,6 +139,7 @@ public class ChoiceReactionTimePresenter extends TSRPresenter implements TestPre
   @Override
   public void start() {
     initialize();
+    //TODO(arjuns) : add repeating delay as a constant.
     testTimer.scheduleRepeating(1000);
     startTrial();
   }
@@ -180,8 +179,8 @@ public class ChoiceReactionTimePresenter extends TSRPresenter implements TestPre
   protected void updateText() {
     //TODO(arjuns) : update the stat widget.
 	//statPresenter.getRow(RowNamesEnum.CORRECT_ROW).setCurrentTrial(new BooleanStatistic(lastReactionTimeResult));
-	statPresenter.getRow(RowNamesEnum.CORRECT_ROW).setCurrentTest(new CorrectStatistic(statistics.getCorrectFraction()));
-	statPresenter.getRow(RowNamesEnum.CORRECT_ROW).setAllTime(new CorrectStatistic(0.9));
+//	statPresenter.getRow(RowNamesEnum.CORRECT_ROW).setCurrentTest(new CorrectStatistic(statistics.getCorrectFraction()));
+//	statPresenter.getRow(RowNamesEnum.CORRECT_ROW).setAllTime(new CorrectStatistic(0.9));
 
 //    statisticsWidget.getTextCorrectPercentage().setText(
 //        numberFormat.format(statistics.getCorrectFraction() * 100) + "%");
