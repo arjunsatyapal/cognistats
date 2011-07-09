@@ -7,6 +7,7 @@ import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.TestPresenter;
 import com.google.cognistats.client.gwtui.tests.basetest.testwidget.BaseTestDisplay;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TimeStatistic;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
@@ -25,6 +26,7 @@ public class BaseTestPresenter implements TestPresenter {
   protected long testStartTime;
   protected long testTime;
   private Random generator;
+  protected TimeStatistic timeStatistic;
   protected HashMap<Character, Integer> keyMap;
   private static long RANDOM_SEED = 0;
 
@@ -38,7 +40,8 @@ public class BaseTestPresenter implements TestPresenter {
   }
 
   protected void initializeStatistics() {
-	  
+	  timeStatistic = new TimeStatistic();
+	  statPresenter.addRow(timeStatistic);
   }
 
   protected void setupKeys() {
@@ -55,7 +58,7 @@ public class BaseTestPresenter implements TestPresenter {
 
   @Override
   public void go(HasWidgets container) {
-    throw new UnsupportedOperationException();
+    //throw new UnsupportedOperationException();
   }
 
   @Override
@@ -118,6 +121,7 @@ public class BaseTestPresenter implements TestPresenter {
 
   protected void testTimeUpdated() {
     // TODO(arjuns) : use presenter to update the time.
+	  timeStatistic.setTestTimeInMillis(testTime);
     // statisticsWidget.setTestTimeCurrent(testTime);
     // statisticsWidget.setTestTimeAllTime(testTime + 36000000);
   }

@@ -140,21 +140,21 @@ public class TestSelectorPresenter implements Presenter {
         final TrialStatistic trial1 = getTrialStatistic();
         presenter.addRow(trial1);
 
-        final TimeStatistic timeStat1 = new TimeStatistic(1000, 7);
-        presenter.addRow(timeStat1);
-        final long startTime = System.currentTimeMillis();
-        Timer testTimer = new Timer() {
-          @Override
-          public void run() {
-
-            long someTime = System.currentTimeMillis();;
-            trial1.increaseTrialCount();
-            long currTime = System.currentTimeMillis();
-            timeStat1.setCurrTrialTimeInMillis(currTime - someTime);
-            timeStat1.setTestTimeInMillis(currTime - startTime);
-          }
-        };
-        testTimer.scheduleRepeating(1000);
+//        final TimeStatistic timeStat1 = new TimeStatistic(1000, 7);
+//        presenter.addRow(timeStat1);
+//        final long startTime = System.currentTimeMillis();
+//        Timer testTimer = new Timer() {
+//          @Override
+//          public void run() {
+//
+//            long someTime = System.currentTimeMillis();;
+//            trial1.increaseTrialCount();
+//            long currTime = System.currentTimeMillis();
+//            timeStat1.setCurrTrialTimeInMillis(currTime - someTime);
+//            timeStat1.setTestTimeInMillis(currTime - startTime);
+//          }
+//        };
+//        testTimer.scheduleRepeating(1000);
 
         presenter.go(getWorkspace());
       }

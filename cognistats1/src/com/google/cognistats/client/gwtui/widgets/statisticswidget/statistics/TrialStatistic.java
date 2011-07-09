@@ -6,16 +6,16 @@ public class TrialStatistic extends BaseStatisticGridRow {
 
   public TrialStatistic() {
     super(TRIAL_ROW);
-    setCurrentTrial("");
-    setCurrentTest("");
+    setCurrentTrialColumn("");
+    setCurrentTestColumn("");
   }
   
   public void setTestTrialCount(int testTrialCount) {
-	  setCurrentTest(new Integer(testTrialCount).toString());
+	  setCurrentTestColumn(new Integer(testTrialCount).toString());
   }
   
   public void setTestTrialAndTotalCount(int testTrialCount, int totalTrialCount) {
-	  setCurrentTest(new Integer(testTrialCount).toString() +
+	  setCurrentTestColumn(new Integer(testTrialCount).toString() +
 			  "/" + new Integer(totalTrialCount).toString());
   }
 }
