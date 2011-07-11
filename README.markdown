@@ -18,7 +18,7 @@ We want tests which are:
 3. Repeatable, so we can do them again and again before and after interventions.
 4. Computer-deliverable, so no human proctor needs to be involved. It's even better if they can be done on a smartphone.
 
-[CogniStats](http://cognistats.appspot.com/) is a web app collection of these tests, which cover as many important cognitive skills as we can reasonably measure. We deal with practice effects by designing tests that most directly test the skill itself, so that you quickly reach your upper limit, meaning that further variation is likely due to interventions, not just getting better at the tests.
+[CogniStats](http://cognistats.appspot.com/) (not at all ready for use) is a web app collection of these tests, which cover as many important cognitive skills as we can reasonably measure. We deal with practice effects by designing tests that most directly test the skill itself, so that you quickly reach your upper limit, meaning that further variation is likely due to interventions, not just getting better at the tests.
 
 You can take tests depending on your free time and energy levels, so you don't have to do them all in every session. We'll give you score reports and help you interpret your numbers. You'll decide what you want to do with it, whether you want to run experiments, establish a baseline to help detect decline or disease, or are just curious. CogniStats just measures; it doesn't manage experiments.
 
@@ -27,3 +27,5 @@ You can take tests depending on your free time and energy levels, so you don't h
 We've done over a year of research to identify over 20 gold-standard academic tests currently in use. We've implemented them all in an offline prototype. Now we're working on converting them to HTML5 and JavaScript, building a web app around them, and gathering interest. We need a lot of volunteers to take a lot of tests before we can start doing the math to cull out the redundant bits, so please sign up to be notified when it's ready for testing later this summer. If you want to help build it, that's great, too! Just send a message to [yonidonner on GitHub](http://github.com/yonidonner).
 
 # (sign-up-to-be-notified link goes here)
+
+(As the project is too early for testing, we haven't set up the Google Group for testers to join yet--please check back soon!)
