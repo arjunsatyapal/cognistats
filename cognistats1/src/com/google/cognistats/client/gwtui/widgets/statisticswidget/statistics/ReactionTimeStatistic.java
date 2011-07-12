@@ -1,17 +1,21 @@
-//package com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics;
-//
-//import com.google.gwt.i18n.client.NumberFormat;
-//
-//public class ReactionTimeStatistic extends Statistic {
-//
-//  public ReactionTimeStatistic(double value) {
-//    super(RowNamesEnum.REACTION_TIME_ROW);
-//    numberFormat = NumberFormat.getDecimalFormat();
-//    formatted = format(value);
-//  }
-//
-//  protected String format(double value) {
-//    return numberFormat.format(value) + " ms";
-//  }
-//
-//}
+package com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics;
+
+import static com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.RowNamesEnum.REACTION_TIME_ROW;
+
+public class ReactionTimeStatistic extends BaseStatisticGridRow {
+
+  public ReactionTimeStatistic() {
+    super(REACTION_TIME_ROW);
+    setCurrentTrialColumn("");
+    setCurrentTestColumn("");
+  }
+  
+  public void setTrialReactionTime(long reactionTime) {
+	  setCurrentTrialColumn(new Long(reactionTime).toString());
+  }
+  
+  public void setTestReactionTime(double mean, double variance) {
+	  setCurrentTestColumn(new Long(Math.round(mean)).toString() + "\u00b1" + 
+			  new Long(Math.round(Math.sqrt(variance))).toString());
+  }
+}
