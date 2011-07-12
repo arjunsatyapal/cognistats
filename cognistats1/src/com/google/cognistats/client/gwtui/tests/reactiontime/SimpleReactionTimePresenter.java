@@ -32,4 +32,9 @@ public class SimpleReactionTimePresenter extends ReactionTimePresenter implement
 		afterStimulusDisplay();
 	}
 
+	@Override
+	public String getInstructions() {
+		return "Press (space) quickly each time you see the green circle.";
+	}
+
 }

@@ -269,5 +269,9 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 	public BaseStatisticWidgetPresenter getStatPresenter() {
 		return super.getStatPresenter();
 	}
-
+	
+	@Override
+	public String getInstructions() {
+		return "The Stroop test measures inhibition and ego size. Color words will appear. You will press R for red, G for green, or B for blue. Pay attention: the desired response switches between name of word shown and color of word shown.";
+	}
 }

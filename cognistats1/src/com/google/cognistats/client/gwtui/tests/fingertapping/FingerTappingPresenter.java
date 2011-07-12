@@ -73,4 +73,8 @@ public class FingerTappingPresenter extends MultitrialPresenter implements
 		return (nTrials == testTotalTrials);
 	}
 
+	@Override
+	public String getInstructions() {
+		return "Press the space bar to start, and then press space as quickly as you can. There will be multiple trials.";
+	}
 }
