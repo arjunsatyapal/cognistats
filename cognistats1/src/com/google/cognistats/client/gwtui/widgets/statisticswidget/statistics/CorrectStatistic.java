@@ -1,14 +1,14 @@
 package com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics;
 
 import com.google.gwt.i18n.client.NumberFormat;
-import static com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.RowNamesEnum.CORRECT_ROW;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.RowNamesEnum;
 
 public class CorrectStatistic extends BaseStatisticGridRow {
 
 	NumberFormat numberFormat;
 
-	public CorrectStatistic() {
-		super(CORRECT_ROW);
+	public CorrectStatistic(RowNamesEnum name) {
+		super(name);
 
 		// For a correct ratio, i.e. 0.95
 		numberFormat = NumberFormat.getPercentFormat();

@@ -60,13 +60,18 @@ public abstract class BaseStatisticGridRow {
   private String getHtmlDivForElement(String text) {
     return "<div>" + text + "</div>";
   }
+  
+  protected void setName(RowNamesEnum name) {
+	  this.name = name;
+	  this.rowTitle = new HTML(getHtmlDivForElement(name.getPublicName()));
+  }
 
   protected BaseStatisticGridRow(RowNamesEnum name) {
-    this.name = name;
-    this.rowTitle = new HTML(getHtmlDivForElement(name.getPublicName()));
-    this.trialColumn = new HTML("");
-    this.testColumn = new HTML("");
-    this.allTimeColumn = new HTML("");
+	  this.rowTitle = new HTML("");
+	  this.trialColumn = new HTML("");
+	  this.testColumn = new HTML("");
+	  this.allTimeColumn = new HTML("");
+	  setName(name);
   }
 
   protected void setCurrentTrialColumn(String trialColumn) {

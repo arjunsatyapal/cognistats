@@ -23,6 +23,7 @@ public class BaseTestPresenter implements TestPresenter {
   protected BaseTestDisplay testWidget;
   protected BaseStatisticWidgetPresenter statPresenter;
   protected HasWidgets statContainer;
+  protected boolean isRunning;
   protected long testStartTime;
   protected long testTime;
   private Random generator;
@@ -37,6 +38,7 @@ public class BaseTestPresenter implements TestPresenter {
     generator = new Random();
     setupKeys();
     initializeStatistics();
+    isRunning = false;
   }
 
   protected void initializeStatistics() {
@@ -77,7 +79,8 @@ public class BaseTestPresenter implements TestPresenter {
   }
 
   protected void cancelTest() {
-    Window.alert("Test cancelled!");
+	  isRunning = false;
+	  Window.alert("Test cancelled!");
   }
 
   @Override
@@ -87,8 +90,10 @@ public class BaseTestPresenter implements TestPresenter {
       public void onKeyPress(KeyPressEvent event) {
         char code = event.getCharCode();
         GWT.log("Keypress event: " + Character.toString(code));
-        if (keyMap.containsKey(code)) {
-          keyPressed(keyMap.get(code).intValue());
+        if (isRunning) {
+        	if (keyMap.containsKey(code)) {
+        		keyPressed(keyMap.get(code).intValue());
+        	}
         }
       }
     };
@@ -100,7 +105,9 @@ public class BaseTestPresenter implements TestPresenter {
     TouchStartHandler myTouchHandler = new TouchStartHandler() {
       @Override
       public void onTouchStart(TouchStartEvent event) {
-        touchStart(event);
+    	  if (isRunning) {
+    		  touchStart(event);
+    	  }
       }
     };
     return myTouchHandler;
@@ -115,7 +122,9 @@ public class BaseTestPresenter implements TestPresenter {
     public void run() {
       long currentTime = System.currentTimeMillis();
       testTime = currentTime - testStartTime;
-      testTimeUpdated();
+      if (isRunning) {
+    	  testTimeUpdated();
+      }
     }
   };
 
@@ -131,6 +140,7 @@ public class BaseTestPresenter implements TestPresenter {
     testStartTime = System.currentTimeMillis();
     testTimer.scheduleRepeating(100);
     generator.setSeed(RANDOM_SEED);
+    isRunning = true;
   }
 
   @Override

@@ -5,6 +5,7 @@ import com.google.cognistats.client.gwtui.tests.basetest.BaseTestPresenter;
 import com.google.cognistats.client.gwtui.tests.multitrial.testwidget.MultitrialTestDisplay;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TrialStatistic;
+import com.google.gwt.user.client.Window;
 
 public class MultitrialPresenter extends BaseTestPresenter implements Presenter {
 
@@ -42,6 +43,10 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
 
     if (!isFinished()) {
       startTrial();
+    }
+    else {
+    	isRunning = false;
+    	Window.alert("Test finished");
     }
 
   }

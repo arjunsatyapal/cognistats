@@ -29,13 +29,13 @@ public class ChoiceReactionTimePresenter extends ReactionTimePresenter implement
 	@Override
 	protected void displayStimulus() {
 		reactionTimeTestWidget.stimulusOn(trialType);
-		super.displayStimulus();
+		afterStimulusDisplay();
 	}
 
 	@Override
 	protected void keyPressed(int keyCode) {
 		if (keyCode > 0) {
-			responseCorrect = (keyCode == trialType);
+			responseCorrect = (trialState == TrialState.AFTER_STIMULUS_DISPLAY) && ((keyCode-1) == trialType);
 			processResponse();
 			return;
 		}
