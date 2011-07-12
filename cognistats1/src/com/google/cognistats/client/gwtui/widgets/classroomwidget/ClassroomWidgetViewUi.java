@@ -20,6 +20,7 @@ public class ClassroomWidgetViewUi extends View implements
   @UiField LayoutPanel blackboard;
   @UiField LayoutPanel instructions;
   @UiField LayoutPanel summary;
+  @UiField HTML summaryStatistics;
   @UiField HTML instructionsText;
 
   private static ClassroomWidgetViewUiUiBinder uiBinder = GWT
@@ -56,6 +57,11 @@ public class ClassroomWidgetViewUi extends View implements
   @Override
   public HTML getInstructionsText() {
 	  return instructionsText;
+  }
+  
+  @Override
+  public HTML getSummaryStatistics() {
+	  return summaryStatistics;
   }
 
   @Override
