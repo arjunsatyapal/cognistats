@@ -40,7 +40,7 @@ public class TSRPresenter extends MultitrialPresenter implements Presenter {
 	@Override
 	protected void startTrial() {
 		super.startTrial();
-		testWidget.setFixationPlusEnabled(true);
+		//testWidget.setFixationPlusEnabled(true);
 		trialState = TrialState.BEFORE_STIMULUS_DISPLAY;
 		int delay = stimulusDisplayDelay();
 		if (delay > 0) {
@@ -63,7 +63,7 @@ public class TSRPresenter extends MultitrialPresenter implements Presenter {
 	}
 
 	protected void displayStimulus() {
-		testWidget.setFixationPlusEnabled(false);
+		//testWidget.setFixationPlusEnabled(false);
 		afterStimulusDisplay();
 	}
 

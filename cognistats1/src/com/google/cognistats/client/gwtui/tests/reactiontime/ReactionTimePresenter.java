@@ -27,7 +27,6 @@ public class ReactionTimePresenter extends TSRPresenter implements Presenter {
 
 	@Override
 	protected void startTrial() {
-		testWidget.setFixationPlusEnabled(true);
 		reactionTimeTestWidget.noStimulus();
 		createTrial();
 		super.startTrial();

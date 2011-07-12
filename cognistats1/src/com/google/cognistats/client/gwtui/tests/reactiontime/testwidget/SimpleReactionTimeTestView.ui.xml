@@ -10,7 +10,7 @@
 		<tsr:TSRTestView height="100%" width="100%" ui:field="tsrTest" />
 		</g:layer>
 		<g:layer left="35.0pct" width="30.0pct" top="35.0pct" height="30.0pct">
-			<g:Image url="images/image00.png" ui:field="stimulusImage" width="100%" height="100%"/>
+			<g:HTML width="98%" height="98%" ui:field="stimulus"></g:HTML>
 		</g:layer>
 	</g:LayoutPanel>
 </ui:UiBinder> 

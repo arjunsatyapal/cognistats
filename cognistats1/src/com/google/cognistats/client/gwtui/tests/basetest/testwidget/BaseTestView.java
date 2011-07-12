@@ -22,6 +22,7 @@ public class BaseTestView extends Composite implements BaseTestDisplay {
 
 	public BaseTestView() {
 		initWidget(uiBinder.createAndBindUi(this));
+		setFixationPlusEnabled(false);
 	}
 
 	@Override

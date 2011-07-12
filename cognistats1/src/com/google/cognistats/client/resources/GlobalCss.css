@@ -26,3 +26,12 @@
   border: 1px solid;
   width: 25%
 }
+
+.circle {
+  border-radius: 50%;
+  border: 1px solid black;	
+}
+
+.activeStimulus {
+  background-color: #93c47d;
+}

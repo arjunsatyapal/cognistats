@@ -1,17 +1,19 @@
 package com.google.cognistats.client.gwtui.tests.reactiontime.testwidget;
 
+import static com.google.cognistats.client.resources.GlobalResources.RESOURCE;
+
 import com.google.cognistats.client.gwtui.mvpinterfaces.View;
 import com.google.cognistats.client.gwtui.tests.tsr.testwidget.TSRTestView;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.user.client.ui.Image;
 
 public class SimpleReactionTimeTestView extends View implements ReactionTimeTestDisplay {
 	@UiField
 	TSRTestView tsrTest;
-	@UiField Image stimulusImage;
+	@UiField HTML stimulus;
 
 	private static BaseTestViewUiBinder uiBinder = GWT
 			.create(BaseTestViewUiBinder.class);
@@ -21,16 +23,17 @@ public class SimpleReactionTimeTestView extends View implements ReactionTimeTest
 
 	@Override
 	public void noStimulus() {
-		stimulusImage.setVisible(false);
+		stimulus.removeStyleName(RESOURCE.globalStyle().activeStimulus());		
 	}
 
 	@Override
 	public void stimulusOn(int stimulusType) {
-		stimulusImage.setVisible(true);
+		stimulus.addStyleName(RESOURCE.globalStyle().activeStimulus());		
 	}
 
 	public SimpleReactionTimeTestView() {
 		initWidget(uiBinder.createAndBindUi(this));
+		stimulus.setStyleName(RESOURCE.globalStyle().circle());		
 	}
 
 	@Override
