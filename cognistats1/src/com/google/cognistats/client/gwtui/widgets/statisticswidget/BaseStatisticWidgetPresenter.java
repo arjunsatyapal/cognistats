@@ -103,15 +103,15 @@ public class BaseStatisticWidgetPresenter implements Presenter {
         .statGridRowTitle());
 
       grid.setWidget(rowCount, 1, currRow.getTrialColumn());
-      cellFormatter.setStyleName(rowCount, 1, RESOURCE.globalStyle()
+      cellFormatter.addStyleName(rowCount, 1, RESOURCE.globalStyle()
         .statGridTrial());
 
       grid.setWidget(rowCount, 2, currRow.getTestColumn());
-      cellFormatter.setStyleName(rowCount, 2, RESOURCE.globalStyle()
+      cellFormatter.addStyleName(rowCount, 2, RESOURCE.globalStyle()
         .statGridTest());
 
       grid.setWidget(rowCount, 3, currRow.getAllTimeColumn());
-      cellFormatter.setStyleName(rowCount, 3, RESOURCE.globalStyle()
+      cellFormatter.addStyleName(rowCount, 3, RESOURCE.globalStyle()
         .statGridAllTime());
     }
 

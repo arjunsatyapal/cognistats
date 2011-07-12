@@ -36,6 +36,8 @@ public interface ClassroomWidgetDisplay extends Display {
   
   LayoutPanel getSummary();
 
+  HTML getSummaryStatistics();
+  
   HTML getInstructionsText();
   
   Button getButtonStart();

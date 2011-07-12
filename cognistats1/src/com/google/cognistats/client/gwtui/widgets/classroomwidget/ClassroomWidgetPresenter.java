@@ -77,7 +77,8 @@ public class ClassroomWidgetPresenter implements Presenter, TestFinisher {
       public void onClick(ClickEvent event) {
         testPresenter.start();
         display.getBlackboard().setVisible(false);
-        display.getInstructions().setVisible(false);
+        display.getInstructions().removeFromParent(); // so it doesn't get in the way
+        //display.getInstructions().setVisible(false);
       }
     });
 
@@ -111,6 +112,6 @@ public class ClassroomWidgetPresenter implements Presenter, TestFinisher {
 	display.getSummary().setVisible(true);
 	Iterator<Widget> it = results.iterator();
 	while(it.hasNext())
-		display.getSummary().add(it.next());
+		display.getSummaryStatistics().setHTML(it.next().getElement().getInnerHTML());
   }
 }
