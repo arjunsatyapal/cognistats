@@ -14,7 +14,6 @@ import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.LayoutPanel;
 
@@ -80,7 +79,7 @@ public class BaseTestPresenter implements TestPresenter {
 
   protected void cancelTest() {
 	  isRunning = false;
-	  Window.alert("Test cancelled!");
+	  finish();
   }
 
   @Override
@@ -160,5 +159,9 @@ public class BaseTestPresenter implements TestPresenter {
   @Override
   public String getInstructions() {
 	  return "These are the default instructions from BaseTestPresenter.";
+  }
+
+  @Override
+  public void finish() {
   }
 }
