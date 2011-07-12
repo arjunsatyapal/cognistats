@@ -1,12 +1,12 @@
 package com.google.cognistats.client.gwtui.tests.basetest;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Random;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.TestPresenter;
 import com.google.cognistats.client.gwtui.tests.basetest.testwidget.BaseTestDisplay;
+import com.google.cognistats.client.gwtui.widgets.classroomwidget.TestFinisher;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TimeStatistic;
 import com.google.gwt.core.client.GWT;
@@ -24,6 +24,7 @@ public class BaseTestPresenter implements TestPresenter {
   protected BaseTestDisplay testWidget;
   protected BaseStatisticWidgetPresenter statPresenter;
   protected HasWidgets statContainer;
+  protected TestFinisher finisher;
   protected boolean isRunning;
   protected long testStartTime;
   protected long testTime;
@@ -79,12 +80,6 @@ public class BaseTestPresenter implements TestPresenter {
     if (keyCode == 0) {
       cancelTest();
     }
-  }
-
-  protected void cancelTest() {
-	  isRunning = false;
-	  testComplete = false;
-	  finish();
   }
 
   @Override
@@ -151,7 +146,7 @@ public class BaseTestPresenter implements TestPresenter {
   public void stop() {
     cancelTest();
   }
-
+  
   @Override
   public BaseStatisticWidgetPresenter getStatPresenter() {
     return statPresenter;
@@ -159,6 +154,11 @@ public class BaseTestPresenter implements TestPresenter {
 
   protected Random getGenerator() {
     return generator;
+  }
+  
+  @Override
+  public void setFinisher(TestFinisher finisher) {
+	  this.finisher = finisher;
   }
   
   @Override
@@ -184,5 +184,13 @@ public class BaseTestPresenter implements TestPresenter {
   public void finish() {
 	  timeInTest = System.currentTimeMillis() - testStartTime;
 	  buildResults();
+	  finisher.finishTest(null);
   }
+  
+  protected void cancelTest() {
+	  isRunning = false;
+	  testComplete = false;
+	  finish();
+  }
+
 }

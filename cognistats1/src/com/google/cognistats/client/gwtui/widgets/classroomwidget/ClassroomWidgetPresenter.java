@@ -27,7 +27,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
  *
  * @author Arjun Satyapal
  */
-public class ClassroomWidgetPresenter implements Presenter {
+public class ClassroomWidgetPresenter implements Presenter, TestFinisher {
   private ClassroomWidgetDisplay display;
   private TestPresenter testPresenter;
 
@@ -36,6 +36,7 @@ public class ClassroomWidgetPresenter implements Presenter {
     this.display = display;
     this.testPresenter = testPresenter;
     testPresenter.setStatContainer(this.display.getLayoutPanelResult());
+    testPresenter.setFinisher(this);
   }
   
   public ClassroomWidgetDisplay getDisplay() {
@@ -82,5 +83,12 @@ public class ClassroomWidgetPresenter implements Presenter {
         testPresenter.stop();
       }
     });
+  }
+
+  @Override
+  public void finishTest(Object results) {
+	display.getSummary().setVisible(true);
+	
+	// do something with results
   }
 }
