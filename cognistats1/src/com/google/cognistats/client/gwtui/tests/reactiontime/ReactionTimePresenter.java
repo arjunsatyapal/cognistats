@@ -2,7 +2,7 @@ package com.google.cognistats.client.gwtui.tests.reactiontime;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
-import com.google.cognistats.client.gwtui.tests.aggregator.RealAggregator;
+import com.google.cognistats.client.gwtui.tests.aggregator.MeanVarianceAggregator;
 import com.google.cognistats.client.gwtui.tests.reactiontime.testwidget.ReactionTimeTestDisplay;
 import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
@@ -12,7 +12,7 @@ import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.Ro
 
 public class ReactionTimePresenter extends TSRPresenter implements Presenter {
 
-	protected RealAggregator correctAggregator;
+	protected MeanVarianceAggregator correctAggregator;
 	protected ReactionTimeStatistic reactionTimeStatistic;
 	protected CorrectStatistic readyStatistic;
 	protected ReactionTimeTestDisplay reactionTimeTestWidget;
@@ -30,7 +30,7 @@ public class ReactionTimePresenter extends TSRPresenter implements Presenter {
 	@Override
 	protected void initializeTest() {
 		super.initializeTest();
-		correctAggregator = new RealAggregator();
+		correctAggregator = new MeanVarianceAggregator();
 	}
 
 	@Override

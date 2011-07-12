@@ -61,7 +61,7 @@ public abstract class BaseStatisticGridRow {
     return "<div>" + text + "</div>";
   }
   
-  protected void setName(RowNamesEnum name) {
+  public void setName(RowNamesEnum name) {
 	  this.name = name;
 	  this.rowTitle = new HTML(getHtmlDivForElement(name.getPublicName()));
   }
@@ -84,5 +84,13 @@ public abstract class BaseStatisticGridRow {
 
   protected void setAllTimeColumn(String allTimeColumn) {
     this.allTimeColumn.setHTML(getHtmlDivForElement(allTimeColumn));
+  }
+  
+  public void clearTrial() {
+	  trialColumn.setHTML("");
+  }
+  
+  public void clearTest() {
+	  testColumn.setHTML("");
   }
 }

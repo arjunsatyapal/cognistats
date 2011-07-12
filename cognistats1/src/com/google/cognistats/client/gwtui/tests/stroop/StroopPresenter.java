@@ -2,13 +2,22 @@ package com.google.cognistats.client.gwtui.tests.stroop;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
+import com.google.cognistats.client.gwtui.tests.aggregator.BernoulliAggregator;
+import com.google.cognistats.client.gwtui.tests.aggregator.MeanVarianceAggregator;
 import com.google.cognistats.client.gwtui.tests.stroop.testwidget.StroopTestDisplay;
 import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.CorrectStatistic;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.ReactionTimeStatistic;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.RowNamesEnum;
 import com.google.gwt.core.client.GWT;
 
 public class StroopPresenter extends TSRPresenter implements Presenter {
 
+	protected MeanVarianceAggregator overallRTAggregator, concordantRTAggregator, discordantRTAggregator;
+	protected BernoulliAggregator overallCorrectAggregator, concordantCorrectAggregator, discordantCorrectAggregator;
+	protected ReactionTimeStatistic overallReactionTimeStatistic, concordantReactionTimeStatistic, discordantReactionTimeStatistic;
+	protected CorrectStatistic overallCorrectStatistic, concordantCorrectStatistic, discordantCorrectStatistic;
 	protected boolean isConcordant, isTaskColor, trialReady;
 	protected StroopTestDisplay stroopTestWidget;
 	protected int wordColorIndex, wordNameIndex;
@@ -143,6 +152,12 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 
 	@Override
 	protected void initializeTest() {
+		overallCorrectAggregator = new BernoulliAggregator();
+		concordantCorrectAggregator = new BernoulliAggregator();
+		discordantCorrectAggregator = new BernoulliAggregator();
+		overallRTAggregator = new MeanVarianceAggregator();
+		concordantRTAggregator = new MeanVarianceAggregator();
+		discordantRTAggregator = new MeanVarianceAggregator();
 		chooseSubTestOrder();
 		testFinished = false;
 		testPartIndex = 0;
@@ -257,6 +272,44 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 			responseCorrect = (userResponse == wordNameIndex);
 		}
 		super.processResponse();
+		overallCorrectAggregator.add(responseCorrect);
+		overallCorrectStatistic.setTrialCorrect(responseCorrect);
+		overallCorrectStatistic.setTestCorrect(overallCorrectAggregator.getFraction());
+		if (responseCorrect) {
+			overallRTAggregator.add(reactionTime);
+			overallReactionTimeStatistic.setTrialReactionTime(reactionTime);
+			overallReactionTimeStatistic.setTestReactionTime(overallRTAggregator.mean(), overallRTAggregator.variance());
+		}
+		if (isConcordant) {
+			concordantCorrectAggregator.add(responseCorrect);
+			concordantCorrectStatistic.setTrialCorrect(responseCorrect);
+			concordantCorrectStatistic.setTestCorrect(concordantCorrectAggregator.getFraction());
+			discordantCorrectStatistic.clearTrial();
+			discordantReactionTimeStatistic.clearTrial();
+			if (responseCorrect) {
+				concordantRTAggregator.add(reactionTime);
+				concordantReactionTimeStatistic.setTrialReactionTime(reactionTime);
+				concordantReactionTimeStatistic.setTestReactionTime(concordantRTAggregator.mean(), concordantRTAggregator.variance());
+			}
+			else {
+				concordantReactionTimeStatistic.clearTrial();
+			}
+		}
+		else {
+			discordantCorrectAggregator.add(responseCorrect);
+			discordantCorrectStatistic.setTrialCorrect(responseCorrect);
+			discordantCorrectStatistic.setTestCorrect(discordantCorrectAggregator.getFraction());
+			concordantCorrectStatistic.clearTrial();
+			concordantReactionTimeStatistic.clearTrial();
+			if (responseCorrect) {
+				discordantRTAggregator.add(reactionTime);
+				discordantReactionTimeStatistic.setTrialReactionTime(reactionTime);
+				discordantReactionTimeStatistic.setTestReactionTime(discordantRTAggregator.mean(), discordantRTAggregator.variance());
+			}
+			else {
+				discordantReactionTimeStatistic.clearTrial();
+			}
+		}
 		if (responseCorrect) {
 			stroopTestWidget.setCommentText("Correct! RT = " + reactionTime);
 		}
@@ -268,6 +321,26 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 	@Override
 	public BaseStatisticWidgetPresenter getStatPresenter() {
 		return super.getStatPresenter();
+	}
+
+	@Override
+	protected void initializeStatistics() {
+		super.initializeStatistics();
+		overallReactionTimeStatistic = new ReactionTimeStatistic();
+		concordantReactionTimeStatistic = new ReactionTimeStatistic();
+		discordantReactionTimeStatistic = new ReactionTimeStatistic();
+		overallReactionTimeStatistic.setName(RowNamesEnum.OVERALL_REACTION_TIME_ROW);
+		concordantReactionTimeStatistic.setName(RowNamesEnum.CONCORDANT_REACTION_TIME_ROW);
+		discordantReactionTimeStatistic.setName(RowNamesEnum.DISCORDANT_REACTION_TIME_ROW);
+		overallCorrectStatistic = new CorrectStatistic(RowNamesEnum.OVERALL_CORRECT_ROW);
+		concordantCorrectStatistic = new CorrectStatistic(RowNamesEnum.CONCORDANT_CORRECT_ROW);
+		discordantCorrectStatistic = new CorrectStatistic(RowNamesEnum.DISCORDANT_CORRECT_ROW);
+		statPresenter.addRow(overallReactionTimeStatistic);
+		statPresenter.addRow(overallCorrectStatistic);
+		statPresenter.addRow(concordantReactionTimeStatistic);
+		statPresenter.addRow(concordantCorrectStatistic);
+		statPresenter.addRow(discordantReactionTimeStatistic);
+		statPresenter.addRow(discordantCorrectStatistic);
 	}
 
 }
