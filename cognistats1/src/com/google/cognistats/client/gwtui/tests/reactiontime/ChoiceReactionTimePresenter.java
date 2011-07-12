@@ -42,4 +42,9 @@ public class ChoiceReactionTimePresenter extends ReactionTimePresenter implement
 		super.keyPressed(keyCode);
 	}
 
+	@Override
+	public String getInstructions() {
+		return "Press 1, 2, or 3 quickly each time you see one of the circles turn green.";
+	}
+
 }

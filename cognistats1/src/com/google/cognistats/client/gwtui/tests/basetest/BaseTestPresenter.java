@@ -156,4 +156,9 @@ public class BaseTestPresenter implements TestPresenter {
   protected Random getGenerator() {
     return generator;
   }
+  
+  @Override
+  public String getInstructions() {
+	  return "These are the default instructions from BaseTestPresenter.";
+  }
 }

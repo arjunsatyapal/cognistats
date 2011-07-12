@@ -17,6 +17,7 @@ package com.google.cognistats.client.gwtui.widgets.classroomwidget;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.LayoutPanel;
 
 /**
@@ -28,7 +29,15 @@ public interface ClassroomWidgetDisplay extends Display {
   LayoutPanel getLayoutPanelTest();
 
   LayoutPanel getLayoutPanelResult();
+  
+  LayoutPanel getBlackboard();
+  
+  LayoutPanel getInstructions();
+  
+  LayoutPanel getSummary();
 
+  HTML getInstructionsText();
+  
   Button getButtonStart();
 
   Button getButtonStop();

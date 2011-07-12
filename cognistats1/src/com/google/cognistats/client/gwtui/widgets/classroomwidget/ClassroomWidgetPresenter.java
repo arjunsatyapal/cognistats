@@ -47,6 +47,9 @@ public class ClassroomWidgetPresenter implements Presenter {
     container.clear();
     container.add(display.asWidget());
     bind();
+    display.getBlackboard().setVisible(true);
+    display.getInstructions().setVisible(true);
+    display.getSummary().setVisible(false);
   }
 
   @Override
@@ -56,6 +59,7 @@ public class ClassroomWidgetPresenter implements Presenter {
     display.getLayoutPanelResult().clear();
     display.getLayoutPanelResult()
         .add(testPresenter.getStatPresenter().getStatisticWidget().asWidget());
+    display.getInstructionsText().setHTML(testPresenter.getInstructions());
 
     // Registering KeyPress and Touch Handlers with FocusPanel.
     MainScreenPresenter.getFocusPanel().addKeyPressHandler(
@@ -67,6 +71,8 @@ public class ClassroomWidgetPresenter implements Presenter {
       @Override
       public void onClick(ClickEvent event) {
         testPresenter.start();
+        display.getBlackboard().setVisible(false);
+        display.getInstructions().setVisible(false);
       }
     });
 

@@ -5,6 +5,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -18,6 +19,10 @@ public class ClassroomWidgetViewUi extends View implements
   Button buttonStart;
   @UiField
   Button buttonStop;
+  @UiField LayoutPanel blackboard;
+  @UiField LayoutPanel instructions;
+  @UiField LayoutPanel summary;
+  @UiField HTML instructionsText;
 
   private static ClassroomWidgetViewUiUiBinder uiBinder = GWT
     .create(ClassroomWidgetViewUiUiBinder.class);
@@ -33,6 +38,26 @@ public class ClassroomWidgetViewUi extends View implements
   @Override
   public LayoutPanel getLayoutPanelTest() {
     return layoutPanelTest;
+  }
+  
+  @Override
+  public LayoutPanel getBlackboard() {
+	  return blackboard;
+  }
+  
+  @Override
+  public LayoutPanel getInstructions() {
+	  return instructions;
+  }
+  
+  @Override
+  public LayoutPanel getSummary() {
+	  return summary;
+  }
+  
+  @Override
+  public HTML getInstructionsText() {
+	  return instructionsText;
   }
 
   @Override
