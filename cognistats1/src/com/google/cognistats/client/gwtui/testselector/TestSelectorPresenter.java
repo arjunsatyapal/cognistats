@@ -18,28 +18,23 @@ package com.google.cognistats.client.gwtui.testselector;
 import static com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter.getWorkspace;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
-import com.google.cognistats.client.gwtui.tests.basetest.BaseStatisticsPresenter;
 import com.google.cognistats.client.gwtui.tests.basetest.BaseTestPresenter;
 import com.google.cognistats.client.gwtui.tests.basetest.testwidget.BaseTestView;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswidget.ChoiceReactionTimeStatisticsPresenter;
+import com.google.cognistats.client.gwtui.tests.fingertapping.FingerTappingPresenter;
+import com.google.cognistats.client.gwtui.tests.fingertapping.testwidget.FingerTappingTestView;
 import com.google.cognistats.client.gwtui.tests.reactiontime.ChoiceReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.reactiontime.SimpleReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.reactiontime.testwidget.ChoiceReactionTimeTestView;
 import com.google.cognistats.client.gwtui.tests.reactiontime.testwidget.SimpleReactionTimeTestView;
 import com.google.cognistats.client.gwtui.tests.stroop.StroopPresenter;
 import com.google.cognistats.client.gwtui.tests.stroop.testwidget.StroopTestView;
-import com.google.cognistats.client.gwtui.tests.fingertapping.FingerTappingPresenter;
-import com.google.cognistats.client.gwtui.tests.fingertapping.testwidget.FingerTappingTestView;
-import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;
-import com.google.cognistats.client.gwtui.tests.tsr.testwidget.TSRTestView;
 import com.google.cognistats.client.gwtui.widgets.classroomwidget.ClassroomWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.classroomwidget.ClassroomWidgetViewUi;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TimeStatistic;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TrialStatistic;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.HasWidgets;
 
 /**

@@ -43,4 +43,6 @@ public interface TestPresenter extends Presenter {
   void setStatContainer(LayoutPanel layoutPanelResult);
   
   String getInstructions();
+  
+  void buildResults();
 }

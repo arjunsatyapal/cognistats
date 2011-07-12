@@ -1,6 +1,7 @@
 package com.google.cognistats.client.gwtui.tests.basetest;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Random;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
@@ -14,6 +15,7 @@ import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.LayoutPanel;
 
@@ -25,10 +27,12 @@ public class BaseTestPresenter implements TestPresenter {
   protected boolean isRunning;
   protected long testStartTime;
   protected long testTime;
+  protected long timeInTest;
   private Random generator;
   protected TimeStatistic timeStatistic;
   protected HashMap<Character, Integer> keyMap;
   private static long RANDOM_SEED = 0;
+  protected boolean testComplete;
 
   public BaseTestPresenter(BaseTestDisplay testWidget,
       BaseStatisticWidgetPresenter statPresenter) {
@@ -79,6 +83,7 @@ public class BaseTestPresenter implements TestPresenter {
 
   protected void cancelTest() {
 	  isRunning = false;
+	  testComplete = false;
 	  finish();
   }
 
@@ -162,6 +167,22 @@ public class BaseTestPresenter implements TestPresenter {
   }
 
   @Override
+  public void buildResults() {
+	  addTestCompleteResult();
+	  addTimeInTestResult();
+  }
+
+  protected void addTimeInTestResult() {
+	  Window.alert("Time in test: " + timeInTest);
+  }
+
+  protected void addTestCompleteResult() {
+	  Window.alert("Test complete: " + testComplete);
+  }
+
+  @Override
   public void finish() {
+	  timeInTest = System.currentTimeMillis() - testStartTime;
+	  buildResults();
   }
 }

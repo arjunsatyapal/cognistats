@@ -45,6 +45,7 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
     }
     else {
     	isRunning = false;
+    	testComplete = true;
     	finish();
     }
 
@@ -59,6 +60,12 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
     super.start();
     initializeTest();
     startTrial();
+  }
+
+  @Override
+  public void buildResults() {
+	  super.buildResults();
+	  
   }
 
 }
