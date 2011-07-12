@@ -40,6 +40,8 @@ public interface TestPresenter extends Presenter {
   void stop();
   
   void finish();
+  
+  void togglePause();
 
   void setStatContainer(LayoutPanel layoutPanelResult);
   

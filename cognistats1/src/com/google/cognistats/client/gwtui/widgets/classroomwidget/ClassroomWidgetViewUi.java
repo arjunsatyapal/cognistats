@@ -11,14 +11,12 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class ClassroomWidgetViewUi extends View implements
     ClassroomWidgetDisplay {
-  @UiField
-  LayoutPanel layoutPanelTest;
-  @UiField
-  LayoutPanel layoutPanelResult;
-  @UiField
-  Button buttonStart;
-  @UiField
-  Button buttonStop;
+  @UiField LayoutPanel layoutPanelTest;
+  @UiField LayoutPanel layoutPanelResult;
+  @UiField Button buttonStart;
+  @UiField Button buttonStop;
+  @UiField Button buttonPause;
+  @UiField Button buttonSubmit;
   @UiField LayoutPanel blackboard;
   @UiField LayoutPanel instructions;
   @UiField LayoutPanel summary;
@@ -68,6 +66,16 @@ public class ClassroomWidgetViewUi extends View implements
   @Override
   public Button getButtonStop() {
     return buttonStop;
+  }
+
+  @Override
+  public Button getButtonPause() {
+    return buttonPause;
+  }
+
+  @Override
+  public Button getButtonSubmit() {
+    return buttonSubmit;
   }
 
   @Override

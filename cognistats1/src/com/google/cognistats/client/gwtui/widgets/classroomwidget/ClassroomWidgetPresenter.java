@@ -15,12 +15,16 @@
  */
 package com.google.cognistats.client.gwtui.widgets.classroomwidget;
 
+import java.util.Iterator;
+
 import com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.mvpinterfaces.TestPresenter;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
  * Presenter for TestWidget.
@@ -83,12 +87,30 @@ public class ClassroomWidgetPresenter implements Presenter, TestFinisher {
         testPresenter.stop();
       }
     });
+
+    display.getButtonPause().addClickHandler(new ClickHandler() {
+      @Override
+      public void onClick(ClickEvent event) {
+        testPresenter.togglePause();
+        display.getButtonPause().setText(display.getButtonPause().getText() == "Pause" ? "Unpause" : "Pause");
+      }
+    });
+
+    display.getButtonSubmit().addClickHandler(new ClickHandler() {
+      @Override
+      public void onClick(ClickEvent event) {
+        // TODO: do something
+    	Window.alert("How can I get us back to the test selector screen from here?");
+      }
+    });
   }
 
   @Override
-  public void finishTest(Object results) {
+  public void finishTest(HasWidgets results) {
+	display.getBlackboard().setVisible(true);
 	display.getSummary().setVisible(true);
-	
-	// do something with results
+	Iterator<Widget> it = results.iterator();
+	while(it.hasNext())
+		display.getSummary().add(it.next());
   }
 }

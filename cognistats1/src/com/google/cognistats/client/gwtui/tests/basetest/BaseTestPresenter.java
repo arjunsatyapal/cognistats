@@ -148,6 +148,11 @@ public class BaseTestPresenter implements TestPresenter {
   }
   
   @Override
+  public void togglePause() {
+	  Window.alert("Pause not implemented yet");
+  }
+  
+  @Override
   public BaseStatisticWidgetPresenter getStatPresenter() {
     return statPresenter;
   }
@@ -184,7 +189,7 @@ public class BaseTestPresenter implements TestPresenter {
   public void finish() {
 	  timeInTest = System.currentTimeMillis() - testStartTime;
 	  buildResults();
-	  finisher.finishTest(null);
+	  finisher.finishTest(statContainer);
   }
   
   protected void cancelTest() {

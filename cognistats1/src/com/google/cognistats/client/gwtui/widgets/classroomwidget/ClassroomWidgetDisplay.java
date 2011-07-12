@@ -41,4 +41,8 @@ public interface ClassroomWidgetDisplay extends Display {
   Button getButtonStart();
 
   Button getButtonStop();
+
+  Button getButtonPause();
+
+  Button getButtonSubmit();
 }
