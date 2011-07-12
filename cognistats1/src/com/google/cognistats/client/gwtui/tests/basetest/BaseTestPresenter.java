@@ -6,6 +6,7 @@ import java.util.Random;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.TestPresenter;
 import com.google.cognistats.client.gwtui.tests.basetest.testwidget.BaseTestDisplay;
+import com.google.cognistats.client.gwtui.widgets.classroomwidget.TestFinisher;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TimeStatistic;
 import com.google.gwt.core.client.GWT;
@@ -14,6 +15,7 @@ import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.LayoutPanel;
 
@@ -22,6 +24,7 @@ public class BaseTestPresenter implements TestPresenter {
   protected BaseTestDisplay testWidget;
   protected BaseStatisticWidgetPresenter statPresenter;
   protected HasWidgets statContainer;
+  protected TestFinisher finisher;
   protected boolean isRunning;
   protected long testStartTime;
   protected long testTime;
@@ -75,11 +78,6 @@ public class BaseTestPresenter implements TestPresenter {
     if (keyCode == 0) {
       cancelTest();
     }
-  }
-
-  protected void cancelTest() {
-	  isRunning = false;
-	  finish();
   }
 
   @Override
@@ -146,6 +144,16 @@ public class BaseTestPresenter implements TestPresenter {
   public void stop() {
     cancelTest();
   }
+  
+  @Override
+  public void finish() {
+	  finisher.finishTest(null);
+  }
+
+  protected void cancelTest() {
+	  isRunning = false;
+	  Window.alert("Test cancelled!");
+  }
 
   @Override
   public BaseStatisticWidgetPresenter getStatPresenter() {
@@ -157,11 +165,12 @@ public class BaseTestPresenter implements TestPresenter {
   }
   
   @Override
+  public void setFinisher(TestFinisher finisher) {
+	  this.finisher = finisher;
+  }
+  
+  @Override
   public String getInstructions() {
 	  return "These are the default instructions from BaseTestPresenter.";
-  }
-
-  @Override
-  public void finish() {
   }
 }
