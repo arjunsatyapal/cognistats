@@ -1,8 +1,15 @@
 package com.google.cognistats.client.gwtui.tests.multitrial;
 
+import java.util.LinkedList;
+
+import org.apache.commons.lang.NotImplementedException;
+
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.basetest.BaseTestPresenter;
 import com.google.cognistats.client.gwtui.tests.multitrial.testwidget.MultitrialTestDisplay;
+import com.google.cognistats.client.gwtui.tests.results.MultitrialResults;
+import com.google.cognistats.client.gwtui.tests.results.MultitrialTrialResult;
+import com.google.cognistats.client.gwtui.tests.results.TrialResult;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TrialStatistic;
 
@@ -10,6 +17,7 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
 
   protected int nTrials;
   protected TrialStatistic trialStatistic;
+  protected LinkedList<TrialResult> trialResults;
 
   public MultitrialPresenter(MultitrialTestDisplay testWidget,
     BaseStatisticWidgetPresenter statPresenter) {
@@ -37,6 +45,7 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
   }
 
   protected void endTrial() {
+	  saveTrialResult();
 	  increaseTrialCount();
 //    statPresenter.getRow(RowNamesEnum.TRIAL_ROW).setCurrentTest(new TrialStatistic(nTrials, 0));
 
@@ -49,6 +58,16 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
     	finish();
     }
 
+  }
+  
+  protected void saveTrialResult() {
+	  MultitrialTrialResult trialResult = new MultitrialTrialResult();
+	  saveMultitrialTrialResult(trialResult);
+	  trialResults.add(trialResult);
+  }
+  
+  protected void saveMultitrialTrialResult(MultitrialTrialResult trialResult) {
+	  trialResult.setTrialNumber(nTrials);
   }
 
   protected boolean isFinished() {
@@ -64,8 +83,17 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
 
   @Override
   public void buildResults() {
-	  super.buildResults();
-	  
+	  MultitrialResults results = new MultitrialResults();
+	  buildMultitrialResults(results);
+  }
+  
+  protected void buildMultitrialResults(MultitrialResults results) {
+	  buildBaseResults(results);
+	  results.setTrialResults(trialResults);
+  }
+
+  protected void addTrialResults() {
+	  throw new NotImplementedException();
   }
 
 }

@@ -2,6 +2,8 @@ package com.google.cognistats.client.gwtui.tests.tsr;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.multitrial.MultitrialPresenter;
+import com.google.cognistats.client.gwtui.tests.results.MultitrialTrialResult;
+import com.google.cognistats.client.gwtui.tests.results.TSRTrialResult;
 import com.google.cognistats.client.gwtui.tests.tsr.testwidget.TSRTestDisplay;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.gwt.user.client.Timer;
@@ -95,5 +97,16 @@ public class TSRPresenter extends MultitrialPresenter implements Presenter {
 		super.endTrial();
 	}
 
+	protected void saveTrialResult() {
+		TSRTrialResult trialResult = new TSRTrialResult();
+		saveTSRTrialResult(trialResult);
+		trialResults.add(trialResult);
+	}
+
+	protected void saveTSRTrialResult(TSRTrialResult trialResult) {
+		saveMultitrialTrialResult(trialResult);
+		trialResult.setTrialCorrect(responseCorrect);
+		trialResult.setReactionTime(reactionTime);
+	}
 
 }

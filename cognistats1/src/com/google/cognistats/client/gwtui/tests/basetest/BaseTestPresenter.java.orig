@@ -1,12 +1,12 @@
 package com.google.cognistats.client.gwtui.tests.basetest;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Random;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.TestPresenter;
 import com.google.cognistats.client.gwtui.tests.basetest.testwidget.BaseTestDisplay;
-import com.google.cognistats.client.gwtui.tests.results.BaseResult;
 import com.google.cognistats.client.gwtui.widgets.classroomwidget.TestFinisher;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TimeStatistic;
@@ -33,7 +33,7 @@ public class BaseTestPresenter implements TestPresenter {
   private Random generator;
   protected TimeStatistic timeStatistic;
   protected HashMap<Character, Integer> keyMap;
-  private static long randomSeed = 0;
+  private static long RANDOM_SEED = 0;
   protected boolean testComplete;
 
   public BaseTestPresenter(BaseTestDisplay testWidget,
@@ -83,6 +83,15 @@ public class BaseTestPresenter implements TestPresenter {
     }
   }
 
+<<<<<<< HEAD
+  protected void cancelTest() {
+	  isRunning = false;
+	  testComplete = false;
+	  finish();
+  }
+
+=======
+>>>>>>> 4751fe8fcdf06402b7f46e5488a570cd410b6627
   @Override
   public KeyPressHandler getFocusPanelKeyPressHandler() {
     KeyPressHandler myHandler = new KeyPressHandler() {
@@ -139,7 +148,7 @@ public class BaseTestPresenter implements TestPresenter {
   public void start() {
     testStartTime = System.currentTimeMillis();
     testTimer.scheduleRepeating(100);
-    generator.setSeed(randomSeed);
+    generator.setSeed(RANDOM_SEED);
     isRunning = true;
   }
 
@@ -149,10 +158,15 @@ public class BaseTestPresenter implements TestPresenter {
   }
   
   @Override
-  public void togglePause() {
-	  Window.alert("Pause not implemented yet");
+  public void finish() {
+	  finisher.finishTest(null);
   }
-  
+
+  protected void cancelTest() {
+	  isRunning = false;
+	  Window.alert("Test cancelled!");
+  }
+
   @Override
   public BaseStatisticWidgetPresenter getStatPresenter() {
     return statPresenter;
@@ -168,33 +182,27 @@ public class BaseTestPresenter implements TestPresenter {
   }
   
   @Override
-  public String getInstructions() {
-	  return "These are the default instructions from BaseTestPresenter.";
+<<<<<<< HEAD
+  public void buildResults() {
+	  addTestCompleteResult();
+	  addTimeInTestResult();
   }
 
-  @Override
-  public void buildResults() {
-	  BaseResult results = new BaseResult();
-	  buildBaseResults(results);
+  protected void addTimeInTestResult() {
+	  Window.alert("Time in test: " + timeInTest);
   }
-  
-  protected void buildBaseResults(BaseResult results) {
-	  results.setTestComplete(testComplete);
-	  results.setTimeInTest(timeInTest);
-	  results.setSeed(randomSeed);
+
+  protected void addTestCompleteResult() {
+	  Window.alert("Test complete: " + testComplete);
   }
 
   @Override
   public void finish() {
 	  timeInTest = System.currentTimeMillis() - testStartTime;
 	  buildResults();
-	  finisher.finishTest(statContainer);
+=======
+  public String getInstructions() {
+	  return "These are the default instructions from BaseTestPresenter.";
+>>>>>>> 4751fe8fcdf06402b7f46e5488a570cd410b6627
   }
-  
-  protected void cancelTest() {
-	  isRunning = false;
-	  testComplete = false;
-	  finish();
-  }
-
 }
