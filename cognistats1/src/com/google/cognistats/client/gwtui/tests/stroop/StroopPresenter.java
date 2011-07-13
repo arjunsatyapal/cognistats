@@ -359,9 +359,7 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 		trialResult.setConcordant(isConcordant);
 		trialResult.setTrialIsColor(isTaskColor);
 		trialResult.setTrialNumberWithinPart(lastTrialNumberWithinPart);
-		if (testPart == 0) {
-			trialResult.setTestPart(testPartName());
-		}
+		trialResult.setTestPart(testPartName());
 	}
 
 	@Override
