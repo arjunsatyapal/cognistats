@@ -4,6 +4,7 @@ import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.aggregator.MeanVarianceAggregator;
 import com.google.cognistats.client.gwtui.tests.reactiontime.testwidget.ReactionTimeTestDisplay;
+import com.google.cognistats.client.gwtui.tests.results.ReactionTimeTrialResult;
 import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.CorrectStatistic;
@@ -90,5 +91,16 @@ public class ReactionTimePresenter extends TSRPresenter implements Presenter {
 		readyStatistic.setTrialCorrect(responseCorrect);
 		readyStatistic.setTestCorrect((double)numCorrectTrials / nTrials);
 	}
+
+	protected void saveTrialResult() {
+		ReactionTimeTrialResult trialResult = new ReactionTimeTrialResult();
+		saveReactionTimeTrialResult(trialResult);
+		trialResults.add(trialResult);
+	}
+
+	protected void saveReactionTimeTrialResult(ReactionTimeTrialResult trialResult) {
+		saveTSRTrialResult(trialResult);
+	}
+
 
 }

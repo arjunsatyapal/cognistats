@@ -2,12 +2,16 @@ package com.google.cognistats.client.gwtui.tests.reactiontime;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.reactiontime.testwidget.ReactionTimeTestDisplay;
+import com.google.cognistats.client.gwtui.tests.results.ChoiceReactionTimeTrialResult;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 
 public class ChoiceReactionTimePresenter extends ReactionTimePresenter implements Presenter {
 
 	protected static int numChoices = 3;
+	protected boolean ready;
+	protected boolean correctChoice;
 	protected int trialType;
+	protected int actualChoice;
 	
 	public ChoiceReactionTimePresenter(ReactionTimeTestDisplay testWidget, BaseStatisticWidgetPresenter statPresenter) {
 		super(testWidget, statPresenter);
@@ -35,11 +39,27 @@ public class ChoiceReactionTimePresenter extends ReactionTimePresenter implement
 	@Override
 	protected void keyPressed(int keyCode) {
 		if (keyCode > 0) {
-			responseCorrect = (trialState == TrialState.AFTER_STIMULUS_DISPLAY) && ((keyCode-1) == trialType);
+			ready = (trialState == TrialState.AFTER_STIMULUS_DISPLAY);
+			actualChoice = keyCode - 1;
+			correctChoice = (actualChoice == trialType);
+			responseCorrect = ready && correctChoice;
 			processResponse();
 			return;
 		}
 		super.keyPressed(keyCode);
+	}
+
+	protected void saveTrialResult() {
+		ChoiceReactionTimeTrialResult trialResult = new ChoiceReactionTimeTrialResult();
+		saveChoiceReactionTimeTrialResult(trialResult);
+		trialResults.add(trialResult);
+	}
+
+	protected void saveChoiceReactionTimeTrialResult(ChoiceReactionTimeTrialResult trialResult) {
+		saveReactionTimeTrialResult(trialResult);
+		trialResult.setTrialType(trialType);
+		trialResult.setChoice(actualChoice);
+		trialResult.setReady(ready);
 	}
 
 	@Override

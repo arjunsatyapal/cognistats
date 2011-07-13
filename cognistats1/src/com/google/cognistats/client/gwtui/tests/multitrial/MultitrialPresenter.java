@@ -16,6 +16,7 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
   protected int nTrials;
   protected TrialStatistic trialStatistic;
   protected LinkedList<TrialResult> trialResults;
+  protected long trialStartTime;
 
   public MultitrialPresenter(MultitrialTestDisplay testWidget,
     BaseStatisticWidgetPresenter statPresenter) {
@@ -35,6 +36,7 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
   }
   
   protected void startTrial() {
+	  trialStartTime = System.currentTimeMillis();
   }
   
   protected void increaseTrialCount() {
