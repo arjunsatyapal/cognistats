@@ -5,7 +5,6 @@ import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.aggregator.BernoulliAggregator;
 import com.google.cognistats.client.gwtui.tests.aggregator.MeanVarianceAggregator;
 import com.google.cognistats.client.gwtui.tests.results.StroopTrialResult;
-import com.google.cognistats.client.gwtui.tests.results.TSRTrialResult;
 import com.google.cognistats.client.gwtui.tests.stroop.testwidget.StroopTestDisplay;
 import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
@@ -28,7 +27,7 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 	protected static final int NUM_SUBPART_TRIALS = 5;
 	protected static final int NUM_COLORS = 3;
 	protected int subTestOrder[];
-	protected int trialNumberWithinPart;
+	protected int trialNumberWithinPart, lastTrialNumberWithinPart;
 	protected int testPart, testPartIndex, testSubPartIndex;
 	protected int subPartTrialsLeft;
 	protected int userResponse;
@@ -169,6 +168,7 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 	}
 
 	protected void initializeTestPart() {
+		trialNumberWithinPart = 0;
 		testPart = subTestOrder[testPartIndex];
 		switch (testPart) {
 		case 0:
@@ -211,6 +211,7 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 
 	@Override
 	protected void endTrial() {
+		lastTrialNumberWithinPart = trialNumberWithinPart;
 		if (--subPartTrialsLeft == 0) {
 			newTestPart = false;
 			if (testPart == 0) {
@@ -357,7 +358,16 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 		saveTSRTrialResult(trialResult);
 		trialResult.setConcordant(isConcordant);
 		trialResult.setTrialIsColor(isTaskColor);
-		//trialResult.setTrialNumberWithinPart(trialNumberWithinPart);
+		trialResult.setTrialNumberWithinPart(lastTrialNumberWithinPart);
+		if (testPart == 0) {
+			trialResult.setTestPart(testPartName());
+		}
+	}
+
+	@Override
+	protected void increaseTrialCount() {
+		super.increaseTrialCount();
+		++trialNumberWithinPart;
 	}
 
 	@Override
