@@ -4,6 +4,8 @@ import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.aggregator.BernoulliAggregator;
 import com.google.cognistats.client.gwtui.tests.aggregator.MeanVarianceAggregator;
+import com.google.cognistats.client.gwtui.tests.results.StroopTrialResult;
+import com.google.cognistats.client.gwtui.tests.results.TSRTrialResult;
 import com.google.cognistats.client.gwtui.tests.stroop.testwidget.StroopTestDisplay;
 import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
@@ -26,6 +28,7 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 	protected static final int NUM_SUBPART_TRIALS = 5;
 	protected static final int NUM_COLORS = 3;
 	protected int subTestOrder[];
+	protected int trialNumberWithinPart;
 	protected int testPart, testPartIndex, testSubPartIndex;
 	protected int subPartTrialsLeft;
 	protected int userResponse;
@@ -344,6 +347,19 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 	}
 
 	
+	protected void saveTrialResult() {
+		StroopTrialResult trialResult = new StroopTrialResult();
+		saveStroopTrialResult(trialResult);
+		trialResults.add(trialResult);
+	}
+
+	protected void saveStroopTrialResult(StroopTrialResult trialResult) {
+		saveTSRTrialResult(trialResult);
+		trialResult.setConcordant(isConcordant);
+		trialResult.setTrialIsColor(isTaskColor);
+		//trialResult.setTrialNumberWithinPart(trialNumberWithinPart);
+	}
+
 	@Override
 	public String getInstructions() {
 		return "The Stroop test measures inhibition and ego size. Color words will appear. You will press R for red, G for green, or B for blue. Pay attention: the desired response switches between name of word shown and color of word shown.";

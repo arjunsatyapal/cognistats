@@ -2,12 +2,10 @@ package com.google.cognistats.client.gwtui.tests.multitrial;
 
 import java.util.LinkedList;
 
-import org.apache.commons.lang.NotImplementedException;
-
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.basetest.BaseTestPresenter;
 import com.google.cognistats.client.gwtui.tests.multitrial.testwidget.MultitrialTestDisplay;
-import com.google.cognistats.client.gwtui.tests.results.MultitrialResults;
+import com.google.cognistats.client.gwtui.tests.results.MultitrialResult;
 import com.google.cognistats.client.gwtui.tests.results.MultitrialTrialResult;
 import com.google.cognistats.client.gwtui.tests.results.TrialResult;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
@@ -83,17 +81,13 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
 
   @Override
   public void buildResults() {
-	  MultitrialResults results = new MultitrialResults();
+	  MultitrialResult results = new MultitrialResult();
 	  buildMultitrialResults(results);
   }
   
-  protected void buildMultitrialResults(MultitrialResults results) {
+  protected void buildMultitrialResults(MultitrialResult results) {
 	  buildBaseResults(results);
 	  results.setTrialResults(trialResults);
-  }
-
-  protected void addTrialResults() {
-	  throw new NotImplementedException();
   }
 
 }
