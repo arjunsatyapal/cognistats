@@ -32,6 +32,7 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
 
   protected void initializeTest() {
     nTrials = 0;
+    trialResults = new LinkedList<TrialResult>();
     trialStatistic.setTestTrialCount(nTrials);
   }
   
