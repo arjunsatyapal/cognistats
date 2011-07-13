@@ -11,10 +11,9 @@
     <g:FlowPanel width="960px" height="" addStyleNames="{style.page}">
         <g:HorizontalPanel width="100%" height="100px" addStyleNames="{style.header}">
         	<g:VerticalPanel width="300px" height="100px">
-        		<g:Hyperlink targetHistoryToken="home">
-        			<g:Image url="images/cognistats_logo.jpg" width="100%" height="72px" />
-	        		<g:HTML wordWrap="true" horizontalAlignment="ALIGN_CENTER" width="100%" height="26px"><div class="{style.tagline}">quantified mind</div></g:HTML>
-        		</g:Hyperlink>
+        		<g:Image url="images/cognistats_logo.jpg" width="100%"
+            height="72px" />
+        		<g:HTML wordWrap="true" horizontalAlignment="ALIGN_CENTER" width="100%" height="26px"><div class="{style.tagline}">quantified mind</div></g:HTML>
         	</g:VerticalPanel>
         	<g:Cell verticalAlignment="ALIGN_BOTTOM">
         		<g:HorizontalPanel width="100%" height="29px" verticalAlignment="ALIGN_TOP">
