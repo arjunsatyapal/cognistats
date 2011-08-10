@@ -34,5 +34,7 @@ public interface TestSelectorDisplay extends Display {
 
   Button getButtonStroop();
 
+  Button getButtonDigitSpan();
+
   Button getButtonFingerTapping();
 }

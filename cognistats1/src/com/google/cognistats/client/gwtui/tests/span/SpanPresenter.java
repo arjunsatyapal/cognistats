@@ -1,91 +1,103 @@
-//package com.google.cognistats.client.gwtui.tests.span;
-//
-//import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
-//import com.google.cognistats.client.gwtui.tests.multitrial.MultitrialPresenter;
-//import com.google.cognistats.client.gwtui.tests.tsr.testwidget.TSRTestDisplay;
-//import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
-//import com.google.gwt.user.client.Timer;
-//
-//public class SpanPresenter extends MultitrialPresenter implements Presenter {
-//
-//	@Override
-//	protected void initializeTest() {
-//		super.initializeTest();
-//	}
-//
-//	public enum TrialState {
-//		BEFORE_STIMULUS_DISPLAY,
-//		DURING_STIMULUS_DISPLAY,
-//		AFTER_STIMULUS_DISPLAY
-//	}
-//
-//	protected TrialState trialState;
-//
-//	public SpanPresenter(TSRTestDisplay testWidget, BaseStatisticWidgetPresenter statPresenter) {
-//		super(testWidget.getMultitrialTestView(), statPresenter);
-//	}
-//
-//	protected int stimulusDisplayDelay() {
-//		return 0;
-//	}
-//
-//	@Override
-//	protected void startTrial() {
-//		super.startTrial();
-//		testWidget.setFixationPlusEnabled(true);
-//		trialState = TrialState.BEFORE_STIMULUS_DISPLAY;
-//		int delay = stimulusDisplayDelay();
-//		if (delay > 0) {
-//			stimulusDisplayTimer.schedule(delay);
-//		}
-//		else {
-//			startStimulusDisplay();
-//		}
-//	}
-//
-//	protected void startStimulusDisplay() {
-//		trialState = TrialState.DURING_STIMULUS_DISPLAY;
-//		stimulusStartDisplayTime = System.currentTimeMillis();
-//		displayStimulus();
-//	}
-//
-//	protected void afterStimulusDisplay() {
-//		trialState = TrialState.AFTER_STIMULUS_DISPLAY;
-//		stimulusEndDisplayTime = System.currentTimeMillis();
-//	}
-//
-//	protected void displayStimulus() {
-//		testWidget.setFixationPlusEnabled(false);
-//		afterStimulusDisplay();
-//	}
-//
-//	protected Timer stimulusDisplayTimer = new Timer() {
-//		@Override
-//		public void run() {
-//			startStimulusDisplay();
-//		}
-//	};
-//
-//	protected void processResponse() {
-//		reactionTime = System.currentTimeMillis() - stimulusEndDisplayTime;
-//		if (responseCorrect) {
-//			++numCorrectTrials;
-//		}
-//		else {
-//			++numIncorrectTrials;
-//		}
-//		endTrial();
-//	}
-//
-//	@Override
-//	public BaseStatisticWidgetPresenter getStatPresenter() {
-//		return super.getStatPresenter();
-//	}
-//
-//	@Override
-//	protected void endTrial() {
-//		super.endTrial();
-//	}
-//
-//
-//}
+package com.google.cognistats.client.gwtui.tests.span;
+
+import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
+import com.google.cognistats.client.gwtui.tests.levelestimation.LevelEstimationPresenter;
+import com.google.cognistats.client.gwtui.tests.results.SpanTrialResult;
+import com.google.cognistats.client.gwtui.tests.span.testwidget.SpanTestDisplay;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
+import com.google.gwt.user.client.Timer;
+
+public class SpanPresenter extends LevelEstimationPresenter implements Presenter {
+
+	protected int delayBetweenSequenceElements;
+	protected int delayBeforeFirstSequenceElement;
+	protected int sequenceElementOnTime;
+	protected boolean elementOn;
+	int currentlyDisplayedElement;
+	int currentSequenceLength;
+
+
+	@Override
+	protected void initializeTest() {
+		super.initializeTest();
+		sequenceElementOnTime = 1000;
+		delayBeforeFirstSequenceElement = 1000;
+		delayBetweenSequenceElements = 500;
+	}
+
+	protected void setDefaultLevel() {
+		currentLevel = 7;
+	}
+	
+	public SpanPresenter(SpanTestDisplay testWidget, BaseStatisticWidgetPresenter statPresenter) {
+		super(testWidget.getLevelEstimationTestView(), statPresenter);
+	}
+
+	protected void saveTrialResult() {
+		SpanTrialResult trialResult = new SpanTrialResult();
+		saveSpanTrialResult(trialResult);
+		trialResults.add(trialResult);
+	}
+
+	protected void saveSpanTrialResult(SpanTrialResult trialResult) {
+		saveLevelEstimationTrialResult(trialResult);
+	}
+	
+	protected void setupSequenceDisplay() {
+		elementOn = false;
+		currentlyDisplayedElement = 0;
+		elementDisplayTimer.schedule(delayBeforeFirstSequenceElement);
+	}
+	
+	protected void displaySequenceElement(int number) {
+	}
+
+	@Override
+	protected void displayStimulus() {
+		setupSequenceDisplay();
+	}
+	
+	protected Timer elementDisplayTimer = new Timer() {
+		@Override
+		public void run() {
+			displayNextElement();
+		}
+	};
+	
+	protected void displayNextElement() {
+		if (elementOn) {
+			hideSequenceElement();
+			elementOn = false;
+			++currentlyDisplayedElement;
+			elementDisplayTimer.schedule(delayBetweenSequenceElements);
+			return;
+		}
+		if (currentlyDisplayedElement >= currentSequenceLength) {
+			afterStimulusDisplay();
+		}
+		else {
+			displaySequenceElement(currentlyDisplayedElement);
+			elementOn = true;
+			elementDisplayTimer.schedule(sequenceElementOnTime);
+		}
+	}
+	
+	protected void hideSequenceElement() {
+	}
+
+	protected void createTrial() {
+		currentSequenceLength = currentLevel;
+		generateSequence(currentSequenceLength);
+	}
+	
+	@Override
+	protected void startTrial() {
+		createTrial();
+		setupSequenceDisplay();
+		super.startTrial();
+	}
+
+	protected void generateSequence(int sequenceSize) {
+	}
+
+}

@@ -1,0 +1,16 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:span="urn:import:com.google.cognistats.client.gwtui.tests.span.testwidget">
+	<ui:style>
+<!-- 		.transparent { background-color: transparent; border: 2px dashed brown; } -->
+	</ui:style>
+	<g:LayoutPanel height="100%" width="100%">
+		<g:layer left="0px" width="100.0pct" top="0px" height="100.0pct">
+			<span:SpanTestView height="100%" width="100%" ui:field="spanTest" />
+		</g:layer>
+		<g:layer left="10.0pct" width="80.0pct" top="42.0pct" height="16.0pct">
+			<g:Label text="Digit Label" horizontalAlignment="ALIGN_CENTER" ui:field="digitLabel"/>
+		</g:layer>
+	</g:LayoutPanel>
+</ui:UiBinder> 
