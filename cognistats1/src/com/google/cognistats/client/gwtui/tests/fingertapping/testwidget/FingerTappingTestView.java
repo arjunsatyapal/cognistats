@@ -5,7 +5,6 @@ import com.google.cognistats.client.gwtui.tests.multitrial.testwidget.Multitrial
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -13,9 +12,9 @@ public class FingerTappingTestView extends View implements FingerTappingTestDisp
 	@UiField
 	MultitrialTestView multiTrialTest;
 	@UiField Label tappingLabel;
+	@UiField Label handLabel;
 	@UiField Label timeLabel;
 	@UiField Label countLabel;
-	@UiField FlowPanel timeAndCount;
 
 	private static BaseTestViewUiBinder uiBinder = GWT
 			.create(BaseTestViewUiBinder.class);
@@ -38,23 +37,30 @@ public class FingerTappingTestView extends View implements FingerTappingTestDisp
 	}
 
 	@Override
-	public void setTime(int timeLeft) {
-		timeLabel.setText(Integer.toString(timeLeft) + " seconds");
+	public void setTimeLeft(int timeLeft) {
+		timeLabel.setText(Integer.toString(timeLeft) + " seconds left");
 	}
 
 	@Override
-	public void setCount(int pressCount) {
-		countLabel.setText(Integer.toString(pressCount) + " presses");
+	public void setTapCount(int tapCount) {
+		countLabel.setText(Integer.toString(tapCount) + " taps");
 	}
 
 	@Override
 	public void setInstructionsVisible(boolean visible) {
 		tappingLabel.setVisible(visible);
+		handLabel.setVisible(visible);
+	}
+	
+	@Override
+	public void setInstructionsHand(String hand) {
+		handLabel.setText("Use your " + hand + " hand.");
 	}
 	
 	@Override
 	public void setTimeAndCountVisible(boolean visible) {
-		timeAndCount.setVisible(visible);
+		timeLabel.setVisible(visible);
+		countLabel.setVisible(visible);
 	}
 
 }
