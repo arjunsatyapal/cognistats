@@ -5,8 +5,9 @@ import com.google.cognistats.client.gwtui.tests.multitrial.testwidget.Multitrial
 
 public interface FingerTappingTestDisplay extends Display {
 	MultitrialTestView getMultiTrialTestView();
-	void setTime(int timeLeft);
-	void setCount(int pressCount);
+	void setTimeLeft(int timeLeft);
+	void setTapCount(int tapCount);
 	void setInstructionsVisible(boolean visible);
+	void setInstructionsHand(String hand);
 	void setTimeAndCountVisible(boolean visible);
 }

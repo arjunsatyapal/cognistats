@@ -92,6 +92,7 @@ public class ReactionTimePresenter extends TSRPresenter implements Presenter {
 		readyStatistic.setTestCorrect((double)numCorrectTrials / nTrials);
 	}
 
+	@Override
 	protected void saveTrialResult() {
 		ReactionTimeTrialResult trialResult = new ReactionTimeTrialResult();
 		saveReactionTimeTrialResult(trialResult);

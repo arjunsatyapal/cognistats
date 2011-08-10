@@ -49,6 +49,7 @@ public class ChoiceReactionTimePresenter extends ReactionTimePresenter implement
 		super.keyPressed(keyCode);
 	}
 
+	@Override
 	protected void saveTrialResult() {
 		ChoiceReactionTimeTrialResult trialResult = new ChoiceReactionTimeTrialResult();
 		saveChoiceReactionTimeTrialResult(trialResult);

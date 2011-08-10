@@ -32,7 +32,8 @@ public enum RowNamesEnum {
   OVERALL_CORRECT_ROW("Overall correct"),
   CONCORDANT_CORRECT_ROW("Concordant correct"),
   DISCORDANT_CORRECT_ROW("Discordant correct"),
-  READY_ROW("Ready");
+  READY_ROW("Ready"),
+  TAP_COUNT_ROW("Taps");
 
   private String publicName;
 

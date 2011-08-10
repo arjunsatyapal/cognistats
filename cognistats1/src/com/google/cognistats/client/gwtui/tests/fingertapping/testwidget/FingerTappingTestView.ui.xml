@@ -3,20 +3,23 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:multitrial="urn:import:com.google.cognistats.client.gwtui.tests.multitrial.testwidget">
 	<ui:style>
-
+		.biggerText { font-size: 26px; }
 	</ui:style>
-	<g:LayoutPanel width="100%" height="100%">
+	<g:LayoutPanel width="100%" height="100%" addStyleNames="{style.biggerText}">
 		<g:layer left="0px" width="100.0pct" top="0px" height="100.0pct">
 		<multitrial:MultitrialTestView height="100%" width="100%" ui:field="multiTrialTest" />
 		</g:layer>
 		<g:layer left="10.0pct" width="80.0pct" top="20.0pct" height="16.0pct">
-			<g:Label text="Press (space) as quickly as you can." horizontalAlignment="ALIGN_CENTER" ui:field="tappingLabel"/>
+			<g:Label text="Tap (space) as quickly as you can." horizontalAlignment="ALIGN_CENTER" ui:field="tappingLabel"/>
 		</g:layer>
-		<g:layer left="10.0pct" width="80.0pct" top="70.0pct" height="20.0pct">
-			<g:FlowPanel width="100%" height="100%" ui:field="timeAndCount">
-				<g:Label width="40%" height="50%" horizontalAlignment="ALIGN_CENTER" ui:field="timeLabel" text="Time: " />
-				<g:Label width="40%" height="50%" horizontalAlignment="ALIGN_CENTER" ui:field="countLabel" text="Count: "/>
-			</g:FlowPanel>
+		<g:layer left="10.0pct" width="80.0pct" top="40.0pct" height="16.0pct">
+			<g:Label text="Use your .... hand." horizontalAlignment="ALIGN_CENTER" ui:field="handLabel"/>
+		</g:layer>
+		<g:layer left="10.0pct" width="80.0pct" top="60.0pct" height="16.0pct">
+			<g:Label horizontalAlignment="ALIGN_CENTER" ui:field="timeLabel"/>
+		</g:layer>
+		<g:layer left="10.0pct" width="80.0pct" top="80.0pct" height="16.0pct">
+			<g:Label horizontalAlignment="ALIGN_CENTER" ui:field="countLabel"/>
 		</g:layer>
 	</g:LayoutPanel>
 </ui:UiBinder> 
