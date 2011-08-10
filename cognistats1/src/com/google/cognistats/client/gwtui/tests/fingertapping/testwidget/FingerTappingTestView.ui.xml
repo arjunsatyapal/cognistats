@@ -12,10 +12,10 @@
 		<g:layer left="10.0pct" width="80.0pct" top="20.0pct" height="16.0pct">
 			<g:Label text="Press (space) as quickly as you can." horizontalAlignment="ALIGN_CENTER" ui:field="tappingLabel"/>
 		</g:layer>
-		<g:layer>
-			<g:FlowPanel width="20%" height="10%" ui:field="timeAndCount">
-				<g:Label horizontalAlignment="ALIGN_CENTER" ui:field="timeLabel" />
-				<g:Label horizontalAlignment="ALIGN_CENTER" ui:field="countLabel"/>
+		<g:layer left="10.0pct" width="80.0pct" top="70.0pct" height="20.0pct">
+			<g:FlowPanel width="100%" height="100%" ui:field="timeAndCount">
+				<g:Label width="40%" height="50%" horizontalAlignment="ALIGN_CENTER" ui:field="timeLabel" />
+				<g:Label width="40%" height="50%" horizontalAlignment="ALIGN_CENTER" ui:field="countLabel"/>
 			</g:FlowPanel>
 		</g:layer>
 	</g:LayoutPanel>

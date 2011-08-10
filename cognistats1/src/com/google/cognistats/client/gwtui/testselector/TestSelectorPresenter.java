@@ -22,6 +22,7 @@ import com.google.cognistats.client.gwtui.tests.basetest.BaseTestPresenter;
 import com.google.cognistats.client.gwtui.tests.basetest.testwidget.BaseTestView;
 import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswidget.ChoiceReactionTimeStatisticsPresenter;
 import com.google.cognistats.client.gwtui.tests.fingertapping.FingerTappingPresenter;
+import com.google.cognistats.client.gwtui.tests.fingertapping.statisticswidget.FingerTappingStatisticsPresenter;
 import com.google.cognistats.client.gwtui.tests.fingertapping.testwidget.FingerTappingTestView;
 import com.google.cognistats.client.gwtui.tests.reactiontime.ChoiceReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.reactiontime.SimpleReactionTimePresenter;
@@ -114,7 +115,7 @@ public class TestSelectorPresenter implements Presenter {
           // TODO(arjuns) : fix this.
           BaseTestPresenter testPresenter =
             new FingerTappingPresenter(new FingerTappingTestView(),
-              new BaseStatisticWidgetPresenter());
+              new FingerTappingStatisticsPresenter());
 
           ClassroomWidgetPresenter presenter =
             new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(),

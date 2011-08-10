@@ -3,7 +3,10 @@ package com.google.cognistats.client.gwtui.tests.fingertapping;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.fingertapping.testwidget.FingerTappingTestDisplay;
 import com.google.cognistats.client.gwtui.tests.multitrial.MultitrialPresenter;
+import com.google.cognistats.client.gwtui.tests.multitrial.testwidget.MultitrialTestDisplay;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.ReactionTimeStatistic;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TrialStatistic;
 
 public class FingerTappingPresenter extends MultitrialPresenter implements
 		Presenter {
@@ -14,11 +17,19 @@ public class FingerTappingPresenter extends MultitrialPresenter implements
 	protected boolean trialRunning = false;
 	protected static final int testTotalTrials = 3;
 	protected static final int trialDuration = 10;
+	protected ReactionTimeStatistic reactionTimeStatistic;
 	
 	public FingerTappingPresenter(FingerTappingTestDisplay testWidget,
 			BaseStatisticWidgetPresenter statPresenter) {
 		super(testWidget.getMultiTrialTestView(), statPresenter);
 		this.fingerTappingTestWidget = testWidget;
+	}
+	
+	@Override
+	protected void initializeStatistics() {
+	  super.initializeStatistics();
+	  reactionTimeStatistic = new ReactionTimeStatistic();
+	  statPresenter.addRow(reactionTimeStatistic);
 	}
 
 	@Override
