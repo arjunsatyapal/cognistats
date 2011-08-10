@@ -66,9 +66,11 @@ public class ClassroomWidgetPresenter implements Presenter, TestFinisher {
         .add(testPresenter.getStatPresenter().getStatisticWidget().asWidget());
     display.getInstructionsText().setHTML(testPresenter.getInstructions());
 
-    // Registering KeyPress and Touch Handlers with FocusPanel.
+    // Registering KeyPress, KeyUp, and Touch Handlers with FocusPanel.
     MainScreenPresenter.getFocusPanel().addKeyPressHandler(
         testPresenter.getFocusPanelKeyPressHandler());
+    MainScreenPresenter.getFocusPanel().addKeyUpHandler(
+            testPresenter.getFocusPanelKeyUpHandler());
     MainScreenPresenter.getFocusPanel().addTouchStartHandler(
         testPresenter.getFocusPanelTouchStartHandler());
 

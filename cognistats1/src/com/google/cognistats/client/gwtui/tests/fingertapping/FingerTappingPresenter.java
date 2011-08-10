@@ -1,12 +1,12 @@
 package com.google.cognistats.client.gwtui.tests.fingertapping;
 
+import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.fingertapping.testwidget.FingerTappingTestDisplay;
 import com.google.cognistats.client.gwtui.tests.multitrial.MultitrialPresenter;
-import com.google.cognistats.client.gwtui.tests.multitrial.testwidget.MultitrialTestDisplay;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.ReactionTimeStatistic;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TrialStatistic;
+import com.google.gwt.core.client.GWT;
 
 public class FingerTappingPresenter extends MultitrialPresenter implements
 		Presenter {
@@ -14,15 +14,20 @@ public class FingerTappingPresenter extends MultitrialPresenter implements
 	protected FingerTappingTestDisplay fingerTappingTestWidget;
 	protected int pressCount = 0;
 	protected long trialStartTime;
-	protected boolean trialRunning = false;
+	protected ReactionTimeStatistic reactionTimeStatistic;
+	protected boolean keyIsUp = true;
 	protected static final int testTotalTrials = 3;
 	protected static final int trialDuration = 10;
-	protected ReactionTimeStatistic reactionTimeStatistic;
 	
 	public FingerTappingPresenter(FingerTappingTestDisplay testWidget,
 			BaseStatisticWidgetPresenter statPresenter) {
 		super(testWidget.getMultiTrialTestView(), statPresenter);
 		this.fingerTappingTestWidget = testWidget;
+	}
+	
+	@Override
+	public Display getTestView() {
+		return fingerTappingTestWidget;
 	}
 	
 	@Override
@@ -38,37 +43,34 @@ public class FingerTappingPresenter extends MultitrialPresenter implements
 		keyMap.put(' ', 1);
 	}
 
-	protected void prepareToStartTrial() {
-		// set a timer here to startTrial() after a second
-		startTrial();
-	}
-	
 	@Override
 	protected void startTrial() {
+		// set a timer here to startTrialAlmost() after a second
+		startTrialAlmost();
+	}
+	
+	protected void startTrialAlmost() {
 		fingerTappingTestWidget.setInstructionsVisible(true);
-		super.startTrial();
 	}
 	
 	protected void reallyStartTrial() {
-		trialStartTime = System.currentTimeMillis();
 		fingerTappingTestWidget.setInstructionsVisible(false);
 		fingerTappingTestWidget.setTimeAndCountVisible(true);
+		pressCount = 0;
+		super.startTrial();
 	}
 	
 	@Override
 	protected void endTrial() {
-	    ++nTrials;
-	    trialRunning = false;
 	    fingerTappingTestWidget.setTimeAndCountVisible(false);
-	    if (!isFinished()) {
-	      prepareToStartTrial();
-	    }
+		super.endTrial();
 	}
 	
 	@Override
 	protected void keyPressed(int keyCode) {
-		if (keyCode == 1 && !isFinished()) {
-			if(!trialRunning)
+		if (keyCode == 1 && !isFinished() && keyIsUp) {
+			keyIsUp = false;
+			if (!isTrialRunning)
 				reallyStartTrial();
 			else {
 				pressCount += 1;
@@ -77,6 +79,22 @@ public class FingerTappingPresenter extends MultitrialPresenter implements
 			return;
 		}
 		super.keyPressed(keyCode);
+	}
+	
+	@Override
+	protected void keyUp(int keyCode) {
+		if (keyCode == 1)
+			keyIsUp = true;
+	}
+	
+	@Override
+	protected void testTimeUpdated() {
+		super.testTimeUpdated();
+		if (isTrialRunning) {
+			fingerTappingTestWidget.setTime((int)(trialTime / 1000));
+			if (trialTime > trialDuration * 1000)
+				endTrial();
+		}
 	}
 
 	@Override

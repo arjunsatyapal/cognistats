@@ -54,7 +54,7 @@ public class FingerTappingTestView extends View implements FingerTappingTestDisp
 	
 	@Override
 	public void setTimeAndCountVisible(boolean visible) {
-		timeAndCount.setVisible(!visible);
+		timeAndCount.setVisible(visible);
 	}
 
 }

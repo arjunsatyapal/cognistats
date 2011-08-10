@@ -13,6 +13,8 @@ import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.Ti
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
+import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.user.client.Timer;
@@ -83,6 +85,10 @@ public class BaseTestPresenter implements TestPresenter {
     }
   }
 
+  protected void keyUp(int keyCode) {
+	  // do nothing
+  }
+  
   @Override
   public KeyPressHandler getFocusPanelKeyPressHandler() {
     KeyPressHandler myHandler = new KeyPressHandler() {
@@ -98,6 +104,23 @@ public class BaseTestPresenter implements TestPresenter {
       }
     };
     return myHandler;
+  }
+
+  @Override
+  public KeyUpHandler getFocusPanelKeyUpHandler() {
+	  KeyUpHandler myHandler = new KeyUpHandler() {
+		  public void onKeyUp(KeyUpEvent event) {
+			  int nativeCode = event.getNativeKeyCode();
+			  char code = (char)nativeCode;
+			  //GWT.log("code is '" + code + "'");
+			  if (isRunning) {
+				  if (keyMap.containsKey(code)) {
+					  keyUp(keyMap.get(code).intValue());
+				  }
+			  }
+		  }
+	  };
+	  return myHandler;
   }
 
   @Override

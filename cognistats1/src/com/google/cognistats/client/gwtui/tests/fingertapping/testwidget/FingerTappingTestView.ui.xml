@@ -14,8 +14,8 @@
 		</g:layer>
 		<g:layer left="10.0pct" width="80.0pct" top="70.0pct" height="20.0pct">
 			<g:FlowPanel width="100%" height="100%" ui:field="timeAndCount">
-				<g:Label width="40%" height="50%" horizontalAlignment="ALIGN_CENTER" ui:field="timeLabel" />
-				<g:Label width="40%" height="50%" horizontalAlignment="ALIGN_CENTER" ui:field="countLabel"/>
+				<g:Label width="40%" height="50%" horizontalAlignment="ALIGN_CENTER" ui:field="timeLabel" text="Time: " />
+				<g:Label width="40%" height="50%" horizontalAlignment="ALIGN_CENTER" ui:field="countLabel" text="Count: "/>
 			</g:FlowPanel>
 		</g:layer>
 	</g:LayoutPanel>

@@ -20,9 +20,7 @@ import static com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter.
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.basetest.BaseTestPresenter;
 import com.google.cognistats.client.gwtui.tests.basetest.testwidget.BaseTestView;
-import com.google.cognistats.client.gwtui.tests.choicereactiontime.statisticswidget.ChoiceReactionTimeStatisticsPresenter;
 import com.google.cognistats.client.gwtui.tests.fingertapping.FingerTappingPresenter;
-import com.google.cognistats.client.gwtui.tests.fingertapping.statisticswidget.FingerTappingStatisticsPresenter;
 import com.google.cognistats.client.gwtui.tests.fingertapping.testwidget.FingerTappingTestView;
 import com.google.cognistats.client.gwtui.tests.reactiontime.ChoiceReactionTimePresenter;
 import com.google.cognistats.client.gwtui.tests.reactiontime.SimpleReactionTimePresenter;
@@ -63,14 +61,14 @@ public class TestSelectorPresenter implements Presenter {
 
       @Override
       public void onClick(ClickEvent event) {
-        ChoiceReactionTimePresenter testPresenter =
-          new ChoiceReactionTimePresenter(new ChoiceReactionTimeTestView(),
-            new ChoiceReactionTimeStatisticsPresenter());
+          BaseStatisticWidgetPresenter statPresenter = new BaseStatisticWidgetPresenter();
 
-        ClassroomWidgetPresenter presenter =
-          new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(),
-            testPresenter);
-        presenter.go(getWorkspace());
+          ChoiceReactionTimeTestView testView = new ChoiceReactionTimeTestView();
+
+    	  ChoiceReactionTimePresenter testPresenter = new ChoiceReactionTimePresenter(testView, statPresenter);
+
+          ClassroomWidgetPresenter presenter = new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(), testPresenter);
+          presenter.go(getWorkspace());
       }
     });
 
@@ -115,7 +113,7 @@ public class TestSelectorPresenter implements Presenter {
           // TODO(arjuns) : fix this.
           BaseTestPresenter testPresenter =
             new FingerTappingPresenter(new FingerTappingTestView(),
-              new FingerTappingStatisticsPresenter());
+              new BaseStatisticWidgetPresenter());
 
           ClassroomWidgetPresenter presenter =
             new ClassroomWidgetPresenter(new ClassroomWidgetViewUi(),

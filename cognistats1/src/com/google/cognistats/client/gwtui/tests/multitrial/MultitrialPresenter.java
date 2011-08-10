@@ -10,6 +10,7 @@ import com.google.cognistats.client.gwtui.tests.results.MultitrialTrialResult;
 import com.google.cognistats.client.gwtui.tests.results.TrialResult;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TrialStatistic;
+import com.google.gwt.core.client.GWT;
 
 public class MultitrialPresenter extends BaseTestPresenter implements Presenter {
 
@@ -17,6 +18,8 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
   protected TrialStatistic trialStatistic;
   protected LinkedList<TrialResult> trialResults;
   protected long trialStartTime;
+  protected long trialTime;
+  protected boolean isTrialRunning;
 
   public MultitrialPresenter(MultitrialTestDisplay testWidget,
     BaseStatisticWidgetPresenter statPresenter) {
@@ -38,6 +41,8 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
   
   protected void startTrial() {
 	  trialStartTime = System.currentTimeMillis();
+	  isTrialRunning = true;
+	  trialTime = 0;
   }
   
   protected void increaseTrialCount() {
@@ -49,6 +54,7 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
 	  saveTrialResult();
 	  increaseTrialCount();
 //    statPresenter.getRow(RowNamesEnum.TRIAL_ROW).setCurrentTest(new TrialStatistic(nTrials, 0));
+	  isTrialRunning = false;
 
     if (!isFinished()) {
       startTrial();
@@ -59,6 +65,15 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
     	finish();
     }
 
+  }
+  
+  @Override
+  protected void testTimeUpdated() {
+	  super.testTimeUpdated();
+	  if (isTrialRunning) {
+		  long currentTime = System.currentTimeMillis();
+		  trialTime = currentTime - trialStartTime;
+	  }
   }
   
   protected void saveTrialResult() {
