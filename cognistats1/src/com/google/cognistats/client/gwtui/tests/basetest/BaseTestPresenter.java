@@ -47,7 +47,7 @@ public class BaseTestPresenter implements TestPresenter {
     initializeStatistics();
     isRunning = false;
   }
-
+  
   protected void initializeStatistics() {
 	  timeStatistic = new TimeStatistic();
 	  statPresenter.addRow(timeStatistic);
