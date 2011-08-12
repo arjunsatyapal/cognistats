@@ -15,17 +15,17 @@ public class ReactionTimePresenter extends TSRPresenter implements Presenter {
 
 	protected MeanVarianceAggregator correctAggregator;
 	protected ReactionTimeStatistic reactionTimeStatistic;
-	protected CorrectStatistic readyStatistic;
+	protected CorrectStatistic correctStatistic;
 	protected ReactionTimeTestDisplay reactionTimeTestWidget;
 	protected int trialDelay;
 	protected static final int constantTrialDelay = 250;
 	protected static final int trialDelayLambda = 500;
-	protected static final int testTotalTrials = 10;
 
 	public ReactionTimePresenter(ReactionTimeTestDisplay testWidget, BaseStatisticWidgetPresenter statPresenter) {
 		super(testWidget.getTSRTestView(), statPresenter);
 		reactionTimeTestWidget = testWidget;
 		setupKeys();
+		testTotalTrials = 10;
 	}
 
 	@Override
@@ -75,9 +75,9 @@ public class ReactionTimePresenter extends TSRPresenter implements Presenter {
 	protected void initializeStatistics() {
 		super.initializeStatistics();
 		reactionTimeStatistic = new ReactionTimeStatistic();
-		readyStatistic = new CorrectStatistic(RowNamesEnum.CORRECT_ROW);
+		correctStatistic = new CorrectStatistic(RowNamesEnum.CORRECT_ROW);
 		statPresenter.addRow(reactionTimeStatistic);
-		statPresenter.addRow(readyStatistic);
+		statPresenter.addRow(correctStatistic);
 	}
 
 	@Override
@@ -88,8 +88,8 @@ public class ReactionTimePresenter extends TSRPresenter implements Presenter {
 			reactionTimeStatistic.setTrialReactionTime(reactionTime);
 			reactionTimeStatistic.setTestReactionTime(correctAggregator.mean(), correctAggregator.variance());
 		}
-		readyStatistic.setTrialCorrect(responseCorrect);
-		readyStatistic.setTestCorrect((double)numCorrectTrials / nTrials);
+		correctStatistic.setTrialCorrect(responseCorrect);
+		correctStatistic.setTestCorrect((double)numCorrectTrials / nTrials);
 	}
 
 	@Override

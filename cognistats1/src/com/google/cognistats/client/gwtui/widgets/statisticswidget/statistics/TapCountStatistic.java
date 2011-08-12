@@ -15,7 +15,7 @@ public class TapCountStatistic extends BaseStatisticGridRow {
   }
   
   public void setTestTapCount(double mean, double variance) {
-	  setCurrentTestColumn(new Long(Math.round(mean)).toString() + "\u00b1" + 
+	  setCurrentTestColumn(new Long(Math.round(mean)).toString() + " \u00b1 " + 
 			  new Long(Math.round(Math.sqrt(variance))).toString());
   }
 }

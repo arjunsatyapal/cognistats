@@ -16,6 +16,6 @@ public class TrialStatistic extends BaseStatisticGridRow {
   
   public void setTestTrialAndTotalCount(int testTrialCount, int totalTrialCount) {
 	  setCurrentTestColumn(new Integer(testTrialCount).toString() +
-			  "/" + new Integer(totalTrialCount).toString());
+			  " / " + new Integer(totalTrialCount).toString());
   }
 }

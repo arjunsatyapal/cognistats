@@ -15,7 +15,7 @@ public class ReactionTimeStatistic extends BaseStatisticGridRow {
   }
   
   public void setTestReactionTime(double mean, double variance) {
-	  setCurrentTestColumn(new Long(Math.round(mean)).toString() + "\u00b1" + 
+	  setCurrentTestColumn(new Long(Math.round(mean)).toString() + " \u00b1 " + 
 			  new Long(Math.round(Math.sqrt(variance))).toString());
   }
 }

@@ -22,6 +22,7 @@ import java.util.Iterator;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.BaseStatisticGridRow;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.HeaderRow;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.RowNamesEnum;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HTMLTable.CellFormatter;
@@ -40,7 +41,7 @@ public class BaseStatisticWidgetPresenter implements Presenter {
   public BaseStatisticWidgetPresenter() {
     this.display = new BaseStatisticWidgetView();
     this.listOfRows = new ArrayList<BaseStatisticGridRow>();
-//    addRow(new DurationStatistic(1234L));
+    addRow(new HeaderRow());
   }
 
   public void addRow(
@@ -113,6 +114,13 @@ public class BaseStatisticWidgetPresenter implements Presenter {
       grid.setWidget(rowCount, 3, currRow.getAllTimeColumn());
       cellFormatter.addStyleName(rowCount, 3, RESOURCE.globalStyle()
         .statGridAllTime());
+      
+      if(rowCount == 0) {  // first row is header row
+    	  cellFormatter.addStyleName(rowCount, 0, RESOURCE.globalStyle().statGridHeader());
+    	  cellFormatter.addStyleName(rowCount, 1, RESOURCE.globalStyle().statGridHeader());
+    	  cellFormatter.addStyleName(rowCount, 2, RESOURCE.globalStyle().statGridHeader());
+    	  cellFormatter.addStyleName(rowCount, 3, RESOURCE.globalStyle().statGridHeader());
+      }
     }
 
     display.getStatContainer().add(grid);

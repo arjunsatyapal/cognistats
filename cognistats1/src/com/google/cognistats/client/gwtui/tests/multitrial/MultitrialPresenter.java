@@ -20,6 +20,7 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
   protected long trialStartTime;
   protected long trialTime;
   protected boolean isTrialRunning;
+  protected int testTotalTrials = -1;  // subclasses can set if they know trial count in advance
 
   public MultitrialPresenter(MultitrialTestDisplay testWidget,
     BaseStatisticWidgetPresenter statPresenter) {
@@ -47,7 +48,10 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
   
   protected void increaseTrialCount() {
 	  ++nTrials;
-	  trialStatistic.setTestTrialCount(nTrials);
+	  if(testTotalTrials == -1)
+		  trialStatistic.setTestTrialCount(nTrials);
+	  else
+		  trialStatistic.setTestTrialAndTotalCount(nTrials, testTotalTrials);		  
   }
 
   protected void endTrial() {

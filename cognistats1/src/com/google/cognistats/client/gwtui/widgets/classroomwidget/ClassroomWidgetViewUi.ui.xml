@@ -7,6 +7,7 @@
 	.blackboard { background-color: #fafafa; opacity:0.9; border: 1px solid black; border-radius: 12px; }
 	.instructions, .summary { background-color: transparent; font-size: 20px; padding: 10%; }
 	.button { font-size: 20px; border-radius: 6px; background-color: #eebbbb; margin: 0px auto; }
+	.summary_header div { font-size: 16px; }
   </ui:style>
   <g:LayoutPanel width="100%" height="100%">
      <g:layer left="5%" width="60%" top="5%" height="90%">
@@ -26,7 +27,10 @@
       	<g:LayoutPanel width="98%" height="98%" ui:field="blackboard" addStyleNames="{style.blackboard}">
       		<g:layer height="100%" width="100%">
       			<g:LayoutPanel ui:field="summary" addStyleNames="{style.summary}">
-   		   			<g:layer width="80%" left="10%" height="55%" top="10%">
+   		   			<g:layer width="80%" left="10%" height="16%" top="10%" addStyleNames="{style.summary_header}">
+	    	  			<g:HTML><H3>Test completed!</H3></g:HTML>
+      				</g:layer>
+   		   			<g:layer width="80%" left="10%" height="55%" top="30%">
 	    	  			<g:HTML ui:field="summaryStatistics"></g:HTML>
       				</g:layer>
       				<g:layer width="10%" left="45%" height="10%" bottom="10%">

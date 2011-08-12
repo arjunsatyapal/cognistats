@@ -10,7 +10,6 @@ import com.google.cognistats.client.gwtui.tests.multitrial.MultitrialPresenter;
 import com.google.cognistats.client.gwtui.tests.results.FingerTappingTrialResult;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TapCountStatistic;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Timer;
 
 public class FingerTappingPresenter extends MultitrialPresenter implements
@@ -25,7 +24,6 @@ public class FingerTappingPresenter extends MultitrialPresenter implements
 	protected LinkedList<Integer> tapTimes;
 	protected TapCountStatistic tapCountStatistic;
 	protected MeanVarianceAggregator tapCountAggregator;
-	protected static final int testTotalTrials = 4;
 	protected static final int trialDuration = 10;
 	
 	public FingerTappingPresenter(FingerTappingTestDisplay testWidget,
@@ -34,6 +32,7 @@ public class FingerTappingPresenter extends MultitrialPresenter implements
 		this.fingerTappingTestWidget = testWidget;
 		fingerTappingTestWidget.setInstructionsVisible(false);
 		fingerTappingTestWidget.setTimeAndCountVisible(false);
+		testTotalTrials = 4;
 	}
 	
 	@Override
@@ -120,6 +119,7 @@ public class FingerTappingPresenter extends MultitrialPresenter implements
 		super.testTimeUpdated();
 		if (isTrialRunning) {
 			fingerTappingTestWidget.setTimeLeft(trialDuration - (int)(trialTime / 1000));
+			durationStatistic.setCurrTrialTimeInMillis(trialTime);
 			if (trialTime > trialDuration * 1000)
 				endTrial();
 		}

@@ -15,6 +15,8 @@
  */
 package com.google.cognistats.client.gwtui.widgets.classroomwidget;
 
+import static com.google.cognistats.client.resources.GlobalResources.RESOURCE;
+
 import java.util.Iterator;
 
 import com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter;
@@ -112,6 +114,7 @@ public class ClassroomWidgetPresenter implements Presenter, TestFinisher {
   public void finishTest(HasWidgets results) {
 	display.getBlackboard().setVisible(true);
 	display.getSummary().setVisible(true);
+	display.getSummary().addStyleName(RESOURCE.globalStyle().statGridFinished());
 	Iterator<Widget> it = results.iterator();
 	while(it.hasNext())
 		display.getSummaryStatistics().setHTML(it.next().getElement().getInnerHTML());
