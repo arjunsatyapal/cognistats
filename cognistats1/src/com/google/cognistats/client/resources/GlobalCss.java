@@ -33,6 +33,10 @@ public interface GlobalCss extends CssResource {
 
   String statGridAllTime();
   
+  String statGridHeader();
+  
+  String statGridFinished();
+
   String circle();
   
   String activeStimulus();

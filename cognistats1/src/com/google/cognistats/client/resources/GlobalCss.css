@@ -7,21 +7,35 @@
 }
 
 .statGridTrial {
-  width: 10%;
+  width: 20%;
   text-align: right;
-  border-left: 1px dotted #00E6E6;
+  border-left: 1px solid #ddd;
 }
 
 .statGridTest {
-  width: 30%;
+  width: 20%;
   text-align: right;
-  border-left: 1px dotted #00E6E6;
+  border-left: 1px solid #ddd;
 }
 
 .statGridAllTime {
-  width: 0%;
+  width: 20%;
+  display: none;
   text-align: right;
-  border-left: 1px dotted #00E6E6;
+  border-left: 1px solid #ddd;
+}
+
+.statGridFinished .statGridTrial {
+  display: none;
+}
+
+.statGridFinished .statGridAllTime {
+  display: table-cell;
+}
+
+.statGridHeader {
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
 }
 
 .circle {

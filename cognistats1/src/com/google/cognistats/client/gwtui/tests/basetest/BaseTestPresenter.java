@@ -9,7 +9,7 @@ import com.google.cognistats.client.gwtui.tests.basetest.testwidget.BaseTestDisp
 import com.google.cognistats.client.gwtui.tests.results.BaseResult;
 import com.google.cognistats.client.gwtui.widgets.classroomwidget.TestFinisher;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
-import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TimeStatistic;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.DurationStatistic;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
@@ -33,7 +33,7 @@ public class BaseTestPresenter implements TestPresenter {
   protected long testTime;
   protected long timeInTest;
   private Random generator;
-  protected TimeStatistic timeStatistic;
+  protected DurationStatistic durationStatistic;
   protected HashMap<Character, Integer> keyMap;
   private static long randomSeed = 0;
   protected boolean testComplete;
@@ -49,8 +49,8 @@ public class BaseTestPresenter implements TestPresenter {
   }
   
   protected void initializeStatistics() {
-	  timeStatistic = new TimeStatistic();
-	  statPresenter.addRow(timeStatistic);
+	  durationStatistic = new DurationStatistic();
+	  statPresenter.addRow(durationStatistic);
   }
 
   protected void setupKeys() {
@@ -153,7 +153,7 @@ public class BaseTestPresenter implements TestPresenter {
 
   protected void testTimeUpdated() {
     // TODO(arjuns) : use presenter to update the time.
-	  timeStatistic.setTestTimeInMillis(testTime);
+	  durationStatistic.setTestTimeInMillis(testTime);
     // statisticsWidget.setTestTimeCurrent(testTime);
     // statisticsWidget.setTestTimeAllTime(testTime + 36000000);
   }

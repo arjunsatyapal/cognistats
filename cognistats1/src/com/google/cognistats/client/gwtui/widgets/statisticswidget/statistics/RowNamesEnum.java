@@ -20,14 +20,13 @@ package com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics;
  * @author Arjun Satyapal
  */
 public enum RowNamesEnum {
+  HEADER_ROW(""),
   DURATION_ROW("Duration"),
   REACTION_TIME_ROW("Reaction Time"),
   OVERALL_REACTION_TIME_ROW("Overall reaction time"),
   CONCORDANT_REACTION_TIME_ROW("Concordant reaction time"),
   DISCORDANT_REACTION_TIME_ROW("Discordant reaction time"),
-  REACTION_TIME_STD_DEV_ROW("Standard Deviation"),
   LEVEL_ROW("Level"),
-  TIME_ROW("Time"),
   TRIAL_ROW("Trials"),
   CORRECT_ROW("Correct"),
   OVERALL_CORRECT_ROW("Overall correct"),

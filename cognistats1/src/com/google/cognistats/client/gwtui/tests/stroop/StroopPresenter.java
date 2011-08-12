@@ -47,6 +47,7 @@ public class StroopPresenter extends TSRPresenter implements Presenter {
 	public StroopPresenter(StroopTestDisplay testWidget, BaseStatisticWidgetPresenter statPresenter) {
 		super(testWidget.getTSRTestView(), statPresenter);
 		stroopTestWidget = testWidget;
+		testTotalTrials = 3 * 6 * NUM_SUBPART_TRIALS;  // can remove numbers if we ever need to vary this
 	}
 
 	protected void setupKeys() {
