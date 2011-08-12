@@ -82,6 +82,20 @@ public class SpanPresenter extends LevelEstimationPresenter implements Presenter
 		}
 	}
 	
+	protected void setupReadInput() {
+	}
+	
+	@Override
+	protected void afterStimulusDisplay() {
+		super.afterStimulusDisplay();
+		setupReadInput();
+	}
+	
+	protected void inputDone(boolean responseCorrect) {
+		this.responseCorrect = responseCorrect;
+		processResponse();
+	}
+	
 	protected void hideSequenceElement() {
 	}
 
