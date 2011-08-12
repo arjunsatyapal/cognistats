@@ -1,34 +1,30 @@
 package com.google.cognistats.client.gwtui.tests.span;
 
-import static com.google.cognistats.client.gwtui.mainscreen.MainScreenPresenter.getWorkspace;
-
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
-import com.google.cognistats.client.gwtui.tests.reactiontime.ChoiceReactionTimePresenter;
-import com.google.cognistats.client.gwtui.tests.reactiontime.testwidget.ChoiceReactionTimeTestView;
 import com.google.cognistats.client.gwtui.tests.span.testwidget.DigitSpanTestDisplay;
-import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter.TrialState;
-import com.google.cognistats.client.gwtui.widgets.classroomwidget.ClassroomWidgetPresenter;
-import com.google.cognistats.client.gwtui.widgets.classroomwidget.ClassroomWidgetViewUi;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
-import com.google.gwt.user.client.ui.KeyboardListener;
 
 public class DigitSpanPresenter extends SpanPresenter implements Presenter {
 
 	protected DigitSpanTestDisplay digitSpanTestWidget;
 	protected ArrayList<Integer> currentSequence;
+	protected boolean isBackwards;
 
 	public DigitSpanPresenter(DigitSpanTestDisplay testWidget, BaseStatisticWidgetPresenter statPresenter) {
 		super(testWidget.getSpanTestView(), statPresenter);
 		digitSpanTestWidget = testWidget;
+		isBackwards = false;
 		setupUi();
+	}
+	
+	protected void setBackwards(boolean isBackwards) {
+		this.isBackwards = isBackwards;
 	}
 	
 	@Override
@@ -105,5 +101,10 @@ public class DigitSpanPresenter extends SpanPresenter implements Presenter {
 		}
 		inputDone(correctAnswer.toString().equals(digitSpanTestWidget.getInputText()));
 		digitSpanTestWidget.setInputVisible(false);
+	}
+	
+	@Override
+	protected void setDefaultLevel() {
+		currentLevel = 3;
 	}
 }

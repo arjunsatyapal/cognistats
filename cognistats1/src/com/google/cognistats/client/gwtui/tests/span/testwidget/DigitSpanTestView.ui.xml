@@ -6,14 +6,14 @@
 <!-- 		.transparent { background-color: transparent; border: 2px dashed brown; } -->
 	</ui:style>
 	<g:LayoutPanel height="100%" width="100%">
+		<g:layer left="30.0pct" width="40.0pct" top="42.0pct" height="16.0pct">
+			<g:TextBox ui:field="sequenceInput" alignment="CENTER"/>
+		</g:layer>
 		<g:layer left="0px" width="100.0pct" top="0px" height="100.0pct">
 			<span:SpanTestView height="100%" width="100%" ui:field="spanTest" />
 		</g:layer>
 		<g:layer left="10.0pct" width="80.0pct" top="42.0pct" height="16.0pct">
 			<g:Label text="Digit Label" horizontalAlignment="ALIGN_CENTER" ui:field="digitLabel"/>
-		</g:layer>
-		<g:layer left="30.0pct" width="40.0pct" top="42.0pct" height="16.0pct">
-			<g:TextBox ui:field="sequenceInput" alignment="CENTER"/>
 		</g:layer>
 		<g:layer left="40.0pct" width="20.0pct" top="64.0pct" height="16.0pct">
 			<g:Button ui:field="inputDoneButton" text="Done"/>

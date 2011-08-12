@@ -26,6 +26,7 @@ public enum RowNamesEnum {
   CONCORDANT_REACTION_TIME_ROW("Concordant reaction time"),
   DISCORDANT_REACTION_TIME_ROW("Discordant reaction time"),
   REACTION_TIME_STD_DEV_ROW("Standard Deviation"),
+  LEVEL_ROW("Level"),
   TIME_ROW("Time"),
   TRIAL_ROW("Trials"),
   CORRECT_ROW("Correct"),
