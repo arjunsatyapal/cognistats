@@ -5,6 +5,7 @@ import com.google.cognistats.client.gwtui.tests.levelestimation.LevelEstimationP
 import com.google.cognistats.client.gwtui.tests.results.SpanTrialResult;
 import com.google.cognistats.client.gwtui.tests.span.testwidget.SpanTestDisplay;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.SpanStatistic;
 import com.google.gwt.user.client.Timer;
 
 public class SpanPresenter extends LevelEstimationPresenter implements Presenter {
@@ -15,7 +16,7 @@ public class SpanPresenter extends LevelEstimationPresenter implements Presenter
 	protected boolean elementOn;
 	int currentlyDisplayedElement;
 	int currentSequenceLength;
-
+	protected SpanStatistic spanStatistic;
 
 	@Override
 	protected void initializeTest() {
@@ -107,6 +108,7 @@ public class SpanPresenter extends LevelEstimationPresenter implements Presenter
 	@Override
 	protected void startTrial() {
 		createTrial();
+		spanStatistic.setTrialSpan(currentLevel);
 		setupSequenceDisplay();
 		super.startTrial();
 	}
@@ -114,4 +116,11 @@ public class SpanPresenter extends LevelEstimationPresenter implements Presenter
 	protected void generateSequence(int sequenceSize) {
 	}
 
+	@Override
+	protected void initializeStatistics() {
+		super.initializeStatistics();
+		spanStatistic = new SpanStatistic();
+		statPresenter.addRow(spanStatistic);
+	}
+	
 }

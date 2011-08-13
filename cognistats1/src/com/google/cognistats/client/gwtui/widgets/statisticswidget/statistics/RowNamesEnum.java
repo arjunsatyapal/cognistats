@@ -26,7 +26,7 @@ public enum RowNamesEnum {
   OVERALL_REACTION_TIME_ROW("Overall reaction time"),
   CONCORDANT_REACTION_TIME_ROW("Concordant reaction time"),
   DISCORDANT_REACTION_TIME_ROW("Discordant reaction time"),
-  LEVEL_ROW("Level"),
+  SPAN_ROW("Span"),
   TRIAL_ROW("Trials"),
   CORRECT_ROW("Correct"),
   OVERALL_CORRECT_ROW("Overall correct"),

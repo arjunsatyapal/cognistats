@@ -6,6 +6,7 @@ import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.span.testwidget.DigitSpanTestDisplay;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.SpanStatistic;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
@@ -15,6 +16,7 @@ public class DigitSpanPresenter extends SpanPresenter implements Presenter {
 	protected DigitSpanTestDisplay digitSpanTestWidget;
 	protected ArrayList<Integer> currentSequence;
 	protected boolean isBackwards;
+	protected SpanStatistic spanStatistic;
 
 	public DigitSpanPresenter(DigitSpanTestDisplay testWidget, BaseStatisticWidgetPresenter statPresenter) {
 		super(testWidget.getSpanTestView(), statPresenter);
@@ -107,4 +109,6 @@ public class DigitSpanPresenter extends SpanPresenter implements Presenter {
 	protected void setDefaultLevel() {
 		currentLevel = 3;
 	}
+
+
 }
