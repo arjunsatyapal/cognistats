@@ -34,6 +34,7 @@ public class FingerTappingTrialResult extends MultitrialTrialResult {
 
 	@Override
 	protected ArrayList<String> attrs(ArrayList<String> a) {
+		a = super.attrs(a);
 		a.add("hand");
 		a.add(String.valueOf(hand));
 		a.add("tapTimes");

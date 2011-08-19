@@ -15,16 +15,10 @@ public class MultitrialResult extends BaseResult {
 	}
 	
 	@Override
-	protected void faaoo() {
-		return;
-	}
-	
-	@Override
 	protected ArrayList<String> attrs(ArrayList<String> a) {
 		a = super.attrs(a);
 		a.add("trialResults");
-		a.add("(" + trialResults.size() + " results)");//String.valueOf(trialResults));
+		a.add("(" + trialResults.size() + " results: " + trialResults + ")");
 		return a;
 	}
-
 }

@@ -21,7 +21,7 @@ public class MultitrialTrialResult implements TrialResult {
 	
 	@Override public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(this.getClass().getName());
+		sb.append(this.getClass().getName().replaceAll("[^.]*\\.", "")); // remove packages
 		sb.append(" {" );
 		ArrayList<String> a = attrs(new ArrayList<String>());
 		for(int i = 0; i < a.size(); i += 2) {

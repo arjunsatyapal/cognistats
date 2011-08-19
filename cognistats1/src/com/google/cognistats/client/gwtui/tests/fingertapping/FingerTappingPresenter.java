@@ -10,6 +10,7 @@ import com.google.cognistats.client.gwtui.tests.multitrial.MultitrialPresenter;
 import com.google.cognistats.client.gwtui.tests.results.FingerTappingTrialResult;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TapCountStatistic;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Timer;
 
 public class FingerTappingPresenter extends MultitrialPresenter implements
@@ -17,7 +18,6 @@ public class FingerTappingPresenter extends MultitrialPresenter implements
 
 	protected FingerTappingTestDisplay fingerTappingTestWidget;
 	protected int tapCount = 0;
-	protected long trialStartTime;
 	protected boolean keyIsUp = true;
 	protected boolean trialIsAlmostStarted = false;
 	protected String hand;  // "left" or "right"
