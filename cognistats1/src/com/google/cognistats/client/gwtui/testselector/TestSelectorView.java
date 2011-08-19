@@ -43,6 +43,8 @@ public class TestSelectorView extends View implements TestSelectorDisplay {
   Button buttonFingerTapping;
   @UiField
   Button buttonDigitSpan;
+  @UiField
+  Button buttonSpatialSpan;
 
   private static TestSelectorViewUiBinder uiBinder =
       GWT.create(TestSelectorViewUiBinder.class);
@@ -104,4 +106,10 @@ public class TestSelectorView extends View implements TestSelectorDisplay {
   public Button getButtonDigitSpan() {
 	  return buttonDigitSpan;
   }
+
+  @Override
+  public Button getButtonSpatialSpan() {
+	  return buttonSpatialSpan;
+  }
+  
 }

@@ -36,5 +36,7 @@ public interface TestSelectorDisplay extends Display {
 
   Button getButtonDigitSpan();
 
+  Button getButtonSpatialSpan();
+
   Button getButtonFingerTapping();
 }
