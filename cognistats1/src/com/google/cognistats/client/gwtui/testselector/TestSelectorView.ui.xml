@@ -21,6 +21,9 @@
     <g:layer left="21px" width="137px" top="360px" height="30px">
       <g:Button text="Digit Span" ui:field="buttonDigitSpan" />
     </g:layer>
+    <g:layer left="21px" width="137px" top="390px" height="30px">
+      <g:Button text="Spatial Span" ui:field="buttonSpatialSpan" />
+    </g:layer>
     <g:layer left="21px" width="137px" top="330px" height="30px">
       <g:Button text="Finger Tapping" ui:field="buttonFingerTapping" />
     </g:layer>

@@ -11,14 +11,14 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
 
-public class DigitSpanPresenter extends SpanPresenter implements Presenter {
+public class SpatialSpanPresenter extends SpanPresenter implements Presenter {
 
 	protected DigitSpanTestDisplay digitSpanTestWidget;
 	protected ArrayList<Integer> currentSequence;
 	protected boolean isBackwards, isAudio, isVisual;
 	protected SpanStatistic spanStatistic;
 
-	public DigitSpanPresenter(DigitSpanTestDisplay testWidget, BaseStatisticWidgetPresenter statPresenter) {
+	public SpatialSpanPresenter(DigitSpanTestDisplay testWidget, BaseStatisticWidgetPresenter statPresenter) {
 		super(testWidget.getSpanTestView(), statPresenter);
 		digitSpanTestWidget = testWidget;
 		isBackwards = false;

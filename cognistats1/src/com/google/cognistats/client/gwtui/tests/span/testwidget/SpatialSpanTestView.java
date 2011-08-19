@@ -11,7 +11,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 
-public class DigitSpanTestView extends View implements DigitSpanTestDisplay {
+public class SpatialSpanTestView extends View implements DigitSpanTestDisplay {
 	@UiField
 	SpanTestView spanTest;
 	
@@ -22,10 +22,10 @@ public class DigitSpanTestView extends View implements DigitSpanTestDisplay {
 	private static BaseTestViewUiBinder uiBinder = GWT
 			.create(BaseTestViewUiBinder.class);
 
-	interface BaseTestViewUiBinder extends UiBinder<Widget, DigitSpanTestView> {
+	interface BaseTestViewUiBinder extends UiBinder<Widget, SpatialSpanTestView> {
 	}
 
-	public DigitSpanTestView() {
+	public SpatialSpanTestView() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
