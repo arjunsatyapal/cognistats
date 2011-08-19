@@ -2,6 +2,8 @@ package com.google.cognistats.client.gwtui.tests.fingertapping;
 
 import java.util.LinkedList;
 
+import com.allen_sauer.gwt.voices.client.Sound;
+import com.allen_sauer.gwt.voices.client.SoundController;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.aggregator.MeanVarianceAggregator;
@@ -130,6 +132,14 @@ public class FingerTappingPresenter extends MultitrialPresenter implements
 		fingerTappingTestWidget.setTapCount(tapCount);
 		tapTimes.add(new Integer((int)(System.currentTimeMillis() - trialStartTime)));
 		tapCountStatistic.setTrialTapCount(tapCount);
+	    SoundController soundController = new SoundController();
+	    try {
+	    @SuppressWarnings("deprecation")
+		Sound sound = soundController.createSound(Sound.MIME_TYPE_AUDIO_MPEG,
+	        "/sounds/" + tapCount % 11 + ".mp3");
+	    sound.play();
+	    }
+	    catch (Exception e) {}
 	}
 	
 	@Override
