@@ -1,5 +1,6 @@
 package com.google.cognistats.client.gwtui.tests.results;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class FingerTappingTrialResult extends MultitrialTrialResult {
@@ -31,5 +32,15 @@ public class FingerTappingTrialResult extends MultitrialTrialResult {
 		this.tapTimes = tapTimes;
 	}
 
+	@Override
+	protected ArrayList<String> attrs(ArrayList<String> a) {
+		a.add("hand");
+		a.add(String.valueOf(hand));
+		a.add("tapTimes");
+		a.add(String.valueOf(tapTimes));
+		a.add("duration");
+		a.add(String.valueOf(duration));
+		return a;
+	}
 
 }

@@ -15,6 +15,7 @@
  */
 package com.google.cognistats.client.gwtui.mvpinterfaces;
 
+import com.google.cognistats.client.gwtui.tests.results.BaseResult;
 import com.google.cognistats.client.gwtui.widgets.classroomwidget.TestFinisher;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.gwt.event.dom.client.KeyPressHandler;
@@ -52,5 +53,5 @@ public interface TestPresenter extends Presenter {
   
   String getInstructions();
   
-  void buildResults();
+  BaseResult buildResults();
 }

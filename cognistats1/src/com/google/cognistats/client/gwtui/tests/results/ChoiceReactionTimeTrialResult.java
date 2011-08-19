@@ -1,5 +1,7 @@
 package com.google.cognistats.client.gwtui.tests.results;
 
+import java.util.ArrayList;
+
 public class ChoiceReactionTimeTrialResult extends ReactionTimeTrialResult {
 	protected int trialType;
 	protected int choice;
@@ -24,4 +26,15 @@ public class ChoiceReactionTimeTrialResult extends ReactionTimeTrialResult {
 	public void setReady(boolean ready) {
 		this.ready = ready;
 	}
+	
+	@Override
+	protected ArrayList<String> attrs(ArrayList<String> a) {
+		a = super.attrs(a);
+		a.add("trialType");
+		a.add(String.valueOf(trialType));
+		a.add("choice");
+		a.add(String.valueOf(choice));
+		return a;
+	}
+
 }

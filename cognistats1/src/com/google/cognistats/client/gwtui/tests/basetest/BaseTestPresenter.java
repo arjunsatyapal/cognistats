@@ -37,6 +37,7 @@ public class BaseTestPresenter implements TestPresenter {
   protected HashMap<Character, Integer> keyMap;
   private static long randomSeed = 0;
   protected boolean testComplete;
+  protected BaseResult results;
 
   public BaseTestPresenter(BaseTestDisplay testWidget,
       BaseStatisticWidgetPresenter statPresenter) {
@@ -196,9 +197,10 @@ public class BaseTestPresenter implements TestPresenter {
   }
 
   @Override
-  public void buildResults() {
+  public BaseResult buildResults() {
 	  BaseResult results = new BaseResult();
 	  buildBaseResults(results);
+	  return results;
   }
   
   protected void buildBaseResults(BaseResult results) {
@@ -210,7 +212,8 @@ public class BaseTestPresenter implements TestPresenter {
   @Override
   public void finish() {
 	  timeInTest = System.currentTimeMillis() - testStartTime;
-	  buildResults();
+	  results = buildResults();
+	  GWT.log("Results: " + results);
 	  finisher.finishTest(statContainer);
   }
   

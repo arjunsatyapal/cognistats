@@ -5,12 +5,12 @@ import java.util.LinkedList;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.basetest.BaseTestPresenter;
 import com.google.cognistats.client.gwtui.tests.multitrial.testwidget.MultitrialTestDisplay;
+import com.google.cognistats.client.gwtui.tests.results.BaseResult;
 import com.google.cognistats.client.gwtui.tests.results.MultitrialResult;
 import com.google.cognistats.client.gwtui.tests.results.MultitrialTrialResult;
 import com.google.cognistats.client.gwtui.tests.results.TrialResult;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TrialStatistic;
-import com.google.gwt.core.client.GWT;
 
 public class MultitrialPresenter extends BaseTestPresenter implements Presenter {
 
@@ -102,14 +102,16 @@ public class MultitrialPresenter extends BaseTestPresenter implements Presenter 
   }
 
   @Override
-  public void buildResults() {
+  public BaseResult buildResults() {
 	  MultitrialResult results = new MultitrialResult();
 	  buildMultitrialResults(results);
+	  return results;
   }
   
-  protected void buildMultitrialResults(MultitrialResult results) {
+  protected BaseResult buildMultitrialResults(MultitrialResult results) {
 	  buildBaseResults(results);
 	  results.setTrialResults(trialResults);
+	  return results;
   }
 
 }
