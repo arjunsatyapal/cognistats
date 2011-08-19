@@ -5,6 +5,7 @@ import com.google.cognistats.client.gwtui.tests.levelestimation.testwidget.Level
 import com.google.cognistats.client.gwtui.tests.results.LevelEstimationTrialResult;
 import com.google.cognistats.client.gwtui.tests.tsr.TSRPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
+import com.google.gwt.core.client.GWT;
 
 public class LevelEstimationPresenter extends TSRPresenter implements Presenter {
 
@@ -20,6 +21,7 @@ public class LevelEstimationPresenter extends TSRPresenter implements Presenter 
 	// pDecrease = p(success), pIncrease = 1 - p(success)
 	
 	protected void setCurrentLevel() {
+		GWT.log("numCorrectTrials: " + numCorrectTrials + " numIncorrectTrials: " + numIncorrectTrials + " responseCorrect: " + responseCorrect);
 		if ((numCorrectTrials > 0) && (numIncorrectTrials > 0)) {
 			double u = getGenerator().nextDouble();
 			if (responseCorrect) {
@@ -65,10 +67,12 @@ public class LevelEstimationPresenter extends TSRPresenter implements Presenter 
 	}
 	
 	protected void increaseLevel() {
+		GWT.log("increaseLevel() " + currentLevel);
 		++currentLevel;
 	}
 	
 	protected void decreaseLevel() {
+		GWT.log("decreaseLevel() " + currentLevel);
 		--currentLevel;
 	}
 
@@ -78,8 +82,8 @@ public class LevelEstimationPresenter extends TSRPresenter implements Presenter 
 
 	@Override
 	protected void endTrial() {
-		super.endTrial();
 		setCurrentLevel();
+		super.endTrial();
 	}
 
 	protected void saveTrialResult() {

@@ -5,6 +5,8 @@ import com.google.cognistats.client.gwtui.tests.levelestimation.LevelEstimationP
 import com.google.cognistats.client.gwtui.tests.results.SpanTrialResult;
 import com.google.cognistats.client.gwtui.tests.span.testwidget.SpanTestDisplay;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.CorrectStatistic;
+import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.RowNamesEnum;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.SpanStatistic;
 import com.google.gwt.user.client.Timer;
 
@@ -17,6 +19,7 @@ public class SpanPresenter extends LevelEstimationPresenter implements Presenter
 	int currentlyDisplayedElement;
 	int currentSequenceLength;
 	protected SpanStatistic spanStatistic;
+	protected CorrectStatistic correctStatistic;
 
 	@Override
 	protected void initializeTest() {
@@ -94,6 +97,7 @@ public class SpanPresenter extends LevelEstimationPresenter implements Presenter
 	
 	protected void inputDone(boolean responseCorrect) {
 		this.responseCorrect = responseCorrect;
+		correctStatistic.setTrialCorrect(responseCorrect);
 		processResponse();
 	}
 	
@@ -121,6 +125,8 @@ public class SpanPresenter extends LevelEstimationPresenter implements Presenter
 		super.initializeStatistics();
 		spanStatistic = new SpanStatistic();
 		statPresenter.addRow(spanStatistic);
+		correctStatistic = new CorrectStatistic(RowNamesEnum.CORRECT_ROW);
+		statPresenter.addRow(correctStatistic);
 	}
 	
 }
