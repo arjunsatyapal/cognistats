@@ -23,7 +23,7 @@
     <g:layer left="85%" width="10%" top="85%" height="10%">
       <g:Button text="Stop" ui:field="buttonStop" addStyleNames="{style.button}"/>
     </g:layer>
-     <g:layer left="10.0%" width="80.0%" top="10.0%" height="80.0%">
+     <g:layer left="10.0%" width="80.0%" top="90.0pct" height="30.0pct">
       	<g:LayoutPanel width="98%" height="98%" ui:field="blackboard" addStyleNames="{style.blackboard}">
       		<g:layer height="100%" width="100%">
       			<g:LayoutPanel ui:field="summary" addStyleNames="{style.summary}">
