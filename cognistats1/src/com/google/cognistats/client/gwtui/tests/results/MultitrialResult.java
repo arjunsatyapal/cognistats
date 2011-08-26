@@ -14,10 +14,6 @@ public class MultitrialResult extends BaseResult {
 		this.trialResults = trialResults;
 	}
 	
-	@Override
-	protected void faaoo() {
-		return;
-	}
 	
 	@Override
 	protected ArrayList<String> attrs(ArrayList<String> a) {
