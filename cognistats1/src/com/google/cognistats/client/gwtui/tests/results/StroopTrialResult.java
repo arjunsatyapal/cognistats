@@ -1,5 +1,7 @@
 package com.google.cognistats.client.gwtui.tests.results;
 
+import java.util.ArrayList;
+
 public class StroopTrialResult extends TSRTrialResult {
 	protected String testPart;
 	public String getTestPart() {
@@ -29,4 +31,18 @@ public class StroopTrialResult extends TSRTrialResult {
 	protected int trialNumberWithinPart;
 	protected boolean isConcordant;
 	protected boolean trialIsColor;
+	
+	@Override
+	protected ArrayList<String> attrs(ArrayList<String> a) {
+		a = super.attrs(a);
+		a.add("testPart");
+		a.add(testPart);
+		a.add("trialNumberWithinPart");
+		a.add(String.valueOf(trialNumberWithinPart));
+		a.add("isConcordant");
+		a.add(String.valueOf(isConcordant));
+		a.add("trialIsColor");
+		a.add(String.valueOf(trialIsColor));
+		return a;
+	}
 }

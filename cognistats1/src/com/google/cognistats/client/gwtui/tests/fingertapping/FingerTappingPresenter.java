@@ -2,6 +2,8 @@ package com.google.cognistats.client.gwtui.tests.fingertapping;
 
 import java.util.LinkedList;
 
+import com.allen_sauer.gwt.voices.client.Sound;
+import com.allen_sauer.gwt.voices.client.SoundController;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Display;
 import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.tests.aggregator.MeanVarianceAggregator;
@@ -10,6 +12,7 @@ import com.google.cognistats.client.gwtui.tests.multitrial.MultitrialPresenter;
 import com.google.cognistats.client.gwtui.tests.results.FingerTappingTrialResult;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.BaseStatisticWidgetPresenter;
 import com.google.cognistats.client.gwtui.widgets.statisticswidget.statistics.TapCountStatistic;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Timer;
 
 public class FingerTappingPresenter extends MultitrialPresenter implements
@@ -17,7 +20,6 @@ public class FingerTappingPresenter extends MultitrialPresenter implements
 
 	protected FingerTappingTestDisplay fingerTappingTestWidget;
 	protected int tapCount = 0;
-	protected long trialStartTime;
 	protected boolean keyIsUp = true;
 	protected boolean trialIsAlmostStarted = false;
 	protected String hand;  // "left" or "right"
@@ -130,6 +132,14 @@ public class FingerTappingPresenter extends MultitrialPresenter implements
 		fingerTappingTestWidget.setTapCount(tapCount);
 		tapTimes.add(new Integer((int)(System.currentTimeMillis() - trialStartTime)));
 		tapCountStatistic.setTrialTapCount(tapCount);
+	    SoundController soundController = new SoundController();
+	    try {
+	    @SuppressWarnings("deprecation")
+		Sound sound = soundController.createSound(Sound.MIME_TYPE_AUDIO_MPEG,
+	        "/sounds/" + tapCount % 11 + ".mp3");
+	    sound.play();
+	    }
+	    catch (Exception e) {}
 	}
 	
 	@Override

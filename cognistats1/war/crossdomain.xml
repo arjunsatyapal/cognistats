@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE cross-domain-policy SYSTEM "http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd">
+<cross-domain-policy>
+
+<!--  I was trying to use this to get the Flash sound module to load properly when running locally with the GWT code server, but it doesn't work. Oh well. -->
+
+<site-control permitted-cross-domain-policies="master-only"/>
+
+<!-- cognistats.com -->
+<allow-access-from domain="cognistats.com"/>
+<allow-access-from domain="cognistats.com" to-ports="80,443"/>
+<allow-http-request-headers-from domain="cognistats.com" headers="*" />
+
+<!-- appspot -->
+<allow-access-from domain="cognistats.appspot.com" />
+<allow-access-from domain="cognistats.appspot.com" to-ports="80,443" />
+<allow-http-request-headers-from domain="cognistats.appspot.com" headers="*" />
+
+<!-- localhost -->
+<allow-access-from domain="localhost"/>
+<allow-access-from domain="localhost" to-ports="80,443,8888,9997"/>
+<allow-http-request-headers-from domain="localhost" headers="*" />
+
+<allow-access-from domain="127.0.0.1"/>
+<allow-access-from domain="127.0.0.1" to-ports="80,443,8888,9997"/>
+<allow-http-request-headers-from domain="127.0.0.1" headers="*" />
+
+</cross-domain-policy>

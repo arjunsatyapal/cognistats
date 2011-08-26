@@ -14,13 +14,11 @@ public class MultitrialResult extends BaseResult {
 		this.trialResults = trialResults;
 	}
 	
-	
 	@Override
 	protected ArrayList<String> attrs(ArrayList<String> a) {
 		a = super.attrs(a);
 		a.add("trialResults");
-		a.add("(" + trialResults.size() + " results)");//String.valueOf(trialResults));
+		a.add("(" + trialResults.size() + " results: " + trialResults + ")");
 		return a;
 	}
-
 }

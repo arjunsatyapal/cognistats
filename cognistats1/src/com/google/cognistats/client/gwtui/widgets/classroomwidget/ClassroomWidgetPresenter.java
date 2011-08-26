@@ -24,6 +24,7 @@ import com.google.cognistats.client.gwtui.mvpinterfaces.Presenter;
 import com.google.cognistats.client.gwtui.mvpinterfaces.TestPresenter;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.layout.client.Layout.Layer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
@@ -83,6 +84,8 @@ public class ClassroomWidgetPresenter implements Presenter, TestFinisher {
         display.getBlackboard().setVisible(false);
         display.getInstructions().removeFromParent(); // so it doesn't get in the way
         //display.getInstructions().setVisible(false);
+        //Widget layer = display.getBlackboard().getParent();
+        //layer.setVisible(false);
       }
     });
 
